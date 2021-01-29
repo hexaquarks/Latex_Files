@@ -1,0 +1,661 @@
+\documentclass[
+	12pt,
+	]{article}
+	\usepackage{changepage}
+	\usepackage{titlesec}
+	\usepackage{graphicx}
+	\usepackage{graphics}
+	\usepackage{booktabs}
+	\usepackage{amsmath}
+	\usepackage{siunitx}
+	\usepackage{xparse}
+	\usepackage{physics}
+	\usepackage{amssymb}
+	\usepackage{mathrsfs}
+	\usepackage{undertilde}
+	\usepackage{dutchcal}
+	\usepackage{amsthm}
+	\usepackage{wrapfig}
+	\newcommand{\tx}{\text{}}
+	\usepackage{tikz}
+	\usepackage{xfrac}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\newcommand{\p}{\prime}
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\B}{\mathcal{B}}
+	\newcommand{\Ss}{\mathcal{S}}
+	
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{MATH 325 Assignment 2.}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404}
+	\date{\empty}
+	
+	\begin{document}
+	\maketitle
+	\section*{Question 1.}
+		\subsection*{a)}
+			\begin{align*}
+				&a_{0}\frac{d^{n}(e^{\lambda t})}{dt^{n}} +a_{1}\frac{d^{n-1}(e^{\lambda t})}{dt^{n-1}} + \dots + a_{n-1}\frac{d(e^{\lambda t})}{dt} + 
+				a_{n}e^{\lambda t} =0 \\
+				& a_{0} \lambda^{n} (e^{\lambda t})+ a_{1} \lambda^{n-1}(e^{\lambda t}) + \dots + a_{n-1} \lambda e^{\lambda t} + a_{n} e^{\lambda t} =0 \\
+				&e^{\lambda t} ( a_{0} \lambda^{n} + a_{1}\lambda^{n-1} + \dots + a_{n-1}\lambda + a_{n}) = 0\\
+				\intertext{$e^{\lambda t} > 0 \ \ \forall \ \lambda \in \mathbb{C} , \mathbb{R} $ and  $t \in \mathbb{R}$ , so then} 
+				& \implies a_{0}\lambda^{n} + a_{1} \lambda^{n-1} + \dots + a_{n-1}\lambda + a_{n} =0.
+			\end{align*}
+			%todo
+		\subsection*{b) }
+			From our results in a), we can set the given ODE as 
+			$$ 2\lambda^{4} - \lambda^{3} - 9\lambda^{2} + 4\lambda^{4} +4 =0$$
+			Using the rational root theorem, we find $\lambda_{1} = -1/2 , \lambda_{2} = 1, \lambda_{3} = 2 , \lambda_{4} = -2$. Therefore the general solution is 
+			$$ y(t) = c_{1}e^{\frac{-t}{2}} + c_{2} e^{t} + c_{3} e^{2t} + c_{4}e^{\-2t}$$
+			With the initial conditions we have 
+			\begin{align*}
+				y(0) = -2 &\implies c_{1} + c_{2} + c_{3} + c_{4} =-2 \\
+				y^{\p}(0) = 0 &\implies -c_{1}/2 + c_{2} + 2c_{3} + -2c_{4} =0 \\
+				y^{\p\p}(0) = -2 &\implies c_{1}/4 + c_{2} + 4c_{3} + 4c_{4} =-2 \\
+				y^{\p\p\p}(0) = 0 &\implies -c_{1}/8 + c_{2} + 8c_{3} + -8c_{4} =0 
+			\end{align*}
+			This can be transformed in a matrix and solved for $c_{i}$
+			\begin{equation*}
+				\begin{bmatrix}
+					1 & 1& 1& 1 & -2 \\
+					-1/2 & 1 & 2 & -2 & 0 \\
+					1/4 & 1 & 4 & 4 & -2 \\
+					-1/8 & 1 & 8 & -8 &0 
+				\end{bmatrix}
+				 \ \xrightarrow{} 
+				\begin{bmatrix}
+					1 & 1& 1& 1 & -2 \\
+					0 & -3 & -5 & 3 & 2 \\
+					0 & 0 & 17 & -15 & -2 \\
+					0 & 0 & 0 & 19 & -2 
+				\end{bmatrix}
+				\implies 
+				\begin{align*}
+					c_{1} &= \frac{-56}{19} \\
+					c_{2} &= \frac{24}{19} \\
+					c_{3} &= \frac{-4}{19} \\
+					c_{4} &= \frac{-2}{19} 
+				\end{align*}
+			\end{equation*}
+			So finally we can write the unique solution : 
+			$$ y(t) = \frac{-56}{19}e^{\frac{-t}{2}} + \frac{24}{19} e^{t} - \frac{4}{19}e^{2t}  - \frac{2}{19}e^{-2t}.$$
+		\subsection*{c) }
+			We have $\lambda^{4} -1 =0$. This can be rewritten as
+			$$ \underbrace{(\lambda -1 )}_{\lambda = 1} \underbrace{(\lambda + 1)}_{\lambda = -1}\underbrace{(\lambda^{2} +1)}_{\lambda  = \pm i}=0$$
+			So we have the general solution 
+			$$ y(t) = c_{1}e^{t} + c_{2}e^{-t} + c_{3}e^{it} + c_{4}e^{-it}$$
+			By regrouping the real and imaginary parts we get 
+			\begin{gather*}
+				y(t) = c_{1}e^{t} + c_{2}e^{-t} + (c_{3}+c_{4})\cos(t) +(c_{3}-c_{4})\sin(t) \\
+				\text{Letting } (c_{3} +c_{4}) = c_{3} \ \text{and } \ (c_{3} - c_{4}) = c_{4} \ \text{we get }\\
+				y(t) = c_{1} e^{t} + c_{2}e^{-t} + c_{3}\cos(t) + c_{4}\sin(t).
+			\end{gather*}
+			Similarly as in b), we construct a matrix representing the constant values for the given initial conditions and we solve it 
+			\begin{equation*}
+			\begin{bmatrix}
+				1 & 1& 1& 0 & 0 \\
+					1 & -1 & 0 & 1 & 0 \\
+								1 & 1 & -1 & 0 & 1 \\
+								1 & -1 & 0 & -1 &1 
+							\end{bmatrix}
+							 \ \xrightarrow{} 
+							\begin{bmatrix}
+								1 & 1& 1& 0 & 0 \\
+								0 & -2 & -1 & 1 & 0 \\
+								0 & 0 & -2 & 0 & 1 \\
+								0 & 0 & 0 & -2 & 1 
+							\end{bmatrix}
+							\implies 
+							\begin{align*}
+								c_{1} &= \frac{1}{2} \\
+								c_{2} &= 0\\
+								c_{3} &= \frac{-1}{2} \\
+								c_{4} &= \frac{-1}{2} 
+							\end{align*}
+						\end{equation*}
+			So we have the final answer unique solution 
+			$$ y(t) = \frac{1}{2}e^{t} - \frac{1}{2}\cos(t) - \frac12 \sin(t).$$
+			\subsection*{d) }
+				We have $\lambda^{4} + 2\lambda^{2} + 1 =0$. This can be rewritten as 
+				$$ ( \lambda^{2} + 1)^{2}  = 0 \implies \lambda = \pm i \quad , m=2.$$
+				Therefore the solutions are $e^{it}, te^{it} , e^{-it}, te^{-it}.$. Taking the real parts and the imaginary parts and recombining everything whilst defining arbitrary constants like in c) we get 
+				$$ y(t) = c_{1}\cos(t) + c_{2}\sin(t) + c_{3}t\cos(t) + c_{4}t\sin(t)$$. 
+				By taking the matrix corresponding to the different initial conditions and successively applying product rule to take the derivatives ,and solving it for $c_{i}$, we obtain 
+			\begin{equation*}
+						\begin{bmatrix}
+							1 & 0& 0& 0 & 0 \\
+								0 & 1 & 1 & 0 & 0 \\
+								-1 & 0 & 0 & 2 & 1 \\
+								0 & 3 & 0 & 0 & 1 
+							\end{bmatrix}
+						\implies 
+						\begin{align*}
+						c_{1} &= 0 \\
+						c_{2} &= \frac13 \\
+						c_{3} &= \frac{-1}{3} \\
+						c_{4} &= \frac{1}{2} 
+						\end{align*}
+						\end{equation*}	
+			So the final answer unique solution is 
+			$$ y(t) = \frac{\sin(t)}{3} -\frac{t\cos(t)}{3} + \frac{t\sin(t)}{2}.$$
+		\section*{Question 2.}
+			\subsection*{a) }
+			 If $x = \ln(t) \implies x= x(t)$ such that 
+			 \begin{align*}
+			 	\frac{dy}{dt} &= \frac{dy}{dx}\frac{dx}{dt} = \frac{dy}{dx}\left(\frac{1}{t}\right). \\
+			 	\frac{d^{2}t}{dt^{2}} &= \frac{d}{dt}\left(\frac{dy}{dx} \left(\frac{1}{t}\right)\right) = \frac{d^{2}y}{dtdx}\left(\frac{1}{t}\right) + \frac{dy}{dx}\left(\frac{1}{t}\right)^{\p}
+			 	\intertext{Since $\frac{dy}{dt} = \frac{dy}{dx} \frac{1}{t}$ we then have }
+			 	\frac{d^{2}y}{dtdx}\left(\frac{1}{t}\right) &= \frac{d^{2}y}{dx^{2}}\left(\frac{1}{t}\right)^{2} - \frac{dy}{dx}\left(\frac{1}{t^{2}}\right).
+			 \end{align*}
+			 \subsection*{b) }
+			 Substituting the results back in the initial expression and rearranging yields 
+			 \begin{gather*}
+			 	t^{2} \left(\frac{d^{2}y}{dx^{2}} \frac{1}{t^{2}} - \frac{dy}{dx}\frac{1}{t^{2}}\right) + \alpha t\left(\frac{dy}{dx}\left(\frac{1}{t}\right)\right) + \beta y =0\\
+			 	\implies \frac{d^{2}y}{dx^{2}} - \frac{dy}{dx} + \alpha \frac{dy}{dx} + \beta y =0 \\
+			 	\implies \frac{d^{2}y}{dx^{2}} + (\alpha-1)\frac{dy}{dx} + \beta y =0 \\
+			 	\therefore y^{\p \p}(x) + (\alpha -1 )y^{\p}(x) + \beta y(x) =0.
+			 \end{gather*}
+			 \subsection*{c) }
+			 %todo wolfram verify solution
+			 	\begin{align*}
+			 		\frac{dy}{dt} &= \frac{dy}{dx}\left(\frac{1}{t}\right) \\
+			 		\frac{d^{2}y}{dt^{2}} &= \frac{d^{2}y}{dx^{2}} \frac{1}{t^{2}} - \frac{dy}{dx}\frac{1}{t^{2}}
+			 	\end{align*}
+			 	Substituting back we get 
+			 	\begin{align*}
+			 		&\frac{d^{2}y}{dt^{2}} - \frac{dy}{dx} + 7 \frac{dy}{dx} + 10y =0 \\
+			 		\implies & y^{\p\p}(x) + 6y^{\p}(x) + 10y(x) =0 \\
+			 		\implies & \lambda^{2} + 6\lambda + 10 =0 \implies (\lambda + 3)^{2} = -1
+			 	\end{align*}
+			 	The roots are $\lambda_{1} = -3 + i $ and $\lambda_{2} = -3 - i$.
+			 	By taking the real and imaginary part while assigning arbitrary constants , we get the general solution 
+			 	$$ y(t) = c_{1} e^{-3t}\cos(t) + c_{2}e^{-3t}\sin(t).$$
+			 \section*{Question 3.} 
+			 	\subsection*{a) }
+			 		\begin{align*}
+			 			y_{1}(t) &= t \implies y_{2}(t) = v(t)t \\
+			 			y_{2}^{\p}(t) &= v^{\p}(t) t + v(t) \\
+			 			y_{2}^{\p\p}(t) &= v^{\p\p}(t) t + 2v^{\p}(t)
+ 			 		\end{align*}
+ 			 		Substituting these in the original expression and regrouping terms we have 
+ 			 		\begin{gather*}
+ 			 		%todo Initial conditions and integrating constants
+ 			 			v^{\p\p } (t) [t^{3}] + v^{\p}(t) [2t^{2} -t^{3} -2t^{2}] +v(t)[-t^{2} - 2t + t^{2}+2t] = 0\\
+ 			 			\implies v^{\p\p } (t) [t^{3}] + v^{\p}(t) [-t^{3}] =0 \\
+ 			 			\implies \int -1 \ dt = - \int \frac{v^{\p\p}}{v^{\p}} \ dv \\
+ 			 			\implies t = \ln(v^{\prime}) + C \implies v = e^{t-C} 
+ 			 		\end{gather*}
+ 			 		Finally, we substitute in the original expression for $y_{1}(t)$ and obtain the general solution 
+ 			 		$$ y(t) = c_{1}y_{1} + c_{2}y_{1}e^{t-C} = c_{1}t + c_{2}te^{t}.$$
+ 			 	\subsection*{b) }
+ 			 		\begin{align*}
+ 			 			y_{2}^{\p}(x) &= v^{\p}(x) e^{x} + v(x)e^{x} \\ 
+ 			 			y_{2}^{\p\p}(x) &= v^{\p\p}(x) e^{x} + v^{\p}(x)e^{x} + e^{x}v(x) =0
+ 			 		\end{align*}
+ 			 		Substituting in the original expression and regrouping terms we get 
+ 			 		\begin{gather*}
+ 			 			v^{\p\p} [e^{x} (x-1)] + v^{\p}[2e^{x} (x-1)-xe^{x}] + v[xe^{x}-e^{x} - xe^{x} + e^{x}] =0 \\
+ 			 			\implies v^{\p\p} [e^{x} (x-1)] + v^{\p}[2e^{x} (x-1)-xe^{x}]=0 \\
+ 			 			\implies \int \frac{v^{\p\p}}{v^{\p}} \ dv = \int \frac{e^{x}(x-1)}{e^{x}(x-2)} \ dx  \\
+ 			 			\implies \ln(v^{\p}) = \int 1 \ dx + \int \frac{1}{x-2} \\
+ 			 			\ln(v^{\p}) = x + \ln(x-2) \implies e^{x}e^{\ln\abs{x-2}} = v^{\p}\\
+ 			 			\implies v = \int e^{x}(x-2) \ dx
+ 			 			\intertext{Solving this integral by parts with two substitutions yields } 
+ 			 			v = xe^{x} - 3e^{x}.
+ 			 		\end{gather*}
+ 			 		So we have that $y_{2}(x) - (xe^{x}-3e^{x})e^{x} \implies y_{2}(x) = xe^{2x} - 3e^{2x}.$ Finally, the general solution is 
+ 			 		$$ y(t) = c_{1} e^{2x} + c_{2}e^{2x}(x-3).$$
+ 			 	\section*{Question 4.}
+ 			 		\subsection*{a) }
+ 			 			We have that $y^{\p\p} - y^{\p} + \frac{y}{4} =4e^{t/2}$. We first find the solutions to the homogenous equation 
+ 			 			$$ \lambda^{2} - \lambda + 1/4 =0 \quad \implies \left(\lambda -\frac12\right)^{2}=0 \implies\lambda =\frac12 , m=2.$$
+ 			 			So we have that $y_{h}(t) = c_{1}e^{t/2} + c_{2}te^{t/2}$. Following the proceedure we have 
+ 			 			\begin{align*}
+ 			 				y(t) &= u_{1}e^{t/2} + u_{2} t e^{t/2} \\
+ 			 				y^{\p}(t) &= u_{1}^{\p} e^{t/2} + \frac{u_{1}e^{t/2}}{2} + u_{2}^{\p}te^{t/2} + u_{2}(e^{t/2} + \frac{te^{t/2}}{2})
+ 			 				\intertext{We require \ $u_{1}^{\p} e^{t/2} +u_{2}^{\p}te^{t/2} =0 $, yielding} 
+ 			 				\implies y^{\p}(t) &= \frac{u_{1}e^{t/2}}{2} + u_{2}e^{t/2} + \frac{u_{2}e^{t/2}}{2} \\
+ 			 				y^{\p\p}(t) &= \frac{u_{1}^{\p}e^{t/2}}{2} + \frac{u_{1}e^{t/2}}{4} + u_{2}^{\p}e^{t/2} + \frac{u_{2}e^{t/2}}{2} + \frac{u_{2}^{\p}te^{t/2}}{2} + \frac{u_{2}te^{t/2}}{4}.
+ 			 			\end{align*}
+ 			 			Substituting these results in the initial ODE whilst also regrouping for $u_{1}$ and $u_{2}$ yields 
+ 			 			\begin{gather*}
+ 			 				\underbrace{u_{1}\left(\frac{-1}{4}\right)}_{=0} + \underbrace{u_{2}\left(\frac{-1}{2} - \frac{t}{4}\right)}_{=0} + \frac{u_{1}^{\p}}{2} + u_{2}^{\p} + \frac{tu_{2}^{\p}}{2} = 4 \\
+ 			 				\implies u_{1}^{\p} + 2u_{2}^{\p} + u_{2}^{\p}(t)=8 \\
+ 			 				\text{Forming a system of equation by adding the required equation : $u_{1}^{\p} + u_{2}^{\p}t =0$}
+ 			 			\end{gather*}
+ 			 			\begin{equation*}
+ 			 				\begin{pmatrix}
+ 			 					1 & (2+t) \\
+ 			 					1& t
+ 			 				\end{pmatrix}
+ 			 				\begin{pmatrix}
+ 			 					u_{1}^{\p} \\
+ 			 					u_{2}^{\p}
+ 			 				\end{pmatrix}
+ 			 				= 
+ 			 				\begin{pmatrix}
+ 			 					8 \\
+ 			 					0
+ 			 				\end{pmatrix}
+ 			 				\xrightarrow{} W(t) = t -(2+t) = -2 \neq 0
+ 			 			\end{equation*}
+ 			 			\begin{gather*}
+ 			 				u_{1}^{\p} = \frac{8t}{-2} = -4t ,\qquad u_{2}^{\p}=\frac{-8}{-2} =4 \\
+ 			 				\therefore \int u_{1}^{\p} \ dt = -4 \int t \ dt = -2t^{2}\\
+ 			 				\text{similarly, }\ \int u_{2}^{\p} \ dt = 4 \int dt = 4t.
+ 			 			\end{gather*}
+ 			 			Substituting to find the particular solution gives
+ 			 			
+ 			 			\begin{align*}
+ 			 				y(t) &= u_{1}y_{1}(t) + u_{2}y_{2}(t) \\
+ 			 				&= -2t^{2}e^{t/2} + 4t^{2}e^{t/2}
+ 			 			\end{align*}
+ 			 			Finally the general solution is 
+ 			 			$$ y(t) = c_{1}e^{t/2} +c_{2}e^{t/2} - 2t^{2}e^{t/2} + 4t^{2}e^{t/2}.$$
+ 			 	\subsection*{b) }
+ 			 		We have $y^{\p\p} + 4y =0 \implies \lambda^{2} + 4 =0$. The solutions are $\lambda = \pm 2i$.
+ 			 		Taking the real part and imaginary part we find that the homogenous solution is 
+ 			 		$y_{h}(t) = c_{1}\cos(2t) + c_{2}\sin(2t).$
+ 			 		\begin{align*}
+ 			 			y^{\p}(t) &= u_{1}^{\p}\cos(2t) - 2u_{1}\sin(2t) + u_{2}^{\p}\sin(2t) + 2u_{2}\cos(2t).
+ 			 			\intertext{We require that $u_{1}^{\p}\cos(2t) + u_{2}^{\p}\sin(2t) \0 $ ,yielding : }
+ 			 			y^{\p}(t) &= 2-u_{1}\sin(2t) + 2u_{2}\cos(2t) \\
+ 			 			y^{\p\p} (t) &= 2-u_{1}^{\p}\sin(2t) - 2u_{1}\cos(2t) + 2u_{2}^{\p}\cos(2t) - 2u_{2}\sin(2t)
+	 			 		\end{align*} 
+ 			 		Substituting these results in the original expression and canceling the $u_{1}$ and $u_{2}$ terms we get the following system of equations 
+ 			 		\begin{gather*}
+ 			 			\begin{cases}
+ 			 				&2u_{2}^{\p}\cos(2t) - 2u_{1}^{\p}\sin(2t) = t^{2}+3e^{t} \\
+ 			 				& u_{1}^{\p}\cos(2t) + u_{2}^{\p}\sin(2t) = 0
+ 			 			\end{cases} \\
+ 			 			\implies 
+ 			 			\begin{pmatrix}
+ 			 				-2\sin(2t) & 2\cos(2t) \\
+ 			 				\cos(2t) & \sin(2t) 
+ 			 			\end{pmatrix}
+ 			 			\begin{pmatrix}
+ 			 				u_{1}^{\p} \\
+ 			 			 	u_{2}^{\p}
+ 			 			\end{pmatrix}
+ 			 			= 
+ 			 			\begin{pmatrix}
+ 			 				t^{3}+3e^{t} \\
+ 			 				0
+ 			 			\end{pmatrix}
+ 			 		\end{gather*}
+ 			 		$$\implies 	W(t) =-\sin^{2}(2t)-2\cos^{2}(2t)= -2 \neq 0 $$
+ 			 		Therefore we have have the solutions for the $u_{i}^{\p}$: 
+ 			 		\begin{align*}
+ 			 			u_{1}^{\p} &= \int \frac{(t^{2}+3e^{t})\sin(2t)}{-2} \ dt = \frac{-1}{2} \left(\int t^{2}\sin(2t) + 3 \int e^{t}\sin(2t)\right)\\
+ 			 			u_{2}^{\p} &= \int \frac{-(t^{2} + 3e^{t})\cos(2t)}{-2} \ dt = \frac{1}{2} \left(\int t^{2}\cos(2t) + 3 \int e^{t}\cos(2t)\right)
+ 			 		\end{align*}
+ 			 	We have that 
+ 			 	\begin{align*}
+ 			 		y_{p} &= \cos(2t)\frac{-1}{2} \left(\int t^{2}\sin(2t) + 3 \int e^{t}\sin(2t)\right) + \sin(2t)\frac{1}{2} \left(\int t^{2}\cos(2t) + 3 \int e^{t}\cos(2t)\right) \\
+ 			 		&= \frac{1}{4}\cos^{2}(2t)t^{2} -\frac14 \sin(2t)\cos(2t) t- \frac18 \cos^{2}(2t) + \frac{3}{5}e^{t}\cos^{2}(2t) -\frac{3}{10} \cos(2t)\sin(2t)e^{t} \\
+ 			 		\ \ &+ \frac14 \sin^{2}(2t) t^{2} + \frac14 \cos(2t)\sin(2t) t -\frac{1}{8}\sin^{2}(2t) + \frac35 e^{t}\sin^{2}(2t) + \frac{3}{10}\sin(2t)\cos(2t) e^{t} 
+ 			 	\end{align*}
+ 			 	$$\implies y_{p}(t) = \frac14 t^{2} +\frac35 e^{t} - \frac18. $$
+ 			 	Finally we have the general solution 
+ 			 	$$ y(t) = c_{1}\cos(2t) + c_{2}\sin(2t) + \frac14 t^{2} +\frac35 e^{t} - \frac18 .$$
+ 			 	Now solving for the unique solution : 
+ 			 	\begin{align*}
+ 			 		y(0) &=0 \implies c_{1} + \frac35 -\frac18 =0 \implies c_{1} = \frac{3}{40}. \\
+ 			 		y^{\p}(0) &=0 \implies c_{2} + \frac35 =0 \implies c_{2} = -\frac35
+ 			 	\end{align*}
+ 			 	The unique solution to the IVP is
+ 			 	\begin{equation*}
+ 			 		y(t) = \frac{3\cos(2t)}{40} -\frac{3\sin(2t)}{5} + \frac14 t^{2} +\frac35 e^{t} - \frac18.
+ 			 	\end{equation*}
+ 			 	%todo unique solution 
+ 			 \section*{Question 5.}
+ 			 	\subsection*{a) }
+ 			 		\begin{align*}
+ 			 			& \text{Tank 1. } \ C_{\text{In}} : 1.5 + \frac{1.5x_{2}(t)}{20}, C_{\text{Out}} : \frac{3x_{1}(t)}{30} \\
+ 			 			& \text{Tank 2. } \ C_{\text{In}} : 3 + \frac{3x_{1}(t)}{30}, C_{\text{Out}} : \frac{2.5x_{2}(t)}{20}
+ 			 		\end{align*}
+ 			 		These two systems of equations can be represented as a matrix linear system : 
+ 			 		\begin{equation*}
+ 			 			\begin{pmatrix}
+ 			 				x_{1}^{\p} \\
+ 			 				x_{2}^{\p}
+ 			 			\end{pmatrix}
+ 			 			= 
+ 			 			\begin{pmatrix}
+ 			 				-1/10 & 3/40 \\
+ 			 				1/10 & -1/8
+ 			 			\end{pmatrix}
+ 			 			\begin{pmatrix}
+ 			 				x_{1} \\
+ 			 				x_{2}
+ 			 			\end{pmatrix}
+ 			 			+ 
+ 			 			\begin{pmatrix}
+ 			 				1.5 \\
+ 			 				3
+ 			 			\end{pmatrix}
+ 			 		\end{equation*}
+ 			 \subsection*{b) }
+ 			 	Let us first solve the $y^{\p} = A y$ system. 
+ 			 	$$ p(\lambda) = \left(\frac{-1}{10} - \lambda \right)\left(\frac{-1}{8} - \lambda \right) - \frac{3}{400} =0 \implies \lambda_{1} = \frac{-1}{5} , \lambda_{2} = \frac{-1}{40}.$$
+ 			 	Let us find the corresponding eigenvectors to these eigenvalues. 
+ 			 	\begin{align*}
+ 			 		&\text{For $\lambda_{1}$, } \xrightarrow{} 
+ 			 		\begin{pmatrix}
+ 			 			\left(\frac{-1}{10} + \frac{1}{5}\right) & \frac{3}{40} \\
+ 			 			\frac{1}{10} & \left(\frac{-1}{8} + \frac15 \right)
+ 			 		\end{pmatrix}
+ 			 		\begin{pmatrix}
+ 			 			a \\
+ 			 			b
+ 			 		\end{pmatrix}
+ 			 		= 
+ 			 		\begin{pmatrix}
+ 			 		0\\
+ 			 		0
+ 			 		\end{pmatrix}
+ 			 		\implies a = \frac{-3b}{4} \implies u_{1} = 
+ 			 		\begin{pmatrix}
+ 			 			-3/4\\
+ 			 			1
+ 			 		\end{pmatrix} \\
+ 			 		&\text{For $\lambda_{2}$, } \xrightarrow{} 
+ 			 		 			 		\begin{pmatrix}
+ 			 		 			 			\frac{-3}{40} & \frac{3}{40} \\
+ 			 		 			 			\frac{1}{10} & \frac{-1}{10}
+ 			 		 			 		\end{pmatrix}
+ 			 		 			 		\begin{pmatrix}
+ 			 		 			 			a \\
+ 			 		 			 			b
+ 			 		 			 		\end{pmatrix}
+ 			 		 			 		= 
+ 			 		 			 		\begin{pmatrix}
+ 			 		 			 		0\\
+ 			 		 			 		0
+ 			 		 			 		\end{pmatrix}
+ 			 		 			 		\implies a = b \implies u_{2} = 
+ 			 		 			 		\begin{pmatrix}
+ 			 		 			 			1\\
+ 			 		 			 			1
+ 			 		 			 		\end{pmatrix} 
+ 			 	\end{align*}
+ 			 	The corresponding matrix solution $Y(t)$ is then 
+ 			 	\begin{equation*}
+ 			 		\begin{pmatrix}
+ 			 			\frac{-3}{4}e^{-t/5} & e^{-t/40} \\
+ 			 			e^{-t/5} & e^{-t/40}
+ 			 		\end{pmatrix}
+ 			 	\end{equation*}
+ 			 	$ y(t) = Y(t)c + Y(t)\int Y^{-1}(t)r(t) \ dt$, let us find $Y^{-1}(t)$.
+ 				\begin{gather*}
+ 			 			 		\det(Y(t)) = \frac{-3}{4}e^{-t/5} e^{-t/40} - e^{-t/40}e^{-t/5} =\frac{-7}{4} e^{-9/40}\\
+ 			 			 		\therefore Y^{-1}(t) = \frac{1}{\det(Y(t))}
+ 			 			 			\begin{pmatrix}
+ 			 			 		 			 			\frac{-3}{4}e^{-t/5} & e^{-t/40} \\
+ 			 			 		 			 			e^{-t/5} & e^{-t/40}
+ 			 			 		 			 		\end{pmatrix} 
+ 			 			 		 = 	\begin{pmatrix}
+ 			 			 		  			 			\frac{-4}{7}e^{-t/5} & \frac{4}{7}e^{-t/5} \\
+ 			 			 		  			 			\frac{4}{7}e^{t/40} & \frac{3}{7}e^{t/40}
+ 			 			 		  			 		\end{pmatrix}\\
+ 			 			\implies \int Y^{-1}(t)r(t) \ dt =
+ 			 			\begin{pmatrix}
+ 			 			\frac{-4}{7}e^{-t/5} & \frac{4}{7}e^{-t/5} \\
+ 			 			\frac{4}{7}e^{t/40} & \frac{3}{7}e^{t/40}
+ 			 			\end{pmatrix} 
+ 			 			\begin{pmatrix}
+ 			 				3/2 \\
+ 			 				3
+ 			 			\end{pmatrix}
+ 			 			=
+ 			 			\begin{pmatrix}
+ 			 				\int \frac{-6}{7} e^{-t/5} + \int \frac{12}{7} e^{-t/5} \\
+ 			 				\int \frac{6}{7} e^{t/40} + \int \frac{9}{7} e^{t/40}
+ 			 			\end{pmatrix}  \\
+ 			 			=
+ 			 			\begin{pmatrix}
+ 			 				e^{-t/5}\frac{-30}{7} \\
+ 			 				e^{t/40}\frac{600}{7}
+ 			 			\end{pmatrix}
+ 			 			\intertext{Multiplying by $Y(t)$ yields}
+ 			 			= \begin{pmatrix}
+ 			 				\frac{90}{28} e^{-2t/5} + \frac{600}{7} \\
+ 			 				e^{-2t/5} \frac{-30}{7} + \frac{600}{7}
+ 			 			\end{pmatrix}
+ 			 			 	\end{gather*}
+ 			 			Now let us find $c_{1}$ and $c_{2}$ for the homogenous solution using $c = P^{-1}y_{0}$ , where $P$ is the eigenvector matrix and $y_0$ is the initial conditions on the tanks , i.e., $25$ for Tank 1 and $15$ for Tank 2.
+ 			 			\begin{gather*}
+ 			 				c = P^{-1}Y_{0} = \frac{-4}{7}
+ 			 				\begin{pmatrix}
+ 			 					1 & -1 \\
+ 			 					-1 & -3/4
+ 			 				\end{pmatrix}
+ 			 				\begin{pmatrix}
+ 			 				25 \\
+ 			 				15
+ 			 				\end{pmatrix}
+ 			 				= 
+ 			 				\begin{pmatrix}
+ 			 				-4/7 & 4/7 \\
+ 			 				4/7 & 3/7 
+ 			 				\end{pmatrix}
+ 			 				\begin{pmatrix}
+ 			 					25 \\
+ 			 					15
+ 			 				\end{pmatrix}
+ 			 				=
+ 			 				\begin{pmatrix}
+ 			 					-40/7 \\
+ 			 					145/7
+ 			 				\end{pmatrix}\\
+ 			 				\therefore y_{h}(t) = Y(t)c =  \frac{-40}{7}e^{-t/5}
+ 			 				\begin{pmatrix}
+ 			 					-3/4 \\
+ 			 					1
+ 			 				\end{pmatrix} + \frac{145}{7}e^{-t/40}
+ 			 				\begin{pmatrix}
+ 			 					1 \\
+ 			 					1
+ 			 				\end{pmatrix}.
+ 			 			\end{gather*}
+ 			 			Finally the solution to the IVP is 
+ 			 			$$ y(t) = e^{-t/5} 
+ 			 			\begin{pmatrix}
+ 			 				30/7 \\
+ 			 				-40/7
+ 			 			\end{pmatrix} + e^{-t/40} 
+ 			 			\begin{pmatrix}
+ 			 				145/7 \\
+ 			 				145/7
+ 			 			\end{pmatrix} + e^{-2t/5} 
+ 			 			\begin{pmatrix}
+ 			 				90/28\\
+ 			 				-30/7
+ 			 			\end{pmatrix}
+ 			 			+\frac{600}{7} 
+ 			 			\begin{pmatrix}
+ 			 				1 \\
+ 			 				1
+ 			 			\end{pmatrix}.$$
+ 			 \section*{Question 6.}
+ 			 	\subsection*{a) }
+ 			 		\begin{gather*}
+ 			 			A = \lambda I +N  \implies e^{At} = e^{t(\lambda I + N)} = e^{\lambda I t} e^{Nt} \\
+ 			 			= e^{\lambda t} \sum_{n=0}^{k-1} \frac{t^{k}}{k!}N^{k}
+ 			 		\end{gather*}
+ 			 		Since $N$ is nilpotent we may truncate the previous expression up to $k$.
+ 			 		$$ e^{At} = e^{\lambda t} \sum_{r=0}^{k-1} \frac{N^{r}t^{r}}{(r)!} = e^{\lambda t}\left(I + \sum_{r=1}^{k-1}\frac{N^{r}t^{r}}{r!}\right)$$
+ 			 	\subsection*{b) }
+ 			 Let $N$ be the upper triangular matrix ,which doesn't contain the diagonal ,of the given matrix. $N$ is nilpotent up to $k = 4$. 
+ 			 From the characteristic polynomial of the given matrix we find that 
+ 			 $$p(\lambda) = (2-\lambda)^{4} =0 \implies \lambda = -2 ,\quad m=4.$$
+ 			 Therefore, using the result from a we get that 
+ 			 $$ e^{At} = e^{-2t}
+ 			 \begin{pmatrix}
+ 			 	1 & t & t+\frac{t^{2}}{2} & t+ \frac{t^{2}}{2} + \frac{t^{3}}{6} \\
+ 			 	0 & 1 & t & \frac{t^{2}}{2}  \\
+ 			 	0 & 0 & 1 & t \\
+ 			 	0 & 0& 0& 1
+ 			 \end{pmatrix}$$
+ 			 Using the initial condition $Y(0) = y_{0}$ we may solve for the $c_{i}$ constants.
+ 			 \begin{equation*}
+ 			 e^{0t}
+ 			 \begin{pmatrix}
+ 			  			 	1 & 0 & 0+\frac{0^{2}}{2} & 0+ \frac{0^{2}}{2} + \frac{0^{3}}{6} \\
+ 			  			 	0 & 1 & 0 & \frac{0^{2}}{2}  \\
+ 			  			 	0 & 0 & 1 & 0 \\
+ 			  			 	0 & 0& 0& 1
+ 			  			 \end{pmatrix}	
+ 			  			 \begin{pmatrix}
+ 			  			 c_{1} \\
+ 			  			 c_{2} \\
+ 			  			 c_{3} \\
+ 			  			 c_{4}
+ 			  			 \end{pmatrix}=
+ 			  			 \begin{pmatrix}
+ 			  			 	1 \\ 
+ 			  			 	2 \\
+ 			  			 	3 \\
+ 			  			 	 4
+ 			  			 \end{pmatrix}
+ 			  			 \implies 
+ 			  			 \begin{align*}
+ 			  			 	c_{1} &= 1 \\
+ 			  			 	c_{2} &=2 \\
+ 			  			 	c_{3} &= 3 \\
+ 			  			 	c_{4} &=4
+ 			  			 \end{align*}
+ 			 \end{pmatrix}
+ 			 \end{equation*}
+ 			 So finally, the solution to the IVP is
+ 			 $$ y(t) = e^{-2t}
+ 			 \begin{pmatrix}
+ 			 	1 \\
+ 			 	0 \\
+ 			 	0\\ 
+ 			 	0
+ 			 \end{pmatrix}
+ 			 +2 e^{-2t}
+ 			 \begin{pmatrix}
+ 			 	t \\
+ 			 	1\\
+ 			 	0\\
+ 			 	0
+ 			 \end{pmatrix} 
+ 			 + 3e^{-2t}
+ 			 \begin{pmatrix}
+ 			 	t+ \frac{t^{2}}{2} \\
+ 			 	t \\
+ 			 	1 \\
+ 			 	0
+ 			 \end{pmatrix}
+ 			  + 4 e^{-2t}
+ 			  \begin{pmatrix}
+ 			  	t+\frac{t^{2}}{2} + \frac{t^{3}}{6} \\
+ 			  	t+ \frac{t^{2}}{2} \\
+ 			  	t \\
+ 			  	1
+ 			  \end{pmatrix}$$
+ 			 \section*{Question 7.}
+ 			 	By lemma we know that if $A$ is diagonalizable then $\exists P $ such that $A = P D P^{-1}$, where $D$ is a specific diagonal matrix. Moreover, by other lemma, we know that $A^{k} = P D^{k} P^{-1}$. Indeed if $f$ is an analytic function, then $f(A) = P f(D) P^{-1}$. $e$ is analytic 
+ 			 	$$ \therefore e^{A} = P e^{D} P^{-1}$$.
+ 			 	\begin{equation*}
+ 			 		e^{D} = \sum_{k=0}^{\infty} \frac{t^{k}}{k!}D^{k} = 
+ 			 		\begin{pmatrix}
+ 			 			\sum_{k=0}^{\infty}\frac{t^{k}}{k!}\lambda_{1}^{k} & & \\
+ 			 			& \ddots & \\
+ 			 			& & \sum_{k=0}^{\infty}\frac{t^{k}}{k!} \lambda_{n}^{k}
+ 			 		\end{pmatrix}
+ 			 		= 
+ 			 		\begin{pmatrix}
+ 			 			e^{\lambda_{1}} & & \\
+ 			 			& \ddots & \\
+ 			 			& & e^{\lambda_{n}}
+ 			 		\end{pmatrix}
+ 			 		= \Lambda
+ 			 	\end{equation*}
+ 			 	Thus $e^{A} = P \Lambda P^{-1}$ where $P = [u_{1} , \dots , u_{n}]$ the eigenvector matrix.
+ 			 \section*{Question 8.}
+ 			 	Solving the characteristic polynomial for $A$ yields $\lambda_{1} =10$ and $\lambda_{2} = -2$. The eigenvectors are immediately computed
+ 			 	$$ \begin{pmatrix}
+ 			 		1 \\
+ 			 		1
+ 			 	\end{pmatrix}
+ 			 	\ \ \ \text{and  } \ \ \ 
+ 			 	\begin{pmatrix}
+ 			 		-1 \\
+ 			 		1
+ 			 	\end{pmatrix}\qquad \text{resepctively}$$ 
+ 			 	Let $\Lambda$ be the diagonal matrix of $e^{A}$ for which the diagonal elements correspond to the exponentials of the eigenvalues of $A$. We can then construct the matrix $P$ of the eigenvectors of $A$. We can then invert the matrix $P$ easily since it's $2\cross 2$
+ 			 	\begin{equation*}
+ 			 		P = 
+ 			 		\begin{pmatrix}
+ 			 			e^{10} & -e^{-2} \\
+ 			 			e^{10} & e^{-2}
+ 			 		\end{pmatrix}\qquad , P^{-1}
+ 			 		\begin{pmatrix}
+ 			 			\frac{1}{2e^{10}} & \frac{1}{2e^{10}} \\
+ 			 			\frac{-e^{2}}{2} & \frac{e^{2}}{2}
+ 			 		\end{pmatrix}
+ 			 	\end{equation*}
+ 			 	Finally, multiplying all these matrices together gives the desired expression for $e^{A}$.
+ 			 	\begin{equation*}
+ 			 	e^{A} = 
+ 			 		\begin{pmatrix}
+ 			 	 			 			e^{10} & -e^{-2} \\
+ 			 	 			 			e^{10} & e^{-2}
+ 			 	 			 		\end{pmatrix}
+ 			 	 			 		\begin{pmatrix}
+ 			 	 			 			e^{10}& 0 \\
+ 			 	 			 			0 & e^{-2}
+ 			 	 			 		\end{pmatrix}
+ 			 	\begin{pmatrix}
+ 			 	 			 			\frac{1}{2e^{10}} & \frac{1}{2e^{10}} \\
+ 			 	 			 			\frac{-e^{2}}{2} & \frac{e^{2}}{2}
+ 			 	 			 		\end{pmatrix}
+ 			 	 			 		 = \begin{pmatrix}
+ 			 	 			 		 \frac{e^{12 } + 1}{2e} & \frac{e^{12} -1}{2e^{2}} \\
+ 			 	 			 		 \frac{e^{10} -e^{2}}{2} & \frac{e^{10} + e^{2}}{2}
+ 			 	 			 		 \end{pmatrix}
+ 			 	\end{equation*}
+	\end{document}

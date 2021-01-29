@@ -1,0 +1,339 @@
+\documentclass[
+	12pt,
+	]{article}
+	\usepackage{changepage}
+	\usepackage{titlesec}
+	\usepackage{graphicx}
+	\usepackage{graphics}
+	\usepackage{booktabs}
+	\usepackage{amsmath}
+	\usepackage{siunitx}
+	\usepackage{xparse}
+	\usepackage{physics}
+	\usepackage{amssymb}
+	\usepackage{mathrsfs}
+	\usepackage{undertilde}
+	\usepackage{dutchcal}
+	\usepackage{amsthm}
+	\usepackage{wrapfig}
+	\newcommand{\tx}{\text{}}
+	\usepackage{tikz}
+	\usepackage{xfrac}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\B}{\mathcal{B}}
+	\newcommand{\Ss}{\mathcal{S}}
+	
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{MATH 325 Assignment 1.}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404}
+	\date{\empty}
+	
+	\begin{document}
+	\maketitle
+	\section{Question 1.}
+		Due to the initial condition $y(1) =1$ then the compact cylinder is given by 
+		\begin{gather*}
+			D_{\alpha, \delta} = \{(y,t) \in \R^{2} : \norm{y - y_{0}} \le \alpha \ \text{and} \ \abs{t- t_{0}} \le \delta\} \subset D \cross (a,b).  \\
+			D_{\alpha, \delta} = [1-\alpha, 1+\alpha] \cross [1-\delta, 1+\delta]
+		\end{gather*}
+		Due to the configuration of the given funciton and since $\alpha, \delta > 0$ , the function $f$ is maximized for $\alpha+1$ and $\delta -1$ ,thus 
+		\begin{gather*}
+			\epsilon = \min\left(\delta, \frac{\alpha}{M_{\alpha,\delta}}\right) \\
+			M_{\alpha, \delta} = \sup_{(y,t) \in [1-\alpha, 1+\alpha] \cross [1-\delta, 1+\delta]} \abs{(y+1)^{2} +\frac{1}{1-t}}\\
+			\implies \epsilon = \min\left(\delta, \frac{\alpha}{(1+\alpha)^{2}+\frac{1}{1-\delta}}\right)
+		\end{gather*}
+		This is an optimization problem with $2$ variables to be found. Let us find the maximum for the prevous equation's right hand side :
+		\begin{align*}
+			\frac{d}{d\alpha}\left(\frac{\alpha}{(1+\alpha)^{2} + \frac{1}{1-\delta}}\right) &= \frac{\left((\alpha+1)^{2} + \frac{1}{1-\delta}\right) - 2(\alpha +1)\alpha}{\left((\alpha+1)^{2} + \frac{1}{1-\delta}\right)^{2}} = 0 \\
+			&= \left((\alpha+1)^{2} + \frac{1}{1-\delta}\right) - 2(\alpha +1)\alpha = 0 \\
+			&= (\alpha+1)^{2} + \frac{1}{1-\delta} -2(\alpha+1)\alpha = 0 \\
+			&= \alpha^{2} + \frac{1}{1-\delta} = 0 \implies \delta = 1 + \frac{1}{1-\alpha^{2}} +1 .\\
+			& \implies \text{or } \ \ \alpha = \sqrt{1-\frac{1}{\delta-1}}
+		\end{align*}
+		Since $\delta$ is an increasing function and $\alpha / ((\alpha+1)^{2} + \frac{1}{1-\delta})$ is a decreasing function , the local minimum between them occurs at their interesection point, thus 
+		\begin{align*}
+			\frac{\alpha}{(\alpha+1)^{2} + \frac{1}{1-\delta}} &= \delta \\
+			\implies (\alpha+1)^{2} + \frac{1}{1-\delta} &= \alpha
+		\end{align*}
+		rearranging this equation we have a quadratic equation in $\alpha +1$ : 
+		\begin{gather*}
+			(\alpha+1)^{2} - (\alpha+1) +\left(\frac{1}{1-\delta} +1\right) =0 \\
+			\implies \alpha +1 = \frac{1 + \sqrt{1-\frac{4\delta^{2}}{1-\delta} -4\delta}}{2\delta}
+		\end{gather*}
+		Since $\alpha = \sqrt{1-\frac{1}{\delta -1}}$ , we have
+		\begin{align*}
+			\frac{1 + \sqrt{1-\frac{4\delta^{2}}{1-\delta} -4\delta}}{2\delta} &= \sqrt{1-\frac{1}{\delta -1}} +1 \\
+			1 + \sqrt{\frac{5\delta -1 }{\delta-1}} &= \frac{2\delta \sqrt{\delta-2}}{\sqrt{\delta-1}} + 2\delta \\
+			\frac{5\delta -1}{\delta -1} &= \left(2\delta\frac{\sqrt{\delta-2}}{\sqrt{\delta-1}} +2\delta -1\right)^{2} \\
+				&= 3\delta^{2}\frac{\delta-2}{\delta-1} + 4\delta^{2}\frac{\delta-2}{\delta-1} -2\delta\frac{\sqrt{\delta-2}}{\sqrt{\delta-1}}\\ &+4\delta^{2}\frac{\sqrt{\delta-2}}{\sqrt{\delta-1}} +4\delta^{2} -2\delta \\ &-2\delta\frac{\sqrt{\delta-2}}{\sqrt{\delta-1}} -2\delta +1 \\
+				\left(\frac{\left(\frac{5\delta-1}{\delta-1}\right) - \frac{4\delta^{2}(\delta-2)}{\delta-1}  -4\delta^{2}+4\delta-1}{8\delta^{2}-4\delta}\right)^{2} &= \frac{\delta-2}{\delta-1}\\
+				\intertext{After further expansion and rearrangement we obtain } 
+				\frac{(2\delta (2-\delta))^{2}}{(\delta-1)(2\delta-1)^{2}} &= \delta -2 \\
+				-4\delta^{2}(2-\delta) &= (\delta-1)(2\delta-1)^{2} \\
+				4\delta + \delta -1 &= 0  \implies \delta = \frac15 .\\
+				\implies \alpha &= \sqrt{1 - \frac{1}{\frac15 - 1}} = \frac32.
+		\end{align*}
+		\section{Question 2.}
+		\subsection{a) }
+			Let $\mu(t) \neq 0$
+			$$ \mu(t) y^{\prime} + \mu(t) p(t) y = \mu(t) q(t) $$
+			By the chain rule the left hand side becomes 
+			$$ \frac{d}{dt} (\mu(t) y(t)) = \mu(t)q(t).$$
+			Integrating both sides and isolating $y(t)$ gives the general soluton : 
+			$$ y(t) = \frac{1}{\mu(t)} \int \mu(t) q(t) \ dt + C$$
+			We need to find the integrating factor $\mu(t)$ such that $\mu^{\prime}(t) = p(t)\mu(t)$ 
+			\begin{align*}
+				\frac{\mu^{\prime}(t)}{\mu(t)} &= p(t) \\
+				\implies \frac{d}{dt}\ln\abs{\mu(t)} &= p(t)\\
+				\abs{\mu(t)} = Ce^{\int p(t) \ dt}
+			\end{align*}
+			So finally, combining these results we have the solution : 
+			$$ y(t) = \frac{1}{e^{\int p(t) \ dt}}(\underbrace{\int \mu(t)q(t) \ dt +C}_{\int 0 \ dt = C})$$ 
+			So then finally if we let $2C$ be an undefined constant we have 
+			$$ y(t) = Ce^{-\int p(t) \ dt}$$
+		\subsection{b )}
+			Let us first and foremost find $y^{\prime}(t)$ 
+			\begin{align*}
+				y^{\prime}(t) = \frac{d}{dt} y(t) &= \frac{d}{dt} C(t) e^{-\int p(t) \ dt} \\
+				&= \frac{C^{\prime}(t)}{e^{\int p(t) \ dt }} + C(t)e^{-\int p(t) \ dt}(-p(t)) \\
+				&= \frac{1}{e^{\int p(t) \ dt}} (C^{\prime} (t) - C(t)p(t))
+			\end{align*} 
+			Substituting $y^{\prime}(t)$ and $y(t)$ in the non-homogeneous yields 
+			$$ \frac{1}{e^{\int p(t) \ dt}} (C^{\prime} (t) - C(t)p(t)) + p(t) C(t) e^{-\int p(t) \ dt} = q(t)$$
+			Some terms cancel out and we obtain
+			$$ C^{\prime}(t) = q(t)e^{\int p(t)\ dt}$$
+		\subsection{c) }
+			Integrating the final expression found in 2. c), we get
+			$$ C(t) = \int \left(q(t) e^{\int p(t) \ dt} + C\right)$$
+			Substituting in the expression for non-homogenous equation we get : 
+			$$ y(t) = \frac{\int\left(q(t)e^{\int p(t) \ dt} + C\right)}{e^{\int p(t) \ dt}}$$
+		\section{Question 3.}
+			Since this is a linear first order ODE the non-homogenous solution is $$y(t) =C(t)e^{\int 2 \ dt} $$
+			Differentiating yields 
+			$$ y^{\prime}(t) = C^{\prime}(t) e^{\int 2 \ dt} + C(t)(2)e^{\int 2 \ dt}$$
+			Substituting these results in the original expression produces 
+			$$ C^{\prime}(t)e^{\int 2 \ dt} + 2C(t)e^{\int  2 \ dt} - 2C(t)e^{\int 2 \ dt} = t^{2}e^{2t}$$
+			Canceling some terms and rearranging yields 
+			$$ C^{\prime}(t) = t^{2} \implies C(t) = \int t^{2} \ dt$$
+			And thus, 
+			\begin{align*}
+				y(t) &= \left(\int t^{2} \ dt\right)e^{\int 2\ dt} \\
+				&= \left(\frac{t^{3}}{3} + C \right)e^{2t}.
+			\end{align*}
+		\section{Question 4.} 
+			\subsection{a) }
+			 \begin{equation*}
+			 	\frac{dy}{dx} = \frac{y-4x}{x-y} = \frac{x(y/x - 4)}{x(1 - y/x)} = \frac{(y/x) -4}{1 - (y/x)}.
+			 \end{equation*}
+			 \subsection{b) }
+			 	Since $y(x) = xv(x)$ , and $y = v/x$ then by the chain rule , 
+			 	$$ \frac{dv}{dx} = \frac{dy/dx}{x} - \frac{y(x)}{x^{2}} \implies \frac{dy}{dx} = x\frac{dv}{dx} + v.$$
+			 \subsection{c) }
+			 	Since $dy/dx = xdv/dx$ and $(y/x) = v$ then we have 
+			 	$$x\frac{dv}{dx} = \frac{v-4}{1-v} -v = \frac{v-4-v+v^{2}}{1-v}. $$
+			 	$$ \implies x\frac{dv}{dx} = \frac{v^{2}-4}{1-v}.$$
+			 \subsection{d) }
+			 	Since the ODE is separable , then 
+			 	$$ \int \frac{1-v}{v^{2}-4} \ dv = \int \frac{1}{x} \ dx$$
+			 	The left hand side integral can be evaluated using partial fraction decomposition 
+				\begin{gather*}
+					\frac{A}{v-2} + \frac{B}{v+2} = 1-v\\
+					\implies 
+					\begin{cases}
+						(A+B) &= 1 \\
+						(2A - 2B) &= -1	
+					\end{cases}
+					\to 
+					\begin{bmatrix}
+						1 & 1 & -1 \\
+						2 & -2 & 1 
+					\end{bmatrix} 
+					\to 
+					\begin{bmatrix}
+						1 & 1 & -1 \\
+						0 & -4 & -3
+					\end{bmatrix}
+				\end{gather*}
+				So then $A = -1/4$ and $B = -3/4$.
+				\begin{align*}
+					\frac{-3}{4} \int \frac{1}{v+2} dv - \frac{1}{4} \int \frac{1}{v-2} dv &= \int \frac{1}{x} dx \\
+					-3\ln\abs{v+2} - \ln\abs{v-2} &= 4\ln\abs{x} + 4C \\
+					\frac{1}{e^{\ln\abs{v-2}}e^{\ln\abs{(v+2)^{3}}}} &= e^{\ln\abs{x^{4}}}e^{4C}\\
+					\frac{1}{(v-2)(v+2)^{3}}& = x^{4}e^{4C}
+				\end{align*}
+			\subsection{e) }
+				Since $v = y/x$, replacing in the previous equation yields 
+				\begin{align*}
+					\frac{1}{\left(\frac{y-2x}{x}\right)\left(\frac{y+2x}{x}\right)^{3}} &= x^{4}e^{4C}\\
+					\frac{1}{(y-2x)(y+2x)^{3}}=e^{4C}
+				\end{align*} 
+				Let $C^{\prime} \equiv e^{4C}$ ,then the implicit solution is given by 
+				$$ \frac{1}{(y_2x)(y+2x)^{3}} = C^{\prime}.$$
+			\section{Question 5. }
+				\begin{equation*}
+					\frac{dy}{dx}= \frac{x^{2} + xy + y^{2}}{x^{2}} = 1+\frac{y}{x} + \left(\frac{y}{x}\right)^{2}. 
+				\end{equation*}
+				Since the ODE can be rewritten as fraction of $x$ and $y$ it implies it is homogeneous.
+				Let $v = y/x$ and $y(x) = xv(x)$, then by the chain rule , 
+				$$ \frac{dy}{dx} = x\frac{dv}{dx} +v$$
+				Therefore we have 
+				\begin{equation*}
+					x\frac{dv}{dx} + v = 1 + +\frac{y}{x} + \left(\frac{y}{x}\right)^{2} = 1 + v + v^{2} = 1+ v^{2}.
+				\end{equation*}
+				\begin{gather*}
+					\int \frac{1}{1+v^{2}} \ dv = \int \frac{1}{x} \ dx \\
+					\arctan(v) = \frac{-1}{x^{2}} + C.
+				\end{gather*}
+				replaceing $v = y/x$ , 
+				\begin{align*}
+					\arctan(\frac{y}{x}) &= \frac{-1}{x^{2}} + C \\
+					y(x) &= x \tan\left(\frac{-1}{x^{2}} + C\right).
+				\end{align*}
+			\section{Question 6. }
+				\subsection{a) }
+					$y^{\prime}(t) = $ rate in - rate out. The rate in is the concentration multiplied by the flow i.e., rate in $= \frac{1}{2}(1+ \frac{1}{2}\sin(t))$ gal/min. Moreover, 
+					$$ \text{Rate out } \ = 2\left(\frac{y(t)}{100}\right).$$
+					So then we have the IVP : 
+					\begin{equation*}
+						y^{\prime}(t) + \frac{y(t)}{50} = -2\frac{(2+\sin(t)}{4} \quad, y(0) = 50.
+					\end{equation*} 
+					This is a linear ODE therefore the integrating factor is given by $$\mu(t) = e^{\int \frac{1}{50} \ dt}.$$
+					Multiplying both sides of the IVP and using the chain rule we obtain 
+					$$ \frac{d}{dt}\left(e^{t/50} y(t)\right) = e^{t/50} \frac{(-2-\sin(t))}{4}$$
+					\begin{align*}
+						e^{t/50} y(t) &= \frac{1}{4} \left(\int-2e^{t/50} \ dt - \int e^{t/50} \sin(t)\right) \\
+						&= \frac{1}{4}\left(\left(-100e^{t/50} + C\right) - \int e^{t/50}\sin(t)\right).
+					\end{align*}
+					The left hand side integral is evaluated using integration by parts twice : 
+					\begin{align*}
+						\int e^{t/50}\sin(t) &= \sin (t) e^{t/50} - 50 \int e^{t/50}\cos(t) \\
+						&= \sin(t)e^{t/50} -50(50e^{t/50}\cos(t) 
+						+ 50\int e^{t/50}\sin(t))
+						\int e^{t/50}\sin(t)  \\ 
+						&+ 2500\int e^{t/50} \sin(t) = \sin(t)e^{t/50} - 2500 e^{t/50}\cos(t) \\
+						\int e^{t/50} \sin(t) &= \frac{\sin(t)e^{t/50} - 2500 e^{t/50}\cos(t)}{2501} + C
+					\end{align*}
+					So then we have 
+					\begin{align*}
+						e^{t/50} y(t) &= -25e^{t/50} - e^{t/50} \frac{(\sin(t)-2500\cos(t)}{2501} +C \\
+						y(t) &= -25 -\frac{(\sin(t) -2500\cos(t)}{2501} + \frac{C}{e^{t/50}}.
+						\intertext{$y(0) = 50$ so we may find C : }
+						\implies 50 + 25 - \left(\frac{2500}{4(2501)}\right) \approxeq 74.75.
+					\end{align*}
+					Therefore the amount of salt at any time is 
+					\begin{equation*}
+						y(t) = -25 -\frac{(\sin(t)-2500\cos(t))}{4(2501)}+\frac{75.75}{e^{t/50}}.
+					\end{equation*}
+				\subsection{b) }
+					\begin{figure}[t]
+						\includegraphics[width=\textwidth]{Amplitude_ode.png}
+						\caption{Solution Plot}
+					\end{figure}
+				\subsection{c) }
+				 $$ y(t) = \underbrace{-25 }_{\text{Point}} -\frac{(\sin(t)-2500\cos(t))}{4(2501)}+\frac{75.75}{e^{t/50}}. $$
+				 Evidently, the wave is oscillating about $-25$. Moreover, by taking the limit, 
+				 \begin{align*} \lim_{t \to \infty} -25 -\frac{\sin(t)}{4(2500)} - \frac{2500}{2(2500)} + \frac{75.75}{e^{t/50}} = \underbrace{-25}_{\text{Off-set}} -\frac{\sin(t)}{4(2500)} - \frac{2500}{2(2500)}\cos(t)  
+				  \end{align*}
+				  The coefficient of $\sin(t)$ doesn't contributy much compared to that of $\cos(t)$ thus the amplitude is given by $\frac{2500}{4(2500)} = 0.25$
+			\section{Question 7. }
+				Let us assume that $M$, $N$, and their respective partials $M_{y}$ and $N_{x}$ are all continous on some simply connected domain $D\subset \R^{2}$.
+				Then following this assumption, $ \mu(xy) M(x,y) + \mu(xy)N(x,y)y^{\prime} =0 $ is exact if and only if 
+				\begin{equation*}
+					\frac{\partial}{\partial y} (\mu(xy)M(x,y)) = \frac{\partial}{\partial x} (\mu(xy)N(x,y))
+				\end{equation*}	
+				that is 
+				\begin{equation*}
+					y \mu^{\prime}(xy) M(x,y) + \mu(xy) \pdv{M}{y} = x\mu^{\prime}(xy) N(x,y) + \mu(xy)\pdv{N}{x}.
+				\end{equation*}
+				Rearranging the previous equation yields 
+				\begin{gather*}
+					\mu^{\prime}(xy)(xM - yM) = \mu(xy)\left(\pdv{N}{x} - \pdv{M}{y}\right)\\
+					\implies \frac{\mu^{\prime}(xy)}{\mu(xy)} = \frac{N_{x} - M_{y}}{xM - yN}.
+				\end{gather*}
+				Thus an integrating factor exists if the right hand side satisfies the initial equality $h(xy)$
+				\begin{equation*}
+				\int \frac{d}{dt} \ln \abs{\mu(xy)} = \int h(xy) \ dt 
+				\end{equation*}
+				\begin{equation*}
+					\implies \mu(xy) = C e^{\int h(xy) \ dt}.
+				\end{equation*}
+			\section{Question 8.}
+			\begin{gather*}
+				\underbrace{\left(3x + \frac{6}{y}\right)}_{M} + \underbrace{\left(\frac{x^{2}}{y} + \frac{3y}{x}\right)}_{N}\frac{dy}{dx} = 0\\
+				M_{y} = \frac{-6}{y^{2}} \neq N_{x} = \frac{2x}{y} -\frac{3y}{x^{2}} \implies \text{Not exact}.
+			\end{gather*}
+			Let us see if we can find an integrating factor as a function of $x$ or $y$ alone : 
+			\begin{align*}
+				\frac{M_{y} - N_{x}}{N} &= \frac{\frac{-6}{y^{2}} - \frac{2x}{y} + \frac{3y}{x^{2}}}{\frac{x^{2}}{y} + \frac{3y}{x}} \neq f(x) \\
+				\frac{N_{x} - M_{y}}{M} &= \frac{\frac{2x}{y}- \frac{3y}{x^{2}} + \frac{6}{y^{2}}}{3x + \frac{6}{y}} \neq f(y).
+			\end{align*}
+			So then let's try to find an integrating factor from the PDE : 
+			\begin{align*}
+				\frac{N_{x} - M_{y}}{xM - yN} &= \frac{\frac{2x}{y} - \frac{3y}{x^{2}} +\frac{6}{y^{2}}}{\left(3x^{2} + \frac{6x}{y}\right) - \left(x^{2} + \frac{3y^{2}}{x}\right)}\\
+				&= \frac{\frac{2x}{y} - \frac{3y}{x^{2}} +\frac{6}{y^{2}}}{2x^{2}+\frac{6x}{y} -\frac{3y^{2}}{x}} 
+				= \frac{\frac{2x^{3}y}{x^{2}y^{2}} - \frac{3y^{3}}{x^{2}y^{2}} + \frac{6x^{2}}{x^{2}y^{2}}}{\frac{2x^{3}y}{xy} + \frac{6x^{2}}{xy} -\frac{3y^{3}}{xy}} \\
+				&= \frac{2x^{3}y -3y^{3} + 6x^{2}}{2x^{3}y + 6x^{2}-3y^{3}}\left(\frac{1}{xy}\right) = \frac{1}{xy}.
+			\end{align*}
+			Thus there exists an integrating factor $\mu$ that depends on $xy$ such that $\mu = \mu(x,y)$.\\
+			Let $t = xy$ , then 
+			\begin{equation*}
+				\mu(x,y) = e^{\int \frac{1}{t}\ dt} = e^{\ln(t)} = t = xy.
+			\end{equation*}
+			Multiplying $M$ and $N$ by $xy$ from the initial given expression we see that 
+			\begin{align*}
+				xy\left(3x + \frac{6}{y}\right) + xy\left(\frac{x^{2}}{y} + \frac{3y}{x}\right)\frac{dy}{dx} &= 0.\\
+				3x^{2}y + 6x + \left(x^{3} + 3y^{2}\right)\frac{dy}{dx} &= 0\\
+				\text{then, } \ \ & M_{y} = 3x^{2} = N_{x} \implies \text{Exact}.
+			\end{align*}
+			Therefore $\exists \phi(x,y)$. 
+			\begin{align*}
+				\phi(x,y) &= \int \left(3x + \frac{6}{y}\right) \\
+				&= \frac{3x^{2}}{2} + \frac{6x}{y} + h(y) \\
+				\phi_{y}(x,y) &= \frac{d}{dy} \left(\frac{3x^{2}}{2} + \frac{6x}{y} + h(y)\right) \\
+				&= \frac{-6x}{y^{2}} + h^{\prime}(y) \implies h^{\prime}(y) = 0 \implies h(y) = 0. 
+			\end{align*}
+			The general solution is given by 
+			\begin{equation*}
+				\phi(x,y) = \frac{3x^{2}}{2} + \frac{6x}{y} =c, \quad c \in \R. 
+			\end{equation*}
+	\end{document}

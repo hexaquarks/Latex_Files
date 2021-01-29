@@ -1,0 +1,582 @@
+\documentclass[
+	12pt,
+	]{article}
+		\usepackage{xcolor}
+			\usepackage[dvipsnames]{xcolor}
+			\usepackage[many]{tcolorbox}
+		\usepackage{changepage}
+		\usepackage{titlesec}
+		\usepackage{caption}
+		\usepackage{mdframed, longtable}
+		\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+		\usepackage{array, tabularx, booktabs}
+		\usepackage{graphicx,wrapfig, float, caption}
+		\usepackage{tikz,physics,cancel, siunitx, xfrac}
+		\usepackage{graphics, fancyhdr}
+		\usepackage{lipsum}
+		\usepackage{xparse}
+		\usepackage{thmtools}
+		\usepackage{mathrsfs}
+		\usepackage{undertilde}
+		\usepackage{tikz}
+		\usepackage{fullpage,enumitem}
+		\usepackage[labelfont=bf]{caption}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\usepackage{fullpage, fancyhdr}
+	\newcommand{\La}{\mathcal{L}}
+
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\B}{\mathcal{B}}
+	\newcommand{\Ss}{\mathcal{S}}
+	
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{MATH 325 Final Exam}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 }
+	\date{\today}
+	
+	\relpenalty=9999
+			\binoppenalty=9999
+		
+			\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\quad #1}{}}
+			
+			\fancypagestyle{plain}{%
+			  \fancyhf{}
+			  \fancyhead[L]{\rule[0pt]{0pt}{0pt} Final Exam } 
+			  \fancyhead[R]{\small Mihail Anghelici $260928404$} 
+			  \fancyfoot[C]{-- \thepage\ --}
+			  \renewcommand{\headrulewidth}{0.4pt}}
+			\pagestyle{plain}
+			\setlength{\headsep}{1cm}
+	\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Preliminary }
+			\textit{My signature below certifies that I have not, nor will
+			I, consult with any other person about the exam, or any other subject
+			related to it}
+		\section*{Question 1 }
+			\subsection*{a) }
+				$$ \pdv{F}{y} = \frac{-1}{2(y-1)^{2}} \subset \R \backslash \{1\} \implies \forall y\neq 1 \ \exists \ ! \ \text{ solution defined on} \ J.$$
+				Indeed, taking $\delta >1$ we define $D_{\delta}= (\delta, \infty) \implies f: D_{\delta} \to \R $ is Lipschitz continuous, therefore there exists a compact set $K \subset D$ such that 
+				$$ \norm{f(x,t) - f(y,t)} \le L\norm{x-y}\qquad, \forall \ (x,t) \ , (y,t) \ \in \ K,$$
+				for some constant $L$ , for which it follows that $\exists \ !$ solution $\varphi : J \to \R$ on which the given IVP has a solution defined. 
+				
+			\subsection*{b) }
+				\begin{gather*}
+					D_{\alpha, \delta} = [-\alpha , \alpha] \cross [-\delta,\delta] \\
+					M_{\alpha , \delta} = \sup\limits_{y,t \in D} \abs{f(y,t)} = \sup\limits_{y,t \in D} \abs{\frac{1}{2(y-1)} + t^{2}} \implies M_{\alpha,\delta} = \frac{1}{2(\alpha-1)} + \delta^{2}.\\
+					\epsilon = \min\left(\delta , \frac{\alpha }{M_{\alpha,\delta}}\right) = \min \left(\delta, \frac{\alpha }{\frac{1}{2(\alpha-1)} + \delta^{2}}\right)
+				\end{gather*}
+			First we let $h(\alpha) = \dfrac{\alpha}{\frac{1}{2(\alpha-1)} + \delta^{2}}$ and set $h'(\alpha) = 0.$
+			\begin{align*}
+				h'(\alpha ) =0 \implies &\left(\frac{1}{2(\alpha-1)} +\delta^{2}\right) - \alpha\left(\frac{-1}{2(\alpha-1)^{2}}\right) =0 
+				\intertext{Rearranging the expression yields}
+				&2(\alpha-1)^{2}\delta^{2} + 2(\alpha-1) + 1 =0 \\
+				\implies & (\alpha-1) = \frac{-2 \pm \sqrt{4-4(2\delta^{2})}}{4\delta^{2}}
+			\end{align*}
+			We take the positive root since $\alpha, \delta > 0 $ yielding
+			\begin{equation}
+				\alpha = \frac{-2 + \sqrt{2}\sqrt{1-2\delta^{2}}}{4\delta^{2}} +1 .
+			\end{equation}
+			. We then set 
+			\begin{equation}
+			 \delta = \frac{\alpha}{\frac{1}{2(\alpha-1)} + \delta^{2}},
+			\end{equation} 
+			since we want to optimize a value between the two functions which occurs at their intersection (since $\delta$ increases and the RHS function decreases.) Substituting Equation 1 in Equation 2 and solve for $\delta$
+			\begin{align*}
+				&\frac{\left(\frac{-2 + \sqrt{2}\sqrt{1-2\delta^{2}}}{4\delta^{2}} +1\right)}{\frac{1}{2\left(\frac{-2 + \sqrt{2}\sqrt{1-2\delta^{2}}}{4\delta^{2}} +1\right)} + \delta^{2}} = \delta  \ \ \implies \ \
+				\frac{\left(\frac{-2 + \sqrt{2}\sqrt{1-2\delta^{2}} + 4\delta^{2}}{4\delta^{2}}\right)}{\frac{4\delta^{2} + \delta^{2}(2)(-2+\sqrt{2}\sqrt{1-2\delta^{2}})}{2(-2+\sqrt{2}\sqrt{1-2\delta^{2}})}} = \delta \\
+				\implies &\frac{-2+\sqrt{2}\sqrt{1-2\delta^{2} } + 4\delta^{2}}{4\delta^{2}} = \frac{4\delta^{3} + \delta^{3}(2)(-2 + \sqrt{2}\sqrt{1-2\delta^{2}})}{2(-2+\sqrt{2}\sqrt{1-2\delta^{2}})}
+				\intertext{A short rearrangement yields}
+				&8\delta^{5}\sqrt{2}\sqrt{1-2\delta^{2}} = 16\sqrt{2}\sqrt{1-2\delta^{2}} \delta^{2} -16 \delta^{2} + 8 -16\delta^{2} -12\sqrt{2}\sqrt{1-2\delta^{2}} + 8 
+				\intertext{We put the square roots on the LHS and apply power $2$ yielding}
+				&2(1-2\delta^{2})(2\delta^{5} -1)^{2} = (-8\delta^{2}+4)^{2} \\
+				&8\delta^{10} - 8\delta^{5} -16\delta^{12} +16\delta^{7} = 64\delta^{4}-60\delta^{2} + 14
+				\intertext{We find the roots of the RHS equation to find a value for $\delta$.}
+			\end{align*}
+			 $$2(32\delta^{4}  -30\delta^{2} + 7) =0 \implies \delta^{2} = \frac{30 \pm \sqrt{30^{2} - 4(32)(7)}}{64}= \frac12 \implies \delta =\pm\frac{1}{\sqrt{2}}, $$
+			 We take the positive root since $\alpha, \delta > 0 \implies \delta  = 1/\sqrt{2}$. Setting back this result in Equation 2 , we get a value for $\alpha$ ,
+			 $$ \frac{1}{\sqrt{2}} = \frac{\alpha }{\frac{1}{2(\alpha-1)} + \frac12} \implies\alpha = \frac{1}{2\sqrt{2}}+1.$$
+			 Finally, we have that 
+			 $$ \epsilon = \min\left(\frac{1}{\sqrt{2}}, \frac{\frac{1}{2\sqrt{2}} + 1}{\frac{1}{2\left(\frac{1}{2\sqrt{2}} + 1\right)} + \frac12}\right) = \min\left(\frac{1}{\sqrt{2}} , \frac{4(4 + \sqrt{2})}{15-2\sqrt{2}}\right) \implies \epsilon = \frac{1}{\sqrt{2}}.$$
+			 We conclude that $J = (0-\epsilon, 0+ \epsilon) =\left(-\frac{1}{\sqrt{2}} , \frac{1}{\sqrt{2}}\right)$.
+		\section*{Question 2}
+			\subsection*{a) }
+			The given ODE can be rearranged 
+			$$ y' - \frac{y}{t-1} =2,$$
+			which is a first order linear ODE ,so we look for an integrating factor
+			\begin{equation*}
+				\mu(t) = e^{\int p(t) \ dt} = e^{\int -\frac{1}{t-1} \ dt} = e^{-\ln \abs{t-1} + C}\implies \mu(t) = \frac{c_{1}}{t-1},
+			\end{equation*} 
+			where $c_{1} \equiv e^{C}$. We drop this integration constant since we only need one integrating factor. Then we apply 
+			\begin{gather*}
+				y(t) = \frac{1}{\mu(t)} \int \mu(t) q(t) \ dt = (t-1)\int \frac{1}{t-1}(2) \ dt = (t-1) (2\ln\abs{t-1} + C).
+			\end{gather*}
+			\noindent At $t=0$, $\ln\abs{t-1}$ does not exist but that time is included in $J$ so we use the propriety $\ln\abs{t-1} = \ln\abs{1-t} $ for some values of $t$ , thus
+			$$ 1= (0-1)(0 + C) \implies C = -1,$$
+			Finally we write the solution to the IVP 
+			\begin{equation*}
+				y(t) = \begin{cases*}
+					(t-1)(2\ln\abs{t-1} -1) \quad ,t>1 \\
+					(t-1)(2\ln\abs{1-t} -1) \quad ,t\le 1.
+ 				\end{cases*}
+			\end{equation*}
+			\subsection*{b) }
+				Under this construction since we forced $x=0 \in J $ the interval is extended to $\mathbb{R}_{-}$ such that the maximal time interval is given by $(-\infty,\infty)$.
+		\section*{Question 3}
+			\subsection*{a) }
+				We compute the first three Picard iterations with $y_{0} = 0$
+				\begin{align*}
+					y_{k+1} & = y_{0} + \int_{0}^{t} f(y_{k}(s), s) \ ds \\
+					y_{1} &= 0 + \int_{0}^{t} (0^{2} +1) \ ds = t\\
+					y_{2} &= 0 + \int_{0}^{t} (s^{2} +1) \ ds = \frac{t^{3}}{3} + t \\
+					y_{3} &= 0 + \int_{0}^{t} \left(\frac{s^{3}}{3} + s\right)^{2} +1 \ ds = \frac{t^{7}}{63} + \frac{t^{4}}{6} + \frac{t^{3}}{3} + t
+				\end{align*}
+			\subsection*{b) }
+				Let us differentiate once the given IVP 
+				$$ y'= y^{2} +1 \xrightarrow{d/dt} y'' = 2y.$$
+				Thus, 
+				\begin{gather*} 
+				y''(t) - f(y(t)) = \sum_{n\ge 0} (n+2)(n+1) a_{n+2}t^{n}- \phi(a)_{n}t^{n} = 0 \\ 
+				\implies a_{n+2} = \frac{2a_{n}}{(n+2)(n+1)}.
+				\end{gather*}
+				We solve for the first 7 coefficients
+				\begin{equation*}
+				\vrule \: \vrule  \begin{minipage}{0.4\linewidth}
+					\begin{align*}
+						a_{2} &= \frac{2^{1}a_{0}}{2 !}\\
+						a_{4} &=  \frac{2a_{2}}{4\times 3} = \frac{2^{2} a_{0}}{4!}\\
+						a_{6} &= \frac{2a_{4}}{6\times 5} = \frac{2^{3}a_{0}}{6!}
+					\end{align*}	
+				\end{minipage} \ \ \vrule 
+				\begin{minipage}{0.4\linewidth}
+					\begin{align*}
+											a_{3} &= \frac{2a_{1}}{3\times 2} = \frac{2^{1} a_{1}}{3!}\\
+											a_{5} &= \frac{2a_{3}}{5\times 4} =\frac{2^{2}a_{1}}{5!} \\
+											a_{7} &= \frac{2a_{5}}{7\times 6} = \frac{2^{3}a_{1}}{7!}
+										\end{align*}
+				\end{minipage}\vrule  \: \vrule 
+			\end{equation*}
+			
+			\subsection*{c) }
+				The ODE is separable hence
+				\begin{gather*}
+					\dv{y}{t} = y^{2} +1 \implies \int \frac{dy}{y^{2}+1} = \int dt \implies \arctan (y) = t + C
+				\end{gather*}
+				Using the initial condition we find $C$, 
+				\begin{gather*}
+					y = \tan (t +C) \xrightarrow{y_{0} = 0} 0 = \tan(C) \implies C = \arctan(0) = 0 \\
+					\therefore y(t) = \tan(t) = t + \frac{1}{3}t^{3} + \frac{2}{15} t^{5} + \frac{17}{315} t^{7}+ \dots  \qquad ,\abs{t} \le \frac{\pi}{2}.
+				\end{gather*}
+				
+				\noindent When comparing the analytical solution to the Picard's iterates, they are both in visible agreement only for some specific range of $\abs{t}$ which is dependent upon the Lipschitz constant. The solution diverges at higher order coefficients when exceeding that particular range. The Picard's method seems overall less accurate for this specific IVP\\
+				
+				\noindent When compared to the Taylor coefficients method, the two expansions are similar but the constant $a_{1}$ is undetermined from the initial condition suggesting that it may be a variable initial condition, nevertheless both expansions seem very similar as they should.
+				
+				\subsection*{d) }
+				 The maximal time interval of $\tan(x)$ is $\{x|x\neq \frac{\pi}{2} + k\pi \ \text{ for any} \ k \in \mathbb{Z}\}.$
+				 
+			\section*{Question 4}
+					Taking an arbitrary open set $D\subset \R^{n}$, since $f$ is continuous and bounded by $M$ for any arbitrary compact set in $R^{n}$, Theorem 1.2.4 guarantees there exists an open  interval $J\subset \R$ over which a solution of the IVP is defined. \\
+					
+					\noindent Moreover, the given IVP is locally Lipschitz continuous which implies it is continuously differentiable (smooth) , i.e., there are no discontinuities or poles implying that a local solution exists and can be extended infinitely. Formally, since 
+					$$ \norm{f(x)} \le M \ \forall x \in \R^{n} \implies \norm{x(t) - x(0)} \le M\cdot \abs{t} \ \forall x \in \R^{n},$$
+					by the mean value theorem generalized in $R^{n}$. There are no time restrictions so indeed the maximal time interval is $\R$ ,i.e., $(-\infty, \infty)$.
+			\section*{Question 5} 
+				\begin{align}
+					\dv{y_{1}(t)}{t} &= 3 \si{\liter\per\second} \times (\sin(t) + 1) \si{\kilogram\per\liter} - 13 \si{\liter\per\second} \times \frac{y_{1}(t)}{100} \si{\kilogram\per\liter} + 10\si{\liter\per\second} \times \frac{y_{2}(t)}{50} \si{\kilogram\per\liter} \\
+					\dv{y_{2}(t)}{t} &= 4\si{\liter\per\sec} \times 2\si{\kilogram\per\liter} -14 \si{\liter\per\sec}\times \frac{y_{2}(t)}{50} \si{\kilogram\per\liter} + 10\si{\liter\per\sec} \times \frac{y_{1}(t)}{100} \si{\kilogram\per\liter} 
+				\end{align}
+				In Equation 3 we have $-13 \si{\liter\per\second}$ which is it the addition of the $10 \si{\liter}$ that go out of the tank into the tank 2 with the $3 \si{\liter}$ that go out of the tank 1. Similarly, in Equation 2, the $-14 \si{\liter\per\second}$ results from the addition of $4 \si{\liter}$ that go out of the mixture and the $10 \si{\liter}$ that go in the tank 1. In both Equations the fractions $\frac{y_{i}(t)}{V}$ for $i\in (1,2)$ and $V$ is the volume, represents the volume change inside the tank with respect to the quantity of water inside. Moreover, in both cases  we multiply the flow by the quantity to obtain the rate and then finally, to obtain the rate of change inside the tanks we do \textit{rate in $-$ rate out}. We obtain
+				
+				\begin{equation}
+					\begin{cases}
+						y_{1}'(t) = \left(3(\sin t + 1) -\frac{13 y_{1}(t)}{100} + \frac{y_{2}(t)}{5}\right) \si{\kilogram\per\sec} \\
+						y_{2}'(t) = \left(8 - \frac{7y_{2}(t)}{25} + \frac{y_{1}(t)}{10}\right) \si{\kilogram\per\sec}
+					\end{cases}
+				\end{equation}
+				
+				\noindent Since tank 1 initially contains $1  \si{\kilogram} \implies y_{1}(0) = 1$ while tank 2 initially contains only fresh water therefore $y_{2}(0) =0$. Rearranging Equation 5, we get the linear system
+				\begin{equation*}
+					\begin{pmatrix}
+						y_{1}' \\ y_{2}'
+					\end{pmatrix}
+					= 
+					\begin{pmatrix}
+						-\frac{13}{100} & \frac15 \\ \frac{1}{10} & -\frac{7}{25}
+					\end{pmatrix}
+					\begin{pmatrix}
+						y_{1} \\ y_{2}
+					\end{pmatrix}
+					+ 
+					\begin{pmatrix}
+						3(\sin(t) +1) \\ 8
+					\end{pmatrix}
+					\qquad , y(0) = \begin{pmatrix}
+						1 \\ 0
+					\end{pmatrix},
+				\end{equation*}
+				which is of the form $y'(t) = Ay(t) + r(t) \quad, y(0) = y_{0}$ as requested.
+				
+			\section*{Question 6}
+				We first rearrange the Equation
+				\begin{equation} 
+				\left(\frac{3x}{y^{2}} + 4y\right)\dv{y}{t} = -\frac{4x^{3}}{y^{2}} -\frac{3}{y} \xrightarrow{} \left(-\frac{4x^{3}}{y^{2}} - \frac{3}{y}\right) dx + \left(-\frac{3x}{y^{2}} - 4y\right)dy = 0,
+				\end{equation}
+				which corresponds to the form of an exact equation.
+				$$ M_{y} = \frac{8x^{3}}{y^{3}} + \frac{3}{y^{2}} \qquad, N_{x} = \frac{-3}{y^{2}},$$
+				$M_{y} \neq N_{x} \implies$ not exact. We look for an integrating factor. Let us try an integrating factor $\mu = \mu(y)$.
+				\begin{align*}
+					\frac{N_{x} - M_{y}}{M} &= \frac{\frac{-6}{y^{2}} - \frac{8x^{3}}{y^{3}}}{-\frac{4x^{3}}{y^{2}} - \frac{3}{y}} = \frac{\frac{-6y - 8x^{3}}{y^{3}}}{\frac{-4x^{3}-3y}{y^{2}}}= \frac{-6y-8x^{3}}{-4x^{3}-3y} \left(\frac{1}{y}\right) = \frac{2}{y}.
+				\end{align*}
+				So indeed $\mu$ is a function of $y$ , we carry on by finding an expression for $\mu(y)$.
+				\begin{align*}
+					\mu\left(\frac{2}{y}\right) =\dv{\mu}{y} &\implies \int \frac{d\mu}{\mu} = \int \frac{2 \ dy}{y} \implies \ln\abs{\mu} = 2\ln\abs{y}+ C \\
+					&\therefore \mu = e^{2\ln\abs{y}}e^{C} = y^{2}C_{1},
+				\end{align*}
+				where $C_{1} = e^{C}$. We let $C_{1} =1$ since we only need one integrating factor yielding $\mu(y) = y^{2}$. We multiply Equation 6 by this integrating factor.
+				$$ \therefore (-4x^{3}-3y)dx + (-3x -4y^{3})dy = 0,$$
+				$\widetilde{M}_{y} =-3$ and $\widetilde{N}_{x} = -3 \implies $ exact. Therefore $\exists \Phi = \Phi(x,y) | \Phi_{x} = \widetilde{M}$ and $\Phi_{y} = \widetilde{N}$.
+				\begin{gather*}
+					\Phi(x,y) = \int \widetilde{M} dx = \int -4x^{3} -3y \ dx = -x^{4}- 3yx + h(y) \implies \Phi_{y} = -3x + h'(y) \implies h(y) = -y^{4}.
+				\end{gather*}
+				Finally write the answer 
+				$$ \Phi (x,y) = -x^{4} -3xy - y^{4} = C \qquad, C \in \R.$$
+				
+			\section*{Question 7}
+				The formula for the general solution of a non-homogeneous linear system with constant coefficients is 
+				\begin{equation} 
+				 y(t) = Y(t)c(t)\qquad \text{ where } \ \ c(t) = \int Y(t)^{-1}r(t) \ dt.
+				 \end{equation}
+				We first need to find the matrix solution $Y(t)$. We do so by finding the eigenvectors of the given matrix ,let us denote it $A$ and let us denote $r(t) \equiv (0 \ \ e^{t})^{T}.$
+				\begin{gather*}
+					\det(A - \lambda I ) = (2-\lambda)(2-\lambda) = 0 \implies \lambda = 2 \quad, m=2.\\
+					\begin{pmatrix}
+					0 & 1 \\ 0 & 0 
+					\end{pmatrix}
+					\begin{pmatrix}
+						a \\ b 
+					\end{pmatrix} = \begin{pmatrix}
+					0 \\ 0
+					\end{pmatrix} \implies b =0 \implies u_{1} = \begin{pmatrix}
+						1 \\ 0
+					\end{pmatrix}
+				\end{gather*} 
+				The deflect is $d_{\lambda} =1$ so we're looking for a generalized eigenvector $u_{2} \in K_{2} \backslash K_{1}$, we solve $(A-2I)u_{2} = w \ \ \forall w \in K_{1} \backslash K_{0}$, 
+					$$\begin{pmatrix}
+					0 & 1 \\ 0 & 0 
+					\end{pmatrix}
+					\begin{pmatrix}
+						a \\ b 
+					\end{pmatrix} = \begin{pmatrix}
+					b \\ 0
+					\end{pmatrix} \implies \begin{pmatrix}
+						b \\ 0
+					\end{pmatrix} = \alpha \begin{pmatrix}
+						1 \\ 0
+					\end{pmatrix} = w \implies b = \alpha ,$$
+					setting $b=\alpha=1$ we get $u_{3} = (0 \ \ 1)^{T} \in K_{2} \backslash K_{1}$. We write the solutions
+					\begin{align*}
+						y_{1}(t) &= e^{-2t}\begin{pmatrix}
+						1 \\ 0
+						\end{pmatrix} = \begin{pmatrix}
+						 e^{-2t} \\ 0
+						\end{pmatrix} \\
+						y_{2}(t) &= e^{At}u_{2} = e^{-2t}\sum_{k=0}^{1} \frac{t^{k}}{k!} (A-2I)^{k}u_{2} = e^{-2t}(u_{2} + t(A-2I)u_{2}) = e^{-2t}(u_{2} + tw) = \begin{pmatrix}
+							te^{-2t} \\ e^{-2t}
+						\end{pmatrix}
+					\end{align*}
+					The Wronskian of the two eigenvectors is not equal to zero therefore we have 
+					$$ Y(t) = \begin{pmatrix}
+						e^{-2t} & te^{-2t} \\ 0 & e^{-2t}
+					\end{pmatrix}.$$
+					We apply Equation 7 by first calculating $c(t)$ 
+				\begin{align*}
+					c(t) &= \int \begin{pmatrix}
+						e^{-2t} & te^{-2t} \\ 0 & e^{-2t}
+					\end{pmatrix}^{-1} \begin{pmatrix}
+						0 \\ e^{t}
+					\end{pmatrix} = \int e^{4t} \begin{pmatrix}
+						e^{-2t} & -te^{-2t} \\ 0 & e^{-2t}
+					\end{pmatrix} \begin{pmatrix}
+					 0  \\ e^{t}
+					\end{pmatrix} = \int \begin{pmatrix}
+					-te^{3t} \\ e^{3t} 
+					\end{pmatrix}
+					\intertext{These are common integrals to which we apply integration by parts yielding}
+					&= \begin{pmatrix}
+					-\frac{t}{3}e^{3t} + \frac{e^{3t}}{9} \\ \frac{1}{3}e^{3t}
+					\end{pmatrix} + C \qquad , C\in \R^{2}
+				\end{align*}
+				%TODO FIX ANSWER
+				The general solution is then $y(t) = Y(t)c(t)$ 
+				\begin{align*}
+					y(t) = \begin{pmatrix}
+						e^{-2t} & te^{-2t} \\ 0 & e^{-2t}
+					\end{pmatrix}
+					\begin{pmatrix}
+					-\frac{t}{3}e^{3t} + \frac{e^{3t}}{9} \\ \frac{1}{3}e^{3t}
+					\end{pmatrix}  +
+					\begin{pmatrix}
+						c_{1} \\ c_{2}
+					\end{pmatrix} = 
+					c_{1}\begin{pmatrix}
+					e^{-2t} \\ 0
+					\end{pmatrix}
+					+ c_{2} \begin{pmatrix}
+						te^{-2t}\\ e^{-2t}
+					\end{pmatrix}
+					+ 
+					\begin{pmatrix}
+					\frac{e^{t}}{9} \\
+					\frac{e^{t}}{3}
+					\end{pmatrix}.
+				\end{align*}
+			\section*{Question 8}
+				We first transform in the linear system form 
+				\begin{equation}
+					\begin{pmatrix}
+						y_{1}' \\ y_{2}' \\ y_{3} \ 
+					\end{pmatrix}
+					= \begin{pmatrix}
+						\alpha & 0 & 0 \\ \beta & \alpha & 0 \\ \beta & 0 & \alpha
+					\end{pmatrix}
+					\begin{pmatrix}
+						y_{1} \\ y_{2} \\ y_{3}
+					\end{pmatrix}.
+				\end{equation}
+				$\det(A - \alpha I) = (\alpha - \lambda)^{3} = 0 \implies \lambda = \alpha $ with $m=3$. We look for the corresponding eigenvectors
+				$$\begin{pmatrix}
+						0 & 0 & 0 \\ \beta & 0 & 0 \\ \beta & 0 & 0
+					\end{pmatrix}
+					\begin{pmatrix}
+						a \\ b \\ c
+					\end{pmatrix} = 
+					\begin{pmatrix}
+					0 \\ 0 \\ 0
+					\end{pmatrix} \implies \beta a = 0 \implies u_{1} = \begin{pmatrix}
+						0 \\ 1 \\ 0
+					\end{pmatrix} \ \text{and} \ \ u_{2} = \begin{pmatrix}
+						0 \\ 0 \\ 1
+					\end{pmatrix}.$$
+				The deflect $d_{\lambda} = 1$ so we're looking for a generalized eigenvector $u_{3} \in K_{2} \backslash K_{1} | (A - \lambda I )u_{2} =w \ \forall w \in K_{1} \backslash K_{0}$, i.e.,
+				$$\begin{pmatrix}
+						0 & 0 & 0 \\ \beta & 0 & 0 \\ \beta & 0 & 0
+					\end{pmatrix}
+					\begin{pmatrix}
+						a \\ b \\ c
+					\end{pmatrix} = 
+					\begin{pmatrix}
+					0 \\ a \\ a
+					\end{pmatrix} \implies \begin{pmatrix}
+					0 \\ a \\ a
+					\end{pmatrix} = x \begin{pmatrix}
+						0 \\ 1 \\ 0
+					\end{pmatrix} + y \begin{pmatrix}
+						0 \\ 0 \\ 1
+					\end{pmatrix} = w \implies a= x =y.$$
+				Choosing $x=y=a =1 $ and $b=c =0$ we get $u_{3} = (1 \ \ 0 \ \ 0)^{T} \in K_{2} \backslash K_{1}.$ To summarize ,
+				$$ \mathcal{V} = \Biggl\{\begin{pmatrix}
+					0 \\ 1 \\0 
+				\end{pmatrix} , 
+				\begin{pmatrix}
+					0 \\ 0 \\ 1
+				\end{pmatrix}, 
+				\begin{pmatrix}
+					1 \\ 0 \\0 
+				\end{pmatrix}\Biggr\}.$$
+				Following the exact same procedure outlined in Question 7 we write the matrix solution (since $W(0)=1$)
+				$$ Y(t)c = \begin{pmatrix}
+					0 & 0 & e^{\alpha t} \\ e^{\alpha t } & 0 & te^{\alpha t} \\
+					0 & e^{\alpha t} & t e^{\alpha t} 
+				\end{pmatrix}\begin{pmatrix}
+					c_{1} \\ c_{2} \\ c_{3}
+				\end{pmatrix}.$$
+				To find the solution which satisfies $y_{1}(0) = y_{2}(0) = y_{3}(0) = 1$,we evaluate the Wronskian at $0$ such as 
+				%TODO EQUAL EQUAL ?
+				\begin{align*}
+					&W(0) \begin{pmatrix}
+						c_{1} \\ c_{2} \\ c_{3}
+					\end{pmatrix} = 
+					\begin{pmatrix}
+						0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0
+					\end{pmatrix}
+					\begin{pmatrix}
+						c_{1} \\ c_{2} \\ c_{3}
+					\end{pmatrix}
+					= \begin{pmatrix}
+						1 \\ 1 \\1
+					\end{pmatrix}
+					\intertext{We invert $W(0)$ to find the solution vector}
+					\implies & \begin{pmatrix}
+						c_{1} \\ c_{2} \\ c_{3}
+					\end{pmatrix} = 
+					\begin{pmatrix}
+						0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0
+					\end{pmatrix}^{-1}
+					\begin{pmatrix}
+					1 \\ 1 \\ 1
+					\end{pmatrix} = \begin{pmatrix}
+					1 \\ 1 \\ 1
+					\end{pmatrix}.
+				\end{align*}
+				We conclude that the unique solution is 
+				$y(t) = \begin{pmatrix}
+					0 \\ e^{\alpha t}  \\ 0
+				\end{pmatrix} + \begin{pmatrix}
+					0 \\ 0 \\ e^{\alpha t }
+				\end{pmatrix} + \begin{pmatrix}
+					e^{\alpha t} \\ t e^{\alpha t} \\ te^{\alpha t}
+				\end{pmatrix}.$
+			\section*{Question 9}
+				\subsection*{a) }
+					Setting $y^{3} - 3y^{2}+2y = 0 \implies (y-2)(y-1)y = 0$. Therefore, $\widetilde{y_{1}} = 0 , \widetilde{y_{2}} = 1 , \widetilde{y_{3}} = 2$ are the equilibrium solutions of the given ODE. 
+				\subsection*{b) }
+					We note that the ODE is separable therefore 
+					\begin{gather}
+						\int \frac{dy}{y^{3} - 3y^{2} +2y} = \int dt \nonumber
+						\intertext{Using partial fraction decomposition,}
+						\frac{A}{y} + \frac{B}{y-1} + \frac{C}{y-2} = \frac{1}{y(y-1)(y-2)} \implies A = \frac12 , B = -1 , C = \frac12.\nonumber\\
+						\therefore \frac12 \int \frac{1}{y} \ dy -\int \frac{1}{y-1} \ dy + \frac12 \int \frac{1}{y-2} \ dy = \int t  \ dt \implies 
+						\frac{\ln\abs{y}}{2} - \ln\abs{y-1} + \frac{\ln\abs{y-2}}{2} = t+C \nonumber\\
+						\therefore \left(\frac{e^{\frac{\ln\abs{y}}{2}}}{e^{\ln\abs{y-1}}}\right)e^{\frac{\ln\abs{y-2}}{2}} = e^{t}e^{C} \xrightarrow{e^{C} \equiv C_{1}} \frac{\sqrt{y(y-2)}}{y-1} = e^{t}C_{1}.
+					\end{gather}
+				\subsection*{c) }
+				%TODO asymptotically stable
+					By theorem , we evaluate $Df(\widetilde{y})$ to check for the positivity of the real part, where $Df = 3y^{2} - 6 y + 2$ ; 
+					\begin{itemize}
+						\item at $\widetilde{y} = 0, \ 3(0)^{2} - 6(0) +2 =2 \implies \text{unstable}.$
+						\item at $\widetilde{y} = 1, \ 3(1)^{2} - 6(1) +2 =-1 \implies \text{stable}.$ \\
+						Further ,we note that $\widetilde{y} = 1$ is asymptotically stable since the denominator in Equation 9 is zero for $y=1$ meaning which means $\widetilde{y}=1$ is asymptotic.
+						\item at $\widetilde{y} = 2, \ 3(2)^{2} - 6(2) +2 =2 \implies \text{unstable}.$
+					\end{itemize}
+				\subsection*{d) }
+					\begin{figure}[H]
+						\centering 
+						\includegraphics[width=0.7\linewidth]{phase_portrait.png}
+						\captionsetup{margin=1.5cm , justification=raggedright}
+						\caption{Phase portrait of the ODE in the present question. }
+					\end{figure}
+				\subsection*{e) }
+					We count a total of $7$ orbits which are 
+					\begin{align*}
+						&\Gamma_{y_{0} <0} = \biggl\{ \frac{\sqrt{y(y-2)}}{y-1} = e^{t}C_{1} : t \in (-\infty ,0)\biggr\}\subset \R \\
+						&\Gamma_{0} = \{0\} \\
+						&\Gamma_{y_{0} \in(0,1)} = \biggl\{\frac{\sqrt{y(y-2)}}{y-1} = e^{t}C_{1} : t \in (0,1)\biggr\} \subset \R \\
+						&\Gamma_1 = \{1\}\\
+						&\Gamma_{y_{0}\in (1,2)} = \biggl\{\frac{\sqrt{y(y-2)}}{y-1} = e^{t}C_{1} : t\in (1,2)\biggr\} \subset \R \\
+						&\Gamma_2 = \{2\} \\
+						&\Gamma_{y_{0} > 2}  = \biggl\{\frac{\sqrt{y(y-2)}}{y-1} = e^{t}C_{1} : t\in (2,\infty)\biggr\} \in \R.
+					\end{align*}
+				\section*{Question 10}
+					We first note that $$\La f = \La [u_{\pi} (t)] - \La [u_{2\pi}(t)] = \frac{e^{-\pi s}}{s} - \frac{e^{-2\pi s}}{s} = \frac{e^{-\pi s} - e^{-2\pi s}}{s}.$$
+					Therefore we take the laplace of the LHS yielding 
+					\begin{align*}
+					 \La [y''(t)  + 2y'(t) + 2y(t)] &=\frac{e^{-\pi s} - e^{-2\pi s}}{s} \\
+					 \La[y''(t)] + 2\La[y'(t)] + 2\La [y(t)] &= \frac{e^{-\pi s} - e^{-2\pi s}}{s} \\
+					 s^{2}Y(s) -1 + 2sY(s) + 2Y(s) &= \frac{e^{-\pi s} - e^{-2\pi s}}{s} \\
+					 \implies Y(s) &= \frac{e^{-\pi }}{s (s^{2} + 2s + 2)} - \frac{e^{-2\pi s}}{s (s^{2} + 2s + 2)} + \frac{1}{s^{2} + 2s +2 }
+					\end{align*}
+					Completing the square of $s^{2} +2s +2$ yields $(s+1)^{2} +1$, therefore 
+					\begin{align*}
+					y(t) &= \left(\La^{-1} \bigg[\frac{e^{-\pi s}}{s}\bigg] \ast \La^{-1} \bigg[\frac{1}{(s+1)^{2} +1}\bigg]\right) - \left(\La^{-1}\bigg[\frac{e^{-2\pi s}}{s}\bigg] \ast \La^{-1} \bigg[\frac{1}{(s+1)^{2}+1}\bigg]\right) + \La^{-1}\bigg[\frac{1}{(s+1)^{2}+1}\bigg] \\
+					&= \left(u_{\pi}(t) \ast \La^{-1} \bigg[\frac{1}{(s+1)^{2} +1}\bigg]\right) - \left(u_{2\pi} (t) \ast \La^{-1} \bigg[\frac{1}{(s+1)^{2}+1}\bigg]\right) + \La^{-1}\bigg[\frac{1}{(s+1)^{2}+1}\bigg] \\
+					&= \left(u_{\pi}(t) \ast e^{-t}\sin(t)) - \left(u_{2\pi} (t) \ast e^{-t}\sin(t)\right) + e^{-t}\sin(t)
+					\end{align*}
+					We solve the integral 
+					$$ \int_{0}^{\tau} e^{-\tau}\sin(\tau) \ d\tau,$$
+					using integration by parts setting $u=e^{-t}$ and $dv = \sin(t)$ then another integration by parts with $u=e^{-t}$ and $dv=\cos(t)$ yielding
+					\begin{gather*}
+						\int_{0}^{\tau} e^{-\tau}\sin(\tau) \ d\tau = e^{-\tau}\cos(\tau) - \left(\sin(\tau)e^{-\tau} + \int e^{-\tau}\sin(\tau)\right) \\
+						\implies \int_{0}^{\tau} e^{-\tau}\sin(\tau) \ d\tau = \frac{-e^{-t}\cos(t) - \sin(t)e^{-t}}{2}.
+					\end{gather*}
+					Thus, 
+					\begin{align*}
+					y(t) &= e^{-t}\sin(t) + u_{\pi}\left(\frac{-e^{-(t-1)}\cos(t-1) - \sin(t-1)e^{-(t-1)}}{2}\right) \\ &- u_{2\pi}\left(\frac{-e^{-(t-2)}\cos(t-2) - \sin(t-2)e^{-(t-2)}}{2}\right)
+					\end{align*}
+				\section*{Question 11}
+					\subsection*{a) }
+						\begin{align*}
+							(1-x)&\sum_{n=2}^{\infty} n(n-1)a_{n}x^{n-2} + x\sum_{n=1}^{\infty} na_{n}x^{n-1} - \sum_{n=0}^{\infty} a_{n}x^{n} =0 \\
+							&\sum_{n=2}^{\infty} n(n-1)a_{n}x^{n-2} - \sum_{n=2}^{\infty} n(n-1)a_{n}x^{n-1} + \sum_{n=1}^{\infty} na_{n}x^{n} - \sum_{n=0}^{\infty}a_{n}x^{n} =0\\
+							&\sum_{n=0}^{\infty}(n+2)(n+1)a_{n+2}x^{n} - \sum_{n=1}^{\infty} n(n+1)a_{n+1}x^{n}+\sum_{n=1}^{\infty} na_{n}x^{n} - \sum_{n=0}^{\infty} a_{n}x^{n} =0 \\
+							&2a_{2} - a_{0} + \left(\sum_{n=1}^{\infty} \left((n+2)(n+1)a_{n+2} - (n+1)n a_{n+1} + n a_{n} - a_{n}\right)x^{n}\right) = 0 
+							\intertext{$\because$ linear independcence \implies a_{2} = a_{0} /2 $$}
+							& \qquad \qquad \implies a_{n+2} = \frac{(n+1)n a_{n+1} -na_{n} +a_{n}}{(n+2)(n+1)} \\
+							&\qquad \qquad \implies a_{n+2} = \frac{(n+1)n a_{n+1} - a_{n}(n-1)}{(n+2)(n+1)}.
+						\end{align*}
+				We look for a power series solution
+				\begin{equation*}
+				\vrule \: \vrule  \begin{minipage}{0.4\linewidth}
+					\begin{align*}
+						a_{2} &= \frac{a_{0}}{2!}\\
+						a_{4} &=  \frac{6a_{3} -a_{2}}{4\times 3}= \frac{a_{0}}{4!}
+					\end{align*}	
+				\end{minipage} \ \ \vrule 
+				\begin{minipage}{0.4\linewidth}
+					\begin{align*}
+											a_{3} &= \frac{2a_{2}}{3!} = \frac{a_{0}}{3!}\\
+											a_{5} &= \frac{12a_{4}- 2a_{3}}{5\times 4} = \frac{a_{0}}{5!} 
+										\end{align*}
+				\end{minipage}\vrule  \: \vrule 
+			\end{equation*}		
+			Thus , 
+			$$ y(t) = a_{0}\sum_{n=0}^{\infty} \frac{x^{n}}{n!} = a_{0} e^{x}.$$			
+			\subsection*{b) }	
+			Setting arbitrarily $a_{0} =1$ and $a_{1} =0 \implies a_{2} = \frac{a_{0}}{2} = \frac12$. Therefore 
+			\begin{align*}
+				a_{3} &= \frac{2a_{2}}{6} = \frac{a_{2}}{3} = \frac{1}{6} = \frac{1}{3!} \\
+				a_{4} &= \frac{6a_{3} - a_{2}}{4\times 3} = \frac{1}{4!} \\
+				\vdots
+			\end{align*}	
+			We find that the solution is $$ y_{1}(x) = 1 + \sum_{n=2}^{\infty} \frac{x^{n}}{n!} = e^{x} - x.$$
+			
+			\noindent Similarly, let us set $a_{0} = 0 $ and $a_{1} = 1$ , then $a_{2} = \frac{a_{0}}{2} = 0$. We get that $a_{i} = 0 \ \forall i \in \{0,\infty\}\backslash \{1\} \implies y_{2}(x) = x.$
+			
+			Thus, the unique analytic formula is 
+			$$ y(x) = a_{0}(y_{1}) + a_{1}(y_{2}) = a_{0}(e^{x} -x) + a_{1}(x) = a_{0}e^{x} + (a_{1}-a_{0})x.$$
+			The set $\{x, e^{x}-x\}$ is L.I since $\nexists \ p \in \mathcal{P}_{n} \ | \ px = e^{x} -x.$
+		\subsection*{c) }
+			Using $y(0) = -3$ and $y'(0) =2 \implies a_{0}-3 , \ a_{1} = 2$ such that 
+			$$ y(x) = -3(e^{x} -x) + 2(x) = 5x -3e^{x}.$$ 
+	\end{document}
