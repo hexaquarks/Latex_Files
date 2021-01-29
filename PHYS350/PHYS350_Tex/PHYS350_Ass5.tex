@@ -1,0 +1,323 @@
+\documentclass[12pt]{article}
+		\usepackage{xcolor}
+			\usepackage[dvipsnames]{xcolor}
+			\usepackage[many]{tcolorbox}
+		\usepackage{changepage}
+		\usepackage{titlesec}
+		\usepackage{caption}
+		\usepackage{mdframed, longtable}
+		\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+		\usepackage{array, tabularx, booktabs}
+		\usepackage{graphicx,wrapfig, float, caption}
+		\usepackage{tikz,physics,cancel, siunitx, xfrac}
+		\usepackage{graphics, fancyhdr,aligned-overset}
+		\usepackage{lipsum}
+		\usepackage{xparse}
+		\usepackage{thmtools}
+		\usepackage{mathrsfs}
+		\usepackage{undertilde}
+		\usepackage{tikz}
+		\usepackage{fullpage,enumitem}
+		\usepackage[labelfont=bf]{caption}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\usepackage{fullpage, fancyhdr}
+	\newcommand{\La}{\mathcal{L}}
+	\newcommand{\ep}{\epsilon}
+	\newcommand{\de}{\delta}
+	\usepackage[math]{cellspace}
+		\setlength{\cellspacetoplimit}{3pt}
+		\setlength{\cellspacebottomlimit}{3pt}
+	\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+	\usepackage{newtxtext, newtxmath}
+
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\Ss}{\mathcal{S}}
+	\newcommand{\A}{\hat{A}}
+	\newcommand{\B}{\hat{B}}
+	\newcommand{\C}{\hat{C}}
+	\allowdisplaybreaks
+	\usepackage{titling}
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	\usepackage{bbold}
+	\title{PHYS 350 Assignment 4}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 }
+	\date{\today}
+	
+	\relpenalty=9999
+			\binoppenalty=9999
+		
+			\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\quad #1}{}}
+			
+			\fancypagestyle{plain}{%
+			  \fancyhf{}
+			  \fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 4} 
+			  \fancyhead[R]{\small Mihail Anghelici $260928404$} 
+			  \fancyfoot[C]{-- \thepage\ --}
+			  \renewcommand{\headrulewidth}{0.4pt}}
+			\pagestyle{plain}
+			\setlength{\headsep}{1cm}
+	\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 0}
+			To express the potential everywhere using only sines and cosines then the $A$ and $B$ terms in 
+			\begin{equation}
+				V(x,y) = (Ae^{kx} + Be^{-kx})(C\sin ky + D\cos ky)
+			\end{equation} 
+			should vanish. This condition is met if and only if $V \to 0$ as $x \to \infty$ and with $V \to 0 $ as $x \to -\infty$, which is possible in a setting where no potential barrier is set in the $x$ direction such that the potential vanishes in both directions
+		\section*{Question 1}
+		\subsection*{a) }
+			Using the general form of separation of variables $(1)$, from $V(x,0) =0  \implies$
+			\begin{align*}
+				&V(x,0) = 0 \implies \underbrace{(Ae^{kx} + Be^{-kx})}_{\neq 0} (0 + D) =0 \implies D = 0,\\
+				&V(0,y) =0 \implies A = - B \ quad \text{ since } C=0 \ \ \text{solution is rejected(trivial general solution)}\\
+				&V(x,a) = 0 \implies \sin ky = \frac{n\pi }{a} 
+			\end{align*}
+			Therefore, 
+			\begin{align*}
+				V(x,y) &= A(e^{kx} - e^{-kx})C\sin(ky) \\
+				&= A(e^{n\pi x /a} - e^{-n\pi x /a}) \sin\left(\frac{n \pi y}{a}\right) \\
+				&= \sum_{n=1}^{\infty} A_{n} (e^{n\pi x /a} - e^{-n\pi x /a}) \sin\left(\frac{n \pi y}{a}\right) \\
+				&= 2 \sum_{n=1}^{\infty} \sinh\left(\frac{n \pi x}{a}\right) \sin\left(\frac{n \pi x}{a}\right)
+			\end{align*}
+			\subsection*{b) }
+			We now determine the coefficients $A_{n}$ using the boundary condition  $V_{0}(y) = V_{0}$.We use Fourier's trick
+			\begin{gather*}
+				\int_{0}^{a} V_{0}(y) \sin\left(\frac{n' n y}{a}\right) \ \mathrm{d} y = \left(\frac{a}{2}\right) A_{n} \sinh \left(\frac{n \pi b}{a}\right) \\
+				\implies A_{n} = \frac{2}{\a \sinh \left(\frac{n \pi b}{a}\right)} \int_{0}^{a} V_{0} (y) \sin \left(\frac{n \pi y}{a}\right)\  \mathrm{d} y\\
+				\implies \int_{0}^{a} V_{0} (y) \sin\left(\frac{n \pi y}{a}\right) = 
+				\begin{cases}
+					0 \quad & n \ \text{even} \\
+					\frac{2V_{0}}{n \pi } \quad & n \ \text{odd}
+				\end{cases}
+				\intertext{We conclude that }
+				A_{n} = 
+				\begin{cases}
+					\frac{4 }{\sinh \left(\frac{n \pi b}{a}\right)} \left(\frac{V_{0}}{n \pi}\right) \quad &\text{for } \ n  \ \text{odd} \\
+					0 \quad &\text{for }\ n \ \text{even} 
+				\end{cases}
+			\end{gather*}
+			The potential everywhere given the boundary condition is then 
+			\begin{equation}
+				V(x,y) = \sum_{\text{odd}} \frac{4 V_{0}}{n \pi} \frac{\sinh \left(\frac{n \pi x}{a}\right)}{\sinh \left(\frac{n \pi b}{a}\right)} \sin \left(\frac{n \pi y}{a}\right).
+			\end{equation}
+			\begin{remark}
+				We note that if the setup was a square instead of a rectangle the $\sinh$ arguments in the $V(x,y)$ expression including the boundary condition $(2)$ will cancel out such that the potential in the centre would be 
+				$$ V(x,y) = \sum_{\text{odd}} \frac{4 V_{0}}{n\pi} \sin \left(\frac{n \pi y}{a}\right).$$
+			\end{remark}
+		\section*{Question 2}
+			The potential around the sphere is 
+			\begin{alignat*}{2}
+				V(r,\theta) &= \sum_{l=0}^{\infty} A_{l} r^{l} P_{l} (\cos \theta) &\qquad (r < R)\\
+				V(r,\theta) &= \sum_{l=0}^{\infty} A_{l}' r^{-(l+1)} P_{l} (\cos \theta) &\qquad (r \ge R),
+			\end{alignat*}
+			Then at the boundary $r = R$ it follows that 
+			$$V(R,\theta) = \sum A_{l} R^{l} P_{l}(\cos \theta) = \sum A_{l}'R^{-(l+1)}P_{l}(\cos \theta) \implies A_{l}' = A_{l}R^{2l +1}.$$
+			There exists a relationship between the surface charge and the potential difference at the boundary ; 
+			$$ \hat{n} \left(E_{\text{out}} - E_{\text{in}}\right) = \frac{\sigma}{\ep_{0}} = \left(\pdv{V_{\text{out}}}{r} - \pdv{V_{\text{in}}}{r}\right) = - \frac{\sigma(\theta)}{\ep_{0}}.$$
+			Combining the latter relationships we get 
+			\begin{equation}
+				\sum (2l +1) A_{l}R^{l-1} P_{l}(\cos \theta) = \frac{\sigma_{0}(\theta)}{\ep_{0}}.
+			\end{equation}
+			We use Fourier's Trick for $\sum A_{l} R^{l} P_{l} (\cos \theta) = V_{0} (\theta)$
+			\begin{gather*}
+				\int_{0}^{\pi} P_{l} (\cos \theta) P_{l'} (\cos \theta) \sin \theta = 
+				\begin{cases}
+					0 \quad &\text{ if }\ l' \neq l \\
+					\frac{2}{2l +1 } \quad &\text{ if } \ l' = l 
+				\end{cases}
+				\intertext{So after integrating anf multiplying by $P_{l}(\cos \theta) \sin \theta$ the above then rearranging we obtain}
+				A_{l} = \frac{2l+1}{2R^{l}} \int_{0}^{\pi } V_{0}(\theta) P_{l} (\cos \theta) \sin \theta \ \mathrm{d} \theta 
+				\intertext{Then by susbsitution ,}
+				\frac{\sigma(\theta)}{\ep_{0}} = \sum (2l+1) R^{l-1} \frac{2l+1}{2R^{l}} P_{l} (\cos\theta) \underbrace{\int_{0}^{\pi} V_{0} (\theta) P_{l} (\cos \theta ) \sin \theta }_{\equiv C_{l}}
+			\end{gather*}
+			So finally we conclude 
+			\begin{align*}
+				 \sigma &= \frac{\ep_{0}}{2 R}\sum_{l=0}^{\infty} (2l +1)^{2} C_{l}P_{l}(\cos \theta) \\
+				 \text{where }\ C_{l} & = \int_{0}^{\pi } V_{0 }(\theta) P_{l} (\cos \theta) \sin \theta \ \mathrm{d} \theta.
+			\end{align*}
+		\section*{Question 3}
+			We know that 
+			\begin{alignat*}{2}
+			V(r,\theta) &= \sum_{l=0}^{\infty} A_{l} r^{l} P_{l} (\cos \theta) &\qquad (r < R)\\
+			V(r,\theta) &= \sum_{l=0}^{\infty} A_{l}' r^{-(l+1)} P_{l} (\cos \theta) &\qquad (r \ge R),
+			\end{alignat*}
+			So we have the relationship 
+			\begin{equation} 
+			A_{l} ' = A_{l} R^{2l +1} \implies \sum (2l +1)A_{l} R^{l-1} P_{l}(\cos \theta) = \frac{\sigma_{0} (\theta)}{\ep_{0}} 
+			\end{equation}
+			We use Fubini's trick ,
+			\begin{gather*}
+				 (2l+1) A_{l'}R^{l'-1} \int_{0}^{\pi }P_{l'} (\cos \theta) \sin \theta \ \mathrm{d}\theta = \sigma_{0} (\theta)\ep_{0} \int_{0}^{\pi} P_{l'} (\cos \theta) \sin \theta \\
+				 \implies 2 A_{l} R^{l-1} = \frac{\sigma}{\ep_{0}}\int_{0}^{\pi} P_{l'} (\cos \theta) \sin \theta \ \mathrm{d} \theta\\
+				 \implies A_{l} =\frac{1}{2 \ep_{0} R^{l-1}} \int_{0}^{\pi } \sigma_{0}(\theta) P_{l} (\cos \theta) \sin \theta  \mathrm{d} \theta
+			\end{gather*}
+			Then since 
+			$$ \sigma_{0}(\theta) = \sigma_{0} \quad \text{for } \ \theta \ \in (0 , \pi 2) \ \text{ and } \ \sigma_{0}(\theta) = -\sigma_{0} \quad \text{for } \ \theta \ \in (\pi , \pi/2),$$
+			this is equivalent to 
+			\begin{align*}
+				 A_{l} &= \frac{\sigma_{0}}{2 \ep_{0} R^{l-1}} \left(\int_{0}^{\pi /2} P_{l}(\cos \theta) \sin \theta \ \mathrm{d} \theta - \int_{\pi/2}^{\pi} P_{l} (\cos \theta) \sin \theta \ \mathrm{d} \theta\right)\\
+				 \overset{x = \cos(\theta)}&{=} \frac{\sigma_{0}}{2 \ep_{0} R^{l-1}} \left(- \int_{1}^{0} P_{l}(x) \ \mathrm{d} x + \int_{0}^{-1} P_{l} (x) \ \mathrm{d} x\right)
+				 \intertext{We use the properties of integral bounds $\displaystyle \int_{a}^{b} = - \int_{b}^{a}$, we get}
+				 &= \frac{\sigma_{0}}{2 \ep_{0} R^{l-1}} \left(\int_{0}^{1} P_{l}(x) \ \mathrm{d} x - \int_{-1}^{0}P_{l}(x) \ \mathrm{d}x \right)
+				 \intertext{We use the general property of Legendre polynomials that $P_{l}(-x) = (-1)^{n} P_{l}(x)$,to exploit this poperty we perform a change of variable $x \to -x $ in the second integral. We get}
+				 &= \frac{\sigma_{0}}{2 \ep_{0} R^{l-1}} \left(\int_{0}^{1} P_{l} (x) \ \mathrm{d} x - \int_{1}^{0} P_{l}(-x) \ \mathrm{d} (-x)\right)\\
+				 &= \frac{\sigma_{0}}{2 \ep_{0} R^{l-1}} \int_{0}^{1} P_{l}(x) (1-(-1)^{n}) \ \mathrm{d} x\\
+				 \shortintertext{\begin{equation}
+				 	\therefore A_{l} = 
+				 	\begin{cases}
+				 	0 \qquad &\text{for } \ l \ \ \text{even} \\
+				 	\displaystyle \frac{\sigma_{0}}{2 \ep_{0} R^{l-1}} \int_{0}^{1} P_{l} (x) \ \mathrm{d} x \qquad &\text{for } \ l \ \ \text{odd}.
+				 	\end{cases}
+				 	\end{equation}}
+			\end{align*}
+			We look for $A_{l} $ for $l \in [0,6]$. We note following $(5)$ that $A_{l}$ for $l$ even are all $0$. Therefore, using the Legendre polynomials expressions (source: Wikipedia) we have 
+			\begin{align*}
+				 A_{1} &=  \frac{\sigma_{0}}{\ep_{0}} \int_{0}^{1} P_{1} (x) \ \mathrm{d} x = \frac{\sigma_{0}}{\ep_{0}} \int_{0}^{1} x \ \mathrm{d}x = \frac{\sigma_{0}}{2 \ep_{0}}\\
+				 A_{3} &= \frac{\sigma_{0}}{\epsilon_{0}R^{2}} \int_{0}^{1} P_{3} (x) \mathrm{d}x = \int_{0}^{1} \frac{5x^{3} -3x}{2} \ \mathrm{d}x = \frac{-\sigma_{0}}{8 \ep_{0}R^{2}}\\
+				 A_{5} &= \frac{\sigma_{0}}{\ep_{0}R^{4}} \int_{0}^{1} P_{5} \ \mathrm{d}x = \int_{0}^{1} \frac{63x^{5} -70x^{3} +15x}{8} \ \mathrm{d} x = \frac{\sigma_{0}}{16 \ep_{0} R^{4}}
+ 			\end{align*}
+ 			We also need the $B_{l} (A_{l}')$ coefficients for $l \in [0,6]$. We use the relationship $(4)$, which essentially amounts to multiplying the $A_{l}$ coefficients by $R^{2l+1}$
+ 			\begin{align*}
+ 			 	B_{1} = A_{1} R^{3} = \frac{\sigma_{0}}{2 \ep_{0}} R^{3} 
+ 			 	\qquad, B_{3} = A_{3} R^{7} = \frac{-\sigma_{0}}{8 \ep_{0}} R^{5} 
+ 			 	\qquad , B_{5} = A_{5} R^{11} = \frac{\sigma_{0}}{16 \ep_{0}} R^{7}.
+ 			\end{align*}
+ 			\section*{Question 4}	
+ 				We know that 
+ 				\begin{equation} \pdv[2]{V}{x} +\pdv[2]{V}{x} +\pdv[2]{V}{x}  \overset{\text{cylindrical}}{=} \frac{1}{r} \pdv{}{r} \left(r\pdv{V}{r}\right) + \frac{1}{r^{2}} \left(\pdv[2]{V}{\phi}\right) = 0.
+ 				\end{equation}
+ 				We look for solution $V(r,\phi) = R(r) \Phi(\phi)$ so from $(6)$ , 
+ 				$$\implies \frac{1}{r}\pdv{}{r} \left(r \pdv{R}{r}\right) + \frac{R}{r^{2}}\left(\pdv[2]{\Phi}{\phi}\right) =0.$$
+ 				Let us divide the above vy $\Phi$ and multiply by $r^{2}$ for convenience.
+ 			\begin{equation*}
+ 				\frac{r}{R} \pdv{}{r} \left(r \pdv{R}{r }\right) + \frac{1}{\Phi} \left(\pdv[2]{\Phi}{\phi}\right),
+ 			\end{equation*}
+ 			since the above is true point wise for functions of different variables then we get 
+ 			\begin{equation*}
+ 				\frac{r}{R} \pdv{}{r} \left(r \pdv{R}{r}\right) = \pm \lambda \qquad \text{ and } \ \frac{1}{\Phi} \left(\pdv[2]{\Phi}{\phi}\right) = - \lambda^{2}
+ 			\end{equation*}
+ 			For first solution in the RHS, $\Phi_{\phi \phi} + \lambda^{2} \Phi = 0,$ solving the characteristic equation yields $k^{2} + \lambda^{2} =0 \implies k = \pm i \lambda$. Complex roots so the general solution is 
+ 			\begin{equation} 
+ 				\Phi = A \cos(\lambda \phi) + B\cos (\lambda \phi).
+ 			\end{equation}
+ 			To solve the RHS PDE, we first use product rule 
+ 			$$ r \pdv{}{r}\left(r \pdv{R}{r}\right) = \lambda^{2} \overset{P.R}{\implies} r^{2}R_{rr} + rR_{r} -\lambda^{2}R = 0.$$
+ 			This is a Cauchy-Euler equation. To solve we let
+ 			$$ s = \ln(r) \implies R(r) = \varphi(\ln (s)) = \varphi(s),$$
+ 			so then 
+ 			\begin{gather*}
+ 				R_{r} = \varphi'(s) \frac{1}{r} \qquad \text{ and } \ \ R_{rr} = \frac{1}{r^{2}} (\varphi''(s) + \varphi'(s)) \\
+ 				\implies \Bigg[\frac{r^{2}}{r^{2}} \varphi''(s) + \frac{r^{2}}{r^{2}}\ \varphi'(s)\Bigg] - \frac{\varphi'(s)}{r} - \lambda^{2} \varphi(s) =0 \\
+ 				\implies \varphi''(s) - \lambda^{2} \varphi(s) =0 
+ 				\intertext{Solving the characteristic equation we get $k= \pm \lambda$. Similar roots so the general solution takes the form }
+ 			\end{gather*}
+ 			\vspace{-1 cm}
+ 		\begin{equation}
+ 				\varphi(s) = Ae^{\lambda s } + Be^{- \lambda s} \implies R(r) =Ar^{\lambda} + Br^{-\lambda }.
+ 		\end{equation}	
+ 		We may extract another solution related to $(7)$ if we set the initial PDE equal to $\lambda^{2} =0$, we obtain 
+ 		$$ \pdv[2]{\Phi}{\phi} = 0 \implies \Phi(\phi) = A \phi + B.$$
+ 		Moreover we can extract another solution linked to $(8)$ if we set the initial PDE equal to $\lambda^{2} =0$, we obtain 
+ 		$$ \int \frac{r}{R} \pdv{}{r} \left(r \pdv{R}{r}\right) = \int 0 \implies rR_{r} = C \implies C \ln (r) +D = R(r).$$
+ 		Our final 4 solutions are
+ 		\begin{equation}
+ 		 \begin{cases}
+ 		 	&\Phi(\phi) = A \cos(\lambda \phi) + B\cos (\lambda \phi) \\
+ 		 	&\Phi(\phi) = A \phi + B\\
+ 		 	&R(r) =Ar^{\lambda} + Br^{-\lambda } \\
+ 		 	&R(r) = C \ln (r) +D
+ 		 \end{cases}
+ 		\end{equation}
+ 	\section*{Question 5}
+ 		\subsection*{a ) }
+ 			We can not use separation of variables because at $\xrightarrow{x\to \infty} \neq \infty \neq 0$, such that the exponentials can't be used. And we know from Question $0$ that such case is not possible. 
+ 		\subsection*{b) }
+ 			Let $V = V_{1} +V_{2}$ where $V_{1}$ is the potential everywhere from a setup where we have $V_{s}$ on the strip and $V=0$ on both plates. Also, $V_{2}$ is the potential everywhere from a setup where we have $V_{s} =0$ on the strip, $V=V_{0}$ on the top plate and $V=0$ on the bottom plate. 
+ 			
+ 			\noindent For $V_{1}$, given the symmetrical nature of the problem it follows that 
+ 			$$V_{s}  = -V_{s} + V_{0} \implies V_{s} = \frac{V_{0}}{2},$$
+ 			the solution is then of the following form along with its boundary conditions 
+ 			$$ V(x,y) = (Ae^{kx} + Be^{-kx})(C \sin ky + D\cos ky) \quad \text{with } \ \ 
+ 			\begin{cases}
+ 				V= 0 \ &\text{ when } \ y =0, \\
+ 				V=0 \ &\text{ when } \ y=a, \\
+ 				V = \frac{V_{0}(y)}{2} \ &\text{ when } \ x=0,\\
+ 				V \to 0 \ &\text{ as } \ x\to \infty. 
+ 			\end{cases}.$$
+ 			\subsection*{c) }
+ 			Given the boundary conditions we conclude that the solution is of the form
+ 			\begin{gather*}
+ 				V(x,y) = Ce^{-kx} \sin ky \qquad \text{with } k = n \pi / a ,\quad \text{ for } \ n \in \mathbb{N}_{+} \\
+ 				\implies V(x,y) = \sum_{n=1}^{\infty} C_{n} e^{-n \pi x / a }\sin (n \pi y /a).  
+ 			\end{gather*}
+ 			We then use Fourier's trick, the same procedure as outlined in previous questions, we get 
+ 			\begin{gather*}
+ 				V(0,y) = \sum_{n=1}^{\infty} C_{n} \sin (n \pi y/a) =\frac{V_{0}(y)}{2} \\
+ 				C_{n} = \frac{V_{0}}{a} \int_{0}^{a} \sin(n \pi y/a) \ \mathrm{d} y = \begin{cases}
+ 					 0, \quad &\text{ if } \ n \ \text{ even} \\
+ 					 \frac{2 V_{0}}{n \pi} \quqad &\text{ if } \ n \ \text{ if  odd}. 
+ 				\end{cases} \\
+ 				\therefore V(x,y) = \frac{2V_{0}}{\pi} \sum_{\text{odd}} \frac{1}{n} e^{-n \pi x /a} \sin (n \pi y /a).
+ 			\end{gather*}
+ 			Then we find the potential from $V_{2}$. The potential from an infinite sheet of charge is given by 
+ 			$$ V_{2} = -\frac{\sigma y}{2 \ep_{0}},$$
+ 			where $\sigma$ is the surface density charge. We conclude that the potential everywhere for the whole setup is 
+ 			$$ V(x,y) = V_{1} + V_{2} = \frac{2V_{0}}{\pi} \sum_{\text{odd}} \frac{1}{n} e^{-n \pi x /a} \sin (n \pi y /a) - \frac{\sigma y}{2 \ep_{0}}.$$
+ 		\section*{Question 6}
+ 			We use almost the same procedure as outlined in Question $2$ 
+ 			The potential around the sphere is 
+ 			\begin{alignat*}{2}
+ 			V(r,\theta) &= \sum_{l=0}^{\infty} A_{l} r^{l} P_{l} (\cos \theta) &\qquad (r < R)\\
+ 			V(r,\theta) &= \sum_{l=0}^{\infty} A_{l}' r^{-(l+1)} P_{l} (\cos \theta) &\qquad (r \ge R),
+ 			\end{alignat*}
+ 			Then at the boundary $r = R$ it follows that 
+ 			$$V(R,\theta) = \sum A_{l} R^{l} P_{l}(\cos \theta) = \sum A_{l}'R^{-(l+1)}P_{l}(\cos \theta) \implies A_{l}' = A_{l}R^{2l +1},$$
+ 			which is our first relationship. 
+ 			
+ 			\noindent We require that the electric fields be continuous around both sides, specifically in the hole , hence we set 
+ 			$$ \pdv{V_{\text{out}}}{r}= \pdv{V_{\text{in}}}{r}.$$
+ 			Given the condition at the boundary $r = R$, we conclude that 
+ 			%TODO
+ 			The coefficients are then given by 
+ 			$$ C_{l} = \int_{0}^{\theta_{0}}V_{0}(\theta) P_{l}\cos(\theta) \sin \theta \ \mathrm{d} \theta. $$
+	\end{document}

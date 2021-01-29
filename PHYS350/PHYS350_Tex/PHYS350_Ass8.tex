@@ -1,0 +1,229 @@
+\documentclass[12pt]{article}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[many]{tcolorbox}
+\usepackage{changepage}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{mdframed, longtable}
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+\usepackage{array, tabularx, booktabs}
+\usepackage{graphicx,wrapfig, float, caption}
+\usepackage{tikz,physics,cancel, siunitx, xfrac}
+\usepackage{graphics, fancyhdr}
+\usepackage{lipsum}
+\usepackage{xparse}
+\usepackage{thmtools}
+\usepackage{mathrsfs}
+\usepackage{undertilde}
+\usepackage{tikz}
+\usepackage{fullpage,enumitem}
+\usepackage[labelfont=bf]{caption}
+\newcommand{\td}{\text{dim}}
+\newcommand{\tvw}{T : V\xrightarrow{} W }
+\newcommand{\ttt}{\widetilde{T}}
+\newcommand{\ex}{\textbf{Example}}
+\newcommand{\aR}{\alpha \in \mathbb{R}}
+\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+\newcommand{\un}{u_1 , u_2 , \dots , n}
+\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+\newcommand{\sS}{\text{Span}(\mathcal{S})}
+\newcommand{\sSt}{($\mathcal{S}$)}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\Rn}{\mathbb{R}^{n}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rm}{\mathbb{R}^{m}}
+\usepackage{fullpage, fancyhdr}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\ep}{\epsilon}
+\newcommand{\de}{\delta}
+\usepackage[math]{cellspace}
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{3pt}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\usepackage{newtxtext, newtxmath}
+\usepackage{bbm}
+
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+\newcommand{\vect}{\mathbf}
+\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\A}{\hat{A}}
+\newcommand{\B}{\hat{B}}
+\newcommand{\C}{\hat{C}}
+\newcommand{\dr}{\mathrm{d}}
+\allowdisplaybreaks
+\usepackage{titling}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem]
+\theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{definition}
+\newtheorem{Proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem*{example}{Example}
+\theoremstyle{example}
+\newtheorem*{note}{Note}
+\theoremstyle{note}
+\newtheorem*{remark}{Remark}
+\theoremstyle{remark}
+\newtheorem*{example2}{External Example}
+\theoremstyle{example}
+\usepackage{bbold}
+\title{PHYS356 Assignment 8}
+\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+\author{Mihail Anghelici 260928404 }
+\date{\today}
+
+\relpenalty=9999
+\binoppenalty=9999
+
+\renewcommand{\sectionmark}[1]{%
+	\markboth{\thesection\quad #1}{}}
+
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 8} 
+	\fancyhead[R]{\small Mihail Anghelici $260928404$} 
+	\fancyfoot[C]{-- \thepage\ --}
+	\renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{plain}
+\setlength{\headsep}{1cm}
+\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+			\subsection*{a) }
+				\begin{align*}
+					\la u \ra& = \frac{\int u e^{-u /kT} \sin \theta \dr \theta \dr \varphi}{e^{-u / kT}\sin \theta \dr \theta \dr \varphi} 
+					= \frac{2\pi}{2\pi} \frac{\int u e^{-u /kT} \sin \theta  \dr \theta}{e^{-u / kT} \sin \theta \dr \theta } 
+					\intertext{We want to solve these integrals with respect to $u$ which is given by the problem , so let}
+					\shortintertext{\[
+							\theta = u = -pE\cors\theta \implies \dr u  = pE \sin \theta \dr \theta, 
+						\]}
+					\intertext{The integration bounds then change accordingly with $-pE \to pE$.}
+					&= \frac{\int_{-pE}^{pE} u e^{-u / kT} \dr u}{\int_{pE}^{pE} e^{-u / kT} \dr u}  \\
+					&= \frac{\Big[u kT\left(-e^{-u / kT}\right)\Big|_{-pE}^{pE}  - \Big[(kT)^{2} e^{-u/kT} \Big|_{-pE}^{pE}}{\Big[-kT e^{-u/kT}\Big|_{-pE}^{pE}}\\
+					&= \frac{-(pE)(kT)e^{-pE/kT} + (pE)(kT) e^{pE/kT} - (kT)^{2}\left(e^{-pE/kT} - e^{pE/kT}\right)}{-kT\left(e^{-pE/kT} - e^{pE/kT}\right)} \\
+					&= \frac{pE e^{-pE/kT} + pEe^{pE/kT} + (kT)\left(e^{-pE/kt}-e^{pe/kT}\right)}{e^{-pE/kt}-e^{pe/kT}}\\
+					&= \frac{pE\left(e^{-pE/kt}+e^{pe/kT}\right)}{e^{-pE/kt}-e^{pe/kT}} +kT  = -pE \frac{\left(e^{-pE/kt}+e^{pe/kT}\right)}{\left(e^{-pE/kt}-e^{pe/kT}\right)} + kT\\
+					\shortintertext{\[
+						\therefore \la u \ra = kT - pE \coth \left(\frac{pE}{kT}\right).
+						\]}
+				\end{align*}
+				Using the information from the question we express this with the polarizability.
+				\begin{gather*}
+					\la u \ra = -pE \left(\coth\frac{pE}{kT} - \frac{kT}{pE}\right) =-pE\la \cos \theta \ra \implies \la \cos \theta \ra = \left(\coth\frac{pE}{kT} - \frac{kT}{pE}\right)\\
+					\therefore P = Np \la \cos \theta \ra = Np\left(\coth\frac{pE}{kT} - \frac{kT}{pE}\right).
+				\end{gather*}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.8\linewidth]{PHYS350_Ass8_Fig.png}
+					\captionsetup{margin=1cm}\caption{Given the expression found, we note that $\coth(\infty) \to 1$, hence the horizontal asymptote at $P/np =1$.}
+				\end{figure}
+			\subsection*{b) }
+				We consider the $kT >> pE$ case, so let us Taylor expand 
+				$$ \coth\left(\frac{pE}{kT}\right) - \frac{kT}{pE} = \frac{pE}{3kT} - \left(\frac{pE}{kT}\right)^{3} \frac{1}{45} + \dots ,$$
+				so then 
+				$$ \frac{P}{Np} \approx \frac{pE}{3kT}\implies P \approx \frac{Np^{2} E}{3 kT}.$$
+				By definition , $P = \ep_{0}\chi_{e} E$ and so we can solve for $\chi_{e}$; 
+				$$ \chi_{e} = \frac{Np^{2}}{3kT \ep_{0}}.$$
+				\\
+				\noindent We know that water has a permanent dipole moment of $1.85 $ Debie , which is equivalent to $6.1 \times 10^{-30 } \ \si{\coulomb\meter}$. Then for $18 \ \si{\gram}$ of water ( $1 \ \si{\mole}$), 
+				$$ \frac{1}{m_{p}} = \frac{N}{N_{A}} \implies N = \frac{1}{18 \ \si{\gram}} (6 \times 10^{26} \ \si{\kilo\gram}) = 3.3 \times 10^{28}.$$
+				Thus, 
+				$$ \chi_{e} = \frac{(3.3 \times 10^{28})(6.1 \times 10^{-30})^{2} }{3(8.85 \times 10^{-12})(1.38 \times 10^{-23})(293.15)} \approx 11.43,$$
+				which is much lower than $\chi_{e} = 79 $ from the table.\\ 
+				
+				\noindent For the steam, we use $PV = NkT, $
+				\begin{gather*}
+					 PV = NkT \implies N = \frac{PV}{kT} = \frac{(10^{5})}{(1.38\times 10^{-23}) (373.15)} = 1.94 \times 10^{25}\\
+					 \implies \chi_{e} = \frac{(1.94 \times 10^{25})(6.1 \times 10^{-30})^{2}}{3 (8.85\times 10^{-12})(1.48\times 10^{-23})(373.15)} \approx 0.00528,
+				\end{gather*}
+				this result is in good agreemint with the tabulated value of $0.00589$.
+				
+		\section*{Question 2}
+		\subsection*{a) }
+		
+			By definition $\vec{F} = q(\vec{E} + (\vec{v} \cross \vec{B}))$. Because there is no deflection there is essentialy no net force on the particle such that 
+			$$ \vec{F} = q(\vec{E} + (\vec{v} \cross \vec{B})) = 0 \implies \vec{E} = -\vec{v} \cross \vec{B}.$$
+			Let the electric field be in the $\hat{x}$ direction, the magnetic field in the $\hat{y}$ direction and the speed in $-\hat{z}$ direction, all of  which are perpendicular to one another. Then, 
+			\begin{gather*}
+				\vec{E} (\hat{x}) = -vB(-\hat{z} \cross \hat{y}) = -vB (-\hat{x}) \implies E = vB \implies v = \frac{E}{B}.
+			\end{gather*}
+		\subsection*{b) }
+			From lecture notes, $v = rB q / m$ so then 
+			$$ \frac{q}{m} = \frac{v}{rB} \overset{v= E/b}{\implies} \frac{q}{m} = \frac{E}{rB^{2}}. $$
+		\section*{Question 3}
+			\subsection*{a) }
+				We first note that the vertical and horizontal components do not contribute to a magnetic field at the point $P$. We find the magnetic field of the $r=a$ segment contribution. In cylindrical coordinates, 
+				$$ d\vec{l} = a \dr \varphi \hat{\varphi} ; \quad \hat{r} = - \hat{s} ; \quad r^{2} = a^{2}.$$
+				\begin{align*}
+					B(\vec{r})_{r=a} = \frac{\mu_{0}I}{4 \pi} \int \frac{d \vec{l} \cross \hat{r}}{r^{2}} &= \frac{\mu_{0}I}{4 \pi} \int_{0}^{\pi /2} \frac{a \dr \varphi (\hat{\varphi} \cross - \hat{s})}{a^{2}} \\
+					&= \frac{\mu_{0} I}{4 \pi } \int_{0}^{\pi/2} \frac{\dr \varphi}{a^{2} } \hat{z} =
+					 \frac{\mu_{0}I}{8a} \hat{z}.
+				\end{align*}
+				By symmetry, it is obvious that for the $r=b$ segment 
+				$$ B(\vec{r})_{r=b} = \frac{\mu_{0}I}{8b}(-\hat{z}).$$
+				Therefore we conclude 
+				$$ B_{p} = \frac{mu_{0}I}{8} \left(\frac{1}{a} - \frac{1}{b}\right) \hat{z},$$
+				where $\hat{z}$ points out of the page. 
+			\subsection*{b) }
+				We use once again cylindrical coordinates, 
+				$$ d\vec{l} =  R \dr \varphi \hat{\varphi} ; \quad \hat{r} = - \hat{s} ; \quad r^{2} = R^{2}.$$
+				So we have the contribution from the semi-circle at point $P$ given by 
+				\begin{align*}
+					B(\vec{r}) = \frac{\mu_{0}I}{4 \pi} \int_{0}^{\pi} = \frac{R \dr \varphi (\hat{\varphi \cross -\hat{s}})}{R^{2}} = \frac{\mu_{0}I}{4 R} (-\hat{z}).
+				\end{align*}
+				For the bottom infinite line contribution we use same procedure outlined in the lecture notes ; 
+				 $$ d\vec{l} \cross \hat{r} = dl \cos \theta ; \quad d\vec{l} = \frac{s}{\cos\theta} \dr \theta \implies \frac{1}{r^{2}} = \frac{\cos^{2} \theta}{r}.$$
+				 So then the magnetic field at point $P$ . 
+				 \begin{align*}
+				 	B(\vec{R}) &= \frac{\mu_{0}I}{4 \pi} \int_{0}^{\pi /2} \frac{\cos \theta}{R} \dr \theta 
+				 	\intertext{Where the integration bounds were found by extending the line to infinity from which we find that $\theta \in (0 , \pi/2)$ (semi-infinite line).}
+				 	\shortintertext{\[
+				 		\therefore B(\vec{r}) = \frac{\mu_{0}I}{4 \pi R} (-\hat{z}).
+				 		\]}
+				 \end{align*}
+				 Again, by symmetry, the contribution from the top line should be the exact same quantity in the same direction , and so we multiply the bottom line contribution by a factor of $2$. The net magnetic field at point $P$ is then
+				 $$ B(\vec{r})_{P} = \frac{\mu_{0}I}{4 R}(- \hat{z}) + \frac{mu_{0}I}{2 \pi R} (-\hat{z}) = \frac{\mu_{0}I}{4 R} \left(1 + \frac{2}{\pi}\right) (-\hat{z}),$$
+				 with the direction pointing inside the page. 
+			\section*{Question 4}
+				We first note that $\theta_{2} \le \theta \le \theta_{1}$. So we will integrate along the solenoid with respect to $\theta$. We consider an infinitesimal horizontal portion of the solenoid of thickness $\dr x$.  Then, 
+				$$ n' \equiv n \dr x \implies I' \equiv n' I = nI \dr x.$$
+				Then, using the result of Example $5.6$ , 
+				\begin{align*}
+				B(x) &= \frac{\mu_{0}I}{2} \frac{R^{2}}{(R^{2} + z^{2})^{3/2}} \xrightarrow{} \dr \vec{B} = \frac{\mu_{0} nI \dr x}{2} \frac{a^{2}}{ (x^{2} +a^{2})^{3/2}}\\ 
+				 \implies B &= \int \dr B = \frac{\mu_{0}nI a^{2}}{2} \int \frac{\dr x }{(x^{2} + a^{2})^{3/2}}
+				\intertext{Since we want to integrate over $\theta$, we perform a change of variables.}
+				\shortintertext{\[
+					\tan\theta = a/x \implies x = a \cot \theta \implies \dr x = -a \csc^{2} \theta \dr \theta.
+					\]} 
+				&= \frac{\mu_{0}nIa^{2}}{2} \int_{\theta_{1}}^{\theta_{2}} \frac{-a \csc^{2} \theta \dr \theta}{\left(a^{2} \left(\cot^{2} \theta +1\right)\right)^{3/2}} \\
+				&= -\frac{\mu_{0}nIa^{2}}{2a^{2}} \int_{\theta_{1}}^{\theta_{2}} \frac{\csc^{2} \theta}{\left(\cot^{2} \theta +1\right)} \dr \theta \\
+				&= -\frac{\mu_{0}nI}{2} \int_{\theta_{1}}^{\theta_{2}} \frac{1}{\csc \theta } \dr \theta \\
+				\shortintertext{\[ 
+					\therefore B(\vec{r}) = \frac{\mu_{0} n I }{2} (\cos\theta_{2} - \cos \theta_{1}) .
+					\]}
+				\end{align*}
+				We note that if the cylinder were to stretch infinitely, the $\theta$ bounds would become $\theta_{1} = \pi $ and $\theta_{2} =0$ which would give us 
+				$$ B(\vec{r}) = \mu_{0} nI. $$
+			\section*{Question 5}
+				From previous assignments, we know the electric field from an infinite charged line, and the magnetic field from a charged line from Equation $5.38$: 
+				$$ \vec{E} = \frac{\lambda}{2 \pi \ep_{0} r} ; \qquad \vec{B} = \frac{\mu_{0}I}{2 \pi r}.$$
+				Therefore, given $\vec{F} = q[\vec{E} + (\vec{v} \cross \vec{B})] =0 $ (since the forces balance out) we get 
+				$$ qR = qvB \implies \frac{\lambda }{2 \pi \ep_{0}} = v \frac{\mu_{0}I}{2 \pi r} \implies v = \frac{\lambda}{\ep_{0} \mu_{0} I}.$$
+				Now since by definition of a current,  $I = \lambda v$ we conclude 
+				$$ v^{2} = \frac{1}{\ep_{0}\mu_{0}} \implies v =\frac{1}{\sqrt{\ep_{0} \mu_{0}}}.$$
+
+	\end{document}

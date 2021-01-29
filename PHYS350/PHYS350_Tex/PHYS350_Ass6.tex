@@ -1,0 +1,193 @@
+\documentclass[12pt]{article}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[many]{tcolorbox}
+\usepackage{changepage}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{mdframed, longtable}
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+\usepackage{array, tabularx, booktabs}
+\usepackage{graphicx,wrapfig, float, caption}
+\usepackage{tikz,physics,cancel, siunitx, xfrac}
+\usepackage{graphics, fancyhdr}
+\usepackage{lipsum}
+\usepackage{xparse}
+\usepackage{thmtools}
+\usepackage{mathrsfs}
+\usepackage{undertilde}
+\usepackage{tikz}
+\usepackage{fullpage,enumitem}
+\usepackage[labelfont=bf]{caption}
+\newcommand{\td}{\text{dim}}
+\newcommand{\tvw}{T : V\xrightarrow{} W }
+\newcommand{\ttt}{\widetilde{T}}
+\newcommand{\ex}{\textbf{Example}}
+\newcommand{\aR}{\alpha \in \mathbb{R}}
+\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+\newcommand{\un}{u_1 , u_2 , \dots , n}
+\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+\newcommand{\sS}{\text{Span}(\mathcal{S})}
+\newcommand{\sSt}{($\mathcal{S}$)}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\Rn}{\mathbb{R}^{n}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rm}{\mathbb{R}^{m}}
+\usepackage{fullpage, fancyhdr}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\ep}{\epsilon}
+\newcommand{\de}{\delta}
+\usepackage[math]{cellspace}
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{3pt}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\usepackage{newtxtext, newtxmath}
+
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+\newcommand{\vect}{\mathbf}
+\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\A}{\hat{A}}
+\newcommand{\B}{\hat{B}}
+\newcommand{\C}{\hat{C}}
+\newcommand{\dr}{\mathrm{d}}
+\allowdisplaybreaks
+\usepackage{titling}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem]
+\theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{definition}
+\newtheorem{Proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem*{example}{Example}
+\theoremstyle{example}
+\newtheorem*{note}{Note}
+\theoremstyle{note}
+\newtheorem*{remark}{Remark}
+\theoremstyle{remark}
+\newtheorem*{example2}{External Example}
+\theoremstyle{example}
+\usepackage{bbold}
+\title{PHYS350 Assignment 6}
+\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+\author{Mihail Anghelici 260928404 }
+\date{\today}
+
+\relpenalty=9999
+\binoppenalty=9999
+
+\renewcommand{\sectionmark}[1]{%
+	\markboth{\thesection\quad #1}{}}
+
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 6} 
+	\fancyhead[R]{\small Mihail Anghelici $260928404$} 
+	\fancyfoot[C]{-- \thepage\ --}
+	\renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{plain}
+\setlength{\headsep}{1cm}
+\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+		\subsection*{a)}
+ 			The charge inside the ${C_{60}}^{-}$ ion is negative so we use the method of images with $q' + q'' = q$. We then proceed with
+			\begin{align*}
+				F = qE \implies f &= \frac{q}{4 \pi \ep_{0}}\left(\frac{q'' }{a^{2}} + \frac{q' }{(a-b)^{2}}\right) 
+				\intertext{Since $q'' = q - q'$, }
+				&= \frac{q}{4 \pi \ep_{0}} \left(\frac{q}{a^{2}} - \frac{q'}{a^{2}} + \frac{q' }{(a-b)^{2}}\right) \\
+				&= \frac{q^{2}}{4 \pi \ep_{0}} + \underbrace{\frac{qq'}{4 \pi \ep_{0}} \left(\frac{-1}{a^{2}} + \frac{1}{(a-b)^{2}}\right)}_{\text{HW } \ 4} \\
+				&= \frac{q^{2}}{4 \pi \ep_{0}a^{2}} + \frac{q^{2}}{4\pi \ep _{0}} \left(\frac{R}{a}\right)^{3} \frac{(2a^{2} -R^{2})}{(a^{2}-R^{2})^{2}}\\
+				&= \frac{q^{2}}{4 \pi \ep_{0}} \left(a - R^{3} \frac{(2a^{2} -R^{2})}{(a^{2} -R^{2})^{2}}\right).
+			\end{align*}
+			We look for $r$ at $F=0$. At that force, $a(a^{2} - R^{2})^{2} = R^{3} (2a^{2} -R^{2})$. Solving numerically we get 
+			$$ R_{+} = \frac12 (\sqrt{5} -1)a ; \qquad R_{-} -\frac12 (1+\sqrt{5})a.$$
+			We chose the positive root since the distance is a positive quantity in this setting. 
+			$$ \implies R = \frac12  (\sqrt{5} -1)a  \implies a -\frac{2}{\sqrt{5} -1} = \frac12 (1+\sqrt{5}) \implies a \approxeq 5.663 \ \si{\angstrom}.$$
+		\subsection*{b)}
+			Let $a = \gamma R$. By definition 
+			$$ W = - \int_{\infty}^{a} F\ \dr a  = \underbrace{\int_{\gamma}^{\infty} \frac{1}{4 \pi \ep_{0} R } \left(\frac{1}{\gamma^{2}}\right) \dr \gamma}_{:= I_{1}} - \underbrace{\int_{\gamma}^{\infty} \frac{2 (\gamma^{2} -1)}{\gamma^{3} (\gamma^{2} -1)^{2}} \dr \gamma}_{:= I_{2}}.$$
+			We solve the two integrals ,$I_{1}$ is trivial. For $I_{2},$ let $u = \gamma^{2}$ , 
+			\begin{gather*}
+				I_{2} = -\frac12 \int \frac{2u-1}{(u-1)^{2} u^{2}} \dr u = \frac12 \int \frac{1}{u^{2}} \dr u - \frac12 \int \frac{1}{(u-1)^{2}} \dr u = -\frac{1}{2u} - \frac12 \int \frac{1}{s^{2}} \dr s = \frac{1}{2(u-1)u}.\\
+				\therefore I_{2} = \frac{1}{2\gamma^{2} (\gamma^{2} -1)}.
+			\end{gather*}
+			We conclude 
+			$$ W = \frac{q^{2}}{4 \pi \ep_{0}R}\left( - \frac{1}{\gamma } + \frac{1}{2\gamma^{2} (\gamma^{2} -1)}\right) = \frac{q^{2}}{4\pi \ep_{0} R} \frac{1-2\gamma^{3} + 2\gamma}{2\gamma^{2} (\gamma^{2} -1)}.$$
+			Substituting $\gamma = (1+\sqrt{5} / 2)$ and replacing with the appropriate constants, 
+			$$ W = \frac{q^{2}}{8 \pi \ep_{0} R} = \frac{(1.6 \times 10^{-19})^{2} }{8 \pi (8.85 \times 10^{-12}) (5.66 \times 10^{-10})^{2}} = 2.03 \times 10^{-14} \ \si{\joule} = 1.27 \ \si{\electronvolt}.$$
+		\section*{Question 2}
+			We show that $3(\vec{p} \cdot \hat{r}) \hat{r} - \vec{p} = 2 \cos\theta \hat{r} + \sin \theta \hat{\theta}$ then we are done. In spherical coordinates with $\varphi \equiv 0$ and $\vec{p } \parallel \hat{z}$ , we have that 
+			$$ (\vec{p} \cdot \hat{r} )\hat{r} = p \cos\theta \qquad \text{ and } \ \ \ (\vec{p} \cdot \hat{r}) \hat{\theta} = - p \sin\theta,$$
+			so then 
+			$$ \vec{p}(r,\theta) = p\cos \theta - p\sin \theta \implies 3(\vec{p } \cdot \hat{r})\hat{r} - \vec{p} = 3p \cos\theta - p\cos\theta + p\sin \theta = 2p\cos\theta + p\sin \theta \ \ \checkmark. $$
+		\section*{Question 3}
+			\subsection*{a) }
+				The density volume charge is $\rho(r) = Ar$. Then by Gauss's law, 
+				$$ E(4 \pi r^{2}) = \frac{Q_{\text{enc}}}{\ep_{0}} = \oint E \cdot \dr a.$$
+				We find $Q_{\text{enc}}$ ; 
+				$$ Q_{\text{enc}} = \int_{V} \rho(r) \dr \tau = \int_{V} Ar \dr \tau = \int_{0}^{r} Ar (4\pi r^{2}) \dr r \implies \frac{4 Ar^{4} \pi}{4 \ep_{0}} = 4\pi r^{2} E \implies E = \frac{Ar^{2} }{4 \ep_{0}}.$$
+				Since the dipole moment is $p = ed$, we need to find $d$ . Let $d\equiv r$, then 
+				$$ E = \frac{Ad^{2}}{4 \ep_{0}} \implies d = \sqrt{\frac{4 \ep_{0} E }{A}} =\implies p = 2e \sqrt{\frac{E \ep_{0}}{A}} \ \therefore p \propto \sqrt{E}.$$
+			\subsection*{b) }
+				Since $E \propto r$ and $E(0) \neq 0 \implies \rho(r) \propto E \implies \rho(r) \propto r $ and $\rho(0) \neq 0$.
+		\section*{Question 4}
+			By symmetry, each dipole induces an electric field of the same strength. So we let $\vec{p} = \vec{p_{1}}$ and let the electric field be due to the second dipole. Then, 
+			\begin{align*}
+			E_{\text{dip} ,2} = \frac{1}{4\pi \ep_{0} r^{3}} (3 (\vec{p_{2}} \cdot \hat{r}) \hat{r} - \vec{p_{1}}) \implies -\vec{p_{1}} \cdot E_{2} &= - \vec{p_{1}} \cdot (3 (\vec{p_{2}} \cdot \hat{r}) ) + \vec{p_{1}} \cdot \vec{p_{2}} \\
+			&= (- \vec{p_{1} } \cdot\hat{r}) 3(\vec{p_{2}} \cdot \hat{r}) + \vec{p_{1}} \cdot \vec{p_{2}} \\
+				&= -3 (\vec{p_{1}} \cdot \hat{r}) (\vec{p_{2}} \cdot \hat{r}) + \vec{p_{1}} \cdot \vec{p_{2}}. 
+			\end{align*}
+		\section*{Question 5}
+			Given $\sigma_{b} = P \cdot \hat{n}$ and $\rho_{b} = -\nabla \cdot P $, the total charge on the dielectric is 
+			\begin{align*}
+				 Q_{\text{tot}} = \oint\limits_{S} \sigma_{b} \dr a + \int\limits_{V} \rho_{b} \dr \tau &= \oint\limits_{S} (P \cdot \hat{n} ) \dr a - \int\limits_{V} (\nabla \cdot P ) \dr \tau \\
+				 &= \oint\limits_{S} P \cdot \dr \boldsymbol{a} - \int\limits_{V} \nabla \cdot P \dr \tau,
+			\end{align*}
+			by the divergence theorem the last two integrals are equal so $Q_{\text{tot}} = 0$; the total bound charge vanishes. 
+		\section*{Question 6}
+			We use 
+			\begin{align*}
+				E_{\text{dip}} (\vec{r} , \theta) &= \frac{p}{4 \pi \ep_{0} r^{3} } (2 \cos \theta \hat{r} + \sin \theta \hat{\theta}) 
+				\intertext{Sicne the distance is fixed we set $\hat{r} = 0$ giving us }
+				&= \frac{p}{4 \pi \ep_{0} r^{3}} (\sin \theta \hat{\theta}) 
+			\end{align*}
+ 			Since $0 \le  \sin \theta  \le 1$ , it follows that 
+			$$ \max E_{\text{dip}}(\vec{r},\theta) = \frac{p }{4 \pi \ep_{0} r^{3}}.$$
+			Since the dipole moment is on the $\hat{z}$ axis and $\sin(0) =1$ we conclude that this $E_{\text{max}}$ is parallel transposed on the $\vec{P} \implies$ same orientation .
+		\subsection*{b) }
+			We have that 
+			\begin{align*}
+				U &= \frac{1}{4\pi \ep_{0} r^{3}} (\vec{p_{1}} \cdot \vec{p_{2}} - 3(\vec{p_{1}} \cdot \hat{r}) (\vec{p_{2}} \cdot \hat{r})) \\
+				&= \frac{1}{4 \pi \ep_{0} r^{3}} (\abs{p_{1}} \abs{p_{2}} \cos \theta_{p_{1}p_{2}} - \cancelto{0 , \ \text{since no } r \text{dependence}}{3(\vec{p_{1}} \cdot \hat{r}) (\vec{p_{2}} \cdot \hat{r}))}
+				\intertext{It follows that when $\cos\theta_{p_{1} p_{2}} = 0$ or $1$ we have the minmimum and maximum interaction energy respectively} 
+				& \qquad \implies \max U = \frac{p_{1}p_{2}}{4 \pi \ep_{0} r^{3}} ; \qquad \min U = 0,
+			\end{align*}
+			these values physically represent two dipoles oriented along the same axis and oriented perpendicularly ,respectively. 
+		\subsection*{c) }
+			Given that one mole of proton is $\sim 1 \ \si{\gram}$, then $m_{p} = 1/ N_{A} = 1\ 6 \cross 10^{23}.$ Then we have that for $18 \ \text{amu},$ $18/(6 \times 10^{23}) = 3 \cross 10^{-26} \ \si{\kilogram}.$ We then compute the normal vector
+			$$ \hat{n} = \frac{\rho}{m_{H_{2}O}}= \frac{1000 \ \si{\kilogram\per\meter\cubed}}{3 \times 10^{26} \ \si{\kilogram}} = 3 \times 10^{28} \ \si{\meter\cubed}$$. 
+			Then we use 
+			$$ U \sim \vec{p} \cdot \vec{E} = \frac{p^{2}}{4 \pi \ep_{0} d^{3}} = \frac{p^{2}}{4 \pi \ep_{0} (n^{(-1/3)})^{3}} = \frac{(1.85 \times 3.33 \times 10^{-30} )^{2}}{4 \pi \times 8.85\times 10^{-12} (3.22 \times 10^{-10})^{3})} \approxeq 1.01 \times 10^{-20} \ \si{\joule}. $$
+			For steam, we use $pV = NkT$ for which 
+			$$ pV = NkT \implies (10^{5} \ \si{\pascal})d^{3} = (1)k (373.15 \ \si{\kelvin}) \implies d = 3.62 \times 10^{-9},$$
+			we then use the same interaction energy formula ; 
+			$$ U = \frac{p^{2} }{4 \pi \ep_{0} r^{3}} = \frac{(1.85 \times 3.33 \times 10^{-30} )^{2}}{4 \pi \times 8.85\times 10^{-12} (3.62 \times 10^{-9})^{3}} \approxeq 7.2 \times 10^{-24} \ \si{\joule}.$$
+			Finally, we know that $kT$ actually represents the energy in $\si{\joule}$ such that for liquid water 
+			$$ kT = \text{Energy} = 1.01 \times 10^(-20) \xrightarrow{k = 1.38 \times 10^{-23}} T = 732.6 \ \si{\kelvin}.$$
+			And for steam, 
+			$$ kT = \text{Energy} = 7.2 \times 10^{-24} \xrightarrow{k = 1.38 \times 10^{-23}} T = 0.51 \ \si{\kelvin}.$$
+			the temperatures should be larger than these values to exceed the dipole interaction energy, respectively.
+	\end{document}

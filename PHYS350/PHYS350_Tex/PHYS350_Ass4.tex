@@ -1,0 +1,235 @@
+\documentclass[
+	12pt,
+	]{article}
+		\usepackage{xcolor}
+			\usepackage[dvipsnames]{xcolor}
+			\usepackage[many]{tcolorbox}
+		\usepackage{changepage}
+		\usepackage{titlesec}
+		\usepackage{caption}
+		\usepackage{mdframed, longtable}
+		\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+		\usepackage{array, tabularx, booktabs}
+		\usepackage{graphicx,wrapfig, float, caption}
+		\usepackage{tikz,physics,cancel, siunitx, xfrac}
+		\usepackage{graphics, fancyhdr}
+		\usepackage{lipsum}
+		\usepackage{xparse}
+		\usepackage{thmtools}
+		\usepackage{mathrsfs}
+		\usepackage{undertilde}
+		\usepackage{tikz}
+		\usepackage{fullpage,enumitem}
+		\usepackage[labelfont=bf]{caption}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\usepackage{fullpage, fancyhdr}
+	\newcommand{\La}{\mathcal{L}}
+	\newcommand{\ep}{\epsilon}
+	\newcommand{\de}{\delta}
+	\usepackage[math]{cellspace}
+		\setlength{\cellspacetoplimit}{3pt}
+		\setlength{\cellspacebottomlimit}{3pt}
+	\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\B}{\mathcal{B}}
+	\newcommand{\Ss}{\mathcal{S}}
+	\usepackage{newtxtext, newtxmath}
+	
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{PHYS 350 Assignment 4}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 }
+	\date{\today}
+	
+	\relpenalty=9999
+			\binoppenalty=9999
+		
+			\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\quad #1}{}}
+			
+			\fancypagestyle{plain}{%
+			  \fancyhf{}
+			  \fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 4} 
+			  \fancyhead[R]{\small Mihail Anghelici $260928404$} 
+			  \fancyfoot[C]{-- \thepage\ --}
+			  \renewcommand{\headrulewidth}{0.4pt}}
+			\pagestyle{plain}
+			\setlength{\headsep}{1cm}
+	\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+			\subsection*{a) }
+				Since 
+				$$ U = \frac12 \frac{Q^{2}}{C} = \frac12 CV^{2} = \frac12 QV ,$$
+				we have that 
+				$$ C = \frac{2U}{V^{2}} = \frac{2(200)}{1000^{2}} = \frac{1}{2500} \ \si{\farad}.$$
+				Similarly, 
+				$$ Q = \frac{2U}{V} = \frac{2(200)}{1000} = \frac25 \ \si{\coulomb}. $$
+			\subsection*{b) } 
+				Air between the plates so we have natural dielectric 
+				\begin{gather*}
+					 U = \frac{A}{2d} \epsilon_{0}  E^{2} d^{2} = \frac12 Ad \epsilon_{0} E^{2} = \frac12 \epsilon_{0} E^{2} (\text{Vol}) 
+				\end{gather*}
+				Letting $E = E_{\text{max}} = 3 \cross 10^{6} \ \si{\volt\per\meter}$, then 
+				$$ \text{Vol} = \frac{2(200)}{\epsilon_{0}(3 \cross 10^{6})^{2}} = 5.02 \ \si{\meter\cubed}.$$
+				This volume is much larger than the volume that they use. 
+			\subsection*{c) }
+				Since $U = \epsilon_{0} E^{2} / 2$, then integrating over a sphere with respect to $r$ in spherical coordinates yields 
+				$$  U = \frac{\pi}{3} \ep_{0} E^{2} r^{3} \implies r = \sqrt[3]{\frac{3U}{\pi \ep_{0} E^{2}} } = 1.32 \ \si{\meter} \implies d \approx 2.6 \ \si{\meter}.$$ 
+		\section*{Question 2}
+			Let us consider the rods in the $yz$ quadrant. Let $a$ be the distance from the centre set at $(0,0)$ for each rod. Then as it was found previously the equipotential lines are parametrized by 
+			$$ D= a\frac{e^{4 \pi \ep_{0} V_{0} / \lambda} +1}{e^{4 \pi \ep_{0} V_{0} / \lambda} -1} \qquad \text{and} \  R = 2a \frac{e^{2 \pi V_{0} \epsilon_{0} / \lambda}}{e^{4 \pi V_{0 } \epsilon_{0} / \lambda} -1 }$$
+			We can perform the following operations , let $a \equiv 2 \pi \epsilon_{0} V_{0} / \lambda $
+			\begin{gather*}
+			D= a\frac{e^{2a} +1}{e^{2a} -1} = a\frac{e^{a}e^{a} +1}{e^{a}e^{a} -1} = a\frac{e^{a} +\frac{1}{e^{a}}}{e^{a} - \frac{1}{e^{a}}} = a\frac{e^{a} +e^{-a}}{e^{a} - e^{-a}} = a\coth(a) \\
+			R = 2a \frac{e^{a}}{e^{2a} -1} = 2a \frac{1}{e^{a} - e^{-a}} =2a\frac{1}{\sinh(a)} = a \csch(a)
+			\end{gather*}
+			and so we conclude that 
+			$$ D = a \coth(2 \pi \epsilon_{0} V_{0} / \lambda ) \qquad \text{ and } \ R = a \csch(2 \pi \epsilon_{0} V_{0} / \lambda ).$$
+			Diving the two we can solve for $\lambda$; 
+			\begin{align*}
+			\frac{D}{R} = \cosh(2 \pi \epsilon_{0}V_{0} / \lambda) \implies \lambda  = \frac{2 \pi \epsilon_{0} V_{0}}{\cosh[-1](D/R)}.
+			\end{align*}
+			We also concluded that the potential at any point in that quadrant is
+			$$V = \frac{\lambda}{4 \pi \epsilon_{0}} \ln \abs{\frac{(y+a)^{2} +z^{2}}{(y-a)^{2} +z^{2}}},$$
+			with $a = \sqrt{D^{2} -R^{2}}.$
+		\section*{Question 3}
+			It was seen in the last assignment that the potential and maximal electric field for the log based solution,
+			\begin{gather*}
+				E_{\text{max}} = \frac{\lambda}{2 \pi \epsilon_{0} R} \\
+				V = \frac{\lambda}{\pi \epsilon_{0}} \ln\abs{\frac{D-R}{R}} \implies \lambda = \frac{V_{0} \pi \epsilon_{0}}{\ln \abs{\frac{D-R}{R}}} \\
+				\therefore E_{\text{max}} = \frac{V_{0} \pi \epsilon_{0}}{\ln \abs{\frac{D-R}{R}}}(2 \pi \epsilon_{0}R)^{-1}\tag{1}
+ 			\end{gather*}
+			For the new exact solution,
+			$$V = \frac{\lambda}{4 \pi \epsilon_{0}} \ln \abs{\frac{(y+a)^{2} +z^{2}}{(y-a)^{2} +z^{2}}}$$
+			\begin{align*}
+				\implies E = -\nabla V &= \frac{- \lambda}{4 \pi \epsilon_{0}}\left( \frac{2(y-a)}{(y-a)^{2} + z^2} - \frac{2(y+a)}{(y+a)^{2} + z^2} \right) \\
+				&= \frac{\lambda}{2 \pi \epsilon_{0}} \left( \frac{(y-a)}{(y-a)^{2} + z^2} - \frac{(y+a)}{(y+a)^{2} + z^2}\right) \\
+				&= \frac{2\pi \ep_{0}V_{0}}{\cosh[-1](D/R) 2 \pi  \ep_{0}}\left( \frac{(y-a)}{(y-a)^{2} + z^2} - \frac{(y+a)}{(y+a)^{2} + z^2}\right)  \tag{2}
+			\end{align*}
+			Combining $(1)$ and $(2)$ and with $R = 0.025 \ \si{\centi\meter}$ and $D= 10 \ \si{\meter}$ and $V=V_{0} = 765 kV$ we get 
+			\begin{align*}
+				&(1) \ : \qquad  E_{\text{max}} = \frac{(765000) \pi (8.83\cross 10^{-12})}{\ln\abs{\frac{10- 0.025}{0.025}} 2 \pi (8.83\cross 10^{-12})0.025} = 2.55 \cross 10^{6} \ \si{\volt\per\meter} \\
+				&(2) \ : \qquad E_{\text{max}} = \frac{2\pi (8.83\cross 10^{-12}) (765000)}{\cosh[-1](10/0.025)} \left(\frac{2}{5}\right) = 4.6 \cross 10^{5} \ \si{\volt\per\meter}
+			\end{align*}
+			The two electric fields differ by about an order of magnitude, suggesting that the electric field or log based potential formulae derived on the last assignment are erroneous. 
+					\begin{remark}
+						No further improvements have been suggested by the TA whom I have contacted and assured me that the correction for this problem shall not be to harsh. Thence the answer is left as is.
+					\end{remark}
+		\section*{Question 4}
+			The average of a potential along a sphere is given by 
+			$$ V_{\text{avg}}= \frac{1}{A} \int V \ da  = \frac{1}{4 \pi R^{2}} \int V \ da.$$
+			We show the equality as requested ; 
+			\begin{align*}
+				V_{\text{avg}} &= \frac{1}{4 \pi R^{2}} \int V  \ da 
+				\intertext{Since we're integrating over the surface of a sphere, we parameterize $V = V(R, \theta ,\phi$) ,}
+				&= \frac{1}{4 \pi} \int V(R , \theta , \phi) R^{2} \sin \theta \ d \theta \ d\phi 
+				\intertext{By Leibnitz rule, }
+				&= \frac{1}{4 \pi} \int \pdv{V}{R} \sin \theta \ d\theta  \ d\phi 
+				\intertext{From spherical coordinates we know that } 
+				\shortintertext{
+				\[\nabla V = \pdv{V}{R} \hat{r} + \frac{1}{r} \pdv{V}{\theta} \hat{\theta} + \frac{1}{r \sin \theta} \pdv{V}{\phi} \hat{\phi} 
+				\implies \hat{r} \cdot \nabla V = (\hat{r} \cdot \hat{r}) \pdv{V}{R} = \pdv{V}{R} \]
+				}
+				\therefore \dv{V_{\text{avg}}}{R} &= \frac{1}{4 \pi } \int  (\hat{r} \cdot \nabla V) \sin \theta \ d\theta \ d\phi 
+				\intertext{We add a factor of $R^{2}$ and rearrange} 
+				&= \frac{1}{r \pi R^{2}} \int (\nabla V) \cdot \hat{r}R^{2} \sin\theta d\theta d\phi \\
+				\dv{V_{\text{avg}}}{R} &= \frac{1}{4 \pi R^{2}} \oint (\nabla V)  d\boldsymbol{a} \quad \checkmark 
+				\intertext{Applying the divergence theorem , we take the gradient and integrate over the volume }
+				&= \frac{1}{4 \pi R^{2}} \int \nabla\cdot (\nabla V) \ d \tau = \frac{1}{4 \pi R^{2}} \int (\nabla^{2}V) \ d\tau. 
+				\intertext{If $V$ satisfies Laplace equation ,i.e., $\nabla^{2} V =0$ over the volume then }
+				\shortintertext{\[\dv{V_{avg}}{R} = 0,\]}
+				\intertext{Which suggests that regardless of the radius , the potential remains the same. So for a point $P$ at which the ball is centered, it follows $V_{\text{avg}}(0) = V(P) = V_{\text{avg}}(0)$}
+			\end{align*}
+		\section*{Question 5}
+			We know that 
+			$$ \int_{\nu} T \nabla^{2}U + (\nabla T) \cdot (\nabla T) \ d\tau = \oint_{S} (T \nabla U) \cdot d \boldsymbol{a},$$
+			for $T = U = V_{3}$.Therefore ,
+			\begin{align*}
+				\int_{\nu} (V_{3} \nabla^{2} V_{3} + (\nabla V_{3}) \cdot (\nabla V_{3})) \ d\tau &= \oint_{S} (V_{3} \nabla V_{3}) \cdot d\boldsymbol{a}
+				\intertext{Since by construction $E_{3} =E_1 - E_2 \implies V_3 = V_1 - V_2$. Moreover, we know that $\nabla E = -\rho / \ep_{0}$ , and $\nabla V = -E$ ,thus}
+				\int_{\nu} (V_{3} (\nabla^{2} V_{1} - \nabla^{2} V_{2}) + {E_{3}}^{2}) \ d\tau &= - \oint_{S} V_{3} E_{3} \cdot d\boldsymbol{a} \\
+				\int_{\nu} V_{3}\left(\cancelto{0}{\frac{-\rho}{\ep_{0}} + \frac{\rho}{\epsilon_{0}}}\right) + {E_{3}}^{2}\ d\tau &= -\oint_{S} V_{3}E_{3} \cdot d\boldsymbol{a} \\
+				\implies \int_{\nu} {E_{3}}^{2} \ d\tau &= - \oint_{S} V_{3} E_{3} \cdot d\boldsymbol{a}
+				\intertext{Since $V_{3}$ is constant over all surfaces in $\nu$ and is $0$ at $\infty$, we have that }
+				\shortintertext{\[\int_{\nu} {E_{3}}^{2} \ d\tau  = -V_{3} \oint_{S} E_{3} \cdot d\boldsymbol{a} = 0 \ \ \text{since} \ \ \oint_{S} E \cdot d\boldsymbol{a} =0 \ \ \text{by definition}\]}
+				\shortintertext{\[\therefore \int_{\nu} {E_{3}}^{2} \ d\tau = 0 \implies E_{3} \equiv 0 \implies E_{1} \equiv E_{2}.\]}
+			\end{align*}
+		\section*{Question 6}
+		\subsection*{a) }
+			We place a charge $q'$ at the right of the centre with value $q' = -Rq /a$. We also place a second image charge $q''$ at the centre of the sphere such that the potential inside the sphere is no longer $0$ but $V_{0} = 4 \pi \ep_{0} q'' / a$. Then since the sphere is neutral we have that $q' + q'' =0.$ It then follows by definition of the force for image charge configurations that 
+			The potential super posed is 
+			$$ V = \frac{q''}{4 \pi ep_{0} a} + \frac{q''}{4 \pi \ep_{0}(a-b)} \implies E = -\nabla V = \frac{1}{4 \pi \ep_{0} }\left(\frac{q''}{a^{2}} + \frac{q'}{(a-b)^{2}}\right),$$
+			So then the force is $F = qE$ , 
+			$$ F= \frac{1}{4\pi \ep_{0} }q \left(\frac{q''}{a^{2}} + \frac{q'}{(a-b)^{2}}\right).$$
+			Now since $q'' = -q'$ we can perform some rearrangement 
+			\begin{align*}
+				F &= \frac{1}{4 \pi \ep_{0} } qq' \left(\frac{-1}{a^{2}} + \frac{1}{(a-b)^{2}}\right) \\
+				&=\frac{1}{4 \pi \ep_{0} } q q' \left(\frac{-(a-b)^{2} +a^{2}}{a^{2} (a-b)^{2}}\right) \\
+				&= \frac{1}{4 \pi \ep_{0} } qq' \frac{(2a-b)b}{a^{2}(a-b)^{2}}
+				\intertext{Since $q' =-Rq/a$ and $b = R^{2} /a$ by definition, it follows that through substitution}
+				&= \frac{1}{4 \pi \ep_{0} }\frac{q\left(\frac{-R^{2}q}{a}\right) (2a -R^{2}/a) R^{2}/a}{a^{2} (a-R^{2}/a)^{2}}\\
+				&= \frac{1}{4 \pi \ep_{0} } q^{2}\left(\frac{-R}{a}\right)^{3} \frac{(2a^{2} -R^{2})}{(a^{2} -R^{2})^{2}}
+				\intertext{We drop the minus sign since the force is attractive so we care about the magnitude }
+				F = \frac{1}{4 \pi \ep_{0} } &q^{2}\left(\frac{R}{a}\right)^{3} \frac{(2a^{2} -R^{2})}{(a^{2} -R^{2})^{2}}. \tag{3}
+			\end{align*}
+			We now look for an expression for the leading order in $a$ and $R$. Let $R \sim a$ since for the order it doesn't matter if one is larger or smaller than the other, then 
+			\begin{align*}
+				F &= \frac{1}{4 \pi \ep_{0} } q^{2}\cancelto{(1, \ \textit{"since they have the same order")}}{\left(\frac{R}{a}\right)^{3}} \frac{a^{2}\left(2- \left(\frac{R}{a}\right)^{2}\right)}{a^{4}(1- 2\left(\frac{R}{a}\right)^{2} + \left(\frac{R}{a}\right)^{4})} \\
+				&= \frac{1}{4 \pi \ep_{0}} q^{2} \frac{2 - \left(\frac{R}{a}\right)^{2}}{a^{2} \left(1 - 2 \left(\frac{R}{a}\right)^{2} + \cancelto{0}{\mathcal{O}\left(\frac{R}{a}\right)}\right)} \\
+				&\approx \frac{1}{4 \pi \ep_{0}} q^{2} \frac{2 - \left(\frac{R}{a}\right)^{2}}{a^{2} \left(1- 2\left(\frac{R}{a}\right)^{2}\right)},
+			\end{align*}
+			we see that the leading order between $a$ and $R$ is $a$ with the second order magnitude. We conclude that the force for that leading order is approximatively
+			$$ F \approx \frac{1}{4 \pi \ep_{0}} q^{2} \frac{2-\left(\frac{R}{a}\right)^{2}}{a^{2} \left(1-\left(\frac{R}{a}\right)^{2}\right)}.$$
+		\subsection*{b) }
+			Since the charge is \textit{placed} on the conductor and is brought all the way from infinity, the work would blow up to infinity as well since $V=0$ on the surface of the conductor , since it's an equipotential.
+		\subsection*{c) }
+			We use $E=E_{\text{max}} = 3 \cross 10^{6}$ for an estimate since it's the ambient electric field around the ball given the corona discharge presence around the van der graph. For a spherical conductor, 
+			$$ E = \frac{Q}{4 \pi \ep_{0}r^{2}} \implies Q = E 4 \pi \ep_{0}R^{2} = (3 \cross 10^{6})4 \pi (8.83\cross 10^{-12}) (0.05)^{2} = 8.32 \cross 10^{-7} \ \si{\coulomb}.$$
+			Then, we use $(3)$ to find the force but replace $q $ with $Q$ ; 
+			\begin{align*}
+				F &= \frac{Q^{2}}{4 \pi \ep_{0}} \left(\frac{R}{a}\right)^{3} \frac{(2a^{2} -R^{2})}{(a^{2} -R^{2})^{3}} \\
+				&=\frac{(8.32 \cross 10^{-7})^{2}}{4 \pi (8.83 \cross 10^{-12})} \left(\frac{0.05 \ \si{\meter}}{0.1 \ \si{\meter}}\right)^{3} \frac{(2(0.1)^{2} - 0.05^{2})}{(0.1^{2} -0.05^{2})^{2}} \\
+				&= 0.273 \ \si{\newton}.
+			\end{align*}
+	\end{document}

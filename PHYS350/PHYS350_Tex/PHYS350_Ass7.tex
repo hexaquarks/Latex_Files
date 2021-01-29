@@ -1,0 +1,228 @@
+\documentclass[12pt]{article}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[many]{tcolorbox}
+\usepackage{changepage}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{mdframed, longtable}
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+\usepackage{array, tabularx, booktabs}
+\usepackage{graphicx,wrapfig, float, caption}
+\usepackage{tikz,physics,cancel, siunitx, xfrac}
+\usepackage{graphics, fancyhdr}
+\usepackage{lipsum}
+\usepackage{xparse}
+\usepackage{thmtools}
+\usepackage{mathrsfs}
+\usepackage{undertilde}
+\usepackage{tikz}
+\usepackage{fullpage,enumitem}
+\usepackage[labelfont=bf]{caption}
+\newcommand{\td}{\text{dim}}
+\newcommand{\tvw}{T : V\xrightarrow{} W }
+\newcommand{\ttt}{\widetilde{T}}
+\newcommand{\ex}{\textbf{Example}}
+\newcommand{\aR}{\alpha \in \mathbb{R}}
+\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+\newcommand{\un}{u_1 , u_2 , \dots , n}
+\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+\newcommand{\sS}{\text{Span}(\mathcal{S})}
+\newcommand{\sSt}{($\mathcal{S}$)}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\Rn}{\mathbb{R}^{n}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rm}{\mathbb{R}^{m}}
+\usepackage{fullpage, fancyhdr}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\ep}{\epsilon}
+\newcommand{\de}{\delta}
+\usepackage[math]{cellspace}
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{3pt}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\usepackage{newtxtext, newtxmath}
+
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+\newcommand{\vect}{\mathbf}
+\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\A}{\hat{A}}
+\newcommand{\B}{\hat{B}}
+\newcommand{\C}{\hat{C}}
+\newcommand{\dr}{\mathrm{d}}
+\allowdisplaybreaks
+\usepackage{titling}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem]
+\theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{definition}
+\newtheorem{Proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem*{example}{Example}
+\theoremstyle{example}
+\newtheorem*{note}{Note}
+\theoremstyle{note}
+\newtheorem*{remark}{Remark}
+\theoremstyle{remark}
+\newtheorem*{example2}{External Example}
+\theoremstyle{example}
+\usepackage{bbold}
+\title{PHYS350 Assignment 7}
+\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+\author{Mihail Anghelici 260928404 }
+\date{\today}
+
+\relpenalty=9999
+\binoppenalty=9999
+
+\renewcommand{\sectionmark}[1]{%
+	\markboth{\thesection\quad #1}{}}
+
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 6} 
+	\fancyhead[R]{\small Mihail Anghelici $260928404$} 
+	\fancyfoot[C]{-- \thepage\ --}
+	\renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{plain}
+\setlength{\headsep}{1cm}
+\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+		\subsection*{a)} 
+			We first note that the electric field inside the inner sphere $(r < a)$ is $0$ since $Q_{\text{enc}} = 0$.
+			
+			\noindent For $a<r<b$, we use Gauss's law
+			$$\oint E \cdot \dr l = \frac{Q_{\text{enc}}}{\ep_{0}} =\implies \abs{E} 4 \pi r^{2} = \frac{ \sigma_{b,a} 4 \pi a^{2} + \text{inside density charge}}{\ep_{0}} ,$$
+			where $\sigma_{b,a} = p\cdot \hat{r}  = \frac{k}{a}\hat{r} \cdot -\hat{r} = \frac{-k}{a}, $ the outward unit normal points away from the dielectric.
+			Since we're looking for the bound charge inside for which $\rho_b$ is dependent on $r$ , we mus integrate.
+			
+			$$ Q_{\text{enc},b} = \int_{a}^{r} \frac{-k}{r^{2}} \dr \tau = -4 \pi k (r-a). $$
+			So then the electric field for the region $a<r<b$ is 
+			$$ \abs{E} 4 \pi r^{2} =  -4\pi ka - 4\pi k(r-a) = -4 \pi kr  \implies E = \frac{-k}{r \ep_{0}}\hat{r} ,$$
+			Finally, the electric field outside the outer sphere is also $0$ because the total charge of the full spheres is $0 \overset{By Gauss}{\implies} E_{r>b} = 0 / \ep_{0} 4 \pi r^{2}=0$.
+			
+		\subsection*{b) }
+			We know that $\rho_{f} =0$ so then since 
+			$$ \vec{\nabla} \cdot \vec{D} = \rho_{f} \implies \vec{\nabla } \cdot \vec{D} = 0 \implies \vec{D} =0.$$
+			Then from Equation $4.2.3$ , 
+			$$ \oint \vec{D} \cdot \dr \vec{a} = q_{f} \implies \vec{D} =0 . $$
+			Thus, since $ \vec{D} = \ep_{0} \vec{E} + \vec{P} $ and $p = \frac{k}{r} \hat{r}$, 
+			$$ \implies -\frac{k}{r} = \ep_{0} \vec{E} \implies E = - \frac{k}{\ep_{0}r}\hat{r},$$ 
+			in the zone where there exits a dielectric. 
+			
+			\noindent Since $P_{\text{outside}} = P_{\text{inside}} = 0 \implies 0 = \ep_{0} \vec{E} \implies \vec{E} =0.$ We conclude that 
+			$$ \vec{E} (\vec{r}) = \begin{cases}
+				0 \qquad &, 4 <a, \\
+				-\dfrac{k}{r \ep_{0}} \qquad &, a <r <a ,\\
+				0 \qquad  &, r <a.
+			\end{cases}$$ 
+			Both methods agree in their solutions.
+			
+		\section*{Question 2}
+			\subsection({a) }
+				We consider a Gaussian pill box. $D(2A) = \sigma A \implies D = \sigma/2$. Now since each sheet has an effect on the other sheet , a portion cancels such that 
+				$$ \vec{D} = \sigma(-\hat{z}) = -\sigma \hat{z},$$
+				which points downwards because that's the direction of the field.
+			\subsection*{b) }
+				$$ \text{Since } \ \vec{E} = \frac{E_{f}}{\ep }, \quad \vec{D} = \ep_{0} E_{f} \implies E = \frac{\vec{D}}{\ep_{0}\ep_{r}} = \begin{cases}
+					-\dfrac{\sigma}{\ep_{0} 2 } \hat{z} \quad &, \text{Slab } 1, \\
+					-\dfrac{\sigma 2 }{\ep_{0}3} \hat{z} \quad &, \text{Slab }2.
+				\end{cases}$$
+			\subsection*{c) }
+				$$ \text{Since } \vec{P} = \ep_{0}\chi_{e} \vec{E} = \ep_{0} (1 + \ep_{r} )\vec{E}= \begin{cases}
+					-\dfrac{\sigma}{2} \hat{z}  \quad &, \text{Slab } 1, \\
+						-\dfrac{\sigma}{3} \hat{z}  \quad &, \text{Slab }2.
+				\end{cases}$$
+			\subsection*{d)} 
+				$$ \Delta V = \int \vec{E} \cdot \dr \vec{l} = \int_{0}^{a} -\frac{\sigma}{2 \ep_{0}} \dr z + \int_{0}^{a} -\frac{2\sigma}{3 \ep_{0}} \dr z = -\frac{7a \sigma}{6 \ep_{0}}.$$
+			\subsection*{e ) }
+				Since $\sigma_{b} = P \cdot \hat{n},$  we have 
+				\begin{alignat*}{2}
+					& \sigma_{b,+,\uparrow} = -\frac{\sigma }{2 \ep_{0}} \hat{z }\cdot \hat{z} = - \frac{\sigma}{2}, \qquad &\sigma_{b,+ ,\downarrow} = -\frac{\sigma}{2 \ep_{0}} \hat{z} \cdot -\hat{z} = \frac{\sigma}{2}, \\
+					&\sigma_{b , - , \uparrow } = -\frac{\sigma}{3} \hat{z} \cdot \hat{z} = -\frac{\sigma}{3} ,\qquad & \sigma_{b, -, \downarrow} = -\frac{\sigma}{3} \hat{z} \cdot -\hat{z} = \frac{\sigma}{3} .
+				\end{alignat*}
+			\subsection*{f) }
+				In the dielectric $1$, the surface bound charge is $\pm \sigma/2$ and for the dielectric $2$ the surface bound charge is $\pm 2 \sigma /3$ , we concldue that 
+				$$ \vec{E_{1}} = -\frac{\sigma}{2 \ep_{0}} \hat{z} ,\qquad \vec{E_{2} = \frac{2\sigma}{3 \ep_{0}}} \hat{z},$$
+				where we took the negative values since the electric field points in the $-\hat{z}$ direction and we note that these answers agree to part $(b)$.
+		\section*{Question 3}
+			\subsection*{a) }
+				We use $U_{\text{total}} = U_{\text{in}} + U_{\text{out }}.$
+				From Assignment 6 we know that 
+				$$ E_{\text{dip}} (r , \theta) = \frac{p}{4 \pi \ep_{0} r^{3}} (2 \cos \theta \hat{r} + \sin\theta \hat{\theta}) \overset{p = \frac{4}{3} \pi R^{3} P}{=}\frac{R^{3}P }{3 \ep_{0} r^{3}} (2 \cos \theta \hat{r} + \sin\theta \hat{\theta}).$$
+				Moreover , from Example $4.2 $ we conclude that 
+				$$ E_{\text{in}} = \begin{cases}
+					-\dfrac{P}{3 \ep_{0}} \quad &, r< R, \\
+					\dfrac{R^{3} P}{3 \ep_{0} r^{3}} \quad&, r \ge R.	
+				\end{cases}$$
+				Then 
+				$$ U_{\text{in}} = \frac{\ep_{0}}{2} \int\limits_{V} \left(- \frac{P}{3 \ep_{0}}\right)^{2} \dr \tau =\frac{\ep_{0}}{2} \left(- \frac{P}{3 \ep_{0}}\right)^{2} \int\limits_{V} \dr \tau = \frac{\ep_{0}}{2} \left(- \frac{P}{3 \ep_{0}}\right)^{2} \frac{4}{3} \pi R^{3} = \frac{2\pi P^{2} R^{3}}{27 \ep_{0}}.$$
+				For $U_{\text{out}}$ we use spherical coordinates , 
+				\begin{align*}
+					 U_{\text{out}} &= \frac{\ep_{0}}{2} \int_{R}^{\infty} \int_{0}^{\pi} \int_{0}^{2\pi} \left(\frac{R^{3} P}{3 \ep_{0}r^{3}}\right)^{2} (2 \cos \theta \hat{r} + \sin\theta \hat{\theta})^{2} r^{2} \sin \theta \dr \phi \dr \theta \dr r
+					 \intertext{Since $\hat{r} \perp \hat{\theta}$, then $(2\cos \theta \hat{r} + \sin\theta \hat{\theta})^{2} = 4 \cos^{2} \theta + \sin^{2} \theta = 3 \cos^{2}\theta + 1$. }
+					 &= \frac{\ep_{0}}{2} \left(\frac{R^{3}P}{3 \ep_{0}}\right)^{2} (2\pi) \int_{R}^{\infty} \frac{r^{2}}{r^{6}} \int_{0}^{\pi} (3 \cos^{2} \theta +1) \dr \theta \\
+					  &\overset{x = \cos \theta}{=} \frac{\ep_{0}}{2} \left(\frac{R^{3}P}{3 \ep_{0}}\right)^{2} (2\pi) \int_{R}^{\infty} \frac{1}{r^{4}} \int_{1}^{-1} (3x^{2} +1) \dr x \\
+					   &= \frac{\ep_{0}}{2} \left(\frac{R^{3}P}{3 \ep_{0}}\right)^{2} (2\pi) (4) \int_{R}^{\infty} \frac{1}{r^{4}} \\
+					   &= \frac{\ep_{0}}{2} \left(\frac{R^{3} P}{3 \ep_{0} }\right)^{2} (2\pi )(4) \frac{1}{3 R^{3}} = \frac{4 \pi P^{2}R^{3}}{27 \ep_{0}}.
+				\end{align*}
+				We conclude that the total energy is 
+				$$ U_{\text{tot}} = \frac{2\pi P^{2} R^{3}}{27 \ep_{0}} +  \frac{4 \pi P^{2}R^{3}}{27 \ep_{0}} = \frac{2 \pi P^{2} R^{3}}{4 \pi \ep_{0}}.$$
+			\subsection*{b) }
+				Since the medium is infinite and we use the equation for linear dielectric then $ \vec{D} = \ep_{0} E_{f}$.So for $r \ge R, \vec{D} = \ep_{0} + \vec{E}$ and for $r < R,  \ \vec{D} = \ep_{0} \vec{E}+ \vec{P}$. So then ,
+				\begin{align*}  
+				U_{\text{in}} &= \frac12 \int \vec{D}_{\text{in}} \cdot \vec{E}_{\text{in}} \dr \tau = \frac12 \int \ep_{0} E_{\text{in}} + P \cdot E_{\tex{in}} \dr \tau \\ &= \frac12 \int \ep_{0} \frac{2P}{3 \ep_{0}} \cdot - \frac{P}{3 \ep_{0}} \dr\tau = -\frac{P^{2}}{9 \ep_{0}} \int\limits_{V} \dr \tau \\ &= -\frac{4 \pi R^{3} P^{2}}{27 \ep_{0}}.
+				\end{align*}
+				Also for the outside energy , 
+				$$ U_{\text{out}} = \frac12 \int \vec{D }_{\text{out}} \cdot \vec{E}_{\text{out}} \dr \tau  = \frac12 \int \ep_{0} E \cdot E \dr \tau = \frac{\ep_{0}}{2} \int E^{2} \dr \tau \overset{(a)}{=}\frac{4 \pi P^{2}R^{3}}{27 \ep_{0}} .$$
+				From the above the sum is $0 \implies U_{\text{tot}} = 0$.
+				
+				\noindent We note that none of the energies are the \textit{true} energies. The first method doesn't account for the energy required to assemble the system and the second method uses Equation $4.58$ which is valid only for linear dielectrics ; in our present case it is not.
+		\section*{Question 4}
+			By Coulomb's law, the force on a charge is $F = Q/ 4 \pi R^{2}$. Here we will use cylindrical coordinates. 
+			\begin{align*}
+				\vec{F} = (\vec{p} \cdot \vec{\nabla} )\vec{E} \xrightarrow{\vec{p} = p\hat{\varphi}}  (p\hat{\varphi} \cdot \vec{\nabla})\vec{E}  &= p \hat{\varphi} \cdot \left(\pdv{}{s} \hat{s} + \frac{1}{s} \pdv{}{\varphi} \hat{\varphi } + \pdv{}{z} \hat{z}\right) \vec{E} \\
+				&= \frac{p}{s} \pdv{}{\varphi}\left(\hat{\varphi}\cdot \hat{\varphi}\right)\vec{E} 
+				= \frac{p}{s} \pdv{}{\varphi} \vec{E}
+			\end{align*}
+			Therefore, 
+			\begin{align*}
+				 \vec{F} = \left(\frac{p}{s}  \pdv{}{\varphi}\right) \frac{Q }{4 \pi \ep_{0 }s^{2}} \hat{s} &= \frac{pQ}{4 \pi s^{3}} \pdv{\hat{s}}{\varphi} 
+				 \intertext{In cylindrical coordinates, $\hat{s} = \cos \varphi \hat{x} + \sin\varphi \hat{y} \xrightarrow{\pdv{}{y}} \hat{\varphi} = \cos\varphi \hat{y} - \sin\varphi \hat{x}$ ; }
+				 &= \frac{pQ}{4 \pi s^{3}} \hat{\varphi } = \frac{Q}{4 \pi s^{3}} \vec{p}.
+			\end{align*}
+			This is not a perpetual machine since energy is conserved. Indeed there must be a mechanism in which the tangential force that attracts the dipole towards the centre along with the force exerted by the charge, mitigate one another such that the system loses energy over time. In return the net force and its magnitude dictate the direction and the time that the dipole will spin around .
+		\section*{Question 5}
+			We use the boundary conditions. 
+			$$ D_{\text{above}}^{\perp} = \sigma_{f} + D_{\text{below}}^{\perp }\implies \overset{\sigma_{f} \equiv 0}{D_{\text{above}}^{\perp } = D_{\text{below}}^{\perp}} \qquad, \text{and }\ E_{\text{above}}^{||} = E_{\text{below}}^{||}.$$
+			We get that $E_{1} \sin \theta_{1} = E_{2} \sin \theta_{2}$ and since $D = \ep_{0}\ep_{r} E \implies \ep_{0}\ep_{1} E_{1} \cos\theta_{1} = \ep_{0} \ep_{2} E_{2} \cos\theta_{2}$. So then dividing each side respectively, we have 
+			$$ \tan \theta_{1} \frac{1}{\ep_{1}} = \tan\theta_{2} \frac{1}{\ep_{2}} \implies \frac{\tan\theta_{2}}{\tan\theta_{1}} = \frac{\ep_{2}}{\ep_{1}}.$$
+			If we let $\ep_{2} > \ep_{1}$ then 
+			$$ \frac{\tan\theta_{2}}{\tan\theta_{1}} = \frac{k\ep_{1}}{\ep_{1}} = k \implies \tan\theta_{2}  = k\tan\theta_{1} \implies \tan\theta_{2} > \tan\theta_{1} \implies \theta_{2} > \theta_{1},$$
+			the electric field lines defocus. 
+		\section*{Question 6}
+		We calculate the capacitance.
+			$$ C_{\text{new}} = \ep_{r} \frac{Q}{V} = \ep_{r} \ep_{0} \frac{A}{d} \implies C_{\text{new}} = \frac{(4)(5)(8.85\times 10^{-12})}{15 \times 10^{-6}} = 1.18 \times 10^{-5} \ \si{\farad}.$$
+		From that we deduce the charge on the plates, 
+		$$ Q = \frac{V C_{\text{new}}}{\ep_{r}} = \frac{(1.18 \times 10^{-5})(9)}{5} = 2.12  \times 10^{-5} \ \si{\coulomb}.$$
+		In an ideal world, as we brind up the upper plate the charge would not change but the capacitance will change since $C \propto d'$. So then since the new potential $V'$ will scale with the distance $d'$ , we get 
+		$$ V ' \frac{\ep_{r} Q}{C_{\text{new}} ' } = \frac{\ep_{r} Q d' }{\ep_{r} \ep_{0} A} = \frac{Q d' }{\ep_{0} A} \overset{d' = 2 \ \si{\meter}}{=} \frac{(2.12\times 10-5)(2)}{(8.85 \times 10^{-12})(4)} = 1.2 \times 10^{6} \ \si{\volt}$$
+		The total energy stored would then be 
+		$$ U = \frac{\ep_{0}}{2} \int  E^{2} \dr \vec{l}= \frac{\ep_{0}}{2} \int \frac{V^{2}}{d^{'2}} \dr \vec{l} = \frac12 \int \frac{Q^{2}}{\ep_{0} A^{2}} \dr \vec{l } = \frac{1}{\ep_{0}}\int_{0}^{d'} \frac{Q^{2}}{A^{2}} \dr d = \frac{Q^{2} d'}{2 \ep_{0} A^{2}}.$$
+		If $d' = R = 2 \ \si{\meter}$ then this is 
+		$$ U  = \frac{(2.12\times 10^{-5})^{2} (2)}{2(8.85\times 10^{-12})(4)^{2}} = 3.17 \ \si{\joule}. $$
+ 			\end{document}
