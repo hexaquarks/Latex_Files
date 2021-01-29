@@ -1,0 +1,229 @@
+\documentclass[
+	12pt,
+	]{article}
+	\usepackage{changepage}
+	\usepackage{titlesec}
+	\usepackage{graphicx}
+	\usepackage{graphics}
+	\usepackage{booktabs}
+	\usepackage{amsmath}
+	\usepackage{siunitx}
+	\usepackage{xparse}
+	\usepackage{physics}
+	\usepackage{amssymb}
+	\usepackage{mathrsfs}
+	\usepackage{undertilde}
+	\usepackage{dutchcal}
+	\usepackage{amsthm}
+	\usepackage{wrapfig}
+	\newcommand{\tx}{\text{}}
+	\usepackage{tikz}
+	\usepackage{xfrac}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\B}{\mathcal{B}}
+	\newcommand{\Ss}{\mathcal{S}}
+	
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{PHYS 241 Assignment 2.}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404}
+	\date{\empty}
+	
+	\begin{document}
+	\maketitle
+	
+	\section*{Question1.}
+		\subsection*{a) }
+			The relative permittivity $\epsilon_{r}$ is a textbook value given by $2.1$. The vaccuum perimittiviy value is approximately $8.85 \cross 10^{-12} \ \si{\farad\per\meter}$
+			The capacitance $C$ is then given by 
+			\begin{align*}
+				C &= \frac{\epsilon_{0} \epsilon A}{d}\\
+				&= \frac{(0.01)^{2}(2.1)(8.85 \cross 10^{-12})}{0.0001} \ \left[\frac{\si{\meter\squared\farad}}{\si{\meter\squared}}\right] \\
+				&= 1.8585 \cross 10^{-11} \ \si{\farad} = \boxed{18.585 \ \si{\pico\farad}}.
+			\end{align*}
+		\subsection*{b) }
+			The circuit time constant for an $RC$ set up is given by 
+			\begin{align*}
+				\tau = RC &= (1\cross 10^{3})(1.8585 \cross 10^{-11}) \ \si{\ohm\farad} \\
+				&= 1.8585 \cross 10^{-8} \ \si{\second} = \boxed{0.018585 \ \si{\micro\second}}.
+			\end{align*}
+		\subsection*{c) }
+			The formula for a capacitor's charge who's discharging is given by 
+			\begin{align*}
+				Q(t) &= Q_{\text{max}}\left(1-e^{\frac{-t}{\tau}}\right) \\
+				5 \ \si{\coulomb} &= 10 \ \si{\coulomb}(1-e^{\frac{-t}{0.018585 \ \si{\second}}})\\
+				(-0.01858 \ \si{\second})\left(\ln(\frac{1 \ \si{\second}}{2 \ \si{\second}})\right) &\implies \boxed{t = 0.01288 \ \si{\second}}.
+			\end{align*}
+		\subsection*{d) }
+			The total energy dissipated across a resistor from a capacitor is given by 
+			\begin{align*}
+				U_{C}(t) &= \frac12 C (\Delta V_{C}(t))^{2} \\&= \frac12 C \left(\frac{Q}{C}\right)^{2} \\
+				&= \frac12 \frac{Q^{2}}{C}\\
+				\implies U_{C}(0.01288 \ \si{\second}) &= \frac12 \frac{(5 \cross 10^{-6})^{2}}{(1.8585 \cross 10^{-11})} \ \left[\frac{\si{\coulomb\squared}}{\si{\farad}}\right] \\
+				&= \boxed{0.6726 \ \si{\joule}}.
+			\end{align*}
+	\section*{Question 2.}
+		\subsection*{a) }
+			The inductance is given by 
+			\begin{align*}
+				L = \mu_{0} A \frac{N^{2}}{\mathcal{l}} &=4\pi \cross 10^{-7} (0.01)^{2}\pi\frac{(1000)^{2}}{0.05} \ \left[\frac{\si{\henry\meter\squared}}{\si{\meter\squared}}\right] \\
+				&=7.895 \cross 10^{-3} \ \si{\henry} = \boxed{7.895 \ \si{\milli\henry}}.
+			\end{align*}
+		\subsection*{b) }
+			The time constant for a LR circuit is given by 
+			\begin{align*}
+				\tau = \frac{L}{R} =\frac{7.895\cross 10^{-3} \ \si{\henry}}{1\cross 10^{3} \ \si{\ohm}} = 7.895 \ \si{\second} = \boxed{7.896 \cross 10^{6} \ \si{\micro\second}}.
+			\end{align*}
+		\subsection*{c) }
+			The maximal value for the current in the given circuit is $I_{\text{max}} = \frac{V_{0}}{R}$. Thus the time to reach the half value of $I_{\text{max}}$ is 
+			\begin{align*}
+				\frac{I_{\text{max}}}{2} &= I_{\text{max}} \left(e^{\frac{-t_{\sfrac{1}{2}}}{\tau}}\right) \\
+				\ln\left(\frac12\right)(-\tau) &= t_{\sfrac{1}{2}} \\
+				\implies t_{\sfrac{1}{2}} &= ln\left(\frac12\right)(-7.896) = \boxed{5.472 \ \si{\second}}.
+			\end{align*}
+	\section*{Question 3.}
+		Let $R_{\text{eq}} = R_1 + R_2$ since the two resistors are in series.
+		\subsection*{a ) }
+			\begin{gather*}
+				V_{0} = \Delta V_{C} + \Delta V_{R_{\text{eq}}} = \frac{Q}{C}+ I R_{\text{eq}} 
+				\intertext{Let us apply a time derivative on both sides , since $I=I(t)$ and $Q=Q(t)$ this yields ,}
+				0 = \frac{1}{C}\frac{dQ}{dt} + R_{\text{eq}} \frac{dI}{dt}.
+				\intertext{Since $\frac{dQ}{dt} = I$ , we have}
+				\frac{dI}{dt} = \frac{-I}{CR_{\text{eq}}} \\
+				\implies \frac{dI}{dt} + \frac{I}{\tau} = 0  \qquad \text{for } \ \ \tau = C(R_1 + R_2).
+			\end{gather*}
+		\subsection*{b) }
+			At $t=0$, the capacitor is fully discharged, so only the resistor plays a role such that 
+			$$ I_{0} = \frac{V_{0}}{R_{\text{eq}}}.$$
+		\subsection*{c) }
+			Note that $\dfrac{dI}{dt} = \dfrac{-I}{CR_{\text{eq}}}$ is a separable equation. Therefore ,
+			\begin{align*}
+				\frac{dI}{dt} = \frac{-I}{CR_{\text{eq}}} &\implies CR_{\text{eq}} \frac{I^{\prime}}{I} = -1 \implies CR_{\text{eq}} \ln(I) = \int -1 \ dt \\
+				& \implies CR_{\text{eq}}\ln(I) = -t + c \implies I - e^{\frac{-t+c}{CR_{\text{eq}}}} = e^{\frac{-t}{CR_{\text{eq}}}}e^{\frac{c}{CR_{\text{eq}}}}.
+			\end{align*}
+			Define $A = e^{\frac{c}{CR_{\text{eq}}}}$ then we have the initial value problem 
+			\begin{gather*}
+				I = A e^{\frac{-t}{CR_{\text{eq}}}} \qquad ,I(0) = \frac{V_0}{R_{\text{eq}}} \\
+				\frac{V_{0}}{R_{\text{eq}}} = A e^{\frac{0}{CR_{\text{eq}}}} \implies A = \frac{V_{0}}{R_{\text{eq}}}\\
+				\text{thus the desired differential equation is } \ \ I(t) = \frac{V_{0}}{R_{\text{eq}}} e^{\frac{-t}{\tau}} \quad \text{for $\tau = C(R_1 + R_2)$}.
+			\end{gather*}
+		\subsection*{d) }
+			Since $I(t) = \dfrac{V_{0}}{R_{\text{eq}}} e^{\frac{-t}{\tau}}$, then $IR = V_{0}e^{\frac{-t}{\tau}}$. 
+			Using conservation of voltage along the circuit along with the substitution for $IR$ we have
+			\begin{align*}
+				\Delta V_{C}(t) = \frac{1}{C}Q(t) = V_{0} - IR = V_{0} - V_{0}e^{\frac{-t}{\tau}} = V_{0}(1 - e^{\frac{-t}{\tau}}) \\
+				\text{Since  } \ Q = C\Delta V_C ,  \ \ \text{we have} \ C\Delta V_C = C V_0(1-e^{\frac{-t}{\tau}})\\
+				\implies Q(t) = CV_{0} (1-e^{\frac{-t}{\tau}}) .
+			\end{align*}
+		\subsection*{e) }
+			Since $\Delta V_{C} =V_{0}(1-e^{\frac{-t}{\tau}})$, then since the capacitor is chargin and voltage drop is conserved throughout the circuit, symmetrically , we have 
+			$$ \Delta V_{R_{2}}(t) = \left(\frac{R_{2}}{R_{1} + R_{2}}\right) V_{0} e^{\frac{-t}{\tau}}$$ 
+			\newpage
+		\subsection*{f) }
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=\linewidth]{"current_charge.png"}
+				\caption{Current and Charge plots}
+			\end{figure}
+	\section*{Question 4. }
+		\subsection*{a) }
+			The inductor acts like a short therefore the steady current is 
+			$$ I = \frac{V_{0}}{R_{1}}.$$
+		\subsection*{b) }			
+			Since the switch is opened no current is going through $R_1$ such that,
+			\begin{align*}
+				\frac{dI}{dt} = \frac{-R_{2}}{L}I \implies \frac{dI/dt}{I} &=\frac{R_{2}}{L}\\
+				\ln(I) = \int \frac{-R_{2}}{L} dt &= \frac{-R_{2}}{L} +C.\\
+				\implies I(t) &= Ae^{\frac{-t}{\tau}} \qquad \text{for } \ A = e^{C}.
+			\end{align*} 
+			\begin{equation*}
+					\text{Since} I(0) = \frac{V_{0}}{R_{1}} \quad \implies I(t) = \frac{V_{0}}{R_{1}}e^{\frac{-t}{\tau}} \quad ,\text{for } \ \tau = \frac{L}{R_{2}}.
+			\end{equation*}
+		\subsection*{c) }
+				The total energy at time $t$ formula is given by
+						$$ U_{L} = \frac12 L (I(t))^{2}$$
+						Integrating from $0 \to t$ this formula whilst substituting the previous value found for $I(t)$ , 
+						\begin{align*}
+							U_{L} &= \frac12 L \left(\frac{V_{0}}{R_{1}}e^{\frac{-t}{\tau}}\right)^{2}\\
+							&= \frac{V_{0}^{2}}{R_{1}^{2}} \frac12 L \int_{0}^{t} e^{\frac{-t}{\tau}}\ dt \\ 
+							&= \frac{V_{0}^{2}}{R_{1}^{2}} \frac12 L(\tau\left(1-e^{\frac{-t}{\tau}}\right)) 
+						\end{align*}
+						\begin{gather*}
+						\implies U_{L} = \frac{V_{0}^{2}}{R_{1}^{2}} \frac12 L(\tau\left(1-e^{\frac{-t}{\tau}}\right))\\
+								\text{Taking the $\lim$ as $t\to \infty$ yields } \\
+								\lim_{t\to \infty} U_{L}  = \frac{V_{0}^{2}}{R_{1}^{2}} \frac{L\tau}{2}
+						\end{gather*}
+	\section*{Question 5.}
+		Since potential difference is conserved in loops, we have 
+		\begin{gather*}
+			V_{0} - IR_{1} - L \frac{dI_{1}}{dt} = V_{0} - IR_{1} - I_{2}R_{2} \\
+			\implies L\frac{dI_{1}}{dt} = I_{2}R_{2}.
+		\end{gather*}
+		 
+		Three equations are necessary to solve this problem 
+		\begin{enumerate}
+			\item $I = I_1 + I_2$ \quad by the Mesh Law.
+			\item $L\frac{dI_{1}}{dt} = I_{2}R_{2}$.
+			\item $V_{0} = R_{1}I + L\frac{dI_{1}}{dt}$
+		\end{enumerate}
+		\begin{align*}
+			V_{0} &= R_{1}I + L\frac{dI_{1}}{dt} \\
+			&=R_{1}I_{1} + R_{1}I_{2} + L\frac{dI_{1}}{dt} 
+			\intertext{Since $I_{2} = \frac{L}{R_{2}}\frac{dI_{1}}{dt}$ , we have }
+			&=R_{1}I_{1} + \frac{R_1}{R_2} L\frac{dI_{1}}{dt} + L\frac{dI_{1}}{dt} \\
+			&=R_{1}I_{1}+\left(\frac{R_{1}}{R_{2}} + 1\right)L\frac{dI_{1}}{dt} \\
+			\implies \frac{dI_{1}}{dt} &= \frac{V_{0}-R_{1}I_{1}}{L\left(1+\frac{R_{1}}{R_{2}}\right)} \\
+			\frac{dI_{1}/dt}{V_{0}-R_{1}I_{1}} &= \frac{1}{L\left(1+\frac{R_{1}}{R_{2}}\right)} \\
+			\ln\abs{V_{0}-R_{1}I_{1}} &= -R_{1}\left(\frac{t}{L\left(1+\frac{R_{1}}{R_{2}}\right)} + C\right)
+			\intertext{Let $A = e^{-R_{1}C}$, we then have} 
+			V_{0}-R_{1}I_{1} &= Ae^{\frac{-R_{1}t}{L(1+R_{1}/R_{2})}}
+			\intertext{Let $B=A/-R_{1}$ , we then have }
+			I_{1}(t) &= Be^{\frac{-tR_{1}}{(1+R_{1}/R_{2})}} + \frac{V_{0}}{R_{1}}
+			\intertext{Using the initial condition $I(0) = 0$ since initialy no current goes through, }
+			I_{1}(0) &= Be^{\frac{-\infty R_{1}}{(1+R_{1}/R_{2})}} + \frac{V_{0}}{R_{1}} = \frac{V_{0}}{R_{1}} \\
+			\implies I_{1}(t) &= \frac{V_{0}}{R_{1}}\left(1+e^{\frac{-tR_{1}}{(1+R_{1}/R_{2})}}\right) = \frac{V_{0}}{R_{1}}\left(1+e^{\frac{-t}{\left(\frac{1}{R_{1}} + \frac{1}{R_{2}}\right)}}\right) \xrightarrow{t\to \infty} \frac{V_{0}}{R_{1}}
+		\end{align*}
+		Which indeed agrees with the long time limit from Question 4. 
+			
+			
+			
+	\end{document}

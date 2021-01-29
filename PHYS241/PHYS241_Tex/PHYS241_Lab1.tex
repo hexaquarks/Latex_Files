@@ -1,0 +1,127 @@
+\documentclass[
+	12pt,
+	]{article}
+	\usepackage{changepage}
+	\usepackage{titlesec}
+	\usepackage{graphicx}
+	\usepackage{graphics}
+	\usepackage{booktabs}
+	\usepackage{amsmath}
+	\usepackage{siunitx}
+	\usepackage{xparse}
+	\usepackage{physics}
+	\usepackage{amssymb}
+	\usepackage{mathrsfs}
+	\usepackage{undertilde}
+	\usepackage{dutchcal}
+	\usepackage{amsthm}
+	\usepackage{wrapfig}
+	\newcommand{\tx}{\text{}}
+	\usepackage{tikz}
+	\usepackage{xfrac}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\B}{\mathcal{B}}
+	\newcommand{\Ss}{\mathcal{S}}
+	
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{PHYS 241 Lab 2.}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 \\ Section  22524 Thursday\\ \\ Experiment performed with Guillaume Payeur}
+	\date{February 27, 2020}
+	
+	\begin{document}
+	\maketitle
+		\section*{Question 1.}
+			\subsection*{a) }
+				The voltage across a capacitor is defined as 
+				$$ V_{C} = V_0 \left(1-e^{-t/\tau}\right)$$
+				Let $t_{0}$ be the time at which the capacitor is charged by $0.1V_{0} \ \si{\volt}$ and $t_{f}$ the time at which the capacitor is charged to $0.9V_{0} \ \si{\volt}$. Then we have 
+				\begin{align*}
+					0.1 V_{0} &= V_{0} \left(1-e^{-t_{0}/ \tau}\right) \\
+					0.9 V_{0} &= V_{0} \left(1- e^{-t_{f}/ \tau}\right)
+				\end{align*}
+				$$ \implies t_{f} - t_{0} = -\tau \ln \abs{-0.9 +1 } + \tau \ln \abs{-0.1 + 1} = 2.3\tau - 0.1 \tau = 2.2\tau.$$ 
+				The theoretical circuit rise time (using $C = 0.68 \ \si{\micro\farad}$ and $R = 1 \ \si{\kilo\ohm}$) is then $1.5 \ \si{\milli\second}$.
+				
+				In our experiment ,using a multimeter, the capacitance along with the resistance were found to be respectively $0.701 \ \si{\micro\farad}$ and $0.9726 \ \si{\kilo\ohm}$. Multiplying these yields a value for the time constant , $\tau = 0.000681 \ \si{\second}$. 
+				$$ \therefore t_{r} = 2.2\tau = 1.520 \ \si{\milli\second}.$$
+				This value is in good agreement with the theoretical rise time which we initially expected.
+			
+			\subsection*{b) }
+				It was found experimentally that the frequency at which $V_C$ waveform's amplitude starts to decrease is at approximately $200 \ \si{\hertz}$. This is a sensible answer because at frequencies close to the time response the decrease gets progressively noticeable. Indeed, $t_r$ is the time required to charge the capacitor up from $10 \%$ to $90 \%$ of its maximal capacity. $200 \ \si{\hertz}$ corresponds to $0.005  \ \si{\second}$ which is higher than $t_r$ , such that the capacitor doesn't have time to fully charge since the voltage threshold is not attained. 
+			\subsection*{c) }
+				The input voltage $v_i$ is $1.0 \ \si{\volt}$ and the time divisions correspond to $1 \ \si{\micro\second}$, therefore we can immediately compute $V_C$ 
+				\begin{gather*}
+					V_C = \frac{1}{RC} \int v_i \ dt = \frac{1}{0.000681 \ \si{\second}} \int (1) \ dt = \frac{t}{0.000681 \ \si{\second}} = \frac{10\cross 10^{-6} \ \si{\volt\per\second}}{0.000681 \ \si{\second}} = 14,6 \ \si{\milli\volt}.
+				\end{gather*}
+				Experimentally it was found graphically that the peak to peak $V_C = 15 \ \si{\milli\volt}$ , which is in good agreement with the theoretical expectation.
+		\section*{Question 2.} 
+			The rise time for this circuit was found to be $0.0015 \ \si{\second}$. Since the input square wave is at $100 \ \si{\hertz}$, that converts to $0.01 \ \si{\second}$ which is higher than $t_r$, thus allowing the capacitor to always fully charge. In that case, adding a DC voltage doesn't affect its DC level of the capacitor since that is already at its maximal value. 
+		\section*{Question 3.} 
+			\subsection*{a )} 
+				The rate of change was evaluated graphically by looking at the input waveform's voltage along with the time division $10 \ \si{\milli\second}$. The rate of change was found to be 
+				\begin{gather*}
+					v_i  = \left(\frac{2 \ \si{\volt}}{5\cross 10 \ \si{\milli\second}}\right) = 40 \ \si{\volt\per\second}. 
+					\intertext{Multiplying by $2$ to account for a full wave "peak-to-peak" yields }
+					v_i = 80 \ \si{\volt\per\second}
+				\end{gather*}
+				Then we compute $V_C$ : 
+				\begin{gather*}
+					V_C = RC \frac{d v_i}{dt} = 0.000681 \ \si{\second} \ \frac{d}{dt}\left(80t \ \si{\volt\per\second}\right) = 0.05448 \ \si{\volt}. 
+				\end{gather*}
+				Experimentally we found $0.0572 \ \si{\volt}$ which is in agreement with the theoretical value.
+			\subsection*{b) }
+				The first choice ($i$) ,i.e., $R = 1 \ \si{\kilo\ohm} , \ \ C = 10 \ \si{\micro\farad}$ is more appropriate for two reasons. First, since it was experimentally verified that for the initial given set up, $20 \ \si{\hertz}$ is the frequency at which the output waveform starts to deform, choosing a larger capacitance will allow the capacitor to charge further given a large frequency. Moreover, the RC constant is larger such that $100 \ \si{\hertz}$ won't be the high frequency limit, this way the output voltage won't be distorted .
+		\section*{Question 4.}
+		Let $V_{T}$ be the voltage at the point in between the resistor and the inductor in the studied circuit.Using complex impedences ,we find the value of the inductance as follows,
+			\begin{gather*}
+				\frac{\widetilde{V_{0}}}{\widetilde{V_{T}}} = \frac{j\omega L}{R+j\omega L} = \abs{\frac{\widetilde{V_{0}}}{\widetilde{V_{T}}}}^{2} = \abs{\frac{(\omega L)^{2}}{(R+\omega L )^{2}}}.
+				\intertext{Let $V_{0} / V_{T} = 1/2$ , then we have}
+				\abs{\frac12}^{2} = \frac{(\omega L)^{2}}{R^{2} + (\omega L )^{2}} \\
+				\implies 4(\omega L)^{2} = R^{2} + (\omega L)^{2} \implies R = \omega L \sqrt{3}\\
+				\therefore L = \frac{R T}{2\pi \sqrt{3}}.
+			\end{gather*}
+			Using $R = 0.9728 \ \si{\kilo\ohm}$ and a wave generated of $150 \ \si{\hertz}$, we get 
+			\begin{gather*}
+				L = \frac{0.9728 \cross 10^{3} \ \si{\ohm}}{2 \pi \sqrt{3} \ 150 000 \ \si{\hertz}} = 595.9 \ \si{\micro\henry}.
+			\end{gather*}
+	\end{document}

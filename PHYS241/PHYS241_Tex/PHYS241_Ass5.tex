@@ -1,0 +1,292 @@
+\documentclass[
+	12pt,
+	]{article}
+		\usepackage{xcolor}
+			\usepackage[dvipsnames]{xcolor}
+			\usepackage[many]{tcolorbox}
+		\usepackage{changepage}
+		\usepackage{titlesec}
+		\usepackage{caption}
+		\usepackage{mdframed, longtable}
+		\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+		\usepackage{array, tabularx, booktabs}
+		\usepackage{graphicx,wrapfig, float, caption}
+		\usepackage{tikz,physics,cancel, siunitx, xfrac}
+		\usepackage{graphics, fancyhdr}
+		\usepackage{lipsum}
+		\usepackage{xparse}
+		\usepackage{thmtools}
+		\usepackage{mathrsfs}
+		\usepackage{undertilde}
+		\usepackage{tikz}
+		\usepackage{fullpage}
+		\usepackage[labelfont=bf]{caption}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\usepackage{fullpage, fancyhdr}
+	\newcommand{\La}{\mathcal{L}}
+
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\B}{\mathcal{B}}
+	\newcommand{\Ss}{\mathcal{S}}
+	
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{PHYS241 Ass 5.}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 }
+	\date{\today}
+	
+	\relpenalty=9999
+			\binoppenalty=9999
+		
+			\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\quad #1}{}}
+			
+			\fancypagestyle{plain}{%
+			  \fancyhf{}
+			  \fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 5} 
+			  \fancyhead[R]{\small Mihail Anghelici $260928404$} 
+			  \fancyfoot[C]{-- \thepage\ --}
+			  \renewcommand{\headrulewidth}{0.4pt}}
+			\pagestyle{plain}
+			\setlength{\headsep}{1cm}
+	\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+			\subsection*{a)}
+				\begin{align*}
+					&\underline{KCL} : I_{1} = I_{2} + I_{3} \\
+					&\underline{KVL1} : V_{01} - R_{1}I_{1} + V_{02} - I_{3}R_{2} = 0 \\
+					&\underline{KVL2} : V_{01} - R_{1}I_{1} - I_{2}R_{3} = 0
+				\end{align*}
+				\begin{align*}
+					\therefore & V_{01} - R_{1}(I_{2} + I_{3}) + V_{02} -I_{3}R_{2} = 0 \\
+					& V_{01} - R_{1} (I_{2} + I_{3}) - I_{2}R_{3} = 0 \\
+					\implies & I_{2}[-R_{1}] + I_{3}[-R_{1} - R_{2}] + V_{02} = -V_{01}
+					\intertext{We need a third equation to replace $V_{01}$ in previous equation}
+					& V_{01} = R_{1}(I_{2} + I_{3}) + I_{2}R_{3} \\
+					\implies & -[R_{1}(I_{2}) + R_{1}I_{3} + I_{2}R_{3} + I_{2}(-R_{1}) + I_{3}(-R_{1} - R_{2})] = V_{02} \\
+					\therefore & I_{2}(-R_{3}) + I_{3} (R_{2}) = V_{02} \\
+					\therefore & I_{2}(R_{1} + R_{3}) + I_{3}(R_{1}) = V_{01}
+					\intertext{Converting the previous two equation's $I_{3} \to I_{1}$ to accomodate for Question 1b yields} 
+					&I_{1}(R_{1}) + I_{2}(R_{3}) = V_{01} \quad \text{and } I_{1}(R_{2}) + I_{2}(-R_{3}-R_{2}) = V_{02}.
+				\end{align*}
+				\begin{equation*}
+					\begin{pmatrix}
+						R_{1} & R_{3} \\
+						R_{2} & (-R_{3}-R_{2})
+					\end{pmatrix}
+					\begin{pmatrix}
+						I_{1} \\ I_{2}
+					\end{pmatrix} = 
+					\begin{pmatrix}
+						V_{01} \\ V_{02}
+					\end{pmatrix}
+				\end{equation*}
+			\subsection*{b)}
+				\begin{align*}
+					&\underline{KVL1} : V_{01} - R_{1}I_{1} + V_{02} - (I_{1} - I_{2}) R_{2} = 0 \\
+					&\underline{KVL2} : -V_{02} - I_{2}R_{3} - (I_{2} - I_{1})R_{2} = 0
+					\intertext{Since $V_{02} = -I_{2}R_{3} - I_{2} R_{2} + I_{1}R_{2}$, } 
+					\implies & I_{1}(R_{1}) + I_{2}(R_{3}) = V_{01} \\
+					& I_{1}(R_{2}) + I_{2} (-R_{2} - R_{3}) = V_{02}.
+				\end{align*}
+				The results agree with the answer in part a.
+			\subsection*{c) }
+				\begin{equation*}
+					\begin{pmatrix}
+						R_{1} & R_{3} \\
+						R_{2} & (-R_{3} - R_{2})
+					\end{pmatrix}
+					\begin{pmatrix}
+						I_{1} \\ I_{2} 
+					\end{pmatrix}
+					= \begin{pmatrix}
+						V_{01} \\ V_{02}
+					\end{pmatrix} \to 
+					\begin{pmatrix}
+						1 & 1 \\ 2& -3 
+					\end{pmatrix}
+					\begin{pmatrix}
+					I_{1} \\ I_{2}
+					\end{pmatrix}
+					= \begin{pmatrix}
+						1 \\ 1 
+					\end{pmatrix}
+				\end{equation*}
+				Solving the above system of equations numerically yields $I_{1} = 0.8 \ \si{\milli\ampere}$ , $I_{2} = 0.2 \ \si{\milli\ampere}$, which then implies that $I_{3} = 0.6 \ \si{\milli\ampere}$.
+		\section*{Question 2}
+			
+			\begin{align*}
+				&\underline{KVL1} : V_{0} - I_{1} R_{1} - (I_{1} - I_{2})R_{2} - (I_{1} - I_{3})R_{3} = 0 \\
+				&\underline{KVL2} : -I_{2}R_{5} - (I_{2} - I_{3})R_{4} - (I_{2} - I_{1})R_{2} = 0 \\
+				&\underline{KVL3} : -(I_{3} - I_{2}) R_{4} - I_{3}R_{6} - (I_{3} - I_{1})R_{3} = 0
+				\intertext{The common terms between KVL1 and KVL2 with KVL3 are respectively $I_{2}R_{2}$ and $I_{3}R_{3}$ so we isolate those to express KVL2 and KVL3 in terms of $V_{0}$}
+				\implies &V_{0} - I_{1}R_{1} - I_{1}R_{2} - (I_{1} - I_{3})R_{3} = -I_{2}R_{2} \\
+				\text{and} \ &V_{0} - I_{1}R_{1} -(I_{1} - I_{2})R_{2} - I_{1}R_{3} = - I_{3}R_{3}
+			\end{align*}
+			Plugging those expressions in the equations for KVL$_{1}$ , KVL$_{2}$ and KVL$_{3}$ while simultaneously isolating for $V_{0}$ and canceling out terms yields the following system of equations
+			\begin{align*}
+				I_{1}(R_{1} + R_{2} + R_{3}) + I_{2}(-R_{2}) + I_{3}(-R_{3}) &= V_{0} \\
+				I_{1}(R_{1} + R_{3}) + I_{2} (R_{5} +R_{4}) + I_{3}(-R_{4} - R_{3}) &= V_{0} \\
+				I_{1}(R_{1} + R_{2}) = I_{2} (-R_{4} - R_{2}) + I_{3}(R_{4} + R_{6}) &= V_{0}
+			\end{align*}
+			\begin{equation*}
+				\therefore 
+				\begin{pmatrix}
+					R_{1} + R_{2} + R_{3} & -R_{2} & -R_{3} \\
+					R_{1} + R_{3} & R_{5} + R_{4} & -R_{4} - R_{3} \\
+					R_{1} + R_{2} & -R_{4} - R_{2} & R_{4} + R_{6} 
+				\end{pmatrix}
+				\begin{pmatrix}
+					I_{1} \\ I_{2} \\ I_{3}
+				\end{pmatrix}
+				= 
+				\begin{pmatrix}
+					V_{0} \\ V_{0} \\ V_{0}
+				\end{pmatrix}.
+			\end{equation*}
+	\section*{Question 3}
+		\subsection*{a) }
+			We first and foremost compute the value of $a_{0}/2$.
+			\begin{align*}
+				\frac{a_{0}}{2} &= 2\left(\frac{1}{T} \int_{-T/2}^{0} V_{0} + \frac{2V_{0}t}{T} dt\right) = \frac{2V_{0}}{T} \left(\int_{-T/2}^{0}\ dt + \int_{-T/2}^{0} \frac{2t}{T} \ dt \right) \\
+				&= \frac{2V_{0}}{T} \left(\left(0 \frac{T}{2}\right) + \left(\frac{0}{T} - \frac{(-T/2)^{2}}{T}\right)\right) = \frac{2V_{0}}{T} \left(\frac{T}{4}\right) = \frac{V_{0}}{2}. 
+			\end{align*}
+			Since the function is even $b_{n} = 0$ and so we now find an expression for $a_{n}$. By definition, 
+			\begin{align*}
+				a_{n>0} &= \frac{4V_{0}}{T}\int_{-T/2}^{0} \left(1+ \frac{2t}{T}\right) \cos(\omega_{n} t) \ dt 
+				\intertext{Using \textit{Wolframalpha} the above integral redudces to }
+				&= \frac{4V_{0}\sin^{2}\left(\frac{\pi n }{2}\right)}{\pi^{2}n^{2}}.
+				=\frac{4V_{0}}{n^{2}\pi^{2}} \begin{cases}
+									&0 \quad, n=\text{  even} \\
+									&1 \quad, n=\text{  odd}.
+								\end{cases}
+			\end{align*} 
+			The final expression for the Fourier series of the given function is then 
+			\begin{equation*}
+				f(t) = \frac{V_{0}}{2} + \sum_{n=1}^{\infty} \frac{4V_{0}}{(2n -1)^{2} \pi^{2}} \cos\left(\frac{2\pi(2n -1)t}{T}\right).
+			\end{equation*}
+		\subsection*{b) }
+		\vspace{-1.2cm}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width = 0.8\linewidth]{PHYS241_Ass5_Fig1.png}
+				\captionsetup{margin=1.5cm , justification=raggedright} \caption{First three harmonics of the Fourier series in Question 2a, for $T = 1 \ \si{\milli\second}$.}
+			\end{figure}
+	\section*{Question 4}
+		\subsection*{a) }
+			\begin{align*}
+				H(\omega) &= \frac{Z_{R}}{Z_{C} + Z_{R}} = \frac{R}{R + 1/j\omega C} = \frac{1}{1 + 1/j\tau \omega} \\
+				&=\frac{j\tau\omega}{j\tau\omega + 1 } = \frac{j\tau\omega}{j\tau\omega + 1} \left(\frac{-j\omega\tau +1 }{-j\omega\tau + 1}\right) = \frac{(\omega\tau)^{2} +  j\omega\tau}{(\omega\tau)^{2} + 1}.
+			\end{align*}
+			\subsection*{b)}
+				We first compute $b_{n}$ since this is an odd function.
+				\begin{align*}
+					b_{n>0} &= \frac{4}{T} \int_{0}^{T/2} \frac{t}{T} \sin(\omega_{n}t)\ dt = \frac{4}{T^{2}} \int_{0}^{T/2} t\sin (\omega_{n}t )\ dt
+					\intertext{Applying integration by parts with $u = t$ and $dv = \sin(\omega_{n}t)$ yields}
+					&= \frac{4}{T^{2}} \left(\frac{-1}{\omega_{n}} \eval{t\cos(\omega_{n})}_{0}^{T/2}\right) = \frac{-T\cos(\pi n)}{2\omega_{n} } = \frac{-\cos(\pi n)}{\pi n} = - \frac{(-1)^{2}}{\pi n }.
+				\end{align*}
+				The amplitude $\abs{H(\omega)}$ is 
+				\begin{equation*}
+					\abs{H(\omega)} = \sqrt{\text{Re}(H(\omega))} = \frac{\omega_{n}\tau}{\sqrt{1 + (\omega_{n}\tau)^{2}}}.
+				\end{equation*}
+				The phase is immediately computed with
+				\begin{equation*}
+					\varphi(\omega) = \tan^{-1} \bigg[\frac{\text{Im} (H(\omega))}{\text{Re} (H(\omega))}\bigg] = \tan^{-1} \frac{\left(\left(\tau\omega / (\tau \omega)^{2} +1 )\right)}{\left( \tau\omega)^{2}/((\tau\omega)^{2} +1)\right)\right)} = \tan^{-1}\left(\frac{1}{\tau\omega}\right).
+				\end{equation*}
+				Recombining everything and following the definition of Fourier series we have
+				\begin{align*}
+					V_{\text{out}}(t) &= - \sum_{n=1}^{\infty} \frac{(-1)^{n}}{\pi n} \frac{(\omega_{n}\tau) }{\sqrt{(\omega_{n}\tau)^{2} + 1}} \sin\left(\omega_{n}t + \tan^{-1}\left(\frac{1}{\omega\tau }\right)\right) \\
+					V_{\text{in}}(t) &=- \sum_{n=1}^{\infty} \frac{(-1)^{n}}{\pi n } \sin(\omega_{n}t).
+				\end{align*}
+				
+			\subsection*{c)}
+				\begin{figure}[H]
+				\centering
+				\includegraphics[width = 0.9\linewidth]{PHYS241_Ass5_Fig2.png}
+				\captionsetup{margin= 1.5cm , justification = raggedright} \caption{First $20$ non vanishing terms of $V_{\text{in}}(t)$ and $V_{\text{out}}(t)$ for a fixed number of cycles plotted for three values of $T$.}
+				\end{figure}
+				 $V_\text{in}$ does not change as $T$ increases since the number of cycles is re-scaled for each value of $T$. We also note that $V_\text{out}$ diverges from $V_\text{in}$ as $T$ increases as this is a High-pass RC filter, so when the frequency decreases the capacitor charges faster to its full capacity, as perceived in Figure 2.
+		\section*{Question 5}
+			\subsection*{a) }
+				\begin{align*}
+					H(\omega) &= \frac{Z_{C}}{Z_{R} + Z_{L} + Z_{C}} = \frac{1/j\omega C}{R + j\omega L + 1/j\omega C} \\ 
+					&= \frac{1}{j\omega CR - \omega^{2}LC +1} = \frac{1}{j\omega\tau - (\omega/ \omega_{0})^{2} +1} = \frac{1}{j\omega \tau - (\omega/ \omega_{0})^{2} +1}.
+				\end{align*}
+			\subsection*{b)} 
+				We first compute the amplitude $\abs{H(\omega)}$
+					\begin{equation*}
+						\abs{H(\omega)}= \left(\left(\frac{1}{1- \left(\frac{\omega_{n}}{\omega_{0}}\right)^{2} + j\omega_{n}\tau}\right) \left(\frac{1}{1- \left(\frac{\omega_{n}}{\omega_{0}}\right)^{2} - j\omega_{n}\tau}\right)\right)^{-1/2} = \frac{1}{\sqrt{\left(1- \left(\frac{\omega_{n}}{\omega_{0}}\right)^{2}\right)+ (\omega_{n}\tau)^{2}}}.
+					\end{equation*}
+				Then, the phase is immediately computed as well 
+					\begin{gather*}
+						\left(\frac{1}{1- \left(\frac{\omega}{\omega_{0}}\right)^{2} + j\omega \tau} \right) \left(\frac{1-\left(\frac{\omega}{\omega_{0}}\right)^{2} - j\omega\tau}{1-\left(\frac{\omega}{\omega_{0}}\right)^{2} - j\omega\tau}\right) \implies \tan^{-1}(\varphi(\omega)) = \frac{\omega \tau}{1-\left(\frac{\omega}{\omega_{0}}\right)^{2}}.
+					\end{gather*}
+				We may write an expression for $V_{\text{out}}$ ,
+				\begin{equation}
+					V_{\text{out}}(t) = -\sum_{n=1}^{\infty} \frac{(-1)^{n}}{n \pi } \frac{1}{\sqrt{\left(1- \left(\frac{\omega_{n}}{\omega_{0}}\right)^{2}\right)^{2} + (\omega_{n}\tau)^{2}}} \sin \left(\omega_{n}\tau - \tan^{-1}\left(\frac{\omega_{n}\tau}{1- \left(\frac{\omega_{n}}{\omega_{0}}\right)^{2}}\right)\right).
+				\end{equation}
+				To find the frequencies that will go through we use the definition of the quality factor. 
+				\begin{gather*}
+					Q = \frac{\omega_{0} L}{R} = \left(\sqrt{\frac{L}{C}}\right)\frac{1}{R} = 5\sqrt{10} \\
+					Q = \frac{\omega_{0}}{\Delta \omega} = \frac{\omega_{0} L }{R} \implies \Delta \omega = \frac{R}{L} \implies \text{Range } = \omega_{0} \pm \Delta \omega = 6424 \pm 400.
+					\intertext{We may now look at which frequency mode pass through this range }
+					\omega_{1} = \frac{2\pi (1)}{T} = 6283 \checkmark \qquad ,\omega_{2} = \frac{2\pi (2)}{T} = \cancel{12588}. 
+ 				\end{gather*}
+ 				Replacing $\omega_{1} = 6424$ and the given values for $T$, $L$, $C$ and $R$ in Equation 1 , yields $V_{\text{out}} \approxeq 2.39 \ \si{\volt}.$
+ 				
+		\section*{Question 6}
+			\subsection*{a) }
+				First and foremost, to simplify algebra , let $K = \pi /2a$. Then by definition of inverse transform, 
+				\begin{align*}
+					F(\omega) &= \int_{-a}^{a}  f(t) e^{-i\omega t} \ dt \\
+					&=\frac12 \left(\int_{-a}^{a} e^{Kit}e^{-i\omega t} \ dt + \int_{-a}^{a} e^{-Kit}e^{-i\omega t} \ dt\right) \\
+					&= \frac12 \left(\int_{-a}^{a}e^{i(K-\omega)t} \ dt + \int_{-a}^{a} e^{i(-K-\omega)t} \ dt \right) \\
+					&= \frac12 \left( \frac{1}{i(K-\omega)} \eval{e^{i(K-\omega)t}}_{-a}^{a} + \frac{1}{i(-K-\omega)} \eval{e^{i(-K-\omega)t}}_{-a}^{a}\right) \\
+					&=\frac12 \left(\frac{1}{i(K-\omega)} \left(e^{i(K-\omega)a} - e^{-i(K-\omega)a}\right) + \frac{1}{i(-K-\omega)}\left(e^{i(-K-\omega)a} - e^{-i(-K-\omega)a}\right)\right)\\
+					&= \frac{\sin\left(\frac{\pi}{2} - \omega a\right)}{\left(\frac{\pi}{2a} - \omega\right)} + \frac{\sin\left(\frac{-\pi}{2} - \omega a\right)}{\left(\frac{-\pi}{2a} - \omega\right)}
+					\intertext{Using the identities $\sin(\pi/2 \pm x) = \cos(x)$ and $\sin(-x) = -\sin(x)$ yields the reduced expression}
+					&\qquad \qquad \qquad \quad \qquad F(\omega) =\frac{\cos(\omega a)}{\left(\frac{\pi}{2a} - \omega\right)} - \frac{\cos(\omega a)}{\left(\frac{-\pi}{2a} - \omega\right)}.
+				\end{align*}
+			\subsection*{b) }
+				When compared to $F_{2}(\omega) = 2\sin(\omega a)/\omega$, we note that the parameter $a$ has the same effect on both Fourier transforms in terms of frequency scaling, i.e., when varying that parameter the functions are compressed or stretched at the same rate. 
+	\end{document}
