@@ -1,0 +1,176 @@
+\documentclass[
+	12pt,
+	]{article}
+		\usepackage{xcolor}
+			\usepackage[dvipsnames]{xcolor}
+			\usepackage[many]{tcolorbox}
+		\usepackage{changepage}
+		\usepackage{titlesec}
+		\usepackage{caption}
+		\usepackage{mdframed, longtable}
+		\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+		\usepackage{array, tabularx, booktabs}
+		\usepackage{graphicx,wrapfig, float, caption}
+		\usepackage{tikz,physics,cancel, siunitx, xfrac}
+		\usepackage{graphics, fancyhdr}
+		\usepackage{lipsum}
+		\usepackage{xparse}
+		\usepackage{thmtools}
+		\usepackage{mathrsfs}
+		\usepackage{undertilde}
+		\usepackage{tikz}
+		\usepackage{fullpage,enumitem}
+		\usepackage[labelfont=bf]{caption}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\usepackage{fullpage, fancyhdr}
+	\newcommand{\La}{\mathcal{L}}
+	\newcommand{\ep}{\epsilon}
+	\newcommand{\de}{\delta}
+	\usepackage[math]{cellspace}
+		\setlength{\cellspacetoplimit}{3pt}
+		\setlength{\cellspacebottomlimit}{3pt}
+	\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\B}{\mathcal{B}}
+	\newcommand{\Ss}{\mathcal{S}}
+	
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{MATH 475 Weekly Work 3}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 }
+	\date{\today}
+	
+	\relpenalty=9999
+			\binoppenalty=9999
+		
+			\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\quad #1}{}}
+			
+			\fancypagestyle{plain}{%
+			  \fancyhf{}
+			  \fancyhead[L]{\rule[0pt]{0pt}{0pt} Weekly Work 3 } 
+			  \fancyhead[R]{\small Mihail Anghelici $260928404$} 
+			  \fancyfoot[C]{-- \thepage\ --}
+			  \renewcommand{\headrulewidth}{0.4pt}}
+			\pagestyle{plain}
+			\setlength{\headsep}{1cm}
+	\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+			\begin{align*}
+				u(x,t) &= \int_{-\infty}^{\infty} \Gamma_{k}(x-y,t) g(y) \ dy \\
+				&= \int_{-\infty}^{\infty} \frac{1}{\sqrt{4 \pi k t}} e^{\frac{-(x-y)^{2}}{4 kt}} e^{-y} \ dy 
+			\end{align*}
+			Next we complete the square in the exponential of $\exp(\frac{-(x-y)^{2}}{4kt} -y)$ with respect to the $y$ variable such that the denominator is a function of $4kt$ and there is a left-over term not involving $y$. From 
+			\begin{align*}
+				(y+2kt -x)^{2} &= \frac{y4kt +x^{2} -2xy +y^{2}}{4kt} -x+kt \\
+				\implies -(y+2kt -x)^{2} &= \frac{-y4kt -x^{2} + 2xy -y^{2}}{4kt} -x +kt 
+				\intertext{So we add $-x +kt$, essentially the square is completed by }
+			\end{align*}
+			\vspace{-0.2cm}
+			$$ \frac{-(y+2kt -x)^{2}}{4kt} -x +kt.$$
+			We continue evaluating the integral by setting $p = \frac{-(y+2kt -x)^{2}}{4kt} -x +kt \implies dp = \frac{dy}{\sqrt{4kt}}$
+			\begin{align*}
+				u(x,t) &= \int_{-\infty}^{\infty} \frac{1}{\sqrt{4\pi k t}}e^{-p^{2}} e^{kt -x} dp \sqrt{4kt} \\
+				&= \frac{e^{kt -x }}{\sqrt{\pi}} \int_{-\infty}^{\infty} e^{-p^{2}} \ dp \\
+				\intertext{This is the gaussian function solved commonly in polar coordinates}
+				u(x,t) &= e^{kt -x}.
+			\end{align*}
+		\section*{Question 2}
+			Let $\bar{u}(x,t) \equiv u(x,t) -1$ such that now the boundary condition is $0$. Then 
+			
+					$$g_{\text{odd}} = \begin{cases*}
+							-1 \quad x &\ge 0 \\
+							1 \quad x & $<$ 0
+					\end{cases*}$$
+			\begin{align*}
+			\bar{u} (x,t) &= \int_{-\infty}^{\infty} \frac{1}{\sqrt{4 \pi k t}} e^{\frac{-(x-y)^{2}}{4kt}} g_{\text{odd}} \\
+				&= \int_{-\infty}^{0}\frac{1}{\sqrt{4 \pi k t}} e^{\frac{-(x-y)^{2}}{4kt}}(1) - \int_{\infty}^{0}\frac{1}{\sqrt{4 \pi k t}} e^{\frac{-(x-y)^{2}}{4kt}}(1)
+				\intertext{Let $-y=y'$ in the second integral ,then}
+				&= \int_{-\infty }^{0} \frac{1}{\sqrt{4 \pi k t}} e^{\frac{-(x-y)^{2}}{4kt}}\ dy + \int_{-\infty}^{0} \frac{1}{\sqrt{4 \pi k t}} e^{\frac{-(x+y')^{2}}{4kt}} \ dy'
+				\intertext{Let $r=x-y / \sqrt{4kt} \implies dr = dy/ \sqrt{4 k t}$ and $r = x+y'/\sqrt{4 k t} \implies dr = dy' / \sqrt{4kt}$} 
+				&= \int_{-\infty }^{\sfrac{x}{\sqrt{4 k t}}} \frac{1}{\sqrt{\pi}} e^{-r^{2}} \ dr + \int_{-\infty }^{\sfrac{x}{\sqrt{4 k t}}}\frac{1}{\sqrt{\pi}}e^{-r^{2}} \ dr \\
+				&= 2 F\left(\frac{x}{\sqrt{4kt}}\right).
+			\end{align*}
+			Now since $\bar{u}(x,t) = u(x,t) -1 \implies u(x,t) = \bar{u}(x,t) +1 \equiv F'(y)+1$. Then since $1- F(y)=F'(y) \implies 2 - F(y) =F'(y) +1$ we conclude 
+			$$ u(x,t) = 2-2F\left(\frac{x}{\sqrt{4 k t}}\right).$$
+		\section*{Question 3}
+			\subsection*{a) }
+			\begin{align*}
+				f_{-} ' (0) = \lim\limits_{h \to 0^{-}}\frac{f(0+h) - f(0)}{h}  \\
+				f_{+} ' (0) = \lim\limits_{h \to 0^{+}}\frac{f(0+h) - f(0)}{h}
+			\end{align*}
+			Letting the right derivative be $f(-h)$ since the function is even , equating we get 
+			$$ f(-h) = f(h) \implies f'(h) = 0 \quad \text{as} \  h  \ \text{approaches } 0,$$
+			hence $u_{x} (0,t) = 0 $.We chose $g(y)$ to be even instead of odd since the derivative of an even function is an odd function. Let 
+			$$g_{\text{even}} = \begin{cases*}
+			g(x) \quad x &\ge 0 \\
+			g(-x) \quad x & $<$ 0
+			\end{cases*}$$
+			 Therefore,
+			
+			\begin{align*}
+				u(x,t) &= \int_{-\infty }^{\infty} \frac{1}{\sqrt{4 \pi k t}} e^{\frac{-(x-y)^{2}}{4 k t}} g_{\text{even}} \ dy \\
+					&= \int_{0}^{\infty } \frac{1}{\sqrt{4 \pi k t}} e^{\frac{-(x-y)^{2}}{4 k t}} g(y) \ dy +\int_{-\infty }^{0} \frac{1}{\sqrt{4 \pi k t}} e^{\frac{-(x-y)^{2}}{4 k t}} g(-y) \ dy
+					\intertext{Let $y = -y$ in the second integral , we get }
+					&=  \int_{0}^{\infty } \frac{1}{\sqrt{4 \pi k t}} e^{\frac{-(x-y)^{2}}{4 k t}} g(y) \ dy -\int_{\infty }^{0} \frac{1}{\sqrt{4 \pi k t}} e^{\frac{-(x+y')^{2}}{4 k t}} g(y') \ dy'\\
+					&=\int_{0}^{\infty } \frac{1}{\sqrt{4 \pi k t}} e^{\frac{-(x-y)^{2}}{4 k t}} g(y) \ dy  +\int_{0}^{\infty } \frac{1}{\sqrt{4 \pi k t}} e^{\frac{-(x+y')^{2}}{4 k t}} g(y') \ dy'
+					\intertext{Letting $y=y'$, we end up }                                                    
+					u(x,t) &= \frac{1}{\sqrt{4 \pi k t}} \int_{0}^{\infty }\left(e^{\frac{-(x-y)^{2}}{4 k t}} + e^{\frac{-(x+y)^{2}}{4 k t}}\right) g(y) \ dy 
+			\end{align*}
+			\subsection*{b) }
+				Since $g(x) =1 $ then we have 
+				$$g_{\text{even}} = \begin{cases*}
+				1 \quad x &\ge 0 \\
+				1 \quad x & $<$ 0
+				\end{cases*}$$
+				Therefore, 
+				\begin{align*}
+					u(x,t) &= \int_{0}^{\infty }\frac{1}{\sqrt{4 \pi k t}} \left(e^{ \frac{-(x-y)^{2}}{4 k t}} + e^{\frac{-(x+y)^{2}}{4 k t}}\right) \ dy
+					\intertext{Letting $r = x-y/ \sqrt{4 k t} \implies dr = -dy/\sqrt{4kt}$ in the left integral and $r = x+y/ \sqrt{4 k t} \implies dr = dy / \sqrt{4 k t}$ in the right integral we get}
+					 &= - \int_{\sfrac{x}{\sqrt{4 k t}}}^{- \infty } \frac{1}{\sqrt{\pi}} e^{-r^{2}} \ dr + \int_{\sfrac{x}{\sqrt{4kt}}}^{\infty }\frac{1}{\sqrt{\pi }} e^{-r^{2}} \ dr
+					 \intertext{Letting $r \to -r$ in the second integral , we conclude }
+					 &= \int_{\sfrac{x}{\sqrt{4 k t}}}^{\infty } \frac{1}{\sqrt{\pi}}e^{-r^{2}} \ dr + \int_{\sfrac{x}{\sqrt{4 k t}}}^{\infty } \frac{1}{\sqrt{\pi}}e^{-r^{2}} \ dr \\
+					 &= \frac{2}{\sqrt{\pi}} \int_{\sfrac{x}{\sqrt{4 k t}}}^{\infty } e^{-r^{2}} \ dr.
+				\end{align*}
+	\end{document}

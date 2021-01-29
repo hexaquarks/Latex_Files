@@ -1,0 +1,163 @@
+\documentclass[
+	12pt,
+	]{article}
+		\usepackage{xcolor}
+			\usepackage[dvipsnames]{xcolor}
+			\usepackage[many]{tcolorbox}
+		\usepackage{changepage}
+		\usepackage{titlesec}
+		\usepackage{caption}
+		\usepackage{mdframed, longtable}
+		\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+		\usepackage{array, tabularx, booktabs}
+		\usepackage{graphicx,wrapfig, float, caption}
+		\usepackage{tikz,physics,cancel, siunitx, xfrac}
+		\usepackage{graphics, fancyhdr}
+		\usepackage{lipsum}
+		\usepackage{xparse}
+		\usepackage{thmtools}
+		\usepackage{mathrsfs}
+		\usepackage{undertilde}
+		\usepackage{tikz}
+		\usepackage{fullpage,enumitem}
+		\usepackage[labelfont=bf]{caption}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\usepackage{fullpage, fancyhdr}
+	\newcommand{\La}{\mathcal{L}}
+	\usepackage[math]{cellspace}
+		\setlength{\cellspacetoplimit}{3pt}
+		\setlength{\cellspacebottomlimit}{3pt}
+
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\B}{\mathcal{B}}
+	\newcommand{\Ss}{\mathcal{S}}
+	
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{MATH 475 Weekly Work 0}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 }
+	\date{\today}
+	
+	\relpenalty=9999
+			\binoppenalty=9999
+		
+			\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\quad #1}{}}
+			
+			\fancypagestyle{plain}{%
+			  \fancyhf{}
+			  \fancyhead[L]{\rule[0pt]{0pt}{0pt} Weekly Work 0 } 
+			  \fancyhead[R]{\small Mihail Anghelici $260928404$} 
+			  \fancyfoot[C]{-- \thepage\ --}
+			  \renewcommand{\headrulewidth}{0.4pt}}
+			\pagestyle{plain}
+			\setlength{\headsep}{1cm}
+	\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1 }
+			\subsection*{(i)}
+				\begin{align*}
+					-\Delta u = - (u_{x_{1}x_{1}} + \dots + u_{x_{n}x_{n}}) = -\text{tr}(D^{2}u).
+				\end{align*}
+				Since $L[u] = -\text{tr}(A(x)D^{2}u)$, and $G(Du, u ,x) = 0$ we have 
+				$$ -\text{tr}(A(x)D^{2}u) = 0.$$ From which it follows that 
+				$$ -\text{tr}(D^{2}u) = -\text{tr}(A(x)D^{2}) \implies A(x) = I_{n}.$$ 
+			\subsection*{(ii)}
+				\begin{gather*}
+					u_{tt} - \Delta u = u_{tt} - u_{x_{1}x_{1}} - \dots - u_{x_{n}x_{n}} = -\text{tr}(A(x,t)D^{2}_{x,t} u) \\
+					\implies  u_{x_{1}x_{1}} + \dots u_{x_{n}x_{n}} - u_{tt} = \text{tr}(A(x,t)D^{2}_{x,t}u).
+				\end{gather*}
+				It is evident that the matrix $A(x,t)$ corresponds to 
+				$$ A(x,t) = 
+				\begin{bmatrix}
+				1 & 0 & \dots & 0 \\
+				0 & 1 & & \\
+				\vdots & & \ddots & \vdots \\
+				0 & & & -1	
+				\end{bmatrix}$$
+			\subsection*{(iii)}
+				Since $$ F(D^{2}u , Du, u ,x) = L[u] + G(Du, u ,x),$$
+				we set $G(Du,u,x) = u_t$. Therefore, 
+				\begin{gather*}
+					u_t - \Delta u = u_{t} - (u_{x_{1}x_{1}} + \dots + u_{x_{n}x_{n}}) = 0 \\
+					\implies -\text{tr}(A(x,t)D^{2}_{x,t}u) + u_t = u_{t} +  (u_{x_{1}x_{1}} + \dots + u_{x_{n}x_{n}}).
+				\end{gather*}
+				It follows evidently, that the matrix $A(x,t)$ corresponds to 
+				$$ A(x,t) = 
+				\begin{bmatrix}
+				1 & 0 & \dots & 0 \\
+				0 & 1 & & \\
+				\vdots & & \ddots & \vdots \\
+				0 & & & 0	
+				\end{bmatrix}$$	
+			\section*{Question 2}
+				\subsection*{(i)}
+				From $L[u] = -\text{tr}(A(x,y)D^{2}u)$ we deduce $A(x,y)$ to be ,
+				\begin{align*} au_{xx} + 2bu_{xy} + cu_{yy} &= \text{tr}\left( \begin{bmatrix}a & b \\ b& c \end{bmatrix}\begin{bmatrix} u_{xx} & u_{xy} \\ u_{yx} & u_{yy}\end{bmatrix}\right). \\
+				\end{align*}
+				We then look for the eigenvalues of $A$
+				\begin{align*}
+				 (a-\lambda)(c-\lambda) - b^2 = 0 &\implies ac - \lambda(a+c) + \lambda^2 -b^2 =0 \\
+				&\implies \lambda^2 -\lambda(c+a) + ac-b^2 =0 \\
+				&\implies \lambda = \frac{(c+a) \pm \sqrt{(c+a)^2 +4(b^2 -ac)}}{2}
+				\end{align*}
+				
+				\noindent Assuming $\abs{4(b^{2} - ac)} < (c+a)^{2}$ to preserve a real part for $\lambda_{i}$, then if $(b^2 - ac)<0 \implies 4(b^{2} - ac)<0$. We find that both solutions for $\lambda$ are non-zero and of positive sign since $c+a > \Delta \ \forall a,b,c \in \mathbb{R}$.
+				\subsection*{(ii)}
+					Similarly as in $(\text{i})$ if $(b^{2} - ac) > 0 \implies 4(b^{2} - ac)>0 $. Thus $\Delta > 0  \ \forall a,b,c \in \mathbb{R}$. Moreover, $\Delta > (c+a) \ \forall a,b,c \in \mathbb{R}$ such that $\lambda_{1} >0$ and $\lambda_{2} < 0$, both being nonzero since $\Delta > 0$.
+				\subsection*{(iii)}
+					Similarly as in $\text{(i)}$, if $(b^{2}- ac) = 0 \implies 4(b^{2}-ac) = 0$. Therefore, $\Delta  = (c+a)$ from which it is evident that one eigenvalue is positive or negative while the other is zero.
+			\section*{Question 3}
+				We assume $A(x,y)$ is not symmetric, thus $a_{12} \neq a_{21}$. Conversely, $\widetilde{A}(x,y)$ is symmetric therefore $\widetilde{a}_{12} = \widetilde{a}_{21}$. $D^{2}u$ is known so if we expand the trace of the matrix product for both equations we find 
+				\begin{gather*}
+					a_{11}u_{xx} + a_{12}u_{xy} + a_{21}u_{yx} + a_{22}u_{yy} = \widetilde{a}_{11}u_{xx} + 2\widetilde{a}_{12}u_{xy} + \widetilde{a}_{22}u_{yy}. \tag{1}
+				\end{gather*}
+				Since the hessian matrix is symmetric ($u \in C^{2}$) then $u_{xy} = u_{yx}$ such that $a_{12}u_{xy} + a_{21}u_{yx} = (a_{12} + a_{21})u_{xy}$. Thus, matching the coefficients of $(1)$ we get an expression for $\widetilde{A}(x,y)$ : 
+				$$ \widetilde{A}(x,y) = \begin{bmatrix}
+					a_{11} & \frac{a_{12} + a_{21}}{2} \\
+					\frac{a_{12} + a_{21}}{2}  & a_{22}
+				\end{bmatrix}.$$ 
+				$$\vec{\nabla} \cdot \vec{F} = \left(\left( \frac{1}{r^2 \sin \theta}\right)\frac{\partial(F_{r} r^2)}{\partial r} 
+				 + \left( \frac{1}{r \sin \theta}\right)\frac{\partial(f_{\theta)\sin \theta}{\partial \theta} + \left( \frac{1}{r\sin \theta}\right)\frac{\partial f_{\phi}}{\partial \phi}\right) dr d\theta d\phi$$
+			
+	\end{document}
+			

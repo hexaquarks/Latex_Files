@@ -1,0 +1,169 @@
+\documentclass[
+	12pt,
+	]{article}
+		\usepackage{xcolor}
+			\usepackage[dvipsnames]{xcolor}
+			\usepackage[many]{tcolorbox}
+		\usepackage{changepage}
+		\usepackage{titlesec}
+		\usepackage{caption}
+		\usepackage{mdframed, longtable}
+		\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+		\usepackage{array, tabularx, booktabs}
+		\usepackage{graphicx,wrapfig, float, caption}
+		\usepackage{tikz,physics,cancel, siunitx, xfrac}
+		\usepackage{graphics, fancyhdr}
+		\usepackage{lipsum}
+		\usepackage{xparse}
+		\usepackage{thmtools}
+		\usepackage{mathrsfs}
+		\usepackage{undertilde}
+		\usepackage{tikz}
+		\usepackage{fullpage,enumitem}
+		\usepackage[labelfont=bf]{caption}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\usepackage{fullpage, fancyhdr}
+	\newcommand{\La}{\mathcal{L}}
+	\newcommand{\ep}{\epsilon}
+	\newcommand{\de}{\delta}
+	\usepackage[math]{cellspace}
+		\setlength{\cellspacetoplimit}{3pt}
+		\setlength{\cellspacebottomlimit}{3pt}
+	\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\B}{\mathcal{B}}
+	\newcommand{\Ss}{\mathcal{S}}
+	
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{MATH 475 Weekly Work 4}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 }
+	\date{\today}
+	
+	\relpenalty=9999
+			\binoppenalty=9999
+		
+			\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\quad #1}{}}
+			
+			\fancypagestyle{plain}{%
+			  \fancyhf{}
+			  \fancyhead[L]{\rule[0pt]{0pt}{0pt} Weekly Work 4} 
+			  \fancyhead[R]{\small Mihail Anghelici $260928404$} 
+			  \fancyfoot[C]{-- \thepage\ --}
+			  \renewcommand{\headrulewidth}{0.4pt}}
+			\pagestyle{plain}
+			\setlength{\headsep}{1cm}
+	\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+			By Duhamel method, let $v$ solve 
+			$$ \begin{cases}
+				v_{t} - kv_{xx} = 0 \qquad &\text{in } \ 1_{T}, \\
+				v(0,t) = 0 \quad, v(1,t) = 0 \qquad &\text{in } \ (0,T], \\
+				v(x,0;s) = s \sin(2 \pi x) \qquad &\text{in } \ (0,1).
+			\end{cases}$$
+			We use separation of variables
+			\begin{align*}
+				v(x,t) &= e^{-k \lambda^{2} t} (A \cos \lambda x + B \sin \lambda x) \\
+				v(0,t) &= 0 \implies A = 0 \\
+				v(1,t) &= 0 \implies \lambda =n \pi.
+			\end{align*}
+			We write the general solution 
+			\begin{align*}
+				v(x,t;s) &= \sum_{n=0}^{\infty} B_{n}e^{-k n^{2} \pi^{2} t} \sin(n \pi  x) \\
+				v(x,0;s) &= s \sin (2\pi x) \implies B_{1} =0 \ \text{ and } \ B_{2} = s
+			\end{align*}
+			Finally, 
+			$$ v(x,t-s;s) = s e^{-k 4 \pi^{2} (t-s)} \sin (2\pi x).$$
+			Let $\alpha = 4k \pi^{2}$ then we proceed with the method 
+			\begin{align*}
+				u(x,t) &= \int_{0}^{t} s e^{-\alpha(t-s)}  sin(2\pi x) \ ds
+				\intertext{Let $u = -\alpha t + \alpha s \implies du = \alpha ds$ and $s = (u+\alpha t / \alpha)$, thus } 
+				&= \frac{\sin(2 \pi x)}{\alpha^{2}} \left(\int_{-\alpha t}^{0} ue^{u} \ du + \int_{-\alpha t}^{0} e^{u} \alpha t \ du \right) \\
+				&=\frac{\sn (2 \pi x)}{\alpha^{2}} \Bigg[e^{u} u \Big|_{-\alpha t}^{0} - \int_{-\alpha t}^{0} e^{u} \ du + \int_{-\alpha t}^{0} e^{u} \alpha t \ du\Bigg] \\
+				u(x,t) &= \frac{\sin(2 \pi x) (-1 + e^{-\alpha t} + \alpha t)}{\alpha^{2}},
+			\end{align*}
+			for $\alpha = 4 k \pi^{2}.$
+		\section*{Question 2}
+			Let $u(x,t) = v(x,t) + w(x,t)$ and let $w(x,t) = A(t) x + B(t)$ be a solution. The function that satisfies the given boundary conditions for $w(x,t) $ is $(t^{2} -1 )x + 1$. The $v(x,t) = u(x,t) - w(x,t)$ solves
+			$$ \begin{cases}
+				v_{t} -kv_{xx} = u_{x} - ku_{xx} - ((t^{2} -1)x +1)_{t} - ((t^{2} -1)x +1)_{xx} = t \sin (2 \pi x) \quad &\text{in } \ 1_{T},\\
+				v(0,t) = v(1,t) = 1-1 =0 \qquad &\text{in } \ (0,T], \\ 
+				v(x,0) = u(x,0) - w(x,0) = 1-x - (-x+1) = 0 \qquad &\text{in } \ (0,1).
+			\end{cases}$$
+			Then we apply Duhamel's method for $v'(x,t;s)$, the result of this particular situation is already computed in Question 1 : 
+			\begin{align*}
+				v'(x,t-s;s) &= s e^{-k 4 \pi^{2} (t-s)} \sin (2\pi x) \\
+				\implies v(x,t) &= \int_{0}^{t} s e^{-k 4 \pi^{2} (t-s)} \sin (2\pi x) \ ds \\
+				&= \frac{\sin(2 \pi x)(-1+ e^{-\alpha t} + \alpha t )}{\alpha^{2}},
+			\end{align*} 
+			And so finally, 
+			$$ u(x,t) = v(x,t) + w(x,t) = \frac{\sin(2 \pi x)(-1 e^{-\alpha t} + \alpha t )}{\alpha^{2}} + (t^{2} -1 )x + 1.$$
+		\section*{Question 3}
+			Let $u(x,t) = A(t)x + B(t)$, then from the BVP's boundary condition, $A(t) = t^{2}$. We then can write $B(t) = u(x,t) - t^{2}(x)$. Then $B(t)$ solves 
+			$$ \begin{cases}
+				B_{t} - B_{xx} = u_{t} - u_{xx} - (t^{2} x)_{t} -(t^{2} x)_{xx} = -2tx \qquad &\text{in } \ (0,\infty) \cross (0,T], \\
+				B(x,0) =0 \qquad \ &\text{in } \ (0,\infty ), \\
+				B_{x}(0,t)  = t^{2} - t^{2} = 0 \qquad &\text{in } \ (0,T].
+			\end{cases}$$
+			By Duhamel's method, we let $v$ solve
+				$$ \begin{cases}
+			v_{t} - v_{xx} = 0 \qquad &\text{in } \ (0,\infty) \cross (0,T], \\
+			v(x,0;s) =-2sx \qquad \ &\text{in } \ (0,\infty ), \\
+			v_{x}(0,t) = 0 \qquad &\text{in } \ (0,T].
+			\end{cases}$$
+			We can solve this for the half-line using the reflection method. Neumann boundaries so we take $g_{\text{even}}$. Let 
+			$$ g_{\text{even}}(x)  = \begin{cases}
+				-2sx \qquad , &x \ge 0  \\
+				2sx \qquad , &x \le 0
+			\end{cases}$$
+			As it was shown in Weekly worksheet 3, for even function 
+			$$ u(x,t) = \frac{1}{\sqrt{4 \pi k t}} \int_{0}^{\infty} \left(e^{\frac{-(x-y)^{2}}{4kt}} + e^{\frac{-(x+y)^{2}}{4 kt}}\right)g(y) \ dy,$$
+			therefore in our case ,
+			\begin{gather*}
+				v(x,t-s;s) = \frac{-2s}{\sqrt{4 \pi k(t-s)}} \int_{0}^{\infty} \left(e^{\frac{-(x-y)^{2}}{4kt}} + e^{\frac{-(x+y)^{2}}{4 kt}}\right)y \ dy,
+				\intertext{Since $u(x,t) = B(t) + t^{2}(x)$ , it follows that }
+				u(x,t) =\int_{0}^{t} \frac{-2s}{\sqrt{4 \pi k(t-s)}} \int_{0}^{\infty} \left(e^{\frac{-(x-y)^{2}}{4kt}} + e^{\frac{-(x+y)^{2}}{4 kt}}\right)y \ dy \ ds + t^{2}x.
+			\end{gather*}
+	\end{document}

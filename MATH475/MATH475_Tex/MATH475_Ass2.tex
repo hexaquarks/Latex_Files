@@ -1,0 +1,198 @@
+\documentclass[12pt]{article}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[many]{tcolorbox}
+\usepackage{changepage}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{mdframed, longtable}
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+\usepackage{array, tabularx, booktabs}
+\usepackage{graphicx,wrapfig, float, caption}
+\usepackage{tikz,physics,cancel, siunitx, xfrac}
+\usepackage{graphics, fancyhdr}
+\usepackage{lipsum}
+\usepackage{xparse}
+\usepackage{thmtools}
+\usepackage{mathrsfs}
+\usepackage{undertilde}
+\usepackage{tikz}
+\usepackage{fullpage,enumitem}
+\usepackage[labelfont=bf]{caption}
+\newcommand{\td}{\text{dim}}
+\newcommand{\tvw}{T : V\xrightarrow{} W }
+\newcommand{\ttt}{\widetilde{T}}
+\newcommand{\ex}{\textbf{Example}}
+\newcommand{\aR}{\alpha \in \mathbb{R}}
+\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+\newcommand{\un}{u_1 , u_2 , \dots , n}
+\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+\newcommand{\sS}{\text{Span}(\mathcal{S})}
+\newcommand{\sSt}{($\mathcal{S}$)}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\Rn}{\mathbb{R}^{n}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rm}{\mathbb{R}^{m}}
+\usepackage{fullpage, fancyhdr}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\ep}{\epsilon}
+\newcommand{\de}{\delta}
+\usepackage[math]{cellspace}
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{3pt}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\usepackage{newtxtext, newtxmath}
+
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+\newcommand{\vect}{\mathbf}
+\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\A}{\hat{A}}
+\newcommand{\B}{\hat{B}}
+\newcommand{\C}{\hat{C}}
+\newcommand{\dr}{\mathrm{d}}
+\allowdisplaybreaks
+\usepackage{titling}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem]
+\theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{definition}
+\newtheorem{Proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem*{example}{Example}
+\theoremstyle{example}
+\newtheorem*{note}{Note}
+\theoremstyle{note}
+\newtheorem*{remark}{Remark}
+\theoremstyle{remark}
+\newtheorem*{example2}{External Example}
+\theoremstyle{example}
+\usepackage{bbold}
+\title{MATH475 Assignment 2}
+\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+\author{Mihail Anghelici 260928404 }
+\date{\today}
+
+\relpenalty=9999
+\binoppenalty=9999
+
+\renewcommand{\sectionmark}[1]{%
+	\markboth{\thesection\quad #1}{}}
+
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 2} 
+	\fancyhead[R]{\small Mihail Anghelici $260928404$} 
+	\fancyfoot[C]{-- \thepage\ --}
+	\renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{plain}
+\setlength{\headsep}{1cm}
+\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+			Let us multiply $-\Delta u$ by $v\equiv (u-w)$ and take the integral ; 
+			\begin{align*}
+				\int\limits_{\Omega} -\Delta u (u-w) \ \mathrm{d} x & = - \int\limits_{\partial \Omega} g(u-w) \ \mathrm{d}\sigma + \int\limits_{\Omega} \nabla u \cdot \nabla(u-w) \mathrm{d} x = 0 \\
+				&= - \int\limits_{\partial \Omega} g u  \mathrm{d} \sigma +\int\limits_{\partial \Omega} g w \ \mathrm{d} \sigma + \int\limits_{\Omega} \abs{\nabla u }^{2} \ \dr x - \int\limits_{\Omega} \nabla u \nabla w \ \dr x =0
+ 			\end{align*}
+ 			\begin{align*}
+ 				\implies \int\limits_{\Omega} \abs{\nabla u}^{2} \ \dr x - \int\limits_{\partial \Omega} g u \ \dr \sigma &= \int\limits_{\Omega} \nabla u \nabla w \ \dr x - \int\limits_{\partial \Omega} g w \ \dr \sigma 
+ 				\intertext{We use the identity $\displaystyle \nabla u \nabla w \le \frac12 \abs{\nabla u }^{2} + \frac12 \abs{\nabla w }^{2}$, getting}
+ 				\int\limits_{\Omega} \abs{ \nabla u }^{2} \ \dr x -\int\limits_{\partial \Omega} g u \ \dr \sigma &\le \int\limits_{\partial \Omega} \frac12 \abs{\nabla u}^{2} +\frac12 \int\limits_{\Omega} \abs{\nabla w }^{2} - \int\limits_{\partial \Omega} g w \ \dr \sigma \\
+ 				\implies \frac12 \int\limits_{\Omega} \abs{\nabla u}^{2} \ \dr x - \int\limits_{\partial \Omega} gu \ \dr \sigma &\le \frac12 \int\limits_{\Omega} \abs{\nabla w}^{2} \ \dr x - \int\limits_{\partial \Omega} gw \ \dr \sigma 
+ 				\shortintertext{\[
+ 					\because \int\limits_{\partial \Omega} gw \ \dr \sigma - \int\limits_{\partial \Omega} gu \ \dr \sigma = \int\limits_{\partial \Omega} g\overbrace{\mathclap{(u-w)}}^{v\xrightarrow{\text{boundary}} \ 0 } \ \dr \sigma = 0 
+ 					\]  
+ 				}
+ 			\therefore \frac12 \int\limits_{\Omega} \abs{\nabla u}^{2} \ \dr x &\le \frac12 \int\limits_{\Omega} \abs{\nabla w}^{2} \ \dr x \\
+ 			\implies E[u] &\le E[w]
+ 			\end{align*}
+ 			\section*{Question 2}
+ 				We will prove the claim by contradiction. First we note that $u$ is harmonic so it respects the MVP, for which it follows that we can apply the maximum principles. Let us assume $\exists x_{0} \ \in \Omega $ such that $u(x_{0}) \le 0 $ then by the Strong Maximum Principle this $\implies \exists M \in \Omega$ for which 
+ 				$$ \min\limits_{\overline{\Omega}} u = M,$$
+ 				since $u = g$ on the boundary, and $g \ge 0 \ \forall x \in \partial\Omega$. Since $u$ is constant in $\Omega$ ($\max_{\overline{\Omega}} u = \max_{\Omega} u$), then we conclude that $u(x) \equiv M \le 0 \ \forall x \in \Omega$. This is a contradiction since $\exists x \in \partial \Omega$ with $g(x) > 0 \implies u>0$ . We conclude that $u > 0 \ \forall x \in \Omega.$
+ 			\section*{Question 3}
+ 				\begin{corollary}
+ 					If $u$ is a $C^{2}(\Omega)$ harmonic function on a domain $\Omega$ which is $C(\bar{\Omega})$, and the values of u on the boundary are bounded between $m$ and $M$, then the values of $u$ everywhere are bounded between $m$ and $M$. (\textit{Ref : R. Choksi, p.411})
+ 				\end{corollary}
+ 				\noindent Let us define $\overline{\Omega} := (x_{1} , x_{2} ) \cross (-1,1)  \subseteq \overline{Q}$, for arbitrary $(x_{1} \neq x_{2}) \in \mathbb{R}$. Then, as defined, $u \equiv 0$ on the boundary of $\overline{\Omega}$, i.e., 
+ 				$$ \max\limits_{\partial\Omega} u = \min\limits_{\partial\Omega} \equiv 0.$$
+ 				Following Corollary $1$ , $u \equiv 0$ everywhere in $\overline{\Omega}$. 
+ 				
+ 				\noindent Since $u(x,y)$ is periodic in $x$ and since $x_{1}$ and $x_{2}$ are chosen arbitrarily, we can chose  $x_{1} ' = x_{1} +2$ such that $u \equiv 0 \in \overline{\Omega} '$, where $\overline{\Omega}' := (x_{1}' , x_{2} ) \cross (-1,1)  \subseteq \overline{Q}$, for arbitrary $x_{2} \in \mathbb{R}$. We can repeat this process over any arbitrary $x_{1}$ and $x_{2}$ with difference $\varepsilon$ between them such that for all possible domain subsets of $\overline{Q}$ which include its $y$ boundary $u\equiv 0$ in them.  We conclude finally that $u \equiv 0 $ in  $\overline{Q}$.
+ 			\section*{Question 4}
+ 			 Let $u(x)$ be subharmonic such that $- \Delta u(x) \le 0$ on the bounded domain $\Omega$.  
+ 			 
+ 			 \noindent Let $v(x) := u(x) + \varepsilon \abs{\boldsymbol{x}}^{2}$ for $\varepsilon >0$. Then by the second derivative test, $u$ achieves an interior maximum if and only if $$u_{x_{i} x_{i}} \le 0 \implies \Delta u \le 0.$$
+ 			 But by construction , 
+ 			 \begin{align*}
+ 			  \Delta v(x) &= \Delta (u(x) + \varepsilon\abs{\boldsymbol{x}}^{2}) \\
+ 			  &= \underbrace{\Delta u(x)}_{\ge 0 , \: \equiv K }  + \Delta \varepsilon \abs{\boldsymbol{x}}^{2} \\
+ 			  &\ge K + \varepsilon \underbrace{ \Delta \abs{\boldsymbol{x}}^{2}}_{\mathrlap{\text{Non null and positive perturbation }}} \\
+ 			  &> 0 
+ 			  \shortintertext{\[
+ 			  	\implies \Delta v(x) > 0. 
+ 			  	\]}
+ 			  \end{align*}
+ 			  We conclude that $v$ does not attain an interior maximum ,which implies $\max v$ is on the boundary. Let $x_{0}$ pe the point at which the maximum occurs, then it follows that
+ 			  \begin{align*}
+ 			  	u(x) \le v(x) &\le v(x_{0}) \\
+ 			  	&= u(x_{0}) + \varepsilon \abs{x_{0}}^{2} \\
+ 			  	&= \max\limits_{\partial \Omega} u + \varepsilon \abs{x_{0}}^{2} \\
+ 			  	\implies u(x) &\le \max\limits_{\partial \Omega} u + \underbrace{\varepsilon \abs{x_0}^{2}}_{\text{a constant}} \\
+ 			  	\implies \lim\limits_{\varepsilon \to 0} u(x) &\le \lim\limits_{\varepsilon \to 0} \left(\max\limits_{\partial \Omega} u + \varepsilon \abs{x_{0}}^{2}\right) \\
+ 			  	\shortintertext{\[
+ 			  		u(x) \le \max\limits_{\partial \Omega} u.
+ 			  		\]}
+ 			  \end{align*}
+ 			  Then by the Weak maximum principle, 
+ 			  $$ \max\limits_{\partial \Omega} u = \max\limits_{\overline{\Omega}}u \implies u(x) \le \max\limits_{\partial \Omega} u  = \max\limits_{\overline{\Omega}}u.$$
+ 			\section*{Question 5}
+ 				Let $$M:= \max\limits_{\overline{B_{1}(0)}} \abs{f},$$
+ 				and similarly to Question $4$ let us consider $\displaystyle \varphi(x) := u(x) + M \frac{\abs{x}^{2}}{2n}$. Then .
+ 				\begin{align*} 
+ 				 -\Delta \varphi(x) &= -\Delta\left(u(x) + M \frac{\abs{x}^{2}}{2n}\right) \\
+ 				 &=f- M =f - \max\limits_{\overline{B_{1}(0)}} \abs{f} \le 0 
+ 				 \end{align*}
+ 				 So we conclude that $\varphi(x)$ is a sub-solution. By construction, it follows that 
+ 				 \begin{align*} 
+ 				 \max\limits_{\overline{B_{1}(0)}}u(x) &\le \max\limits_{\overline{B_{1}(0)}} \varphi(x)
+ 				 \intertext{Applying the Weak Maximum Principle, since $u$ as defined is harmonic, thence satisfies the MVP and hence we may apply the Weak maximum principle,}
+ 				 &=\max\limits_{\partial B_{1}(0)} \varphi(x) \\
+ 				 &= \max\limits_{\partial B_{1}(0)}g + M \max\limits_{\partial B_{1}(0)} \frac{\abs{x}^{2}}{2n} \\
+ 				 &= \max\limits_{\partial B_{1}(0)} g + \max\limits_{\overline{B_{1}(0)}} \abs{f} \max\limits_{\partial B_{1}(0)} \frac{\abs{x}^{2}}{2n} 
+ 				 \intertext{Let $\displaystyle C := \max\limits_{\partial B_{1}(0)} \frac{\abs{x}^{2}}{2n}$, for $x$ a point on the boundary, then } 
+ 				 &= \max\limits_{\partial B_{1}(0)}g + C \max\limits_{\overline{B_{1}(0)}}\abs{f} 
+ 				 \intertext{Since $\max \abs{g} \ge \max g$, it follows that }
+ 				 \max\limits_{\overline{B_{1}(0)}}u(x) &\le \max\limits_{\partial B_{1}(0)}\abs{g} + C \max\limits_{\overline{B_{1}(0)}} \abs{f}
+ 				 \end{align*} 
+ 			\section*{Question 6}
+ 				There is a discontinuity at $\boldsymbol{x} = \boldsymbol{y}$ for $x,y \in \Omega$. Particularly, this discontinuity occurs in the term $\Phi(x-y)$ in $G(x,y)$, with 
+ 				\begin{equation} 
+ 				\Phi(x-y) = \frac{1}{4\pi \abs{\boldsymbol{x} - \boldsymbol{y}}} \ \ \text{which} \ \  \xrightarrow[\boldsymbol{x} \to \boldsymbol{y}]{} \infty .
+ 				\end{equation}
+ 				We cut the domain $\Omega$ to $\Omega_{\varepsilon}$ to remove the discontinuity at the centre. Then $\Omega_{\varepsilon} := \Omega \backslash \{B(x,\varepsilon)\}$. This new domain has $2$ boundaries, namely $\partial \Omega_{\varepsilon} = \partial \Omega \cup \partial B (x,\varepsilon)$. Since $\Omega_{\varepsilon} \subseteq \Omega$ and $\Omega$ is a bounded and connected domain then it follows that $\Omega_{\varepsilon}$ is as well ; so let us apply the weak maximum principle on $u(y) = G(x,y)$ on $\Omega_{\varepsilon}$
+ 				\begin{align*}
+ 					\max\limits_{\Omega_{\varepsilon}} u(y) = \max\limits_{\Omega_{\varepsilon}} G(x,y) &= \max\limits_{\partial \Omega_{\varepsilon}} G(x,y) \\
+ 					&= \max\left(\max\limits_{\partial \Omega} G(x,y) , \max\limits_{\partial B(x,\varepsilon)} G(x,y)\right) 
+ 					\intertext{Since by definition $G(x,\sigma) =0 $ for $\sigma = y \in \partial B$, then we have}
+ 					&= \max\left(0, \max\limits_{\partial B(x,\varepsilon)} G(x,y)\right)
+ 					\intertext{We send $\varepsilon \to 0$, }
+ 					\lim_{\varepsilon \to 0 } \max\limits_{\Omega_{\varepsilon}} G(x,y)  &= \lim\limits_{\varepsilon \to 0 } \max (0, \underbrace{\max\limits_{\partial B (x,\varepsilon) }G(x,y)}_{\mathrlap{\to \infty \ \text{ by } (1)}})\\
+ 					\intertext{$\displaystyle \lim\limits_{\varepsilon \to 0} \Omega_{\varepsilon}$ is precisely $\Omega$ therefore,}
+ 					\max\limits_{\Omega} G(x,y) &= \max(0, \infty),
+ 				\end{align*}
+ 				We conclude that $G(x,y)$ is bounded by $0$ and $\infty$, implying that the values of $G(x,y)$ in the domain are positive. 
+	\end{document}

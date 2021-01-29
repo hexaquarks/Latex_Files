@@ -1,0 +1,189 @@
+\documentclass[
+	12pt,
+	]{article}
+		\usepackage{xcolor}
+			\usepackage[dvipsnames]{xcolor}
+			\usepackage[many]{tcolorbox}
+		\usepackage{changepage}
+		\usepackage{titlesec}
+		\usepackage{caption}
+		\usepackage{mdframed, longtable}
+		\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+		\usepackage{array, tabularx, booktabs}
+		\usepackage{graphicx,wrapfig, float, caption}
+		\usepackage{tikz,physics,cancel, siunitx, xfrac}
+		\usepackage{graphics, fancyhdr}
+		\usepackage{lipsum}
+		\usepackage{xparse}
+		\usepackage{thmtools}
+		\usepackage{mathrsfs}
+		\usepackage{undertilde}
+		\usepackage{tikz}
+		\usepackage{fullpage,enumitem}
+		\usepackage[labelfont=bf]{caption}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\usepackage{fullpage, fancyhdr}
+	\newcommand{\La}{\mathcal{L}}
+	\newcommand{\ep}{\epsilon}
+	\newcommand{\de}{\delta}
+	\usepackage[math]{cellspace}
+		\setlength{\cellspacetoplimit}{3pt}
+		\setlength{\cellspacebottomlimit}{3pt}
+	\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+
+	\usepackage{mathtools}
+	\usepackage{mathabx}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\B}{\mathcal{B}}
+	\newcommand{\Ss}{\mathcal{S}}
+	
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{MATH 475 Weekly Work 2}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 }
+	\date{\today}
+	
+	\relpenalty=9999
+			\binoppenalty=9999
+		
+			\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\quad #1}{}}
+			
+			\fancypagestyle{plain}{%
+			  \fancyhf{}
+			  \fancyhead[L]{\rule[0pt]{0pt}{0pt} Weekly Work 2 } 
+			  \fancyhead[R]{\small Mihail Anghelici $260928404$} 
+			  \fancyfoot[C]{-- \thepage\ --}
+			  \renewcommand{\headrulewidth}{0.4pt}}
+			\pagestyle{plain}
+			\setlength{\headsep}{1cm}
+	\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+			\subsection*{a) }
+				$M(T)$ is a non-decreasing function of $T$. Indeed let the maximum up until $t=T$ occur at the base of the space time cylinder, then if $u(x, t')< M(t)$ for $t' >T$ , then $M(t)$ will not change. But if $u(x,t') > M(t) \implies M(t)$ increases. In other words, the maximum can increase if we extend the further the time domain over $T$, but it can not decrease if we extende the time domain backwards. 
+			\subsection*{b) }
+				By the Weak max principle, 
+				 $$ \min_{\partial_{P} \Omega_{T}} u \le u(x,t) \le \max_{\partial_{P} \Omega_{T}} u,$$
+				 therefore , since $\partial_{P} \Omega_{T} =  \Omega \times \{t=0\} \cup \partial \Omega \times (0,T],$
+				 \begin{align*}
+				 	\max_{\partial_{P} \Omega_{T}}u &= \max \left(\max_{\Omega \times \{t= 0  \}} , \max_{\partial \Omega \times (0 , T]}\right) 
+				 	\intertext{We set the Dirichlet boundary constant $\equiv k$,}
+				 	&= \max \left(\max_{\Omega \times \{t= 0  \}} , k\right) \tag{1}
+				 \end{align*}
+				 Notice $(1)$ is time-independent as requested .
+			\section*{Question 2}
+				\subsection*{a) }
+					Inserting the $(u-r)$ and $p-u$ in the given PDE we have 
+					\begin{gather*}
+						(u-r)_{t} -k \Delta(u-r) = f-A = f- \max_{\Omega_{t_{0}}}\abs{f} \\
+						(p-u)_{t} -k \Delta(p-r) = -f - A= -f - \max_{\Omega_{{t}_{0}}} \abs{f} 
+					\end{gather*}				 
+					Since $\abs{f(x,t)} \le \max\limits_{\Omega_{t_{0}}} \abs{f}$ , it follows that both $(u-r)$ and $(p-u)$ are subsolutions. We may apply the weak max principle. 
+						\begin{align*}
+							u-r &\le \max_{\partial_{P} \Omega_{T}} (u-r) \\
+							u &\le \max_{\partial_{P} \Omega_{T}}(u-r) + r \\
+							&= \max_{\partial_{P} \Omega_{T}} (u-At-B)+r \\
+							&= \max_{\partial_{P} \Omega_{T}}(u-At - \max_{\partial_{P} \Omega_{t_{0}}} \abs{u}) +r
+							\intertext{Since $u-\max\limits_{\partial_{P} \Omega_{t_{0}}}\abs{u} \le 0 $ and $A > 0$ , $\implies \max\limits_{\partial_{P} \Omega_{T}}(u-At-\max\limits_{\partial_{P} \Omega_{t_{0}}}\abs{u}) <0$ }
+							\therefore  u &\le r
+							\intertext{Similarly for $(p-u)$,}
+							p-u &\le \max_{\partial_{P} \Omega_{T}}(p-u) \\
+							&\le \max_{\partial_{P} \Omega_{T}} (p-u) +u \\
+							&=\max_{\partial_{P} \Omega_{T}}(-At-B-u) \\
+							&=\max_{\partial_{P} \Omega_{T}}(-At-\max\limits_{\partial_{P} \Omega_{t_{0}}} \abs{u})+u 
+							\intertext{Since $-\max\limits_{\partial_{P} \Omega_{t_{0}}}\abs{u} -u \le 0 $ and $A > 0$ , $\implies \max\limits_{\partial_{P} \Omega_{T}}(-At-\max\limits_{\partial_{P} \Omega_{t_{0}}}\abs{u} - u) <0$ } 
+							\therefore p &\le u 
+						\end{align*}
+						It follows that $p \le u \le r$ which in return implies that 
+						$$ -t_{0} \max\limits_{\widebar{\Omega_{t_{0}}}} \abs{f} - \max\limits_{\partial_{p} \Omega_{t_{0}}}\abs{u} \le u(x_{0},t_{0}) \le t_{0} \max\limits_{\widebar{\Omega_{t_{0}}}} \abs{f} + \max\limits_{\partial_{p} \Omega_{t_{0}}}\abs{u}. $$ 
+					\subsection*{b) }
+						Let $u = v-w$. Then it follows that
+						$$ u_{t} - k\Delta u = v_{t} - w_{t} -k\Delta v + k\Delta w = (v_{t} - k\Delta v) - (w_{t} -k\Delta w) = f_{1} - f_{2}.$$
+						Following the identity proved in $2b, $ this is equivalent to
+						\begin{gather*}
+							u(x_{0} ,t_{0}) \le t_{0} \max\limits_{\widebar{\Omega_{t_{0}}}} \abs{f_{1} - f_{2}} + \max\limits_{\partial_{P}\Omega_{t_{0}}} \abs{u} \\
+								\implies v(x_{0} , t_{0}) - w(x_{0} ,t_{0}) \le  t_{0} \max\limits_{\widebar{\Omega_{t_{0}}}} \abs{f_{1} - f_{2}} + \max\limits_{\partial_{P}\Omega_{t_{0}}} \abs{v-w}.\tag{a}
+						\end{gather*}
+						Now let $u = w-v$. Then it follows that
+						$$ u_{t} - k\Delta u = w_{t} - v_{t} -k\Delta w + k\Delta v = (w_{t} - k\Delta w) - (v_{t} -k\Delta v) = f_{2} - f_{1}.$$
+						Following the identity proved in $2b, $ this is equivalent to
+						\begin{gather*}
+							u(x_{0} ,t_{0}) \le t_{0} \max\limits_{\widebar{\Omega_{t_{0}}}} \abs{f_{2} - f_{1}} + \max\limits_{\partial_{P}\Omega_{t_{0}}} \abs{u} \\
+							\implies w(x_{0} , t_{0}) - v(x_{0} ,t_{0}) \le  t_{0} \max\limits_{\widebar{\Omega_{t_{0}}}} \abs{f_{2} - f_{1}} + \max\limits_{\partial_{P}\Omega_{t_{0}}} \abs{w-v}.
+							\intertext{But we can rewrite this as follows }
+							-(v(x_{0} , t_{0}) - w(x_{0} ,t_{0})) \le t_{0} \max\limits_{\widebar{\Omega_{t_{0}}}} \abs{-(f_{1} - f_{2})} + \max\limits_{\partial_{P}\Omega_{t_{0}}} \abs{-(v-w)} \\
+							\implies -(v(x_{0} , t_{0}) - w(x_{0} ,t_{0})) \le t_{0} \max\limits_{\widebar{\Omega_{t_{0}}}} \abs{f_{1} - f_{2}} + \max\limits_{\partial_{P}\Omega_{t_{0}}} \abs{v-w} \tag{b}
+						\end{gather*}
+						Given $(\text{a})$ and $(\text{b})$, we conclue that 
+						$$ \abs{v(x_{0} , t_{0}) - w(x_{0} ,t_{0})} \le t_{0} \max\limits_{\widebar{\Omega_{t_{0}}}} \abs{f_{1} - f_{2}} + \max\limits_{\partial_{P}\Omega_{t_{0}}} \abs{v-w}.$$
+				\section*{Question 3} 
+					\subsection*{a) }
+						Let $u(x_{1} ,t_{1}) = c$ for some value $c \in (0,1) = \Omega_{t_{1}}$. Then by the strong max principle $u \equiv c$ in $\Omega_{t_{1}}$. But, from the initial condition, $u(x,0) = 4x(1-x)$, we see that $u$ is non-constant therefore we have a contraditction. It follows that $u \neq c$ in $\Omega_{t_{1}}$. By the weak max principle, the minima and maxima occur on the boundaries. The minimum occurs on the boundary since $u(0,t) = u(1,t) = 0 \implies u>0$. At the base the maximum occurs internaly at $x,t = (\frac12, 0) < c \implies u < 1.$ We conclude $0<u<1$ for the specified time and space domain.  
+					\subsection*{b) }
+						\begin{align*}
+							\dv{E}{t} = \frac{d}{dt} E = \frac{d}{dt}\int_{0}^{1} u^{2}(x,t) dx&= 2k \bigg[u u_{x} \Big|_{0}^{1} - \int_{0}^{1} (u_{x})^{2} \ dx \bigg] 
+							\intertext{Since at the boundaries the function is $0$, the first term vanishes }
+							\frac{d}{dt} \int_{0}^{1} u^{2}(x,t) \ dx&= \underbrace{-2k \int_{0}^{1} (u_{x})^{2} dx}_{\text{negative}} \\
+							&\quad \implies E(t) \ \text{is strictly decreasing with respect to $t$.}
+						\end{align*}
+				\begin{align*}
+					u(x,t) &= e^{-2 \lambda^{2} } (A\cos \lambda x + B\sin \lambda x) \\
+					u_{x} (x,t) &= \lambda e^{-2 \lambda^{2} t} (B\cos \lambda x - A \sin \lambda x) 
+				\end{align*}
+				Boundary conditions to find a summation expression
+				\begin{align*}
+					u_{x}(0,t) &= \lambda e^{-2 \lambda^{2} t}B  =1 \implies B = \frac{1}{\lambda e^{-2 \lambda^{2}t}}\\
+					u_{x} (1,t) &= \lambda e^{-2 \lambda^{2} t} (B \cos \lamdba x - A \sin \lambda x) =1 \\
+					\implies & \  \ \cos \lambda - \lambda e^{-2 \lambda^{2} t} A \sin \lambda =1  \\
+					\intertext{Implementing $\sin^{2}(t)$ , }
+					\implies & \  \ -\lambda e^{-2 \lambda ^{2 }t } A \sin \lambda = 2\sin^{2}(\lambda / 2) \\
+				\end{align*}
+				$$ \frac{1}{\sqrt{5}}\begin{pmatrix}
+					-i & 2
+				\end{pmatrix}\frac{\hbar}{2}\begin{pmatrix}
+				0 & 1 \\
+				1 & 0
+				\end{pmatrix}\frac{1}{\sqrt{5}}\begin{pmatrix}
+				i \\ 2
+				\end{pmatrix} = \frac{(-2i + 2i)\hbar }{10} = 0
+				$$
+	\end{document}

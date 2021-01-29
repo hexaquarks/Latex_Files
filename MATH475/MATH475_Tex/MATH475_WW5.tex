@@ -1,0 +1,210 @@
+\documentclass[
+	12pt,
+	]{article}
+		\usepackage{xcolor}
+			\usepackage[dvipsnames]{xcolor}
+			\usepackage[many]{tcolorbox}
+		\usepackage{changepage}
+		\usepackage{titlesec}
+		\usepackage{caption}
+		\usepackage{mdframed, longtable}
+		\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+		\usepackage{array, tabularx, booktabs}
+		\usepackage{graphicx,wrapfig, float, caption}
+		\usepackage{tikz,physics,cancel, siunitx, xfrac}
+		\usepackage{graphics, fancyhdr}
+		\usepackage{lipsum}
+		\usepackage{xparse}
+		\usepackage{thmtools}
+		\usepackage{mathrsfs}
+		\usepackage{undertilde}
+		\usepackage{tikz}
+		\usepackage{fullpage,enumitem}
+		\usepackage[labelfont=bf]{caption}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\usepackage{fullpage, fancyhdr}
+	\newcommand{\La}{\mathcal{L}}
+	\newcommand{\ep}{\epsilon}
+	\newcommand{\de}{\delta}
+	\usepackage[math]{cellspace}
+		\setlength{\cellspacetoplimit}{3pt}
+		\setlength{\cellspacebottomlimit}{3pt}
+	\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\Ss}{\mathcal{S}}
+	\newcommand{\A}{\hat{A}}
+	\newcommand{\B}{\hat{B}}
+	\newcommand{\C}{\hat{C}}
+	\allowdisplaybreaks
+	\usepackage{newtxtext, newtxmath}
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{MATH 475 Weekly Work 5}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 }
+	\date{\today}
+	
+	\relpenalty=9999
+			\binoppenalty=9999
+		
+			\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\quad #1}{}}
+			
+			\fancypagestyle{plain}{%
+			  \fancyhf{}
+			  \fancyhead[L]{\rule[0pt]{0pt}{0pt} Weekly Work 5} 
+			  \fancyhead[R]{\small Mihail Anghelici $260928404$} 
+			  \fancyfoot[C]{-- \thepage\ --}
+			  \renewcommand{\headrulewidth}{0.4pt}}
+			\pagestyle{plain}
+			\setlength{\headsep}{1cm}
+	\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+			Let $x = r\cos \theta$ and $y = r\sin \theta$. Then
+			\begin{alignat*}{2}
+				 &x_{r} = \cos \theta , \qquad\qquad\qquad\qquad\qquad\qquad && x_{\theta} = -r\sin \theta \\
+				 &y_{r} = \sin \theta , \qquad\qquad\qquad\qquad\qquad\qquad && y_{\theta} = r \cos \theta
+			\end{alignat*}
+			We compute $u_{rr}$ then $u_{\theta\theta}$. We use the chain rule since $r = r(x,y)$ and $\theta = \theta(x,y)$. 
+			\begin{align*}
+				 u_{r} &= u_{x} x_{r} + u_{y} y_{r} = u_{x} \cos \theta + u_{y} \sin \theta \\
+				 u_{rr} &= u_{xr}\cos\theta + u_{yr} \sin \theta \\
+				 &= (u_{xx} x_{r} + u_{xy} y_{r})\cos\theta + (u_{yx}x_{r} + u_{yy}y_{r})\sin \theta 
+				 \intertext{$u$ is harmonic therefore $u \in C^{2}$ and we apply Clairot's theorem}
+				\therefore u_{rr} &= u_{xx}\cos^{2} \theta + 2 u_{xy} \sin \theta \cos \theta + u_{yy} \sin^{2}\theta 
+			\end{align*}
+			Similarly for $u_{\theta\theta}$ , 
+			\begin{align*}
+				u_{\theta} &= u_{x}x_{\theta} + u_{y}y_{\theta} = -u_{x}r\sin\theta + u_{y} r\cos\theta 
+				\intertext{For the double derivative we apply the product rule and chain rule }
+				u_{\theta\theta} &= -u_{x} r \cos \theta - r\sin \theta (u_{xx} x_{\theta} + u_{xy}y_{\theta}) = u_{y}r\sin\theta + r\cos\theta (u_{yx} x_{\theta} +u_{yy}y_{\theta}) \\
+				&= -r\underbrace{(u_{x} \cos\theta + u_{y}\sin\theta)}_{u_{r}} + u_{xx} r^{2} \sin^{2} \theta -2 u_{xy} r^{2} \sin\theta\cos\theta + u_{yy}r^{2} \cos^{2}\theta \\
+				\implies \frac{u_{\theta\theta}}{r^{2}} &= -\frac{u_{r}}{r} + u_{xx}\sin^{2}\theta -2 u_{xy} \sin \theta\cos\theta + u_{yy} \cos^{2}\theta 
+			\end{align*}
+			We finally add these two expressions ,
+			\begin{gather*}
+				u_{rr} + \frac{u_{\theta\theta}}{r^{2}} = -\frac{u_{r}}{r} + u_{xx} + u_{yy} \\
+				\implies \Delta_{r,\theta} U = U_{rr} + \frac{1}{r} U_{r} + \frac{1}{r^{2}} U_{\theta\theta} \qquad \checkmark.
+			\end{gather*}
+		\section*{Question 2}
+			\begin{corollary}
+				If $u$ is a $C^{2}(\Omega)$ harmonic function on a domain $\Omega$ which is $C(\bar{\Omega})$, and the values of u on the boundary are bounded between $m$ and $M$, then the values of $u$ everywhere are bounded between $m$ and $M$. (\textit{Ref : R. Choksi, p.411})
+			\end{corollary}
+		\noindent Following the corollary $1$, since $u$ is harmonic, the boundary $g = \sin^{2}\theta$ is evidently bounded by $0 \to 1$, hence it follows that $u(x,y) = U(r,\theta)$ is bounded by $0 \to 1$, so we conclude 
+		$$ 0 \le U(r,\theta) \le 1.$$
+		Alternatively, since the function is harmonic, it satisfies the MVP such that we can apply the maximum principles. The maximum of $u(x)$ occurs at the boundary, which is bounded by $1$. Similarly, since $u$ is harmonic then so is $-u$ such that $\max (-u) = -\min (u)\implies -\max (-u) = \min(u)$. The minimum occurs at the boundary which is $0$ for $\sin^{2}(\theta).$ We arrive at the same conclusion. \\
+		
+		\noindent Next we look for the mean value of $u(\boldsymbol{x})$, since we're integrating in polar coordinates over the circumference of a circle it follows that, 
+		\begin{align*}
+			u(\boldsymbol{x}) &= \frac{1}{\abs{\partial B(x,R)}} \int_{\partial B(x,R)} u(y) \ dy \\
+			&=\frac{1}{2 \pi} \int_{0}^{2\pi} \sin^{2}(\theta) \ d\theta \\
+			&= \frac{1}{2\pi} \left(\pi - \cancelto{0}{\frac{\sin 2\theta}{4} \Big|_{0}^{2\pi}}\right) \\
+			&= \frac12.
+		\end{align*}
+		Since $u$ is harmonic then it follows that it satisfies the Mean Value Property, thence, $$u(0,0) = U(0,0) = \displaystyle \frac12.$$
+		\section*{Question 3}
+			Let $U(r,\theta) \equiv R(r)\Theta(\theta)$ and
+			\begin{equation}
+			-\left(R''(r) \Theta(\theta) + \frac{1}{r} R'(r) \Theta(\theta) + \frac{1}{r^{2}} R(r) \Theta''(\theta)\right)  = 0 .
+			\end{equation}
+			Rearranging $(1)$ we get
+			$$ \frac{R''(r) r^{2} -rR'(r)}{R(r)} = \frac{\Theta''(\theta)}{\Theta(\theta)},$$
+			for which it follows that point wise, 
+			\begin{equation} 
+			R''(r) r^{2} -rR' (r) = - \lambda^{2} R(r) \qquad ,\text{and }\ \ \Theta''(\theta) = -\lambda^{2} \Theta(\theta).
+			\end{equation}
+			We verify the three cases for $\lambda^{2}$ : \\
+			$\boldsymbol{\lambda^{2} < 0 : } $
+			\begin{gather*}
+				\Theta''(\theta) - \lambda^{2}\Theta(\theta) =0 
+				\intertext{The caracteristic equation has repeated roots ($\lambda^{2} =k^{2}$) so the general solution is }
+				\Theta(\theta) = Ae^{ \lambda\theta} + Be^{-\lambda\theta}
+				\intertext{Since $\Theta$ is periodic, then $\Theta(0) = \Theta(2\pi)$, }
+				\Theta(0) = A+B \neq \Theta(2\pi) = Ae^{2\pi} +Be^{-2 \pi}
+				\intertext{We reject the $\lambda^{2} <0$ solution.}
+			\end{gather*}
+			$\boldsymbol{\lambda^{2} = 0 : } $
+			\begin{gather*}
+				\Theta''(\theta) = 0 \implies \int\Theta'(\theta) = A \implies \Theta(\theta) = Ax+B
+				\intertext{Since $\Theta$ is periodic, then $\Theta(0) = \Theta(2\pi)$. In this case we clearly do not have periodicity , so the $\lambda^{2}$ case is also dismissed.}
+			\end{gather*}
+			$\boldsymbol{\lambda^{2} > 0 : } $
+			\begin{gather*}
+			\Theta''(\theta) + \lambda^{2}\Theta(\theta) =0 
+			\intertext{The caracteristic equation has complex roots ($\lambda^{2} =-k^{2}$) so the general solution is }
+			\Theta(\theta) = A\cos(\lambda \theta) + B\sin(\lambda \theta)
+			\intertext{Since $\Theta$ is periodic, then $\Theta(0) = \Theta(2\pi)$, }
+			\Theta(0) = B = \Theta(2\pi) = B \quad \checkmark.
+			\end{gather*}
+			We look for $R(r)$. We perform a change of variables in $(2)$. Let $s = \ln(r) \implies R(r) = \varphi(\ln (s)) = \varphi(s).$Then,
+			\begin{gather*}
+				R'(r) =\varphi'(s) \frac{1}{r} \qquad \text{and } \ \ R''(r) = \frac{1}{r^{2}} (\varphi''(s) + \varphi'(s)) \\
+				\overset{(2)}{\implies } \Bigg[\frac{r^{2}}{r^{2}} \varphi''(s) + \frac{r^{2}}{r^{2}} \varphi'(s)\Bigg] - \frac{r}{r} \varphi'(s) - \lambda^{2} \varphi(s) =0 \\
+				\implies \varphi''(s) -\lambda^{2} \varphi(s) =0
+				\intertext{Solving the caracteristic equation we get similar roots $k_{1} = \lambda$ , $k_{2} = -\lambda $, it follows that the general solution is}
+				\varphi(s) =Ae^{\lambda s} + Be^{-\lambda s} 
+				\intertext{Converting back to the initial variable dependence, }
+				R(r) = Ar^{\lambda} + Br^{-\lambda} 
+				\intertext{We note that $R(r)$ needs to be bounded so we exclude the $r^{-\lambda}$ term by setting $B=0$, then}
+				R(r) =Ar^{\lambda}.
+			\end{gather*}
+			Recombining the solutions , 
+			\begin{align*}
+				U(r,\theta) =R(r) \Theta(\theta) &= r^{\lambda}(A\cos (\lambda \theta) + B\sin(\lambda \theta)) 
+				\intertext{This represents infinite solutions sicne $\Theta(\theta)$ is periodic , so we can extend with }
+				&= r^{\lambda} (A_{\lambda} \cos(\lambda \theta) + B_{\lambda} \sin (\lambda \theta)) \qquad \text{for  }\lambda \in \mathbb{N}.
+				\intertext{The general solution is then}
+				U(r,\theta) &= \sum_{\lambda =0}^{N}r^{\lambda} (A_{\lambda}\cos(\lambda \theta) + B_{\lambda} \sin(\lambda\theta)) 
+			\end{align*}
+			We use the boundary condition and the half angle identity, 
+			$$ U(1,\theta) = \frac12 - \frac{\cos(2\theta)}{2} = \sum_{n=0}^{N} A_{\lambda} \cos(\lambda \theta) + B_{\lambda} \cos(\lambda \theta) \implies A_{0} = \frac12 , A_{1} = 0, A_{2} = -\frac12 \ \text{ and } \  B_{n} = 0 \ \forall n.$$
+			Then it follows that 
+			\begin{gather*}
+				 U(r,\theta) =\frac12 - \frac{r^{2}}{2} \cos(2\theta) , \qquad
+				 \therefore U(0,0) = \frac12 \quad \checkmark.
+			\end{gather*} 
+			\begin{note}
+				It is to be noted that the procedure outlined in question $3$ is far more computationally heavy when compared to that of question $2$. Suggesting that the Mean Value Property combined with the maximum principles are strong tools.
+			\end{note}
+			
+	\end{document}

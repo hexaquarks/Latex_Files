@@ -1,0 +1,215 @@
+\documentclass[12pt]{article}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[many]{tcolorbox}
+\usepackage{changepage}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{mdframed, longtable}
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+\usepackage{array, tabularx, booktabs}
+\usepackage{graphicx,wrapfig, float, caption}
+\usepackage{tikz,physics,cancel, siunitx, xfrac}
+\usepackage{graphics, fancyhdr}
+\usepackage{lipsum}
+\usepackage{xparse}
+\usepackage{thmtools}
+\usepackage{mathrsfs}
+\usepackage{undertilde}
+\usepackage{tikz}
+\usepackage{fullpage,enumitem}
+\usepackage[labelfont=bf]{caption}
+\newcommand{\td}{\text{dim}}
+\newcommand{\tvw}{T : V\xrightarrow{} W }
+\newcommand{\ttt}{\widetilde{T}}
+\newcommand{\ex}{\textbf{Example}}
+\newcommand{\aR}{\alpha \in \mathbb{R}}
+\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+\newcommand{\un}{u_1 , u_2 , \dots , n}
+\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+\newcommand{\sS}{\text{Span}(\mathcal{S})}
+\newcommand{\sSt}{($\mathcal{S}$)}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\Rn}{\mathbb{R}^{n}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rm}{\mathbb{R}^{m}}
+\usepackage{fullpage, fancyhdr}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\ep}{\epsilon}
+\newcommand{\de}{\delta}
+\usepackage[math]{cellspace}
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{3pt}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\usepackage{newtxtext, newtxmath}
+\usepackage{bbm, aligned-overset}
+
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+\newcommand{\vect}{\mathbf}
+\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\A}{\hat{A}}
+\newcommand{\B}{\hat{B}}
+\newcommand{\C}{\hat{C}}
+\newcommand{\dr}{\mathrm{d}}
+\allowdisplaybreaks
+\usepackage{titling}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem]
+\theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{definition}
+\newtheorem{Proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem*{example}{Example}
+\theoremstyle{example}
+\newtheorem*{note}{Note}
+\theoremstyle{note}
+\newtheorem*{remark}{Remark}
+\theoremstyle{remark}
+\newtheorem*{example2}{External Example}
+\theoremstyle{example}
+\usepackage{bbold}
+\title{MATH475 Homework 3}
+\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+\author{Mihail Anghelici 260928404 }
+\date{\today}
+
+\relpenalty=9999
+\binoppenalty=9999
+
+\renewcommand{\sectionmark}[1]{%
+	\markboth{\thesection\quad #1}{}}
+
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[L]{\rule[0pt]{0pt}{0pt} Homework 3} 
+	\fancyhead[R]{\small Mihail Anghelici $260928404$} 
+	\fancyfoot[C]{-- \thepage\ --}
+	\renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{plain}
+\setlength{\headsep}{1cm}
+\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+			\section*{Question 1}
+			\subsection*{a) }
+			We use the general method of characteristics to find the solution $u(x,t)$. We note that $(\alpha x u)_{x} = \alpha u + \alpha x u_{x}$, so then
+				\begin{align*}
+				\frac{dx}{d\tau}= \alpha x ; \quad \frac{d t}{d\tau} = 1 ; \quad \frac{dz}{d \tau} = - \alpha z,
+				\end{align*}
+				with initial conditions 
+				\begin{align*}
+				x(s,0) = s ; \quad t(s,0) = 0; \qquad z(s,0) = u_{0}(s).
+				\end{align*}
+				Thus, solving each ODE with the respective initial condition yields
+				\begin{align*}
+				z &= Ce^{-\alpha \tau} \overset{z(s,0)= u_{0}(s)}{\implies} C =u_{0}(s) \implies z=u_{0}(s)e^{-\alpha \tau},\\
+				t &= \tau +C \overset{t(s,0) = 0}{\implies } C =0  \implies t = \tau, \\
+				x &= C e^{\alpha \tau} \overset{x(s,0) =s }{\implies } C =s \implies x = se^{\alpha \tau}. 
+				\end{align*}
+				Converting with $z(s,\tau) = u(x,t)$ we get
+				$$ u(x,t) = u_{0} \left( \frac{x}{e^{\alpha t}}\right) e^{-\alpha t}.$$
+			\subsection*{b) }
+				Qualitatively, the velocity function $v(x,t) = \alpha x$ represents the flux of the substance studied. In space, it varies linearly with respect to $x$ so then the velocity grows linearly moving away from the origin
+			\subsection*{c) }
+			$$ \lim\limits_{t \to 0} u(0,t) = u_{0} \left( \frac{0}{e^{\alpha t}}\right)e^{-\alpha t} = u_{0}(0)e^{-\infty},$$	
+			which converges to $0$ unless $u_{0}(0) = \infty$ ; since this is unrealistic we  must conclude that $\lim\limits_{t \to \infty} u(0,t) \to 0$. 
+			\\
+			\noindent  In this limit the material vanishes ,which is in accordance with our remark in $(b)$ where we said that the velocity increases away from the origin linearly, for which it implies $\exp(-\alpha t) \xrightarrow[t \to \infty]{} 0$.		
+			\subsection*{d) }
+				\begin{align*}
+					\int_{- \infty}^{\infty} u(x,t) \dr x &= \int_{- \infty}^{\infty} u_{0} \left(\frac{x}{e^{\alpha t}}\right) e^{-\alpha t} \dr x 
+					\intertext{Let $\eta = x / e^{\alpha t} \implies e^{\alpha t} \dr \eta = \dr x$ so then  }
+					&= \int_{- \infty}^{\infty} u_{0} (\eta) \dr \eta,
+				\end{align*}	
+				this is an integral over $\mathbb{R}$ where $u_{0}$ is integrable, the integral is improper so the final answer will not involve the parameter $t$ in the case where it diverges, and will be a constant , also independent of $t$ , in the case where it converges.
+			\section*{Question 2}
+			$$au_{x} + bu_{y} = \nabla u \cdot \binom{a}{b} = 0, $$
+			which implies that $u$ is constant along lines of the form $bx- ay =c \ 
+			\ \forall  \ c \in \mathbb{R}$. Therefore the solution is 
+			$$ u(x,t) = g(bx - ay) , \qquad  \text{for  } g  \text{ arbitrary and } \  g: \mathbb{R} \to \mathbb{R}.$$ 
+			\begin{align*} 
+			\because u(1,2) = u(3,6) &\implies g(b-2a) = g(3b-6a), \\
+			\overset{g  \ \text{is arbitrary}}&{\implies} b-2a = 3b -6a \\
+			&\therefore \frac{b}{a} = 2
+			\end{align*}
+			\section*{Question 3}
+				We use the method of characteristics. 
+				\begin{align*}
+				\frac{dx}{d\tau}= z ; \quad \frac{d t}{d\tau} = 1 ; \quad \frac{dz}{d \tau} = 0,
+				\end{align*}
+				with initial conditions 
+				\begin{align*}
+				x(s,0) = 1 ; \quad t(s,0) = 1; \qquad z(s,0) = 5.
+				\end{align*}
+				Thus, solving each ODE with the respective initial condition yields
+				\begin{gather*}
+				z = C \overset{z(s,0)= 5}{\implies} C =5 \implies z=5,\\
+				t = \tau +C \overset{t(s,0) = 1}{\implies } C =1  \implies t = \tau +1, \\
+				x = z\tau +C \overset{x(s,0) =1 }{\implies } C =1 \implies x = z\tau +1. 
+				\end{gather*}
+				Combining the results above we have the equations 
+				$$ x(s,\tau) = 5t -4 ; \quad t(s,\tau) = \tau +1; \quad z(s,\tau) = 5.$$
+				The solution to Burger's equation is constant on the characteristic lines. Given $x$ as defined above, we note that only the couples $(6,2)$ and $(11,3)$ are on this line. 
+			\section*{Question 4}
+			\subsection*{a) }
+				We have 
+				$$ u u_{x} + u u_{y} = \frac12,$$
+				for which we'll use the general method of characteristics.
+				\begin{align*}
+					\dv{x}{\tau} &= z; & \dv{y}{\tau} &= z; & \dv{z}{\tau} &= \frac12, \\
+					x(s,0) &= s; & y(s,0) &= 2s; & z(s,0) &= 1.
+				\end{align*}
+				Solving each ODE with their respective initial condition yields 
+				$$ x = 2\tau+s; \qquad y = 2\tau +2s ; \qquad z =\frac{\tau}{2} +1.$$
+				We cancel the $s$ variable and substitute $\tau(x,y)$ in $z(s,\tau)$, 
+				$$ 2x -y = 2 \tau \implies  x- \frac{y}{2} = \tau \xrightarrow{} z = \frac{x}{2} - \frac{y}{4} +1 \implies z = \frac{2x - y  + 4}{4}.$$
+				We conclude that the solution is 
+				$$ z(s,\tau) = u(x,y) = \frac{2x - y +4}{4}.$$
+			\subsection*{b)} 
+				If $u(x,x) =1 $ then we get the characteristics 
+				$$ x = 2\tau +s ; \qquad u =2\tau +s ; \qquad z = \frac{\tau}{2}+1.$$
+				There exists a solution $u(x,y)$ provided that $\det D\Phi (s_{0},\tau_{0}) \neq 0$. In our case, 
+				\[\det \begin{vmatrix}
+					\pdv{x}{s} \left(s,0\right) & \pdv{y}{s}\left(s,0\right)\\
+					\pdv{x}{\tau}\left(s,0\right) & \pdv{y}{\tau} \left(s,0\right)
+				\end{vmatrix} = \det \begin{vmatrix}
+					 1 & 1 \\ 2 & 2
+				\end{vmatrix} = 0,
+				\]
+				therefore the inverse function theorem fails for this particular initial condition ,thence no solution exists.
+		\section*{Question 5}
+			From the notes and weekly worksheet , we know that the implicit solution to the Burger's equation given is 
+			$$ u(x,t) = u_{0}(x - ut).$$
+			Using the problem statement, 
+			\begin{align*}
+				u(x,t) = (x-ut)^{2} = x^{2} -2xut + u^{2}t^{2} &\implies  u^{2} t^{2} -(2xt +1) u +x^{2} =0 \\
+				 u(x,t) &= \frac{2xt+1 \pm \sqrt{(2xt+1)^{2} -4t^{2}u^{2}}}{2t^{2}} \\
+				&= \frac{2xt+1 \pm \sqrt{4xt +1}}{2t^{2}}.
+			\end{align*}
+			We verify $u(x,0)$ for the positive root ; Since this is a product of two functions which both limit's do not converge to $0$ so we apply the product rule ;
+			\begin{align*}
+				\lim\limits_{t \to 0} \frac{2xt+1 + \sqrt{4xt +1}}{2t^{2}}  = \lim\limits_{t \to 0} \frac{1}{t^{2}} \frac12 \lim\limits_{t \to 0} (2xt+1 + \sqrt{4xt +1}) = \lim\limits_{t \to 0 } \frac{1}{t^{2}} = \infty,
+			\end{align*}
+			the positive root solution diverges at the initial condition which does not match the given function. We verify the negative root ; We can not apply the product rule here, we try rationalizing the root
+			\begin{align*}
+				 \lim\limits_{t \to 0 } \frac{2xt+1 - \sqrt{4xt +1}}{2t^{2}} = \lim\limits_{t \to 0}\frac{2xt+1 - \sqrt{4xt +1}}{2t^{2}} \frac{2xt +1 + \sqrt{4xt +1}}{2xt +1 + \sqrt{4xt +1}} = \lim\limits_{t \to 0} \frac{4x^{2}}{1 + 2tx + \sqrt{4tx +1}} = x^{2},
+			\end{align*}
+			the positive solution indeed matches the initial condition. We conclude that 
+			$$ u(x,t) =
+			    \begin{cases} 
+					\frac{2xt+1 - \sqrt{4xt +1}}{2t^{2}} \quad &\text{for }\ x \ge ut ,\\
+					0 \quad &\text{for }\ x < ut.	
+				\end{cases}$$
+	\end{document}

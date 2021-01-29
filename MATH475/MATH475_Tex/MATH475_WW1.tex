@@ -1,0 +1,207 @@
+\documentclass[
+	12pt,
+	]{article}
+		\usepackage{xcolor}
+			\usepackage[dvipsnames]{xcolor}
+			\usepackage[many]{tcolorbox}
+		\usepackage{changepage}
+		\usepackage{titlesec}
+		\usepackage{caption}
+		\usepackage{mdframed, longtable}
+		\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+		\usepackage{array, tabularx, booktabs}
+		\usepackage{graphicx,wrapfig, float, caption}
+		\usepackage{tikz,physics,cancel, siunitx, xfrac}
+		\usepackage{graphics, fancyhdr}
+		\usepackage{lipsum}
+		\usepackage{xparse}
+		\usepackage{thmtools}
+		\usepackage{mathrsfs}
+		\usepackage{undertilde}
+		\usepackage{tikz}
+		\usepackage{fullpage,enumitem}
+		\usepackage[labelfont=bf]{caption}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\usepackage{fullpage, fancyhdr}
+	\newcommand{\La}{\mathcal{L}}
+	\usepackage[math]{cellspace}
+		\setlength{\cellspacetoplimit}{3pt}
+		\setlength{\cellspacebottomlimit}{3pt}
+
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\B}{\mathcal{B}}
+	\newcommand{\Ss}{\mathcal{S}}
+	
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{MATH 475 Weekly Work 0}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 }
+	\date{\today}
+	
+	\relpenalty=9999
+			\binoppenalty=9999
+		
+			\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\quad #1}{}}
+			
+			\fancypagestyle{plain}{%
+			  \fancyhf{}
+			  \fancyhead[L]{\rule[0pt]{0pt}{0pt} Weekly Work 0 } 
+			  \fancyhead[R]{\small Mihail Anghelici $260928404$} 
+			  \fancyfoot[C]{-- \thepage\ --}
+			  \renewcommand{\headrulewidth}{0.4pt}}
+			\pagestyle{plain}
+			\setlength{\headsep}{1cm}
+	\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1 }
+		Let 
+		\begin{equation} 
+		u(x,t) = X(x)T(t) 
+		\end{equation}
+			\subsection*{a)}
+				$$ T'(t) = 0 \implies T(t) = \int 0 \ dt = c_{1}.$$
+				$$ X''(x) = 0 \implies X'(x) = \int 0 \ dx = c_{2} \implies X(x) = \int c_{2} \ dx = c_{2}x + c_{3}.$$
+				Replacing in $(1)$ we have 
+				$$ u(x,t)=c_{1}(c_{2}x+c_{3}).$$
+				Since $c_{1},c_{2},c_{3}$ are all arbitrary constants this is equivalent to $u(x,t) = Ax+B$ for $A,B \in \mathbb{R}$.
+			\subsection*{b)}
+				\begin{gather*}
+					T'(t) = -k \lambda^2 T(t) \implies \frac{T'(t)}{T(t)} = -k \lambda^2 \\
+					\implies \int \frac{T'(t)}{T(t)} \ dt = \int -k \lambda^2 \ dt \implies \ln \abs{T(t)} = - k \lambda^2 + c_{1} \\ 
+					\implies T(t) = e^{-k t\lambda^2 + c_{1}}
+					\intertext{We set $e^{c_{1}} \equiv C$}
+					\therefore T(t) = Ce^{-k\lambda^2 t}.
+				\end{gather*}
+				Next, 
+				\begin{gather*}
+					X''(x) = -\lambda^2 X(x) \implies \frac{X''(x)}{X(x)} = -\lambda^2 
+					\intertext{Solving the caracteristic equation yields}
+					\implies X''(x) + \lambda^2 X(x) = 0 \implies X(x) = \pm i \lambda
+					\intertext{Complex roots therefore we use the general solution :}
+					X(x) = A\cos\lambda x + B\sin \lambda x
+				\end{gather*}
+				Finally, 
+				\begin{align*}
+					u(x,t) &= X(x)T(t)  \\
+					&= Ce^{-k\lambda^2 t}(A\cos \lambda x + B\sin \lambda x)
+					\intertext{$C$ is an arbitrary constant which is absorbed by $A$ and $B$, getting}
+					u(x,t) &= e^{-k\lambda^2 t} (A\cos \lambda x + B\sin \lambda x).
+				\end{align*}
+				\subsection*{c) }
+					First,
+					\begin{gather*}
+					T'(t) = -\lambda^2 k T(t) 
+					\implies \ln \lvert T(t)\rvert = -\lambda^2 k t + c_{1}
+					\implies T(t) = Ce^{-\lambda^2kt}
+					\end{gather*} 
+					Then,
+					\begin{gather*}
+					X''(x) = -\lambda^2 X(x) 
+					\intertext{Since $\pm i\lambda = \pm \abs{\lambda}$ for $\lambda$ immaginary we have}
+					X(x) = \pm \abs{\lambda} 
+					\end{gather*}
+					Therefore the solution to the characteristic equation is 
+					\begin{align*}
+					X(x) = Ae^{\abs{\lambda} x} + Be^{-\abs{\lambda} x} 
+					\end{align*}
+					Substituting everything back in $(1)$ we get
+					$$ u(x,t)= e^{-\abs{\lambda}^2 kt}(Ae^{\abs{\lambda} x} + Be^{-\abs{\lambda} x}).$$
+			\newpage		
+			\section*{Question 2}
+				\subsection*{a)}
+					The only solution that can satisfy this PDE is evidently $u(x,t) = Ax+B$ since it's the only linear solution, hence the only solution that can satisfy the initial condition $u(x,0) = 3x$ on $(0,L)$. Solving : 
+					\begin{align*}
+						u(0,t) = 0 \implies B=0 \qquad , u(x,0) = Ax + B = 3x \implies A=3.
+					\end{align*}
+					Therefore the final solution is $u(x,t) = 3x$ since it also satisfies $u(L,t)=3L$ by symmetry of the initial condition.
+					
+				\subsection*{b) }
+					The initial condition is of exponential nature so we dismiss the $\lambda^2 = 0$ linear case. Let us attempt the $\lambda^2 < 0$ case.
+					\begin{align*}
+						u(x,0) &= Ae^{\abs{\lambda}x} + B^{-\abs{\lambda}x}= 2e^{3x}+2e^{-3x}
+						\intertext{The only solutions to this equality is $A=B=2$ and $\abs{\lambda} =3$. We proceed further,}
+						u_{x} &= \abs{\lambda}e^{2\abs{\lambda}^{2}t} (Ae^{\abs{\lambda}x} - Be^{-\abs{\lambda}x}) \\
+						u_{x}(L,t) &= \abs{\lambda} e^{2\abs{\lambda}^{2}t}(Ae^{\abs{\lambda}L}-Be^{-\abs{\lambda}L}) \\
+						&= 3 e^{2\abs{3}^{2}t}(2e^{\abs{3}L} - 2e^{-\abs{3}L})\\
+						&= 6e^{18t}(e^{3L} - e^{-3L})
+					\end{align*}
+					We conclude the $\lambda^{2} < 0$ case satisfies the given BVP since it also satisfies the boundary $u_{x}(0,t) = 0$ given that $(A=B)$, and the $\lambda^{2} >0$ case is dismissed since only one case can satisfy the BVP.
+				\section*{Question 3}
+					\subsection*{a) }
+						Since only the $\lambda^{2} > 0$ satisfies the BVP, we check the boundary
+						$$ u(0,t)=0 \implies e^{-3 \lambda^{2}t}A = 0,$$
+						since $e^{-3\lambda^{2}t} \neq  0 \ \forall \ t\in \mathcal{I}$ we conclude that $A=0$.
+						
+						\noindent Now verifying the right end boundary condition, 
+						\begin{align*}
+							u(1,t) &= 0 \implies e^{-3 \lambda^{2}t}B\sin(\lambda (1)) = 0
+							\intertext{Expressing $\lambda = n \pi / 1$ we get }
+							u(1,t) &= e^{-3 n^{2}\pi^{2}t}B\sin(n\pi (1))
+							\intertext{Extending the spatial domain to $x$ we obtain}
+							u(x,t) &= e^{-3 \pi^{2}n^{2}t}B\sin(n\pi x).
+						\end{align*}
+					\subsection*{b) }
+						First, we note that the PDE as defined is linear (transport equation), therefore a linear combination of solutions is also a solution.$ u(x,t) = Be^{-3n^2 \pi^2 t} \sin(n \pi x)$ suggests there exists an infinite number of solutions since $n \in \mathbb{Z}$ , thus 
+						\begin{equation}
+							u(x,t) := \sum_{n=-N}^{N}B_{n}e^{-3n^2 \pi^2 t} \sin(n \pi x)
+						\end{equation}
+						 is a solution to the given PDE.
+						
+						We can truncate the sum from $n=-N \to 0$ since the $B_{n<0}$ are absorbed in the terms $B_{n>0}$. For illustrative purposes, let us consider the $n=-1 \to 1$ case : 
+						\begin{align*}
+							\sum_{n=-1}^{1} &= B_{-1}e^{\alpha}(\sin (-\pi x)) + B_{0}0 + B_{1}e^{\alpha}\sin(\pi x)
+							\intertext{Using the identity $\sin(-\pi x) = -\sin(\pi x)$, this is equivalent to}
+							&=(B_{1} - B_{-1})e^{\alpha}\sin(\pi x)
+						\end{align*}
+						Since $B_{n}$ are arbitrary numbers $(2)$ can indeed be expressed as
+						$$ u(x,t) := \sum_{n=0}^{N}B_{n}e^{-3n^2 \pi^2 t} \sin(n \pi x).$$
+					\subsection*{c) }
+						Using the general solution found in $3 \ \text{b})$ , 
+						\begin{gather*}
+							u(x,0) = \sum_{n=0}^{N} B_{n}\sin(n\pi x) = 5\sin (2\pi x) - 30 \sin(n \pi x) \implies B_{1} =0 \ , B_{2} = 5 \, B_{3} = -30.
+							\intertext{Therefore we may express the general solution to this particular PDE as}
+							u(x,t) = 5e^{-3(\pi^{2})2^{2}t}\sin(2\pi x) - 30e^{-3\pi^{2}3^{2}t}\sin(3 \pi x).
+						\end{gather*}
+						
+		
+	\end{document}

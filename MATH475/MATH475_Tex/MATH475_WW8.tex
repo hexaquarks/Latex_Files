@@ -1,0 +1,129 @@
+\documentclass[12pt]{article}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[many]{tcolorbox}
+\usepackage{changepage}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{mdframed, longtable}
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+\usepackage{array, tabularx, booktabs}
+\usepackage{graphicx,wrapfig, float, caption}
+\usepackage{tikz,physics,cancel, siunitx, xfrac}
+\usepackage{graphics, fancyhdr}
+\usepackage{lipsum}
+\usepackage{xparse}
+\usepackage{thmtools}
+\usepackage{mathrsfs}
+\usepackage{undertilde}
+\usepackage{tikz}
+\usepackage{fullpage,enumitem}
+\usepackage[labelfont=bf]{caption}
+\newcommand{\td}{\text{dim}}
+\newcommand{\tvw}{T : V\xrightarrow{} W }
+\newcommand{\ttt}{\widetilde{T}}
+\newcommand{\ex}{\textbf{Example}}
+\newcommand{\aR}{\alpha \in \mathbb{R}}
+\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+\newcommand{\un}{u_1 , u_2 , \dots , n}
+\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+\newcommand{\sS}{\text{Span}(\mathcal{S})}
+\newcommand{\sSt}{($\mathcal{S}$)}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\Rn}{\mathbb{R}^{n}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rm}{\mathbb{R}^{m}}
+\usepackage{fullpage, fancyhdr}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\ep}{\epsilon}
+\newcommand{\de}{\delta}
+\usepackage[math]{cellspace}
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{3pt}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\usepackage{newtxtext, newtxmath}
+\usepackage{bbm}
+
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+\newcommand{\vect}{\mathbf}
+\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\A}{\hat{A}}
+\newcommand{\B}{\hat{B}}
+\newcommand{\C}{\hat{C}}
+\newcommand{\dr}{\mathrm{d}}
+\allowdisplaybreaks
+\usepackage{titling}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem]
+\theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{definition}
+\newtheorem{Proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem*{example}{Example}
+\theoremstyle{example}
+\newtheorem*{note}{Note}
+\theoremstyle{note}
+\newtheorem*{remark}{Remark}
+\theoremstyle{remark}
+\newtheorem*{example2}{External Example}
+\theoremstyle{example}
+\usepackage{bbold}
+\title{MATH475 Weekly Work 8}
+\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+\author{Mihail Anghelici 260928404 }
+\date{\today}
+
+\relpenalty=9999
+\binoppenalty=9999
+
+\renewcommand{\sectionmark}[1]{%
+	\markboth{\thesection\quad #1}{}}
+
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[L]{\rule[0pt]{0pt}{0pt} Weekly Work 8} 
+	\fancyhead[R]{\small Mihail Anghelici $260928404$} 
+	\fancyfoot[C]{-- \thepage\ --}
+	\renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{plain}
+\setlength{\headsep}{1cm}
+\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+			\begin{gather*}
+				 \pdv{}{x} u_{0}(x- u t) = u_{0}' \left(\pdv{}{x} \left(x  - ut \right)\right) = u_{0}' \left(1 - \pdv{}{x} \left(ut\right)\right) = u_{0}' (1- u_{x}t) 
+				 \intertext{Rearranging the expression and setting the argument of $u_{0}'$ to $x_{0}$ we get }
+				 u_{x}(x,t) = \frac{u_{0}'(x_{0})}{1 + u_{0}'(x_{0})t} 
+			\end{gather*}
+		\section*{Question 2}
+			\begin{gather*}
+				 \dv{x}{\tau} =q'(z) ; \quad\quad \dv{t}{\tau} =1 ; \quad\quad \dv{z}{t} = 0 \\
+				\quad x(s,0) = s; \qquad t(s,0) = 0; \qquad z(s,0) = u_{0}(s)
+			\end{gather*}
+			Thus, we obtain
+			$$ z = u_{0}(s) ; \qquad t = \tau ; \qquad x = q'(u)t + s.$$
+			Therefore we convert to $u(x,t)$ 
+			$$ s = x - q'(u)t  \implies u(x,t) = u_{0}(x - q'(u) t).$$
+			As a double check, 
+			$$ \pdv{}{x} u_{0}(x - q'(u) t) \implies u_{x}(x,t) = \frac{u_{0}'(x_{0})}{1 + q''(u) u_{0}'(x_{0})t }$$
+		\section*{Question 3}
+			A sufficient condition for $u(x,t)$ to remain smooth for all $t$ is to require $q''(u)u_{0}'(x) \ge 0 \ \forall \ x \in \mathbb{R}$. \\
+			
+			\noindent If this condition is violated, i.e., $\exists \ x_{0}$ such that $q''(u) u_{0}'(x_{0}) <0$ then since 
+			$$ u_{x} \to -\infty \quad \text{as} \: t \to \frac{-1}{q''(u) u_{0}' (x_{0})},$$
+			then 
+			$$ t^{\ast} = \min\limits_{x \in \mathbb{R}} \Biggl\{\frac{-1}{q''(u) u_{0}' (x_{0})} \  \Bigg| \  q''(u)u_{0}'(x) < 0\Biggr\} = \frac{-1}{q''(u)u_{0}(x_{0})}.$$
+	\end{document}

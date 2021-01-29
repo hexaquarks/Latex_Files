@@ -1,0 +1,171 @@
+\documentclass[12pt]{article}
+	\newcommand\hmmax{0}
+	\newcommand\bmmax{0}
+		\usepackage{xcolor}
+			\usepackage[dvipsnames]{xcolor}
+			\usepackage[many]{tcolorbox}
+		\usepackage{changepage}
+		\usepackage{titlesec}
+		\usepackage{caption}
+		\usepackage{mdframed, longtable}
+		\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+		\usepackage{array, tabularx, booktabs}
+		\usepackage{graphicx,wrapfig, float, caption}
+		\usepackage{tikz,physics,cancel, siunitx, xfrac}
+		\usepackage{graphics, fancyhdr}
+		\usepackage{lipsum}
+		\usepackage{xparse}
+		\usepackage{thmtools}
+		\usepackage{mathrsfs}
+		\usepackage{undertilde}
+		\usepackage{tikz}
+		\usepackage{fullpage,enumitem}
+		\usepackage[labelfont=bf]{caption}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\usepackage{fullpage, fancyhdr}
+	\newcommand{\La}{\mathcal{L}}
+	\newcommand{\ep}{\epsilon}
+	\newcommand{\de}{\delta}
+	\usepackage[math]{cellspace}
+		\setlength{\cellspacetoplimit}{3pt}
+		\setlength{\cellspacebottomlimit}{3pt}
+	\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+	\usepackage{newtxtext, newtxmath}
+
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\Ss}{\mathcal{S}}
+	\newcommand{\A}{\hat{A}}
+	\newcommand{\B}{\hat{B}}
+	\newcommand{\C}{\hat{C}}
+	\allowdisplaybreaks
+	\usepackage{titling}
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	\usepackage{bbold}
+	\title{MATH475 Weekly Work 6}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 }
+	\date{\today}
+	
+	\relpenalty=9999
+			\binoppenalty=9999
+		
+			\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\quad #1}{}}
+			
+			\fancypagestyle{plain}{%
+			  \fancyhf{}
+			  \fancyhead[L]{\rule[0pt]{0pt}{0pt} Weekly Work 6} 
+			  \fancyhead[R]{\small Mihail Anghelici $260928404$} 
+			  \fancyfoot[C]{-- \thepage\ --}
+			  \renewcommand{\headrulewidth}{0.4pt}}
+			\pagestyle{plain}
+			\setlength{\headsep}{1cm}
+	\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+			Let 
+			\begin{align}
+				\varphi(x,y) &:= \Phi(\tilde{x} - y) \\
+				&:= \Phi(y-\tilde{x}).
+			\end{align}
+			We verify $(1)$ using 
+			\[ \begin{cases}
+				-\Delta_{y}\varphi(x,y) =0 \qquad &\text{in }  \ \mathbb{R}^{3}_{+} := \{(y_{1} , y_{2} \in \mathbb{R} , y_{3} \in (0,\infty))\}, \\
+				\varphi(x,\sigma) = \Phi(x-\sigma) = \frac{1}{4\pi \abs{x-\sigma}} \qquad &\text{on} \ \partial\mathbb{R}^{3}_{+} := \{(y_{1} , y_{2} , 0) : y_{1} , y_{2} \in \mathbb{R}\}.
+			\end{cases}\]
+			We compute the gradient then the divergence and show it is equal to $0$. 
+			\begin{align*}
+				\nabla \varphi(x,y) &= \nabla \left(\frac{1}{4\pi} \frac{1}{\abs{(x_{1},x_{2},-x_{3}) - (y_{1},y_{2},y_{3})}}\right) \\
+				&= \nabla \left(\frac{1}{4\pi}\frac{1}{\sqrt{(x_{1} -y_{1})^{2} + (x_{2} - y_{2})^{2} +(-x_{3} -y_{3})^{2}}}\right) \tag{3} \\
+				&= \frac{1}{4\pi}
+				\begin{aligned}[t]
+					&\left( \frac{-(x_{1} - y_{1})}{\left((x_{1} - y_{1})^{2} +(x_{2}-y_{2})^{2} + (x_{3}+y_{3})^{2}\right)^{3/2}} \right. \\
+					&,\left.  \frac{-(x_{2} - y_{2})}{\left((x_{1} - y_{1})^{2} +(x_{2}-y_{2})^{2} + (x_{3}+y_{3})^{2}\right)^{3/2}} \right.\\
+					&, \left.  \frac{(x_{3} + y_{3})}{\left((x_{1} - y_{1})^{2} +(x_{2}-y_{2})^{2} + (x_{3}+y_{3})^{2}\right)^{3/2}} \right)
+				\end{aligned} \\
+				\nabla \cdot (\nabla \varphi(x,y)) &= \frac{1}{4\pi} 
+				\begin{aligned}[t]
+					&\left( \frac{\left((x_{1} - y_{1})^{2} +(x_{2}-y_{2})^{2} + (x_{3}+y_{3})^{2}\right) - 3(x_{1} - x_{2})^{2}}{\left((x_{1} - y_{1})^{2} +(x_{2}-y_{2})^{2} + (x_{3}+y_{3})^{2}\right)^{5/2}} \right. \\
+					&+ \left. \frac{\left((x_{1} - y_{1})^{2} +(x_{2}-y_{2})^{2} + (x_{3}+y_{3})^{2}\right) - 3(x_{2} - x_{2})^{2}}{\left((x_{1} - y_{1})^{2} +(x_{2}-y_{2})^{2} + (x_{3}+y_{3})^{2}\right)^{5/2}} \right. \\
+					&+\left. \frac{\left((x_{1} - y_{1})^{2} +(x_{2}-y_{2})^{2} + (x_{3}+y_{3})^{2}\right) - 3(x_{3} + x_{3})^{2}}{\left((x_{1} - y_{1})^{2} +(x_{2}-y_{2})^{2} + (x_{3}+y_{3})^{2}\right)^{5/2}} \right) \\
+				\end{aligned}\\
+				\Delta \varphi(x,y) &= \frac{1}{4\pi} \left(\frac{3\left((x_{1} - y_{1})^{2} +(x_{2}-y_{2})^{2} + (x_{3}+y_{3})^{2}\right) - 3\left((x_{1} - y_{1})^{2} +(x_{2}-y_{2})^{2} + (x_{3}+y_{3})^{2}\right)}{\left((x_{1} - y_{1})^{2} +(x_{2}-y_{2})^{2} + (x_{3}+y_{3})^{2}\right)^{5/2}}\right)\\
+				&= 0 \quad \checkmark
+			\end{align*}
+			We perform the exact same computation for $(2)$ which inevitably holds as well since the Laplacian operation is the same for a different sign inside the squared factors of the squared root in $(3)$. \\
+			
+			\noindent We now verify the boundary condition .Since by definition $G(x,y) =0 $ on the boundary, then it follows that 
+			$$ G(x,y) = \Phi(x,y) - \Phi(\tilde{x} -y)=0 \implies \Phi(x,y) \equiv \Phi(\tilde{x}-y),$$
+			hence on the boundary
+			$$ \varphi(x,\sigma) = \Phi(\tilde{x} -\sigma) = \Phi(x-\sigma) = \frac{1}{4\pi \abs{x-\sigma}}, $$
+			which is precisely the the boundary condition defined for $\varphi$. Since $\Phi(\tilde{x}-y) = \Phi(y-\tilde{x})$, then it follows that the boundary condition is respected for the second component in the equality.
+		\section*{Question 2}
+			By definition ,
+			\begin{gather*} 
+			u(x) = \int\limits_{\Omega} f(y) G(x,y) \ \mathrm{d}y - \int\limits_{\partial \Omega}g(y)\pdv{G}{n}(x,y) \ \mathrm{d} \sigma.\tag{4}
+			\end{gather*}
+			We compute the  normal derivative of  
+			\begin{align*}
+				G(x,y) &= \frac{1}{4\pi} \left(\frac{1}{\abs{x-y}} - \frac{1}{\abs{\tilde{x} -y}^{}}\right) 
+				\intertext{The reflection is with respect to the $y_{3}$ component and the normal vector is pointing inwards so it is negative, thence}
+				-\eval{\pdv{G}{y_{3}}}_{y_{3}=0} &=-\frac{1}{4\pi} \left(\frac{x_{3}-y_{3}}{\abs{x-y}^{3}} - \frac{-x_{3}-y_{3}}{\abs{\tilde{x}-y}^{3}}\right) \\
+				&=-\frac{x_{3}}{2\pi \abs{x-y}^{3}}.
+			\end{align*}
+			We conclude, using $(4)$ that the representation formula is 
+			\begin{gather*}
+				u(x) = \int\limits_{\Omega} \frac{f(y)}{4\pi} \left(\frac{1}{\abs{x-y}} - \frac{1}{\abs{\tilde{x} -y}}\right) \ \mathrm{d}y + 	\int\limits_{\partial \Omega}g(y) \frac{x_{3}}{2\pi \abs{x-y}^{3}} \ \mathrm{d} \sigma
+			\end{gather*} 
+		\section*{Question 3}
+			We show the claim through the following development 
+			\begin{align*}
+				 G(x,y) &= \Phi(x,y) - \Phi(\tilde{x}-y) \\
+				 &= \frac{1}{4\pi} \left(\frac{1}{\abs{x-y}} - \frac{1}{\abs{\tilde{x}-y}}\right) \\
+				 &= \frac{1}{4\pi} \left(\frac{1}{\sqrt{(x_{1} -y_{1})^{2} +(x_{2} -y_{2})^{2} + (x_{3} -y_{3})^{2}}}-\frac{1}{\sqrt{(x_{1} -y_{1})^{2} +(x_{2} -y_{2})^{2} + (-x_{3} -y_{3})^{2}}}\right)\\
+				&= \frac{1}{4\pi}
+				 \begin{aligned}[t]
+				  &\left(\frac{1}{\sqrt{(-1)^{2}(y_{1} -x_{1})^{2} +(-1)^{2}(y_{2} -x_{2})^{2} + (-1)^{2}(y_{3} -x_{3})^{2}}} \right. \\
+				 	& \left. -\frac{1}{\sqrt{(-1^{2})(y_{1} -x_{1})^{2} +(-1)^{2}(y_{2} -x_{2})^{2} + (-y_{3} -x_{3})^{2}}} \right)
+				 \end{aligned}\\
+				 &= \frac{1}{4\pi} \left(\frac{1}{\abs{y-x}} - \frac{1}{\abs{\tilde{y}-x}}\right) \\
+				 &= \Phi(y-x) - \Phi(\tilde{y}-x)\\
+				 &= G(y,x) \quad \checkmark
+			\end{align*}
+	\end{document}
