@@ -1,0 +1,318 @@
+\documentclass[
+	12pt,
+	]{article}
+		\usepackage{xcolor}
+			\usepackage[dvipsnames]{xcolor}
+			\usepackage[many]{tcolorbox}
+		\usepackage{changepage}
+		\usepackage{titlesec}
+		\usepackage{caption}
+		\usepackage{mdframed, longtable}
+		\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+		\usepackage{array, tabularx, booktabs}
+		\usepackage{graphicx,wrapfig, float, caption}
+		\usepackage{tikz,physics,cancel, siunitx, xfrac}
+		\usepackage{graphics, fancyhdr}
+		\usepackage{lipsum}
+		\usepackage{xparse}
+		\usepackage{thmtools}
+		\usepackage{mathrsfs}
+		\usepackage{undertilde}
+		\usepackage{tikz}
+		\usepackage{fullpage,enumitem}
+		\usepackage[labelfont=bf]{caption}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\usepackage{fullpage, fancyhdr}
+	\newcommand{\La}{\mathcal{L}}
+	\newcommand{\ep}{\epsilon}
+	\newcommand{\de}{\delta}
+	\usepackage[math]{cellspace}
+		\setlength{\cellspacetoplimit}{3pt}
+		\setlength{\cellspacebottomlimit}{3pt}
+	\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\B}{\mathcal{B}}
+	\newcommand{\Ss}{\mathcal{S}}
+	
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{PHYS356 Assignment 3}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 }
+	\date{\today}
+	
+	\relpenalty=9999
+			\binoppenalty=9999
+		
+			\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\quad #1}{}}
+			
+			\fancypagestyle{plain}{%
+			  \fancyhf{}
+			  \fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 3 } 
+			  \fancyhead[R]{\small Mihail Anghelici $260928404$} 
+			  \fancyfoot[C]{-- \thepage\ --}
+			  \renewcommand{\headrulewidth}{0.4pt}}
+			\pagestyle{plain}
+			\setlength{\headsep}{1cm}
+	\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+			In electromagnetism for a wave travelling in the $z$ direction we can think of $x$ and $y$ transmission polarization axis as a basis. For electromagnetic radiation there is a concept involving right/left circularity polarization which can be described in the basis as 
+			$$ \ket{R} = \frac{1}{\sqrt{2}}(\ket{x} + i \ket{y}) \qquad, \ket{L} = \frac{1}{\sqrt{2}} (\ket{x} - i \ket{y}).$$
+			The matrix to change basis from $x \to x'$ and $y \to y'$, representing a transmission axis at an angle is 
+			\begin{equation}
+				S  =\begin{pmatrix}
+				\cos\phi & \sin \phi \\ -\sin \phi & \cos \phi
+				\end{pmatrix}.
+			\end{equation} 
+			So essentially after transformation 
+			$$ \ket{R'} = \frac{1}{\sqrt{2}}(\ket{x'} + i \ket{y'}) \qquad, \ket{L'} = \frac{1}{\sqrt{2}} (\ket{x'} - i \ket{y'}).$$
+			A relationship between $\ket{R}$ and $\ket{R}'$ exists :
+			\begin{align*}
+				\ket{R' } &= \frac{1}{\sqrt{2}} (\ket{x'} + i\ket{y}')
+				\intertext{Using $(1)$, }
+				&= \frac{(\cos \phi - i \sin \phi)}{\sqrt{2}} (\ket{x} + y\ket{y})\\
+				&= e^{-i \phi } \ket{R} \tag{2},
+			\end{align*}
+			we see that the relationship is a rotation ,therefore we can apply the definition of rotations in a quantum mechanical frame 
+			$$ \ket{R' } = \hat{R}_{z}(\phi) \ket{R} = e^{-i \hat{J}_{z} \phi / \hbar}\ket{R},$$
+			Following $(2)$ , this implies that $\hat{J}_{z} \ket{R} = \hbar{R}$ , and similarly for  $\hat{J}_{z} \ket{L} = -\hbar{L}$, we conclude that the two eigenvalues of the generator of rotations which correspond to the angular momentum of the photon is $\pm \hbar$. 
+		\section*{Question 2}
+		We first find the matrix representation	$\hat{S}_{z}$
+		$$ \hat{S}_{z} \xrightarrow{R, L \text{ basis}} = \begin{pmatrix}
+			\mel{R}{S_{z}}{R} & \mel{R}{S_{z}}{L} \\ 
+			\mel{L}{S_{z}}{R} & \mel{L}{S_{z}}{L}
+		\end{pmatrix} = \begin{pmatrix}
+			\hbar & 0 \\ 0 & \hbar
+		\end{pmatrix}.$$
+		Now we transform the vectors 
+		$$ \ket{x} \xrightarrow{R, L \ \text{basis}} = \begin{pmatrix}
+			\braket{R}{x} \\ \braket{L}{x}
+		\end{pmatrix}, \qquad \quad \ket{y} \xrightarrow{R, L \ \text{basis}} = \begin{pmatrix}
+		\braket{R}{y} \\ \braket{L}{y}
+		\end{pmatrix}.$$
+		We compute each element; 
+		\begin{align*}
+			\braket{R}{x} &= \braket{x}{R}^{\ast} = \left(\frac{1}{\sqrt{2}}\right)^{\ast } = \frac{1}{\sqrt{2}} \\
+			\braket{L}{x} &= \braket{x}{L}^{\ast} = \left(\frac{1}{\sqrt{2}}\right)^{\ast } = \frac{1}{\sqrt{2}} \\
+			\braket{R}{y} &= \braket{y}{R}^{\ast} = \left(\frac{i}{\sqrt{2}}\right)^{\ast } = \frac{-i}{\sqrt{2}} \\
+			\braket{L}{y} &= \braket{y}{L}^{\ast} = \left(\frac{-i}{\sqrt{2}}\right)^{\ast } = \frac{i}{\sqrt{2}} \\
+		\end{align*}
+		Finally ,
+		$$ \ket{x} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+			1 \\ 1
+		\end{pmatrix} , \qquad \quad \ket{y} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+		 -i \\ i 
+		\end{pmatrix}.$$
+	\section*{Question 3}
+		The spin of a particle essentially dictates the direction of its angular momentum , i.e., the direction of the propagation. If the spin for a photon is $0$, then the photon is stationary which is impossible since photons have no rest frame.
+	\section*{Question 4}
+		\subsection*{a) }
+			First and foremost we note that $\ket{\psi}$ is normalized. Therefore, 
+			$$ \abs{\braket{y}{\psi}}^{2} = \abs{\frac{1}{\sqrt{3}}}^{2} = \frac13.$$
+		\subsection*{b) }
+			We first perform a change of basis with $S^{\dagger}$ as defined in $(1)$
+			$$ \begin{pmatrix}
+			\sqrt{\frac{2}{3}} \\ \frac{i}{\sqrt{3}}\end{pmatrix} \begin{pmatrix}
+				\cos \phi & -\sin\phi \\ \sin \phi & \cos \phi 
+			\end{pmatrix} = \begin{pmatrix}
+				 \sqrt{\frac{2}{3}} \cos \phi + \frac{i}{\sqrt{2}} \sin \phi \\
+				 - \frac{\sqrt{2}}{3} \sin \phi + \frac{i}{\sqrt{3}} \cos \phi 
+			\end{pmatrix},$$
+			thus, 
+			$$ \ket{\phi } = \left(\sqrt{\frac{2}{3}}\cos \phi + \frac{i}{\sqrt{3}} \sin \phi \right)\ket{x'} + \left(-\sqrt{\frac{2}{3}}\sin \phi + \frac{i}{\sqrt{3}} \cos \phi\right)\ket{y'}.$$
+			The initial state is normalized ,hence it follows that 
+			$$ \abs{\braket{y'}{\psi}}^{2} = \abs{- \sqrt{\frac{2}{3}} \sin \phi + \frac{i}{\sqrt{3}}\cos \phi}^{2} = \frac23 - \frac{2}{3} \cos^{2} \phi + \frac{1}{3} \cos^{2}\phi = \frac23 - \frac{\cos^{2} \phi}{3}.$$
+		\subsection*{c) }
+			We use the probabilities associated with right/left circularities.
+			\begin{align*}
+				\ket{R} &= \frac{1}{\sqrt{2}} (\ket{x} + i \ket{y}) \\
+				\bra{R} &= \frac{1}{\sqrt{2}} (\bra{x} - i \bra{y}) \\
+				\implies \abs{\braket{R}{\psi}}^{2} &= \abs{\frac{1}{\sqrt{2}} \sqrt{\frac{2}{3}} - \frac{i}{\sqrt{2}} \frac{i}{\sqrt{3}}}^{2} =\frac12 + \frac{\sqrt{2}}{3}.
+			\end{align*}
+			Since $\ket{R}$ and $\ket{L}$ for a normalized basis, it follows that 
+			$$ \abs{\braket{L}{\psi}}^{2} = 1 - \abs{\braket{R}{\psi}}^{2} = \frac12 - \frac{\sqrt{2}}{3}.$$
+			The latter correspond to normalized probability constants therefore since $\pm \hbar$ is the angular momentum corresponding to right/left circularity states, it follows that the net torque is 
+			$$ \text{Net torque } = N \hbar\abs{\braket{R}{\psi}}^{2} - N \hbar \abs{\braket{L}{\psi}}^{2} = N \hbar \frac{2\sqrt{2}}{3},$$
+			which is a value greater that $0$, implying that the disk's rotation is clockwise as with respect to $z_{-} \to z_{+}$ orientation. 
+		\subsection*{d) }
+			The amplitudes would change : 
+			$$ \abs{\braket{y}{\psi'}}^{2} = \abs{\frac{1}{\sqrt{3}}}^{2} = \frac13.$$
+			Moreover, 
+			\begin{align*}
+				\abs{\braket{y'}{\psi'}}^{2} &= \abs{-\sqrt{\frac{2}{3}} \sin \phi + \frac{1}{\sqrt{3}} \cos \phi}^{2} \\
+				 &=\frac23 - \frac{2}{3} \cos^{2} \phi - \frac{2\sqrt{2}}{3}\sin \phi \cos \phi + \frac13 \cos^{2} \phi \\
+				 &=\frac23 - \frac{\cos^{2}\phi}{3} - \frac{\sqrt{2}}{3} \sin(2\phi).
+			\end{align*}
+			The net torque should change as well
+			\begin{align*}
+				\abs{\braket{R}{\psi'}}^{2} &= \abs{\frac{1}{\sqrt{2}} \sqrt{\frac{2}{3}} - \frac{i}{\sqrt{2}} \frac{1}{\sqrt{3}}}^{2} = \frac12 \\
+				\implies \abs{\braket{L}{\psi'}}^{2} &= \frac12,
+			\end{align*}
+			We conclude the net torque is $0$ since both probabilities are equal , so the disk will not rotate.
+		\section*{Question 5}
+			\subsection*{a) }
+				Let $a = (1 \ 0 \ 0 )^{T} , \ b = (0 \ 1 \ 0 )^{T}$ and $ c = (0 \ 0 \ 1 )^{T}$. Then 
+				\begin{align*}
+					&\begin{pmatrix}
+						a_{11} & a_{12} & a_{13}\\
+						a_{21} & a_{22} & a_{23} \\
+						a_{31} & a_{32} & a_{33} \\
+					\end{pmatrix} \begin{pmatrix}
+					1 \\ 0 \\ 0
+					\end{pmatrix} = \begin{pmatrix}
+					0 \\ 1 \\ 0
+					\end{pmatrix} \\
+					&\begin{pmatrix}
+					a_{11} & a_{12} & a_{13}\\
+					a_{21} & a_{22} & a_{23} \\
+					a_{31} & a_{32} & a_{33} \\
+					\end{pmatrix} \begin{pmatrix}
+					0 \\ 1 \\ 0
+					\end{pmatrix} = \begin{pmatrix}
+					0 \\ 0 \\ 1
+					\end{pmatrix} \\
+					&\begin{pmatrix}
+					a_{11} & a_{12} & a_{13}\\
+					a_{21} & a_{22} & a_{23} \\
+					a_{31} & a_{32} & a_{33} \\
+					\end{pmatrix} \begin{pmatrix}
+					0 \\ 0 \\ 1
+					\end{pmatrix} = \begin{pmatrix}
+					1 \\ 0 \\ 0
+					\end{pmatrix} 
+					\intertext{Solving the system of equations yields }
+					\hat{T} &= \begin{pmatrix}
+					0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0
+					\end{pmatrix}.
+				\end{align*}
+				The matrix found is indeed unitary since multiplied by its conjugate transpose it is equal to the identity,
+				$$ \hat{T} \hat{T}^{\ast} = \begin{pmatrix}
+				0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0
+				\end{pmatrix}\begin{pmatrix}
+				0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0  & 0
+				\end{pmatrix} = 
+				\begin{pmatrix}
+				1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1
+				\end{pmatrix} \quad \checkmark.$$
+			\subsection*{b) }
+				We first find the eigenvalues with 
+				\begin{gather*} 
+				p(\lambda) = \text{det} (\hat{T} - I\lambda) =0 \implies \begin{vmatrix}
+					-\lambda & 0 & 1 \\
+					1 & -\lambda & 0 \\
+					0& 1 & -\lambda 
+				\end{vmatrix} =0 \implies (\lambda-1)(\lambda^{2} + \lambda +1) =0 \\ 
+				\therefore \lambda_{1} = 1 , \qquad \lambda_{2} = \frac12 (-1 + i\sqrt{3}) , \qquad \lambda_{3} = \frac12 (-1 -i\sqrt{3}). 
+				\intertext{The corresponding eigenvectors to these eigenvalues are found computing the kernel. That is by solving $(\hat{T}-I\lambda_{i})\vec{v_{i}} = \vec{0}$, for $\vec{v_{i}}$, we obtain}
+				\vec{v_{1}} = 
+				\begin{pmatrix}
+					1 \\ 1 \\ 1 
+				\end{pmatrix} ,\qquad \vec{v_{2}} = 
+				\begin{pmatrix}
+					-1 - i \sqrt{3}) \\ -1 + i\sqrt{3} \\ 2
+				\end{pmatrix}, \qquad \vec{v_{3}} =
+				\begin{pmatrix}
+					-1 + i \sqrt{3} \\ -1 - i\sqrt{3} \\ 2
+				\end{pmatrix}.
+				\end{gather*}
+				It follows that for a state we have the corresponding eigenstates in braket notation
+				$$ \ket{\psi} = \frac{1}{\sqrt{3}} \ket{v_{1}} + \frac{1}{\sqrt{3}} \ket{v_{2}} +\frac{1}{\sqrt{3}} \ket{v_{3}}.$$
+				The probabilities are the same for each state so the probability to find in $b$ state is given by $\abs{\braket{v_{i}}{\psi}}^{2} = 1/3$.
+			\subsection*{c) }
+				Let $\hat{T} \equiv \hat{R}_{z}(\varphi)$. A full circle is $2\pi$ therefore each rotation si $\varphi =2\pi /3$. Let $J_{z}$ be diagonal in the eigenbasis with $\alpha_{i}$ as diagonal entries.Then it follows that
+				\begin{align*}
+					\hat{R}_{z} \left(\frac{2\pi}{3}\right) = e^{\frac{-i \habr \hat{J}_{z} 2 \pi }{3 \hbar }} &\to e^{\frac{-i 2 \pi \alpha_{1}}{3\hbar }} \ket{v_{1}} = \lambda_{1} \ket{v_{1}} \implies  e^{\frac{-i 2 \pi \alpha_{1}}{3\hbar }} = 1 \implies \alpha_{1} = 0 \\
+					&\to e^{\frac{-i 2 \pi \alpha_{2}}{3\hbar }} \ket{v_{2}} = \lambda_{2} \ket{v_{2}} \implies  e^{\frac{-i 2 \pi \alpha_{2}}{3\hbar }} = \frac12 (-1 + i \sqrt{3}) \xrightarrow{\text{Euler's identity}} \alpha_{2} = -\hbar \\
+					&\to e^{\frac{-i 2 \pi \alpha_{2}}{3\hbar }} \ket{v_{3}} = \lambda_{3} \ket{v_{3}} \implies  e^{\frac{-i 2 \pi \alpha_{3}}{3\hbar }} = \frac12 (-1 - i \sqrt{3}) \xrightarrow{\text{Euler's identity}} \alpha_{3} = \hbar,
+				\end{align*}
+				We conclude that $\hat{J}_{z}$ in the eigenbasis is
+				$$ \hat{J_{z}} = \begin{pmatrix}
+					\alpha_{1} & 0 & 0 \\0 & \alpha_{2} & 0 \\
+					0& 0& \alpha_{3}
+				\end{pmatrix} = 
+				\hbar\begin{pmatrix}
+					0 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 1
+				\end{pmatrix}.$$
+				Next, we convert to $a,b,c$ basis
+				\begin{align*}
+				 \hat{J}_{z} &\xrightarrow{a,b,c \ \text{basis}}  \begin{pmatrix}
+					\braket{a}{v_{1}} & \braket{a}{v_{2}} & \braket{a}{v_{3}} \\
+					\braket{b}{v_{1}} & \braket{b}{v_{2}} & \braket{b}{v_{3}} \\
+					\braket{c}{v_{1}} & \braket{c}{v_{2}} & \braket{c}{v_{3}} 
+				\end{pmatrix}
+				\hbar
+				\begin{pmatrix}
+					0 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 1
+				\end{pmatrix}
+				\begin{pmatrix}
+				\braket{v_{1}}{a} & \braket{v_{1}}{b} & \braket{v_{1}}{c} \\
+				\braket{v_{2}}{a} & \braket{v_{2}}{b} & \braket{v_{2}}{c} \\
+				\braket{v_{3}}{a} & \braket{v_{3}}{b} & \braket{v_{3}}{c} 
+				\end{pmatrix}\\
+				&= \frac{1}{\sqrt{3}}\begin{pmatrix}
+					1 & (-1-i \sqrt{3}) & (-1 + i\sqrt{3}) \\
+					1 & (-1+i\sqrt{3}) & (-1-i\sqrt{3}) \\
+					1 & 2 & 2
+				\end{pmatrix}
+				\hbar 
+				\begin{pmatrix}
+					0 & 0 & 0 \\ 
+					0 & -1 & 0 \\
+					0 & 0 & 1
+				\end{pmatrix}
+				\frac{1}{\sqrt{3}}
+				\begin{pmatrix}
+					1 & 1 & 1\\
+					(-1+i \sqrt{3}) & (-1-i \sqrt{3}) & 2 \\
+					(-1-i\sqrt{3}) & (-1 +i \sqrt{3}) & 2 \\
+				\end{pmatrix}\\ 
+				&= \frac{\hbar }{\sqrt{3}}
+				\begin{pmatrix}
+					0 & -i 4 & i 4\\
+					i4 & 0 & -i 4\\
+					-i 4 & i 4 & 0
+				\end{pmatrix},
+				\end{align*}
+				The last matrix has the same eigenvectors $\vec{v_{1}}, \vec{v_{2}} ,\vec{v_{3}}$ as $\hat{T}$ like defined in $5b$, thence they have the same eigenstates.
+	\end{document}

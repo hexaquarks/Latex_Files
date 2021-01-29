@@ -1,0 +1,234 @@
+\documentclass[12pt]{article}
+		\usepackage{xcolor}
+			\usepackage[dvipsnames]{xcolor}
+			\usepackage[many]{tcolorbox}
+		\usepackage{changepage}
+		\usepackage{titlesec}
+		\usepackage{caption}
+		\usepackage{mdframed, longtable}
+		\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+		\usepackage{array, tabularx, booktabs}
+		\usepackage{graphicx,wrapfig, float, caption}
+		\usepackage{tikz,physics,cancel, siunitx, xfrac}
+		\usepackage{graphics, fancyhdr}
+		\usepackage{lipsum}
+		\usepackage{xparse}
+		\usepackage{thmtools}
+		\usepackage{mathrsfs}
+		\usepackage{undertilde}
+		\usepackage{tikz}
+		\usepackage{fullpage,enumitem}
+		\usepackage[labelfont=bf]{caption}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\usepackage{fullpage, fancyhdr}
+	\newcommand{\La}{\mathcal{L}}
+	\newcommand{\ep}{\epsilon}
+	\newcommand{\de}{\delta}
+	\usepackage[math]{cellspace}
+		\setlength{\cellspacetoplimit}{3pt}
+		\setlength{\cellspacebottomlimit}{3pt}
+	\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+	\usepackage{newtxtext, newtxmath}
+
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\Ss}{\mathcal{S}}
+	\newcommand{\A}{\hat{A}}
+	\newcommand{\B}{\hat{B}}
+	\newcommand{\C}{\hat{C}}
+	\allowdisplaybreaks
+	\usepackage{titling}
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	\usepackage{bbold}
+	\title{PHYS 350 Assignment 5}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 }
+	\date{\today}
+	
+	\relpenalty=9999
+			\binoppenalty=9999
+		
+			\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\quad #1}{}}
+			
+			\fancypagestyle{plain}{%
+			  \fancyhf{}
+			  \fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 5} 
+			  \fancyhead[R]{\small Mihail Anghelici $260928404$} 
+			  \fancyfoot[C]{-- \thepage\ --}
+			  \renewcommand{\headrulewidth}{0.4pt}}
+			\pagestyle{plain}
+			\setlength{\headsep}{1cm}
+	\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+			\subsection*{a) }
+				
+			We normalize to find $N$ ,
+			\begin{gather*}
+				\begin{pmatrix}
+					-N^{\ast} i & 2 N^{\ast} & 3N^{\ast} & -4N^{\ast} i 
+ 				\end{pmatrix}\begin{pmatrix}
+ 					Ni \\ 2N \\ 3N \\ 4Ni
+ 				\end{pmatrix} = \abs{N}^{2} + 4\abs{N}^{2} + 9 \abs{N}^{2} + 16\abs{N}^{2} =1 \implies N = \frac{1}{\sqrt{30}}.
+			\end{gather*}
+			\subsection*{b) }
+				We know that 
+				$$ \hat{S}_{x} =\xrightarrow{\text{Notes}} \begin{pmatrix}
+					0& \sqrt{3} & 0 & 0 \\
+					\sqrt{3}&0 & 2 & 0 \\
+					0 & 2 & 0 & \sqrt{3} \\
+					0 & 0 & \sqrt{3} & 0
+				\end{pmatrix},$$
+				So then 
+				\begin{gather*}
+					\mel{\varphi}{\hat{S}_{}}{\varphi} = \frac{1}{\sqrt{30}} \begin{pmatrix}
+						-i & 2 & 3 & -4i
+					\end{pmatrix}\frac{\hbar}{2} \begin{pmatrix}
+					0 &\sqrt{3} & 0 & 0 \\
+					\sqrt{3} &0& 2 & 0 \\
+					0 & 2 & 0 & \sqrt{3} \\
+					0 & 0 & \sqrt{3} & 0
+					\end{pmatrix} \frac{1}{\sqrt{30}}\begin{pmatrix}
+						i \\ 2\\ 3\\ 4i
+					\end{pmatrix} = \frac{4\hbar}{5}.
+				\end{gather*}
+				\subsection*{c)} 
+					Since 
+					$$ \ket{\varphi} = \frac{1}{\sqrt{30}}\left(i \ket{\frac32 , \frac32} + 2\ket{\frac32, \frac12} + 3\ket{\frac32 ,-\frac12} + 4i\ket{\frac32, -\frac32}\right),$$
+					then it follows that 
+					$$ \abs{\braket{z}{\varphi}}^{2} = \abs{\frac{2}{\sqrt{30}}}^{2} = \frac{2}{15}.$$
+			\section*{Question 2}
+				We know that 
+				$$ \hat{U}^{\dagger}(t) \hat{U}(t) = \text{I} \implies \hat{U}^{\dagger}(\textrm{d}t) \hat{U}(\textrm{d}t) = \text{I}.$$
+				Moreover, 
+				$$ \hat{U}^{\dagger}(\textrm{d}t) =\left(\text{I} - \frac{i}{\hbar} \hat{H} \textrm{d}t\right)^{\dagger} = \text{I} + \frac{i}{\hbar} \hat{H}^{\dagger} \textrm{d}t = \hat{U}(-\textrm{d}t).$$
+				Therefore, 
+				\begin{align*}
+					\hat{U}^{\dagger}(\texrm{d}t)\hat{U}(\textrm{d}t) &= \left(\text{I} + \frac{i}{\hbar}\hat{H}^{\dagger}\textrm{d}t\right)\left(I -\frac{i}{\hbar}\hat{H}\textrm{d}t\right)\\
+					&= \text{I} + \frac{i}{\hbar} (\hat{H}^{\dagger} - \hat{H}) \textrm{d}t + \underbrace{\mathcal{O}(\textrm{d}t)^{2}}_{\to 0} =1 
+					\shortintertext{\[\implies \frac{i}{\hbar}(\hat{H}^{\dagger} - \hat{H}) =0 \implies \hat{H}^{\dagger} = \hat{H},\]}
+					\intertext{Hence the Hamiltonian is hermitian.}
+				\end{align*}
+
+			\section*{Question 3}
+			We know that 
+				\begin{gather*}
+					\dv{\hat{U}(t)}{t} = -\frac{i}{\hbar} \hat{H}\hat{U}(t) 
+					\intertext{Therefore, we have the Homogenous first order differential equation }
+					\dv{}{t} \hat{U}(t) + \frac{i}{\hbar}\hat{H} \hat{U}(t) = 0 \\
+					\implies \ln\abs{\hat{U}(t)} = - \int_{0}^{t} \frac{i}{\hbar} \hat{H}(t') \ \mathrm{d}t'\\
+					\implies \hat{U}(t) = \exp{- \int_{0}^{t} \frac{i}{\hbar} \hat{H}(t') \ \mathrm{d} t'},
+				\end{gather*}	
+				which shows the requested claim.
+			\section*{Question 4}
+				By definition,
+				\begin{align*}
+					\dv{}{t} \la \hat{A} \ra &= \frac{i}{\hbar} \mel{\varphi(t)}{[\hat{H} , \hat{A}]}{\varphi(t)} + \cancelto{0 \ \ , \text{since time independent}}{\mel{\psi(t)}{\pdv{\hat{A}}{t}}{\psi(t)}}
+					\intertext{The initial state is an energy eigenstate so }
+					\shortintertext{\[
+							\ket{\psi(0)} = \ket{E} \implies \ket{\psi(t)} = e^{-i \hat{H} t / \hbar} \ket{E} = e^{-i E t} \ket{E} \implies \bra{\psi(t)} = e^{i E t / \hbar} \bra{E}
+						\]}
+					&= \frac{i}{\hbar} e^{i E t / \hbar}\bra{E} [\hat{H} ,\hat{A} ] e^{-i E t / \hbar} \ket{E}
+					\intertext{The exponential terms cancel one another, we're left off with}
+					&= \frac{i}{\hbar}\mel{E}{\hat{H}, \hat{A}}{E} \\
+					&= \frac{i}{\hbar} \mel{E}{HA}{E} - \frac{i}{\hbar}\mel{E}{AH}{E} 
+					\intertext{By definition for the Hamiltoniana $H\ket{E} = E\ket{E}$ so then}
+					&= \frac{i}{\hbar} \mel{E}{EA}{E} - \frac{i}{\hbar}\mel{E}{AE}{E} 
+					\intertext{$A$ is an energy eigenstate such that $AE= EA$ , which implies }
+					\dv{}{t} \la \hat{A} \ra &= 0 ,
+				\end{align*} 
+				so $A$ does not change with time, the claim is proved.
+			\section*{Question 5}
+				Let $\ket{\varphi(0)} = \ket{+z}$.We'll express that in the $\ket{\pm x}$ basis and apply the time operator, 
+				\begin{align*}
+					\ket{\varphi(0)} & = \ket{+ z} = \frac{1}{\sqrt{2}} \ket{+x} + \frac{1}{\sqrt{2}} \ket{-x} \\
+					\ket{\varphi(t)} &= \hat{U}(t) \ket{\varphi(0)} \\
+					&= e^{-i\hat{H} t / \hbar} \left(\frac{1}{\sqrt{2}} \ket{+x} + \frac{1}{\sqrt{2}} \ket{-x}\right) 
+					\intertext{Since $\hat{U}(t) \ket{+x} = \exp{\frac{-i}{\hbar} \hat{H}(t)} \ket{+x} = \exp{\frac{-i \omega_{0} t}{2}} \ket{+x}$, then it follows that }
+					&= \frac{1}{\sqrt{2}}e^{-i \omega_{0}t / 2} \ket{+x} + \frac{1}{\sqrt{2}} e^{i \omega_{0}t / 2} \ket{-x} 
+					\intertext{We now transfer back to the $\ket{\pm z}$,}
+					&= \frac{1}{2}e^{-i \omega_{0}t / 2}  \left(\ket{+z} + \ket{-z} \right) +\frac{1}{\sqrt{2}} e^{i \omega_{0}t / 2} \left(\ket{+z} - \ket{-z}\right)
+					 \\&= \cos \frac{\omega_{0}t}{2} \ket{+z} - i \sin \frac{\omega_{0} t}{2} \ket{-z}
+				\end{align*}
+				Then we find $l_{0}$ by setting $\abs{\braket{+z}{\varphi(t)}}^{2} = 1/4,$
+				\begin{gather*}
+					\frac{1}{4} = \abs{\braket{+z}{\varphi(t)}}^{2} = \cos^{2} \frac{\omega_{0}t}{2} \implies \frac{\pi}{3} = \frac{\omega_{0}t}{2} \implies \frac{2\pi}{3} = \omega_{0}t \xrightarrow{\cross v_{0}} \frac{2\pi}{3} v_{0} =  \underbrace{\mathclap{\omega_{0}l_{0}}}_{\omega_{0}(tv_{0})} \\
+					\therefore l_{0} = \frac{2\pi }{3} \left(\frac{v_{0}}{\omega_{0}}\right).
+				\end{gather*}
+			\section*{Question 6}
+				We'll work in the $\ket{\pm z}$ basis and then switch to $\ket{\pm y}$ near the end. Since $\ket{\varphi(0)} = \ket{+z}$ and since 
+				$$ \ket{\psi(t)} = a \ket{\psi^{+}(t)} + b\ket{\psi^{-}(t)} = a e^{-i \omega_{\text{eff} t} /2}  \begin{pmatrix}
+					\cos \frac{\theta}{2} e^{-i \omega t /2} \\ \sin \frac{\theta}{2} e^{i \omega t / 2} 
+				\end{pmatrix} + be^{i \omega_{\text{eff} t} /2}  \begin{pmatrix}
+				\sin \frac{\theta}{2} e^{-i \omega t /2} \\ -\cos \frac{\theta}{2} e^{i \omega t / 2} 
+				\end{pmatrix}, $$
+				then solving 
+				$$\ket{\psi(0)} = \begin{pmatrix}
+				 1 \\ 0
+				\end{pmatrix} = a \begin{pmatrix}
+					\cos \frac{\theta}{2} \\ \sin \frac{\theta}{2} 
+				\end{pmatrix} + b\begin{pmatrix}
+					\sin \frac{\theta}{2} \\ -\cos \frac{\theta}{2} 
+				\end{pmatrix}  \implies a = \cos \frac{\theta}{2} \quad \text{and } \ b = \sin \frac{\theta}{2}.$$
+				So then we write
+				\begin{align*}
+					\ket{\psi (t)} &= \cos \frac{\theta}{2} e^{-i \omega_{\text{eff} t} /2}  \begin{pmatrix}
+					\cos \frac{\theta}{2} e^{-i \omega t /2} \\ \sin \frac{\theta}{2} e^{i \oemga t / 2} 
+					\end{pmatrix} + \sin \frac{\theta}{2} e^{i \omega_{\text{eff} t} /2}  \begin{pmatrix}
+					\sin \frac{\theta}{2} e^{-i \omega t /2} \\ -\cos \frac{\theta}{2} e^{i \oemga t / 2} 
+					\end{pmatrix} 
+					\intertext{We drop the $\exp{\pm i \omega t /2}$ since when we take the absolute value for the probability they vanish to $1$.}
+					&= \begin{aligned}[t]
+						& \Bigg[ \cos^{2}\frac{\theta}{2} e^{-i \omega_{\text{eff}}t / 2} + \sin^{2}\frac{\theta}{2} e^{i \omega_{\text{eff} }t /2} \Bigg]\ket{+z} \\
+						+& \Bigg[ \frac12 \sin \theta e^{-i \omega_{\text{eff}}t /2} -\frac12 \sin \theta e^{i \omega_{\text{eff}}t /2} \Bigg] \ket{-z}
+					\end{aligned}\\
+					&= \Bigg[ \sin^{2}\frac{\theta}{2} \left(\underbrace{e^{i \omega_{\text{eff}}t /2 } -e^{-i \omega_{\text{eff}}t /2 }}_{2i \sin(\omega_{\text{eff}}t)}\right)  \Bigg] \ket{+z} + \Bigg[-\frac12 \sin \theta \left(\underbrace{e^{i \omega_{\text{eff}}t /2 } -e^{-i \omega_{\text{eff}}t /2 }}_{2i \sin(\omega_{\text{eff}}t)}\right) \Bigg]\ket{-z}
+					\intertext{We transform to the $\ket{\pm y}$ basis with $\displaystyle \ket{+z} = \frac{1}{\sqrt{2}}\left(\ket{+y} + \ket{-y}\right)$ and $\displaystyle \ket{-z} = \frac{-i}{\sqrt{2}} \left(\ket{+y} - \ket{-y}\right)$, which gives us }
+					\ket{\psi(t)} &= \frac{1}{\sqrt{2}} \Bigg[e^{-i \omega_{\text{eff}}t /2} + 2i \sin^{2} \frac{\theta}{2} \sin\left(\frac{\omega_{\text{eff}}t /2}{2}\right) - \sin\frac{\theta}{2} \sin \left(\frac{\omega_{\text{eff}}t /2}{2}\right)\Bigg] \ket{+y} +(\dots)\ket{-y} 
+					\intertext{Finally we may compute the probability to find the particules in $S_{y} = \hbar/2$ }
+					\shortintertext{
+					\[
+						\abs{\braket{+y}{\psi}}^{2} = \abs{\frac{1}{\sqrt{2}} \Bigg[ e^{-i \omega_{\text{eff}}t /2} +\sin \left(\frac{\omega_{\text{eff}}t}{2}\right)\left(2i\sin^{2}\frac{\theta}{2} - \sin \frac{\theta}{2}\right)\Bigg]}^{2}
+					\]
+					}
+				\intertext{As a double check ,for $\displaystyle \theta \to 0 , \ \abs{\braket{+y}{\psi}} \to \frac12$ and for $\theta \to \frac{\pi}{2} , \ \abs{\braket{+y}{\psi}} \to \frac12 $ as it should.}
+				\end{align*}
+	\end{document}

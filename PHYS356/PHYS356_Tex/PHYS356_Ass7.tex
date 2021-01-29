@@ -1,0 +1,311 @@
+\documentclass[12pt]{article}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[many]{tcolorbox}
+\usepackage{changepage}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{mdframed, longtable}
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+\usepackage{array, tabularx, booktabs}
+\usepackage{graphicx,wrapfig, float, caption}
+\usepackage{tikz,physics,cancel, siunitx, xfrac}
+\usepackage{graphics, fancyhdr}
+\usepackage{lipsum}
+\usepackage{xparse}
+\usepackage{thmtools}
+\usepackage{mathrsfs}
+\usepackage{undertilde}
+\usepackage{tikz}
+\usepackage{fullpage,enumitem}
+\usepackage[labelfont=bf]{caption}
+\newcommand{\td}{\text{dim}}
+\newcommand{\tvw}{T : V\xrightarrow{} W }
+\newcommand{\ttt}{\widetilde{T}}
+\newcommand{\ex}{\textbf{Example}}
+\newcommand{\aR}{\alpha \in \mathbb{R}}
+\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+\newcommand{\un}{u_1 , u_2 , \dots , n}
+\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+\newcommand{\sS}{\text{Span}(\mathcal{S})}
+\newcommand{\sSt}{($\mathcal{S}$)}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\Rn}{\mathbb{R}^{n}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rm}{\mathbb{R}^{m}}
+\usepackage{fullpage, fancyhdr}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\ep}{\epsilon}
+\newcommand{\de}{\delta}
+\usepackage[math]{cellspace}
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{3pt}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\usepackage{newtxtext, newtxmath}
+\usepackage{bbm}
+
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+\newcommand{\vect}{\mathbf}
+\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\A}{\hat{A}}
+\newcommand{\B}{\hat{B}}
+\newcommand{\C}{\hat{C}}
+\newcommand{\dr}{\mathrm{d}}
+\allowdisplaybreaks
+\usepackage{titling}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem]
+\theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{definition}
+\newtheorem{Proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem*{example}{Example}
+\theoremstyle{example}
+\newtheorem*{note}{Note}
+\theoremstyle{note}
+\newtheorem*{remark}{Remark}
+\theoremstyle{remark}
+\newtheorem*{example2}{External Example}
+\theoremstyle{example}
+\usepackage{bbold}
+\title{PHYS356 Assignment 7}
+\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+\author{Mihail Anghelici 260928404 }
+\date{\today}
+
+\relpenalty=9999
+\binoppenalty=9999
+
+\renewcommand{\sectionmark}[1]{%
+	\markboth{\thesection\quad #1}{}}
+
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 7} 
+	\fancyhead[R]{\small Mihail Anghelici $260928404$} 
+	\fancyfoot[C]{-- \thepage\ --}
+	\renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{plain}
+\setlength{\headsep}{1cm}
+\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+			Since $$\hat{H} = \frac{2A}{\hbar^{2}}S_{1z}S_{2z} + S_{1x}S_{2x} + S_{1y}S_{2y} + \omega_{0}S_{1z},$$ and $$S_{1x}S_{2x} + S_{1y}S_{2y} =  \frac12 \left(S_{1+}S_{2-} + S_{1-}S_{2-}\right),$$ we have
+			\begin{align*}
+				\hat{H}\ket{1}  &= \left(\frac{2A}{\hbar{2}} \frac{\hbar^{2}}{4} + \omega_{0} \frac{\hbar}{2}\right)\ket{+z, +z} = \left(\frac{A}{2} + \omega_{0} \frac{\hbar}{2}\right) \ket{+z , +z}\\ 
+				\hat{H} \ket{2} &= \frac{2A}{\hbar^{2}} \frac{\hbar}{2} \frac{-\hbar}{2}\ket{+z , +z} + \frac{A}{\hbar^{2}} \hbar^{2} \ket{-z , +z} +\oemga_{0} \frac{\hbar}{2} = \frac{-A}{2} \ket{2} + A\ket{3} + \omega_{2}\frac{\hbar}{2} \ket{2} \\
+				\hat{H}\ket{3} &= \frac{-A}{2} \ket{3} + A \ket{2} - \omega_{0}\frac{\hbar}{2} \ket{3} \\
+				\hat{H} \ket{4} &= \left(\frac{A}{2} - \omega_{0} \frac{\hbar}{2}\right) \ket{+z , +z}
+			\end{align*}
+			So the Hamiltonian is 
+			$$ \hat{H} = \begin{bmatrix}
+				\frac{A + \hbar \omega_{0}}{2} & 0 & 0 & 0 \\
+				
+				0 & \frac{-A + \omega_{0} \hbar}{2} & 0 & 0 \\
+				0 & 0 & \frac{-A - \omega_{0} \hbar }{2} & 0 \\
+				0 & 0 & 0 & \frac{A - \hbar \omega_{0}}{2} 
+			\end{bmatrix}.$$
+			We look for the energy eigenvalues. 
+			$$ \det(\hat{H}) = \left( \frac{A+ \hbar\omega_{0}}{2} - E\right)\left( \frac{-A+ \hbar\omega_{0}}{2} - E\right)\Bigg[ \left( \frac{-A - \hbar\omega_{0}}{2} - E\right) - A^{2} \Bigg]\left( \frac{A- \hbar\omega_{0}}{2} - E\right) = 0 ,$$
+			from the extremities we clearly see we have 
+			$$ E_{1} = \frac{A + \hbar \omega_{0}}{2} ; \qquad E_{4} = \frac{A- \hbar \omega_{0}}{2}.$$
+			For the remaining eigenvalues we solve the middle two factors 
+			\begin{gather*}
+				\left( \frac{-A+ \hbar\omega_{0}}{2} - E\right)\left( \frac{-A - \hbar\omega_{0}}{2} - E\right)  -A^{2} = 0  \\
+				\implies EA - \frac{\omega_{0}^{2} \hbar^{2}}{4} + E^{2} - 3\frac{A^{2}}{4}  =0 \\
+				\implies E_{\pm} = \frac{-A \pm \sqrt{A^{2} - 4 \left(-\frac{\omega_{0}^{2} \hbar^{2}}{4} - 3 \frac{A^{2}}{4}\right)}}{2} \\
+				\therefore E_{\pm} = -\frac{A}{2} \pm \sqrt{A^{2} + \left(\frac{\omega_{0}\hbar}{2}\right)^{2}}
+			\end{gather*}
+			Now we look for the two limits with the Taylor expansions. We first note that the Taylor expansions for a square root is 
+			$$ \sqrt{1 +x } = 1 + \frac{x}{2} + \frac{x^{2}}{2!} \left(\frac{-1}{4}\right) + \dots.$$
+			So then in our case, \\
+			 
+			\noindent \textbf{Case 1 : }  $A >> \hbar \omega_{0}.$ 
+			\begin{gather*}
+				 E_{\pm} = -\frac{A}{2} \pm A \sqrt{1 + \left(\frac{\omega_{0} \hbar}{2A}\right)^{2}} = -\frac{A}{2} \pm A \left(1 + \left(\frac{\omega_{0} \hbar}{2A}\right)^{2} \frac12\right) = -\frac{A}{2} \pm A \pm \frac{\omega_{0}^{2} \hbar^{2}}{8A} \\
+				 \therefore E_{2} = \frac{A}{2} + \frac{\omega_{0}^{2}\hbar^{2}}{8A} ; \qquad E_{3} = -\frac{3A}{2} - \frac{\omega_{0}^{2}\hbar^{2}}{8A} .
+			\end{gather*} 
+			\\
+			\noindent \textbf{Case 2: } $A << \hbar \omega_{0}.$
+			\begin{gather*}
+				 -\frac{A}{2} \pm \sqrt{A^{2} + \left(\frac{\omega_{0}\hbar}{2}\right)^{2}} = - \frac{A}{2} + \frac{\omega_{0}\hbar}{2} \left(1 + \left(\frac{2A}{\omega_{0}\hbar}\right)^{2} \frac12\right) \\
+				 \therefore E_{2} = -\frac{A}{2} + \frac{\omega_{0} \hbar}{2} + \frac{A^{2}}{\omega_{0} \hbar} ; \qquad E_{3} = - \frac{A}{2} - \frac{\omega_{0} \hbar}{2} - \frac{A^{2}}{\hbar \omega_{0}}
+			\end{gather*}
+		\section*{Question 2 } 
+			\begin{align}
+				 \ket{+n} &= \cos \frac{\theta}{2} \ket{+z} + e^{i \varphi } \sin \frac{\theta}{2} \ket{-z} \\
+				 \ket{-n } &= \sin \frac{\theta}{2} \ket{+z} - e^{i \varphi } \cos \frac{\theta}{2} \ket{-z } 
+			\end{align}
+			We need to isolate $\ket{\pm z} $ in terms of $\ket{\pm n}$. To do so, we will multiply $(1)$ by $\cos \theta / 2$ and add to $(2)$ multiplied by $\sin \theta/2$, the opposite operation is also performed to obtain the opposite sign $\ket{z}$  ; this gives us 
+			$$ \cos \frac{\theta}{2} \ket{+n} + \sin \frac{\theta}{2} \ket{-n} = \ket{+z}.$$
+			Similarly,
+			$$ \sin \frac{\theta}{2} \ket{+n} - \cos \frac{\theta}{2} \ket{-n} = e^{i \varphi } \ket{-z}.$$
+			Now we compute each bracket individually. 
+			\begin{align*}
+				\ket{+z, -z} &= \cos \frac{\theta}{2} \sin \frac{\theta}{2} e^{-i \varphi} \ket{+n, +n} - \cos^{2} \frac{\theta}{2} e^{\-i \varphi} \ket{+n,-n}  \\
+				& + \sin^{2}\frac{\theta}{2} e^{-i \varphi} \ket{-n, +n} - \sin \frac{\theta}{2} \cos \frac{\theta}{2} e^{-i \varphi} \ket{-n ,-n}
+				\intertext{$\ket{+n, +n}$ and $\ket{-n,-n}$ have the same energy eigenvalue so they vanish here}
+				&= -\cos^{2} \frac{\theta}{2} e^{-i \varphi} \ket{+n,-n} + \sin^{2} \frac{\theta}{2} e^{-i \varphi} \ket{-n,+n}
+				\intertext{Then by symmetry, we omit some trivial computations ; }
+				\ket{-z, +z} &= \sin^{2} \frac{\theta}{2} e^{-i \varphi} \ket{+n,-n} - \cos^{2} \frac{\theta}{2} e^{-i \varphi} \ket{-n , +n} 
+ 			\end{align*}
+ 			Thus, 
+ 			 \begin{align*}
+ 			 	 \ket{0,0} &= \frac{1}{\sqrt{2}} 
+ 			 	 \begin{aligned}[t] 
+ 			 	 	&\left( - \cos^{2} \frac{\theta}{2} e^{-i \varphi} \ket{+n, -n} + \sin^{2} \frac{\theta}{2} e^{-i \varphi } \ket{-n, +n} \right. \\
+ 			 	 	& \left. - \sin^{2} \frac{\theta}{2} e^{-i \varphi } \ket{+n , -n} + \cos^{2} \frac{\theta}{2} e^{-i \varphi} \ket{-n, +n} \right)
+ 			 	 \end{aligned} \\
+ 			 	 &= \frac{1}{\sqrt{2}} \left(-e^{-i \varphi }\ket{+n , -n} + e^{i \varphi } \ket{-n, +n}\right) 
+ 			 	 \shortintertext{\[
+ 			 	 	\therefore \ket{0,0} = \frac{e^{-i \varphi}}{\sqrt{2}} \left(\ket{-n,+n} - \ket{+n, -n}\right).
+ 			 	 	\]}
+ 			 \end{align*}
+ 			\section*{Question 3}
+ 				First and foremost we compute $\ket{1,1}_{x}$ , $\ket{1,0}_{x}$ and $\ket{1,-1}_{x}$. 
+ 				\begin{align*}
+	 					\ket{1,1}_{z} &= \ket{+z, +z} \implies \ket{1,1}_{x} =  \frac{1}{\sqrt{2}}\left(\ket{+x}_{1} + \ket{-x}_{1}\right) \frac{1}{\sqrt{2}} \left(\ket{+x}_{2} + \ket{-x}_{2}\right) = \frac12 \begin{pmatrix}
+	 						1 & 1 & 1 &1
+	 					\end{pmatrix}^{T}\\
+	 					\ket{1,0}_{z} &= \frac{1}{\sqrt{2}} \ket{+z,-z} + \frac{1}{\sqrt{2}} \ket{-z,+z} \implies \ket{1,0}_{x}  \begin{aligned}[t]
+	 						& =\frac{1}{\sqrt{2}} \Bigg[\frac{1}{\sqrt{2}} \left(\ket{+x}_{1} + \ket{-x}_{1}\right)\Bigg]\bigg[\frac{1}{\sqrt{2}} \left(\ket{+x}_{2} - \ket{-x}_{2}\right)\bigg] \\
+	 						&= \frac{1}{\sqrt{2}} \begin{pmatrix}
+	 							1 & 0 & 0 & -1
+	 						\end{pmatrix}^{T} 
+	 					\end{aligned}\\
+	 					\ket{1,-1}_{z} &= \ket{-z,-z} \implies \ket{1,-1}_{x} =  \frac{1}{\sqrt{2}}\left(\ket{+x}_{1} - \ket{-x}_{1}\right) \frac{1}{\sqrt{2}} \left(\ket{+x}_{2} - \ket{-x}_{2}\right) = \frac12 \begin{pmatrix}
+	 					1 & -1 & -1 &1
+	 					\end{pmatrix}^{T}
+ 				\end{align*}
+ 				Following this, since the particle goes through an SG device oriented along a different axis, we need to compute $\hat{S}_{x}$. We use the tensor product and the fact that $\hat{S}_{x} = \hat{S}_{1x} + \hat{S}_{2x}$.  That is, 
+ 				$$\begin{rcases}
+ 					 \hat{S}_{1x} &= \hat{S}_{1} \otimes \mathbbm{1} = \frac{\hbar}{2} \begin{pmatrix}
+ 					 	0 & 1 \\ 1 & 0 
+ 					 \end{pmatrix}
+ 					 \otimes \begin{pmatrix}
+ 					 	1 & 0 \\ 0 & 1
+ 					 \end{pmatrix}
+ 					 = \frac{\hbar}{2} \begin{pmatrix}
+ 					 	 0 & 0 & 1 & 0\\0 & 0 & 0 & 1 \\
+ 					 	 1 & 0 & 0 & 0 \\
+ 					 	 0 & 1 & 0 & 0
+ 					 \end{pmatrix} \\
+ 					 \hat{S}_{2x} &= \mathbbm{1} \otimes \hat{S}_{2} = \begin{pmatrix}
+ 					 	1 & 0 \\ 0 & 1
+ 					 \end{pmatrix}
+ 					 \otimes \frac{\hbar}{2}  \begin{pmatrix}
+ 					 	0 & 1 \\ 1 & 0 
+ 					 \end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix}
+ 					 	 0 & 1 & 0 & 0 \\
+ 					 	 1 & 0 & 0 & 0 \\
+ 					 	 0 & 0 & 0 & 1\\
+ 					 	 0 &  0& 1 & 0
+ 					 \end{pmatrix} \:
+ 				\end{rcases} \implies \hat{S}_{x} = \frac{\hbar}{2} \begin{pmatrix}
+ 				0 & 1 & 1 & 0 \\
+ 				1 & 0 & 0 & 1 \\
+ 				1 & 0 & 0 & 1 \\
+ 				0 & 1 & 1 & 0
+ 				\end{pmatrix}. $$
+ 				Then we compute $\ket{\psi}$ 
+ 				$$ \ket{\psi}  = \hat{S}_{x} \ket{+z,+z}_{z} =\frac{\hbar}{2} \begin{pmatrix}
+ 				0 & 1 & 1 & 0 \\
+ 				1 & 0 & 0 & 1 \\
+ 				1 & 0 & 0 & 1 \\
+ 				0 & 1 & 1 & 0
+ 				\end{pmatrix} \begin{pmatrix}
+ 					1 \\ 0 \\ 0 \\ 0
+ 				\end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix}
+ 					 0 \\ 1 \\ 1 \\ 0
+ 				\end{pmatrix}.$$
+ 				Finally we compute each probability, we also remove the $\hbar$ constant from $\ket{\psi}$ since we're looking for probabilities, which must sum up to $1$. 
+ 				\begin{align*}
+ 					&\abs{_{x} \braket{1,1}{\psi}}^{2} = \abs{\frac12 \begin{pmatrix}
+ 						1 & 1 & 1 &1
+ 						\end{pmatrix} \frac12 \begin{pmatrix}
+ 						 	0 \\ 1 \\ 1 \\ 0 ,
+ 						\end{pmatrix}}^{2} = \frac14 \\
+ 					&\abs{_{x} \braket{1,0}{\psi}}^{2} = \abs{\frac{1}{\sqrt{2}} \begin{pmatrix}
+ 						1 & 0 & 0 & -1
+ 						\end{pmatrix} \frac12 \begin{pmatrix}
+ 							0 \\ 1 \\ 1 \\0
+ 						\end{pmatrix}}^{2} = 0, \\
+ 					&\abs{_{x} \braket{1,-1}{\psi}}^{2} = \abs{\frac12 \begin{pmatrix}
+ 						1 & -1 & -1 & 1
+ 						\end{pmatrix} \frac12 \begin{pmatrix}
+ 						 0 \\ 1 \\ 1 \\ 0
+ 						\end{pmatrix}}^{2} = \frac14.
+ 				\end{align*} 
+ 			\section*{Question 4}
+ 				\subsection*{a) }
+ 					Since $\hat{H} = - \vec{\mu} \cdot \vec{B}$ and for a two particle system we can sum the Hamiltonians given the $\hat{\vec{S}}$ dot product , then considering the charge of a positron being the negative of an electron with identical mass, 
+ 					$$ \hat{H} = \hat{H_{1}} + \hat{H_{2}} = \frac{ge}{2mc} B_{0} \hat{S}_{1z} - \frac{ge}{2mc}B_{0} \hat{S}_{2z} = \left(\frac{ge}{2mc}B_{0}\right)(\hat{S}_{1z} - \hat{S}_{2z}).$$
+ 				\subsection*{b) }
+ 					We need the time operator. That is
+ 					$$ \hat{U}(t) = e^{ - \frac{i}{\hbar} \int_{0}^{t} \hat{H} (t') \dr t' } = e^{-\frac{i}{\hbar} \hat{H} t}.$$
+ 					We look for the stationary energies of $(\hat{S}_{1z} - \hat{S}_{2z})$ . 
+ 					\begin{align*}
+ 						\omega_{0}(\hat{S}_{1z} - \hat{S}_{2z}) &= \omega_{0}S_{1z} \ket{+z, -z} - \omega_{0}S_{2z} \ket{+z, -z} = \omega_{0}\frac{\hbar}{2} \ket{+z, -z} - \omega_{0}\frac{-\hbar}{2} \ket{+z,-z} = \omega_{0}\hbar \ket{+z, -z}. \\
+ 						\omega_{0} (\hat{S}_{1z} - \hat{S}_{2z}) \ket{-z, +z} &= \omega_{0} S_{1z} \ket{-z,+z} - \omega_{0} S_{2z} \ket{-z,+z} = -\omega_{0} \frac{\hbar}{2} \ket{-z,+z} - \omega_{0 }\frac{\hbar}{2} \ket{-z, +z} = -\omega_{0} \hbar\ket{-z,+z},
+ 					\end{align*}
+ 					we conclude that the eigen values are $\pm \hbar \omega_{0}$.So then, 
+ 					\begin{gather}
+ 						 \ket{\psi(t)} = \hat{U}(t) \ket{\psi(0)} = e^{- \frac{i}{\hbar} H t} \ket{\psi(0)} = \frac{e^{-i \omega_{0} t} }{\sqrt{2}} \ket{+z, -z} - \frac{e^{i \omega_{0} t}}{\sqrt{2}} \ket{-z,+z} \nonumber \\
+ 						 \implies \ket{\psi(t)} = \frac{e^{-i \omega_{0} t}}{\sqrt{2}} \left(\ket{+z, -z} - e^{2i \omega_{0} t} \ket{+z, -z}\right).
+ 					\end{gather}
+ 					Then we verify that the system oscillates between states $\ket{0,0}$ and $\ket{1,0}$; 
+ 					\begin{align*}
+ 						 \ket{0,0} & = \frac{1}{\sqrt{2}} \left(\ket{+z,-z} - \ket{-z, +z}\right) \\
+ 						 \ket{1, 0 } &= \frac{1}{\sqrt{2}} \left(\ket{+z, -z } + \ket{-z, +z}\right)
+ 					\end{align*}
+ 					We note that in $(3)$, for $t = 2 \pi n / \omega_{0}$ we obtain $\ket{0,0}$ and for $t = n \pi / \omega_{0}$ for $n \in \mathbb{N}_{\text{odd}}$ we get $\ket{1,0}$ . So indeed the system oscillates between these two spin states.
+ 				\subsection*{c) }
+ 					We essentially require $\ket{1,1}_{x}$. We can take $\ket{1,1}_{z} = \ket{+z,+z}$ and convert it to 
+ 					$$\ket{1,1}_{x}  = \frac12 \begin{pmatrix}
+ 						1 & 1 & 1 & 1
+ 					\end{pmatrix}^{T},$$
+ 					just as it was done in Question $3$. Then the probability is 
+ 					$$ \abs{_{x}\braket{1,1}{\psi(t)}}^{2} = \abs{\frac{1}{2 \sqrt{2}} \begin{pmatrix}
+ 							1 & 1 & 1 & 1 
+ 						\end{pmatrix}\begin{pmatrix}
+ 						0 \\ e^{-i \omega_{0} t} \\ -e^{i \omega_{0}t} \\ 0
+ 				\end{pmatrix}}^{2} = \abs{\frac{1}{2 \sqrt{2}} \left(e^{-i \omega_{0}t} - e^{i \omega_{0} t}\right)}^{2} = \frac12 \sin^{2} (\omega_{0} t).$$
+ 				\section*{Question 5}
+ 						If we extend a $2-$particle system to a $3$-particle system total angular momentum is conserved so we may equate the lowering operator between the $2$ and $3$ particle system such as 
+ 							\begin{align*}
+ 								\hat{S}_{-} \ket{\frac32 , \frac32} &= \left(\hat{S}_{1-} + \hat{S}_{2-} + \hat{S}_{3-}\right) \ket{\frac12 , \frac12, \frac12}  \\
+ 								\hbar\sqrt{\frac32 \left(\frac32 +1 \right) - \frac32 \left(\frac32 -1\right)}\ket{\frac32 , \frac12} &= \hbar \sqrt{\frac12 \left(\frac12 +1\right)- \frac12\left(\frac12 -1\right)}\Bigg[\ket{-\frac12, \frac12 , \frac12} + \ket{\frac12, - \frac12 , \frac12} + \ket{\frac12, \frac12, -\frac12} \Bigg]\\
+ 								\implies \ket{\frac32, \frac12} &= \frac{1}{\sqrt{3}}\left(\ket{-\frac12, \frac12 , \frac12} + \ket{\frac12, - \frac12 , \frac12} + \ket{\frac12, \frac12, -\frac12}\right)
+ 								\intertext{Then we apply $\hat{S}_{-}$ again on both sides and distribute the lower operator on each ket. We also note that for all quadrulplets the lowering operator square root factor is always $\sqrt{1}$ so we omit this factor.}
+ 								\hat{S}_{-} \ket{\frac32 , \frac12} &= \left(\hat{S}_{1-} + \hat{S}_{2-} + \hat{S}_{3-}\right) \frac{1}{\sqrt{3}} \left(\ket{-\frac12, \frac12 , \frac12} + \ket{\frac12, - \frac12 , \frac12} + \ket{\frac12, \frac12, -\frac12}\right) \\
+ 								\sqrt{3} \hbar \ket{\frac32 ,- \frac12} &= \frac{1}{\sqrt{3}}
+ 								\begin{aligned}[t]
+ 								& \left(\ket{-\frac12, - \frac12 , \frac12} + \ket{-\frac12, \frac12 , - \frac12} + \ket{-\frac12 , - \frac12, \frac12} \right. \\
+ 								& \left. + \ket{\frac12, -\frac12, -\frac12} + \ket{-\frac12, \frac12, -\frac12} + \ket{\frac12 , - \frac12, -\frac12} \right)
+ 								\end{aligned} \\
+ 								\ket{\frac32, -\frac12} &= \frac{1}{\sqrt{3}} \left(\ket{-\frac12 , -\frac12, \frac12} + \ket{\frac12, -\frac12, -\frac12} + \ket{-\frac12, \frac12, -\frac12}\right)
+ 								\intertext{We apply $\hat{S}_{-}$ on both sides one last time ; }
+ 								\hat{S}_{-} \ket{\frac32 , -\frac12} &= \left(\hat{S}_{1-} + \hat{S}_{2-} + \hat{S}_{3-}\right) \frac{1}{\sqrt{3}} \left(\ket{-\frac12 , -\frac12, \frac12} + \ket{\frac12, -\frac12, -\frac12} + \ket{-\frac12, \frac12, -\frac12}\right)\\
+ 								\sqrt{3}\hbar \ket{\frac32 , -\frac32} &= \frac{3}{\sqrt{3}} \ket{-\frac12, -\frac12, - \frac12} \\
+ 								\implies \ket{\frac32, -\frac32} &= \ket{-\frac12, -\frac12, -\frac12}
+ 								\intertext{Here we reached the maximal lower quadruplet state, by symmetry it is evident that the $\displaystyle \ket{\frac32, \frac32}$ must be $\displaystyle \ket{\frac12, \frac12, \frac12}$.}
+ 							\end{align*}
+ 							In conclusion, we have 
+ 							\begin{align*}
+ 								 \ket{\frac32, \frac32} &= \ket{\frac12, \frac12, \frac12}, \\ \ket{\frac32, \frac12} &= \frac{1}{\sqrt{3}} \left(\ket{-\frac12, \frac12 , \frac12} + \ket{\frac12, - \frac12 , \frac12} + \ket{\frac12, \frac12, -\frac12}\right) \\
+ 								 \ket{\frac32, -\frac12} &= \frac{1}{\sqrt{3}} \left(\ket{-\frac12 , -\frac12, \frac12} + \ket{\frac12, -\frac12, -\frac12} + \ket{-\frac12, \frac12, -\frac12}\right) \\ \ket{\frac32, -\frac32} &= \ket{-\frac12, -\frac12 , -\frac12}.
+ 							\end{align*}
+	\end{document}

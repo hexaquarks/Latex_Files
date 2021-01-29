@@ -1,0 +1,244 @@
+\documentclass[
+	12pt,
+	]{article}
+		\usepackage{xcolor}
+			\usepackage[dvipsnames]{xcolor}
+			\usepackage[many]{tcolorbox}
+		\usepackage{changepage}
+		\usepackage{titlesec}
+		\usepackage{caption}
+		\usepackage{mdframed, longtable}
+		\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+		\usepackage{array, tabularx, booktabs}
+		\usepackage{graphicx,wrapfig, float, caption}
+		\usepackage{tikz,physics,cancel, siunitx, xfrac}
+		\usepackage{graphics, fancyhdr}
+		\usepackage{lipsum}
+		\usepackage{xparse}
+		\usepackage{thmtools}
+		\usepackage{mathrsfs}
+		\usepackage{undertilde}
+		\usepackage{tikz}
+		\usepackage{fullpage,enumitem}
+		\usepackage[labelfont=bf]{caption}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\usepackage{fullpage, fancyhdr}
+	\newcommand{\La}{\mathcal{L}}
+	\newcommand{\ep}{\epsilon}
+	\newcommand{\de}{\delta}
+	\usepackage[math]{cellspace}
+		\setlength{\cellspacetoplimit}{3pt}
+		\setlength{\cellspacebottomlimit}{3pt}
+	\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\B}{\mathcal{B}}
+	\newcommand{\Ss}{\mathcal{S}}
+	
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{PHYS 357 Assignment 2}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 }
+	\date{\today}
+	
+	\relpenalty=9999
+			\binoppenalty=9999
+		
+			\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\quad #1}{}}
+			
+			\fancypagestyle{plain}{%
+			  \fancyhf{}
+			  \fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 2 } 
+			  \fancyhead[R]{\small Mihail Anghelici $260928404$} 
+			  \fancyfoot[C]{-- \thepage\ --}
+			  \renewcommand{\headrulewidth}{0.4pt}}
+			\pagestyle{plain}
+			\setlength{\headsep}{1cm}
+	\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Problem 2.4}
+			\begin{equation} \ket{+x} \xrightarrow{S_{y} \ \text{basis}} \begin{pmatrix}
+				\braket{+y}{+x} \\ \braket{-y}{+x}
+			\end{pmatrix} \quad, \ket{-x} \xrightarrow{S_{y} \ \text{basis}} \begin{pmatrix}
+			\braket{+y}{-x} \\ \braket{-y}{-x}
+			\end{pmatrix} 
+			\end{equation}
+			Computing each braket, 
+			\begin{align*}
+				\braket{+y}{+x} &= \frac{1}{\sqrt{2}} \braket{+y}{+z} + \frac{1}{\sqrt{2}} \braket{+y}{-z} \\
+				&= \frac{1}{\sqrt{2}}\left(\frac{1}{\sqrt{2}}\right) + \frac{1}{\sqrt{2}}\left(\frac{-i}{\sqrt{2}} \right) = \frac12 \left(1-i\right).\\
+				\braket{-y}{+x} &=\frac{1}{\sqrt{2}} \braket{-y}{+z} + \frac{1}{\sqrt{2}} \braket{-y}{-z} \\
+				&= \frac{1}{\sqrt{2}} \left(\frac{1}{\sqrt{2} }\right) + \frac{1}{\sqrt{2}} \left(\frac{i}{\sqrt{2}}\right) = \frac12 \left(1+i\right)
+			\end{align*}	
+			Following $(1)$ and using the conjugate for the $\ket{-x}$ we conclude that
+			$$ \ket{+x} = \frac12 \begin{pmatrix}
+				1-i \\ 1+i
+			\end{pmatrix} \quad, \ket{-x} = \frac12 \begin{pmatrix}
+				1+i \\ 1-i
+			\end{pmatrix}.$$
+		\section*{Problem 2.5}
+				\begin{equation} \ket{+z} \xrightarrow{S_{y} \ \text{basis}} \begin{pmatrix}
+				\braket{+y}{+z} \\ \braket{-y}{+z}
+				\end{pmatrix} \quad, \ket{-z} \xrightarrow{S_{y} \ \text{basis}} \begin{pmatrix}
+				\braket{+y}{-z} \\ \braket{-y}{-z}
+				\end{pmatrix} 
+				\end{equation}
+				Computing each braket, 
+				\begin{align*}
+					\braket{+y}{+z} &= \braket{+z}{+y}^{\ast} = \left(\frac{1}{\sqrt{2 }}\right)^{\ast} = \frac{1}{\sqrt{2}}\\
+					\braket{+y}{-z} &= \braket{-z}{+y}^{\ast} = \left(\frac{i}{\sqrt{2 }}\right)^{\ast} = \frac{-i}{\sqrt{2}} \\
+					\braket{-y}{+z} &= \braket{+z}{-y}^{\ast} = \left(\frac{1}{\sqrt{2 }}\right)^{\ast} = \frac{1}{\sqrt{2}} \\
+					\braket{-y}{-z} &= \braket{-z}{-y}^{\ast} = \left(\frac{-i}{\sqrt{2 }}\right)^{\ast} = \frac{i}{\sqrt{2}}
+				\end{align*} 
+				We conclude that 
+				$$ \ket{+z} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+				1 \\1 
+				\end{pmatrix} \quad , \ket{-z} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+					-i \\ i
+				\end{pmatrix}.$$
+				Finally, 
+				\begin{align*}
+					\hat{S}_{z} &= \frac{\hbar }{2} (\ket{+z}\bra{+z} - \ket{-z}\bra{-z}) \\
+					&=\left(\frac{\hbar}{2} \frac{1}{\sqrt{2}} \begin{pmatrix}
+					1 \\ 1
+					\end{pmatrix} \frac{1}{\sqrt{2}} \begin{pmatrix}
+					1 & 1
+					\end{pmatrix} - \frac{1}{\sqrt{2}} \begin{pmatrix}
+					-i \\ i
+					\end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix}
+					i & -i
+					\end{pmatrix}\right) = \frac{\hbar}{2} \begin{pmatrix}
+					0 &1 \\
+					1 & 0
+					\end{pmatrix}
+				\end{align*}
+				Therefore, 
+				\begin{align*}
+					\la S_{z} \ra &= \frac{1}{\sqrt{2}}\begin{pmatrix}
+					i & 1
+					\end{pmatrix} \frac{\hbar}{2} \begin{pmatrix}
+					0&1 \\ 1& 0
+					\end{pmatrix} \frac{1}{\sqrt{2}} \begin{pmatrix}
+					1 \\ -i
+					\end{pmatrix} = \frac{\hbar}{2}.
+				\end{align*}
+			\section*{Problem 2.6}
+				\begin{alignat*}{2}
+					\ket{+z} &= \frac{1}{\sqrt{2}} \ket{+y} + \frac{1}{\sqrt{2}} \ket{-y} \quad  && \\
+					\ket{+y} &= \frac{1}{\sqrt{2}} \ket{+z} +  \frac{i}{\sqrt{2}} \ket{-z} \quad \ket{-y} &&= \frac{1}{\sqrt{2}}\ket{+z} -\frac{i}{\sqrt{2}}\ket{-z }
+				\end{alignat*}
+				We use the relationship
+				$$ \hat{J}_{y} \ket{\pm y} = \pm \frac{\hbar}{2} \ket{\pm y}, $$
+				therefore, 
+				\begin{align*}
+					\hat{R}_{y} (\theta)\ket{+z} &= e^{\frac{-i}{\hbar} \hat{S}_{y} \theta} \left(\frac{\ket{+y}}{\sqrt{2}} + \frac{\ket{-y}}{\sqrt{2}}\right) \\
+					&= e^{\frac{i \theta}{2}} \frac{1}{\sqrt{2}}\ket{+y} + e^{\frac{-i \theta}{2}} \frac{1}{\sqrt{2}}\ket{-y}
+					\intertext{We switch back in the $z$ basis}
+					&= \frac{e^{\frac{i \theta}{2}}\ket{+z} +i e^{\frac{i\theta}{2}} \ket{-z}}{2} +\frac{e^{\frac{-i \theta}{2}}\ket{+z} -i e^{\frac{-i\theta}{2}} \ket{-z}}{2}  \\
+					&= \frac{\left(e^{\frac{i\theta}{2}} + e^{\frac{-i\theta}{2}}\right)}{2} \ket{+z} + \frac{i\left(e^{\frac{i\theta}{2}} - e^{\frac{-i\theta}{2}}\right)}{2} \ket{-z} \\
+					&= \cos \left(\frac{\theta}{2}\right) \ket{+z} +\sin\left(\frac{\theta}{2}\right) \ket{-z}.
+					\intertext{We evalaute at $\theta =\pi/2$,}
+					\hat{R}_{y} \left(\frac{\pi}{2}\right) &= \cos \left(\frac{\pi}{4}\right) \ket{+z} + \sin \left(\frac{\pi}{4}\right)\ket{-z} \\
+					&= \frac{1}{\sqrt{2}} \ket{+z} + \frac{1}{\sqrt{2}} \ket{-z},
+				\end{align*}
+				which is indeed $\ket{+x}$ in the $z$ basis.
+			\section*{Problem 2.8}
+				The Pauli matrix $\sigma_{x}$ is already written in the $z$ basis , so immediately, 
+				\begin{align*}
+					\la \varphi \lvert  \sigma_{x} \rvert \varphi \ra &= \frac{1}{\sqrt{5}} \begin{pmatrix}
+					-i & 2
+					\end{pmatrix} \frac{\hbar}{2} \begin{pmatrix}
+					0 & 1 \\ 1 & 0 
+					\end{pmatrix} \frac{1}{\sqrt{5}} \begin{pmatrix}
+					i \\ 2
+					\end{pmatrix} = 0
+				\end{align*}
+				Then it follows that 
+				$$ \Delta S_{x}  = \sqrt{\la S_{x}^{2} \ra - \la S_{x} \ra^{2}}  = \sqrt{\left(\frac{\hbar}{2}\right)^{2} -0 } = \frac{\hbar}{2}.$$
+			\section*{Question 5}
+				\subsection*{a) }
+					Let us compute with the Pauli matrices since they are both in the same basis
+					\begin{align*}
+						 [\hat{S}_{x} , \hat{S}_{z}] = \hat{S}_{x} \hat{S}_{z} - \hat{S}_{z}\hat{S}_{x} &=\frac{\hbar}{2} \begin{pmatrix}
+						 	0 & 1 \\ 1& 0 
+						 \end{pmatrix} 
+						 \frac{\hbar}{2} \begin{pmatrix}
+						 	1 & 0 \\ 0& -1 
+						 \end{pmatrix} - \frac{\hbar}{2} \begin{pmatrix}
+						 1 & 0 \\ 0& -1 
+						 \end{pmatrix}\frac{\hbar}{2} \begin{pmatrix}
+						 0 & 1 \\ 1& 0 
+						 \end{pmatrix} \\
+						 &= \frac{\hbar^{2}}{2} \begin{pmatrix}
+						 0 & -1 \\
+						 1 & 0
+						 \end{pmatrix} = i \hbar \hat{S}_{y} \neq 0.,
+ 					\end{align*}
+ 					we conclude that the operators do not commute.
+ 				\subsection*{b) }
+ 					Let us apply these operators to $\ket{+x}$ written in the $z$ basis. 
+ 					\begin{align*}
+ 						\hat{S}_{x} \hat{S}_{z} \ket{+x} &= \frac{\hbar}{2} \begin{pmatrix}
+ 						0 & 1 \\1& 0 
+ 						\end{pmatrix} \frac{\hbar}{2} \begin{pmatrix}
+ 						1 & 0 \\0 & -1 
+ 						\end{pmatrix}
+ 						\frac{1}{\sqrt{2}} \begin{pmatrix}
+ 						1 \\ 0
+ 						\end{pmatrix} = \frac{\hbar^{2}}{4 \sqrt{2}} \begin{pmatrix}
+ 						0 \\1
+ 						\end{pmatrix} \\
+ 						\hat{S}_{z} \hat{S}_{x} \ket{+x} &= \frac{\hbar}{2} \begin{pmatrix}
+ 						1 & 0 \\0 & -1 
+ 						\end{pmatrix} \frac{\hbar}{2} \begin{pmatrix}
+ 						 0 & 1 \\1 & 0 
+ 						\end{pmatrix}
+ 						\frac{1}{\sqrt{2}} 
+ 						\begin{pmatrix}
+ 						1 \\ 0
+ 						\end{pmatrix} = \frac{-\hbar^{2}}{4 \sqrt{2}} \begin{pmatrix}
+ 						0 \\ 1
+ 						\end{pmatrix}.
+ 					\end{align*}
+				
+	\end{document}

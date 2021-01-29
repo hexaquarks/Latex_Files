@@ -1,0 +1,203 @@
+\documentclass[
+	12pt,
+	]{article}
+		\usepackage{xcolor}
+			\usepackage[dvipsnames]{xcolor}
+			\usepackage[many]{tcolorbox}
+		\usepackage{changepage}
+		\usepackage{titlesec}
+		\usepackage{caption,mathabx}
+		\usepackage{mdframed, longtable}
+		\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+		\usepackage{array, tabularx, booktabs}
+		\usepackage{graphicx,wrapfig, float, caption}
+		\usepackage{tikz,physics,cancel, siunitx, xfrac}
+		\usepackage{graphics, fancyhdr}
+		\usepackage{lipsum}
+		\usepackage{xparse}
+		\usepackage{thmtools}
+		\usepackage{mathrsfs}
+		\usepackage{undertilde}
+		\usepackage{tikz}
+		\usepackage{fullpage,enumitem}
+		\usepackage[labelfont=bf]{caption}
+	\newcommand{\td}{\text{dim}}
+	\newcommand{\tvw}{T : V\xrightarrow{} W }
+	\newcommand{\ttt}{\widetilde{T}}
+	\newcommand{\ex}{\textbf{Example}}
+	\newcommand{\aR}{\alpha \in \mathbb{R}}
+	\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+	\newcommand{\un}{u_1 , u_2 , \dots , n}
+	\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+	\newcommand{\sS}{\text{Span}(\mathcal{S})}
+	\newcommand{\sSt}{($\mathcal{S}$)}
+	\newcommand{\la}{\langle}
+	\newcommand{\ra}{\rangle}
+	\newcommand{\Rn}{\mathbb{R}^{n}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Rm}{\mathbb{R}^{m}}
+	\usepackage{fullpage, fancyhdr}
+	\newcommand{\La}{\mathcal{L}}
+	\newcommand{\ep}{\epsilon}
+	\newcommand{\de}{\delta}
+	\usepackage[math]{cellspace}
+		\setlength{\cellspacetoplimit}{3pt}
+		\setlength{\cellspacebottomlimit}{3pt}
+	\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+
+	\usepackage{mathtools}
+	\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+	\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+	\newcommand{\vect}{\mathbf}
+	\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+	\newcommand{\B}{\mathcal{B}}
+	\newcommand{\Ss}{\mathcal{S}}
+	
+	\newtheorem{theorem}{Theorem}[section]
+	\theoremstyle{definition}
+	\newtheorem{corollary}{Corollary}[theorem]
+	\theoremstyle{definition}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\theoremstyle{definition}
+	\newtheorem{Proposition}{Proposition}[section]
+	\theoremstyle{definition}
+	\newtheorem*{example}{Example}
+	\theoremstyle{example}
+	\newtheorem*{note}{Note}
+	\theoremstyle{note}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{remark}
+	\newtheorem*{example2}{External Example}
+	\theoremstyle{example}
+	
+	\title{PHYS 356 Assignment 1}
+	\titleformat*{\section}{\LARGE\normalfont\fontsize{12}{12}\bfseries}
+	\titleformat*{\subsection}{\Large\normalfont\fontsize{10}{15}\bfseries}
+	\author{Mihail Anghelici 260928404 }
+	\date{\today}
+	
+	\relpenalty=9999
+			\binoppenalty=9999
+		
+			\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\quad #1}{}}
+			
+			\fancypagestyle{plain}{%
+			  \fancyhf{}
+			  \fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 1 } 
+			  \fancyhead[R]{\small Mihail Anghelici $260928404$} 
+			  \fancyfoot[C]{-- \thepage\ --}
+			  \renewcommand{\headrulewidth}{0.4pt}}
+			\pagestyle{plain}
+			\setlength{\headsep}{1cm}
+	\captionsetup{margin =1cm}
+	\begin{document}
+	\maketitle
+		\section*{Question 1}
+			In experiment $3$, the striking result is that if a beam of particles (or a single particle for that matter) starts in the state $\ket{+z}$ and is succeedingly sent through an SGx and an SGz device, we find out that the final states divide equally in $\ket{+z}$ and $\ket{-z}$, even though initially none where in the latter state. Moreover, for a 2-level system, the particles are always split equitably so we were able to express the results of a $\ket{+z}$ state going through an SGx device as 
+			$$ \ket{\pm x} = \frac{1}{\sqrt{2}} (\ket{+z} \pm \ket{-z}).$$
+			At any stage in the SG device we find $50 \%$ probability of finding the particles in either state since $\abs{\braket{+x}{\varphi}} = \frac12.$ The other probability is $\abs{\braket{-x}{\varphi}} = \frac12, $ adding them up together gives $1$ which is consistent with the experiment in which $N_{0}$ particles divided equally in $N_{0}/2$. \\
+			
+			
+			\noindent In experiment $4$ , the beam of particles went from the $\ket{+z}$ in the modified Stern-Gerlach experiment with equal probability in the $\ket{\pm}$ states, we say they were in a superposition. By definition, the probability to end up in the $\ket{+z}$ state while coming from the top beam is $\abs{\braket{+z}{+x}}^{2} = \frac12$ .Similarly for the bottom beam , $\abs{\braket{+z}{-x}}^{2} = \frac12.$ We therefore expect a probability of $50 \%$ to end up in the $\ket{+z}$ state, but the experimental result was $100 \%$. This may suggest that we must add up the probabilities but to verify that, in the experiment, the bottom beam was blocked and same results were yielded. Suggesting that we can not add up the probabilities, but instead we must add up the amplitudes. Mathematically, 
+			\begin{align*}
+				\ket{+x} &= \frac{1}{\sqrt{2}}\left(\ket{+z} + \ket{-z}\right) \\
+				\ket{-x} &= \frac{1}{\sqrt{2}}\left(\ket{+z} - \ket{-z}\right) \\
+				\ket{+z} &= \frac{1}{\sqrt{\ket{+x}} + \ket{-x}} \\
+				&= \frac{1}{\sqrt{2}}\left(\frac{1}{\sqrt{2}}\left(\ket{+z} + \ket{-z}\right)\right) + \frac{1}{\sqrt{2}} \left(\frac{1}{\sqrt{2}}\left(\ket{+z} - \ket{-z}\right)\right) \\
+				&= \frac12 \ket{+z} + \frac12 \ket{+z}, 
+			\end{align*}
+			Indeed we end up just adding up the amplitudes.
+		\section*{Question 1.3}
+			\subsection*{a) }
+				We project $\hat{n}$ along $\hat{x}$ obtaining $\phi = 0$ and $\theta = \pi/2$.
+				\begin{align*}
+					\ket{+n} &= \cos\frac{\pi}{4} \ket{+Z} + e^{i0} \sin \frac{\pi}{4}\ket{-z} \\
+					&= \frac{1}{\sqrt{2}} \ket{+z} + \frac{1}{\sqrt{2}} \ket{-z}.
+				\end{align*}
+				Similarly, we project $\hat{n}$ along $\hat{y}$ obtaining $\phi = \pi/2$ and $\theta = \pi/2$.
+				\begin{align*}
+					\ket{+n} &= \frac{1}{\sqrt{2}} \ket{+z} + e^{i\pi /2}  \sin \frac{\pi}{4} \ket{-z}
+					\intertext{e^{i \pi /2} = \cos(\pi /2) + i \sin (\pi/2) = 0 + i = i,}
+					&= \frac{1}{\sqrt{2}} \ket{+z} + \frac{i}{\sqrt{2}} \ket{-z}.  
+				\end{align*}
+				\subsection*{b) }
+					\begin{align*}
+						P_\left({S_{n} = +\frac{\hbar}{2}}\right)  &=\abs{\braket{+z}{+n}}^{2}= \abs{\cos\frac{\theta}{2}}^{2} = \cos^{2} \frac{\theta}{2}.\\
+						P_\left({S_{n} = -\frac{\hbar}{2}}\right) &=\abs{\braket{-z}{+n}}^{2} = \abs{e^{i \phi} \sin\frac{\theta}{2}}^{2} = \abs{e^{i\phi}} ^{2} \sin^{2} \frac{\theta}{2} = \sin^{2}\frac{\theta}{2}.
+					\end{align*}
+				\subsection*{c) }
+					\begin{align*}
+						 ( \la S_{z} \ra)^{2} &= \left(\cos^{2} \frac{\theta}{2} \left(\frac{\hbar }{2}\right) + \sin^{2} \frac{\theta}{2} \left(- \frac{\hbar}{2}\right)\right)^{2} = \cos^{2}\theta \frac{\hbar^{2}}{4}. \\
+						 \Delta S_{z} &= \sqrt{\la S_{z}^{2} \ra - \left(\la S_{z} \ra \right)^{2}} = \sqrt{\left(\frac{\hbar^{2}}{4}\right) + \left(\la S_{z}\ra\right)^{2}}\\
+						 &= \sqrt{\frac{\hbar^{2}}{2} - \cos^{2} \theta \frac{\hbar^{2}}{4}} = \frac{\hbar}{2} \sin \theta.
+					\end{align*}
+				\section*{Question 1.4}
+					\subsection*{a) }
+						\begin{gather*}
+							\braket{+x}{+n} = \cos\frac{\pi}{2} \braket{+x}{+z} + e^{i \phi} \sin\frac{\pi}{2} \braket{+x}{-z} 
+						\end{gather*}
+						We know that 
+						\begin{align*} 
+							&\ket{+x} =  \frac{1}{\sqrt{2}} \ket{+z} + \frac{1}{\sqrt{2}}\ket{-z} \\
+							\implies &\braket{+z}{+x} = \widebar{\braket{+x}{+z}} = \frac{1}{\sqrt{2}} \\
+							\implies &\braket{-z}{+x}  = \widebar{\braket{+x}{-z}} = \frac{1}{\sqrt{2}}. 
+						\end{align*}
+						Therefore ,
+						\begin{align*}
+							\braket{+x}{+n} &= \cos\frac{\pi}{2} \left(\frac{1}{\sqrt{2}}\right)  + e^{i \phi} \sin \frac{\pi}{2} \left(\frac{1}{\sqrt{2} }\right) \\
+							P_{\left(S_{x} = +\frac{\hbar}{2} \right)} &= \abs{\cos\frac{\pi}{2} \left(\frac{1}{\sqrt{2}}\right)  + e^{i \phi} \sin \frac{\pi}{2} \left(\frac{1}{\sqrt{2} }\right)}^{2} \\ 
+								&= \sqrt{\cos^{2} \frac{\theta}{2} + 2\cos\frac{\theta}{2} \cos\phi \sin \frac{\theta}{2} + \cos^{2}\phi \sin^{2}\frac{\theta}{2} + \sin^{2}\phi \sin^{2}\frac{\theta}{2}} \\
+								&= \sqrt{\cos^{2}\frac{\theta}{2} + \sin\theta \cos \theta + \cos^{2}\theta \sin^{2}\frac{\theta}{2} + \sin^{2}\phi \sin^{2}\frac{\theta}{2}} \\
+								&=\frac{1}{2} \sqrt{1+ \sin \theta \cos \phi}^{2} = \frac{1+\sin\theta\cos\phi}{2}.
+							\intertext{Since probabilities are normalized , to find the $P_{-x}$ probability we substract the positive one }
+							P_{\left(S_{x} = -\frac{\hbar}{2}\right)} &= 1- P_{\left(S_{x} = +\frac{\hbar}{2} \right)} = 1- \frac{1+\sin\theta\cos\phi}{2} = \frac{1-\sin\theta\cos\phi}{2}.
+						\end{align*}
+						\subsection*{b) }
+							\begin{align*}
+								\la S_{x} \ra  &= \abs{\braket{+x}{+n}}^{2} \left(\frac{\hbar}{2}\right) + \abs{\braket{-x}{+n}}^{2}\left(-\frac{\hbar}{2}\right) \\
+								&= \frac{1+\cos\phi \sin \theta}{2} \left(\frac{\hbar}{2}\right) - \frac{1-\sin\theta\cos\phi}{2} \left(\frac{\hbar}{2}\right)\\
+								&= \frac{\hbar}{2} \cos\phi \sin \theta \\
+								(\la S_{x} \ra)^{2} &=\frac{\hbar^{2}}{4} \cos^{\phi} \sin^{2}\theta \\
+								\therefore \Delta S_{x} &= \sqrt{\frac{\hbar^{2}}{4} - \frac{\hbar^{2}}{4} \cos^{2}\phi \sin^{2}\theta} = \frac{\hbar^{2}}{4}\sqrt{1-\cos^{2}\phi \sin^{2}\theta}.
+							\end{align*}
+						\section*{Question 1.6}
+							All states are conviniently found using the conjugates 
+							\begin{align*}
+								\ket{+n} &= \cos \frac{\theta}{2} \ket{+z} + e^{i\phi }\sin \frac{\theta}{2} \ket{-z} \\
+								\bra{+n} &= \widebar{\cos \frac{\theta}{2}} \bra{+z} + \widebar{e^{i\phi }\sin \frac{\theta}{2}}  \bra{-z} \\
+								&= \cos \frac{\theta}{2} \bra{+z} + e^{-i \phi }\sin \frac{\theta}{2} \bra{-z} \\
+								\ket{-n} &= \sin \frac{\theta}{2} \ket{+z} - e^{i\phi }\cos \frac{\theta}{2} \ket{-z} \\
+								\bra{-n} &= \widebar{\sin \frac{\theta}{2}} \bra{+z} - \widebar{e^{i\phi }\cos \frac{\theta}{2}}\bra{-z} \\
+								&= \sin \frac{\theta}{2} \bra{+z} - e^{-i \phi } \cos \frac{\theta}{2} \bra{-z}. 
+							\end{align*}
+							Thus, 
+							\begin{align*}
+								\braket{+n}{-n} &= \left(\cos \frac{\theta}{2} \bra{+z} + e^{-i \phi }\sin \frac{\theta}{2} \bra{-z}\right)\left(\sin \frac{\theta}{2} \ket{+z} - e^{i\phi }\cos \frac{\theta}{2} \ket{-z}\right) \\
+								&= \cos \frac{\theta}{2} \sin \frac{\theta}{2} \braket{+z}{+z} +0 +0 - e^{i\phi }e^{-i \phi} \sin \frac{\theta}{2} \cos \frac{\theta}{2} \braket{-z}{-z} \\
+								&= \cos\theta - \cos \theta = 0. \\
+								\braket{-n}{-n} &= \left(\sin \frac{\theta}{2} \bra{+z} - e^{-i \phi } \cos \frac{\theta}{2} \bra{-z}\right)\left(\sin \frac{\theta}{2} \ket{+z} - e^{i\phi }\cos \frac{\theta}{2} \ket{-z}\right) \\
+								&= \sin^{2}\frac{\theta}{2} \braket{+z}{+z} +0 +0 + e^{i \phi }e^{-i \phi }\cos^{2}\frac{\theta}{2} \braket{-z}{-z} \\ 
+								&= \sin^{2}\frac{\theta}{2} + \cos^{2} \frac{\theta}{2} = 1.
+							\end{align*}
+						\section*{Question 1.9}
+							Let $\ket{\varphi} = \alpha \ket{+z} + \beta \ket{-z}$, then $ P_{x} = \lvert \langle+x | \varphi \rangle\rvert^{2}$. Now since $\ket{+x} = \frac{1}{\sqrt{2}}(\ket{+z} + \ket{-z}),$ it follows that
+							\begin{align*} 
+							\abs{\langle+x | \varphi \rangle}^{2} &= \abs{\alpha \frac{1}{\sqrt{2}} + \beta \frac{1}{\sqrt{2}}}^{2}  = \frac12 \abs{(\alpha + \beta)}^2\\
+							\therefore \langle S_{x} \rangle &= \frac12 \abs{(\alpha+\beta)}^2 \left( \frac{\hbar}{2}\right) + \abs{\left( 1- \frac12 (\alpha+\beta)^2 \right)}\left( -\frac{\hbar}{2}\right) \\
+							&= \left( \frac{\hbar}{2}\right) \abs{\left((\alpha+\beta)^{2} -1 \right)} \\
+							\implies \langle S_{x} \rangle^{2} &= \left( \frac{\hbar}{2}\right)^{2} \abs{\left((\alpha+\beta)^{2} -1 \right)}^{2} 
+							\intertext{Now since $\alpha^{2} + \beta^{2} =1 \implies 1-\alpha^{2} = \beta^{2}$, the expression reduces to} 
+							\langle S_{x} \rangle^{2} &= \left( \frac{\hbar}{2}\right)^{2} \abs{4\alpha^{2} \beta^{2}} \\
+							\therefore \Delta S_{x} &= \sqrt{\frac{\hbar^{2}}{4} - \frac{\hbar^{2}}{4} \abs{4\alpha^{2}\beta^{2}}} \\
+							\Delta S_{x} &= \frac{\hbar\abs{(2\alpha^{2} -1 )}}{2}
+							\intertext{Since $\alpha$ is a complex number $e^{i\delta_{\pm}} /\sqrt{2}$, taking the modulus we have}
+							\Delta S_{x} &= \frac{\hbar(1-1)}{2} = 0.
+							\end{align*}
+						
+						
+					
+	\end{document}
