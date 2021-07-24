@@ -1,0 +1,180 @@
+\documentclass[12pt]{article}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+%%%%--- PACKAGES ---%%%%%
+% COLORS
+\usepackage{xcolor}
+\usepackage[many]{tcolorbox}
+
+% MATH AND PHYSICS
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath , siunitx, xfrac, physics,breqn, undertilde,nccmath,cancel,nccmath,enumitem,venndiagram,thmtools} 
+
+% FONTS
+\usepackage{mathrsfs,bbm,bbold}
+
+% TIKZ, FIGURES, TABLES AND CAPTIONS
+\usepackage{tikz,float,wrapfig, caption,graphicx, graphics, fancyhdr, fancybox, tabularx, array,booktabs,mdframed, longtable,circuitikz}
+\usepackage[labelfont=bf]{caption}
+\usepackage[math]{cellspace}
+
+% DIVERSE
+\usepackage{xparse,lipsum,titling,titlesec,changepage,fullpage,listings}
+
+%%%%--- COMMANDS ---%%%%
+\newcommand{\la}{\langle} \newcommand{\ra}{\rangle}
+\newcommand{\Rn}{\mathbb{R}^{n}} \newcommand{\R}{\mathbb{R}} \newcommand{\Rm}{\mathbb{R}^{m}}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\ep}{\epsilon} \newcommand{\de}{\delta}
+\newcommand{\bs}{\backslash}
+\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+
+%% Spaces in tables for aesthetic arrangement
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{3pt}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\allowdisplaybreaks
+
+%%%--- MTPRO2 FONT ---%%%
+\pdfmapfile{=mtpro2.map}
+\usepackage[lite,]{mtpro2}
+
+% Theorem environements
+\newtheorem{theorem}{Theorem}[section] \theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem] \theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma} \theoremstyle{definition}
+\newtheorem{definition}{Definition}[section] \theoremstyle{definition}
+\newtheorem{Proposition}{Proposition}[section] \theoremstyle{definition}
+\newtheorem*{example}{Example} \theoremstyle{example}
+\newtheorem*{note}{Note} \theoremstyle{note}
+\newtheorem*{remark}{Remark} \theoremstyle{remark}
+
+%% Equation breaking
+\relpenalty=9999
+\binoppenalty=9999
+
+%%%--- Command renewals ---%%%
+\let\oldimplies\implies
+\let\oldiff\iff
+
+\renewcommand*{\implies}{
+	\hspace{-0.05cm}\resizebox{.95\width}{\height}{$\oldimplies$}\hspace{-0.05cm}
+}
+\renewcommand*{\iff}{
+	\hspace{-0.1cm}\oldiff\hspace{-0.1cm}
+}
+\renewcommand{\sectionmark}[1]{%
+	\markboth{\thesection\quad #1}{}}
+
+\renewcommand{\binom}{\mbinom}
+\renewcommand{\bar}{\overline}
+
+%%% --- DOCUMENT HEADER ---%%%
+\title{MATH 240 Assignment 4}
+\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+\author{Mihail Anghelici 260928404 }
+\date{\today}
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 4} 
+	\fancyhead[R]{\small Mihail Anghelici $260928404$} 
+	\fancyfoot[C]{-- \thepage\ --}
+	\renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{plain}
+\setlength{\headsep}{1cm}
+\captionsetup{margin =1cm}
+\AtBeginDocument{%
+	\edef\Relbar{\mathord{\mathchar\the\numexpr\Relbar-"3000}}%
+	
+}
+\begin{document}
+	\maketitle
+	\section*{Question 1}
+		\subsection*{(a)}
+			Given a set of $n$ elements, let us place the elements in subgroup $1$ or subgroup $2$. Choosing $0$ elements and sending in group $1$ that is $\binom{n}{0}$. Choosing $1$ element and sending it to subgroup $1$ while the $n-1$ rest in subgroup $2$, then that is $\binom{n}{1}$ combinations. Continuing this way we have a total of 
+			$$\binom{n}{0}+\binom{n}{1}+\binom{n}{2}+\dots +\binom{n}{n}.$$
+			This quantity is $2^{n}$ since there are two choices for every element chosen - subgroup $1$ or subgroup $2$. So $(2^{n})^{2} = 2^{2n}$.
+			
+			
+			Then for the RHS, similarly to the LHS, we look for the number of ways of sending $0$ elements to subgroup $1$ and all $2n$ elements to subgroup $2$, then the number of ways to send $1$ in subgroup $1$ and the $2n-1$ rest in subgroup $2$, continuing in this way we get 
+				$$ \binom{2n}{0}+\binom{2n}{1}+\binom{2n}{2}+\dots +\binom{2n}{2n}.$$
+			This quantity is $2^{2n}$ since there are two choices for every element chosen- subroup $1$ or subgroup $2$.
+			
+			We conclude that the LHS and RHS are the same since both are $2^{2n}$.
+		\subsection*{(b)}
+			We solve this problem analytically by using the binomial theorem ; 
+			$$ (x+y)^{n} = \sum_{k=0}^{n} \binom{n}{k}x^{n-k}y^{k} \xrightarrow{x=1, \ \ y =r }  \sum_{k=0}^{2n}\binom{2n}{k}(1)^{k} = (1+1)^{2n} = 2^{2n}.$$
+			And for the LHS, 
+			$$ (x+y)^{n} = \sum_{k=0}^{n} \binom{n}{k}x^{n-k}y^{k} \xrightarrow{x=1, \ \ y =r } \left(\sum_{k=0}^{n}\binom{n}{k}(1)^{k}\right)^{2} = (2^{n})^{2} = 2^{2n}.$$
+	\section*{Question 2}
+		Let us consider a set of $n$ elements. On the RHS, there are $\binom{n}{m}$ ways to chose $m$ elements from the set. If we then divide further these elements in two different subgroups, then there is an additional $2^{m}$ factor to the total possible number of ways, because each chosen $m$ has two possibilities. 
+		
+		
+		On the LHS, we chose $k$ elements and sent them in the subgroup $1$ and the rest $m-k$ elements from the remaining $n-k$, in subgroup $2$, we do this for $1 \le k \le m$. 
+		
+		
+		Both sides represent ways of dividing into $2$ subgroups $n$ elements of a set 
+	\section*{Question 3}
+		Let $A = \{a_i\}_{i=1}^{n}$. Then the possible congruence relationships are 
+		$$ a_i \equiv s \mod n-1 \quad \text{for }\ s \in \{0,1, \dots ,n-1,n-2\}, \ \forall a_{i} \in A.$$
+		So $\because |S|=n$, there is at least one duplicate congruence in the set, such that $\exists a_{i}, a_{j} , $ for $i\neq j$ for which $a_{i} \equiv s \mod n-1 = a_{j} \equiv s \mod n-1$ where $s \in \{0,1,\dots, n-1,n-2\}$. By properties of modular arithmetic, this implies that $a_{i} - a_{j} \equiv 0 \mod n-1 \square$.
+	\section*{Question 4}
+		Let $A,B$ and $C$ be the three sets of films watched by citizens respectively. There are $3$ possible cases \\
+		
+		\noindent \underline{\textbf{Case $1$ :}} \\
+		Exists at least one citizen who watches only $A$, then every other citizen must watch at least $A$. 
+		
+		$\quad$ If $n$ people watch $A$ then $n \nless 2n/3 \implies$ someone sits on the floor. Same reasoning for $B$ and $C$. This case is proved.\\
+		
+		\noindent \underline{\textbf{Case $2$ :}} \\
+		Exists at least one citizen who watches $A$ and $B$, then every other citizen must watch at least $A$ or $B$.
+		
+		$\quad$ Here $ 2n \ge |A \cup B| \ge n$  and $2n \ge |A \cap B| \ge 1$, consider the smallest possible value $|A \cup B|= n$ , then $|A \cap B|$ is at most $n$, so by \emph{inclusion-exclusion principle}, 
+		$$ |A \cup B| = |A| + |B| - |A \cap B| \implies 2n = |A| + |B|,$$
+		Impossible to divide $2n$ in two sets such that $n \nless 2n/3$ ,so at least one film is overcrowded. This case is proved.\\
+		
+		\noindent \underline{\textbf{Case $3$ :}} \\
+		Exists at least one citizen who watches $A$,$B$ and $C$, then every other citizen must watch at least $A$ or $B$ or $C$.
+		
+		$\quad$ Here $ 3n \ge |A \cup B \cup C| \ge n$  and $3n \ge |A \cap B \cap C| \ge 1$. Consider the smallest possible value $|A \cup B \cup C| = n$ then $|A \cap B \cap C| $ is at most $n$, so by \emph{inclusion-exclusion principle}
+		\begin{align*}  
+		|A \cup B \cup C| &= |A| + |B| + |C| - |A \cap B \cap C| \\
+		\implies 2n &= |A| + |B| + |C|,
+		\end{align*}
+		impossible to divide $2n$ in three sets such that each set has $n \nless 2n/3$, so at least one film will be overcrowded. This case is proved.\\
+		
+		\noindent All possible cases are verified so we conclude that in any case, someone shall sit on the floor on at least one of the films.
+	\section*{Question 5}
+		For $n = 1, 2, 3$ we have $2,5$ and $12$ combinations possible, respectively. We deduce by inspection that the recursive relationship is 
+		$$ f_{n} = 2f_{n-1} + f_{n-2}.$$
+		We proceed with solving this recursive relationship. Let $f_n = cx^{n}$ , then
+		\begin{align*}
+			cx^{n} = 2cx^{n-1} + cx^{n-2} \implies x^{2} = 2x +1 \xrightarrow{(-b\pm \sqrt{b^{2} - 4ac} )/2a} x = 1 \pm \sqrt{2}.
+		\end{align*}
+		Hence, the linear combination solution is $f_{n} = A\varphi^{n} + B \bar{\varphi}^{n},$ where $\varphi = 1 + \sqrt{2}$. Here we use the initial conditions 
+		$$ \begin{rcases}
+			&f_0 = 0 \implies 0 = A \varphi^{0} + B\bar{\varphi^{0}} \quad\\
+			&f_1 = 1 \implies 2 = A \varphi^{1} + B\bar{\varphi^{1}} \quad 
+		\end{rcases} \quad 
+		\begin{align}
+			0 &= A + B \\
+			2 &= A \varphi^{1} + B \bar{\varphi^{1}}
+		\end{align}.$$
+		We deduce, 
+		$$ B = -A \implies 2 = A (\varphi - \bar{\varphi}) = A((1+ \sqrt{2}) - (1 - \sqrt{2})) \implies A = 1/\sqrt{2}.$$
+		Finally, the general solution to the given recursion relationship is 
+		$$ f_n =\frac{1}{\sqrt{2}} ((1 + \sqrt{2})^{n} - (1 - \sqrt{2})^{n}).$$
+	\section*{Question 6}
+		Following the triangle inequality identity, it must be that the sum of any two sides of any triangle is strictly lager than the remaining third side. Now since 
+		$$ l_i \ge l_j \quad \forall (i,j) \in (1,7) \ , i > j,$$
+		then the condition for there to be a triangle is $l_i + l_{i+1} \ge l_{i+2}$, where we took the symbol greater or equal and not just strictly equal given that all elements in the set are strictly increasing. \\
+		
+		\noindent Let us assume the opposite of the condition, that is $l_i + l_{i+1} < l_{i+2}$. Then using the initial assumption that $l_2 \ge l_1 \ge 1$, we get 
+		\begin{align*}
+			l_3 &> l_2 + l_1 \ge 2 \qquad & \therefore l_3 > 2\\
+			l_4 &> l_3 + l_2 \ge 3 \qquad & \therefore l_4 > 3 \\
+			& \vdots & \\
+			l_7 &> l_6 + l_5 \ge 13 \qquad & \therefore l_7 > 13
+		\end{align*}
+		The last inequality $l_7 > 13$ is a contradiction given the set as defined initially, so we conclude that the relationship $l_i + l_{i+1} \ge l_{i+2}$ holds for this given set, meaning that we can indeed construct triangles. 
+\end{document}

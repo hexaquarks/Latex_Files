@@ -1,0 +1,267 @@
+\documentclass[12pt]{article}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+%%%%--- PACKAGES ---%%%%%
+% COLORS
+\usepackage{xcolor}
+\usepackage[many]{tcolorbox}
+
+% MATH AND PHYSICS
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath , siunitx, xfrac, physics,breqn, undertilde,nccmath,cancel,nccmath,enumitem,venndiagram,thmtools} 
+
+% FONTS
+\usepackage{mathrsfs,bbm,bbold}
+
+% TIKZ, FIGURES, TABLES AND CAPTIONS
+\usepackage{tikz,float,wrapfig, caption,graphicx, graphics, fancyhdr, fancybox, tabularx, array,booktabs,mdframed, longtable,circuitikz}
+\usepackage[labelfont=bf]{caption}
+\usepackage[math]{cellspace}
+
+% DIVERSE
+\usepackage{xparse,lipsum,titling,titlesec,changepage,fullpage,listings}
+
+%%%%--- COMMANDS ---%%%%
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\Rn}{\mathbb{R}^{n}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rm}{\mathbb{R}^{m}}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\ep}{\epsilon}
+\newcommand{\de}{\delta}
+\newcommand{\bs}{\backslash}
+\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+
+%% Spaces in tables for aesthetic arrangement
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{3pt}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\allowdisplaybreaks
+
+%%%--- MTPRO2 FONT ---%%%
+\pdfmapfile{=mtpro2.map}
+\usepackage[lite,]{mtpro2}
+
+% Theorem environements
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem]
+\theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{definition}
+\newtheorem{Proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem*{example}{Example}
+\theoremstyle{example}
+\newtheorem*{note}{Note}
+\theoremstyle{note}
+\newtheorem*{remark}{Remark}
+\theoremstyle{remark}
+
+%% Equation breaking
+\relpenalty=9999
+\binoppenalty=9999
+
+%%%--- Command renewals ---%%%
+\let\oldimplies\implies
+\let\oldiff\iff
+
+\renewcommand*{\implies}{
+	\hspace{-0.05cm}\resizebox{.95\width}{\height}{$\oldimplies$}\hspace{-0.05cm}
+}
+\renewcommand*{\iff}{
+	\hspace{-0.1cm}\oldiff\hspace{-0.1cm}
+}
+\renewcommand{\sectionmark}[1]{%
+	\markboth{\thesection\quad #1}{}}
+
+%%% --- DOCUMENT HEADER ---%%%
+\title{MATH 240 Assignment 1}
+\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+\author{Mihail Anghelici 260928404 }
+\date{\today}
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 2} 
+	\fancyhead[R]{\small Mihail Anghelici $260928404$} 
+	\fancyfoot[C]{-- \thepage\ --}
+	\renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{plain}
+\setlength{\headsep}{1cm}
+\captionsetup{margin =1cm}
+\AtBeginDocument{%
+	\edef\Relbar{\mathord{\mathchar\the\numexpr\Relbar-"3000}}%
+	
+}
+\begin{document}
+	\maketitle
+	\section*{Question 1}
+	\subsection*{(a) }
+		\begin{center}
+			\begin{venndiagram3sets}[tikzoptions={scale=1.5, thick}, showframe={false}]
+				\fillACapBCapC
+				\fillOnlyC
+			\end{venndiagram3sets}
+		\end{center}
+	\subsection*{(b) }
+		The simplest description of the given Venn diagram is $$ B \oplus (A \cap C).$$
+	\section*{Question 2}
+		\subsection*{(a) }
+		\[ 
+			\begin{aligned}
+				&\hspace{-2.8cm}(\subseteq) \\
+				\text{Let } x \in \overline{A \cup B}. &\implies x \not\in A \cup B \\
+				&\implies x \not\in A \text{ and } x \not\in B \\
+				&\implies x \in \overline{A} \text{ and } x \in \overline{B} \\
+				&\implies x \in \overline{A} \cap \overline{B} 
+			\end{aligned}
+			\qquad 
+			\begin{aligned}
+				&\hspace{-2.8cm}(\supseteq) \\
+				\text{Let } x \in \overline{A} \cap \overline{B}. &\implies x \in \overline{A} \text{ and } x \in \overline{B} \\
+				&\implies x \not\in A \text{ and } x \not\in B\\
+				&\implies x \not\in A \cup B \\
+				&\implies x \in \overline{A \cup B}
+			\end{aligned}
+		\]
+		\subsection*{(b)}
+		\begin{align*}
+			(A \bs B) \cap (C \bs B) &= (A \cap \overline{B}) \cap (C \cap \overline{B}) \qquad&\textcolor{orange}{[\text{Set difference law}]}\\
+			&=A \cap (\overline{B} \cap C) \cap \overline{B} \qquad&\textcolor{orange}{[\text{Associative law}]}\\
+			&=A \cap (C \cap \overline{B}) \cap \overline{B} \qquad&\textcolor{orange}{[\text{Commutative law}]}\\
+			&=(A \cap C) \cap (\overline{B} \cap \overline{B}) \qquad&\textcolor{orange}{[\text{Associative law}]}\\
+			&=(A \cap C) \cap \overline{B} \qquad&\textcolor{orange}{[\text{Idenpotent law}]}\\
+			&=(A \cap C) \bs B \qquad&\textcolor{orange}{[\text{Set difference law}]}
+ 		\end{align*}
+		\section*{Question 3}
+			\subsection*{(a) }
+			\begin{enumerate}[label=(\roman*)]
+				\item The statement is \textcolor{green}{true} since $\forall v \in \R$ we can chose $u=1$ such that the equality $uv = v$ holds. 
+				\item $\neg(\exists u \in \R , \forall v \in \R, uv=v) = \forall u \in \R , \exists v \in \R, uv \neq v$.  Here we let $u=1$ then $\nexists v \in \R | uv \neq v$ . The statement is therefore \textcolor{red}{false}.
+			\end{enumerate}
+			\subsection*{(b) }
+			\begin{enumerate}[label=(\roman*)]
+				\item The given statement is \textcolor{red}{false}. Indeed, let $x=1, y=1$, then $z=1-1=0 \not\in \mathbb{N}$. 
+				\item $\neg(\forall x \in \mathbb{N}, \forall y \in \mathbb{N} , \exists z \in \mathbb{N} , z =x-y) = \exists x \in \mathbb{N} , \exists y \in \mathbb{N} , \forall z \in \mathbb{N} , z \neq x -y$. Here to disprove the statement we have to show $\nexists z \in \mathbb{N}$ such that there is at least one $x$ and $y$ in $\mathbb{N}$ for which $z \neq x-y$. This is impossible since we can just pick $z=x=y$ which satisfies $z \neq x-y$. The statement is therefore \textcolor{green}{true}.
+			\end{enumerate}
+		\section*{Question 4}
+			\subsection*{(a) }		
+			\begin{displaymath}
+			\begin{array}{c c c|c|c|c}
+			p & q & r& p \implies r & q \implies r & (p \implies r) \iff (q \implies r)\\ % Use & to separate the columns
+			\hline % Put a horizontal line between the table header and the rest.
+			T & T & T & T & T & T \\
+			T & T & F & F & F & T \\
+			T & F & T & T & T & T \\
+			T & F & F & F & T & F \\
+			F & T & T & T & T & T \\
+			F & T & F & T & F & F \\
+			F & F & T & T & T & T \\
+			F & F & F & T & T & T 
+			\end{array}
+			\end{displaymath}
+			Not all values are true in the last column,therefore this is not a tautology.
+			\subsection*{(b) }
+			\begin{displaymath}
+			\begin{array}{c c |c|c|c|c|c}
+			p & q & \overline{p} & \overline{q} & \overline{p} \lor q  & p \land \overline{q} & (\overline{p} \lor q) \lor (p \land \overline{q})\\ % Use & to separate the columns
+			\hline % Put a horizontal line between the table header and the rest.
+			T & T & F & F & T & T & T\\
+			T & F & F & T & F & T & T\\
+			F & T & T & F & T & F & T\\
+			F & F & T & T & T & T & T\\
+			\end{array}
+			\end{displaymath}
+			All values are true in the last column, therefore this is a tautology.
+		\subsection*{(c) }
+			\begin{displaymath}
+			\begin{array}{c c c|c|c|c|c|c|c}
+			&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{\overbrace{\rule{2.0cm}{0pt}}^{:= P}}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{} &\multicolumn{1}{c}{\overbrace{\rule{2.2cm}{0pt}}^{:= Q}}& & 
+			\newline
+			p & q & r& p \oplus q & (p \oplus q) \land r & p \land r  & q \land r &p \land r \oplus q \land r & P \iff Q\\ % Use & to separate the columns
+			\hline % Put a horizontal line between the table header and the rest.
+			T & T & T & F & F & T & T & F & T\\
+			T & T & F & F & F & F & F & F & T\\
+			T & F & T & T & T & T & F & T & T\\
+			T & F & F & T & F & F & F & F & T\\
+			F & T & T & T & T & F & T & T & T\\
+			F & T & F & T & F & F & F & F & T\\
+			F & F & T & F & F & F & F & F & T\\
+			F & F & F & F & F & F & F & F & T
+			\end{array}
+			\end{displaymath}
+			All values are true in the last column, therefore this is a tautology.
+		\section*{Question 5}
+			\subsection*{(a) }
+				\begin{align*}
+					p \implies (q \implies r) &\equiv \overline{p} \lor (q \implies r) \qquad\qquad &\textcolor{orange}{[\text{Definition of }\implies ]}\\
+					&\equiv \overline{p} \lor (\overline{q} \lor r) &\textcolor{orange}{[\text{Definition of }\implies ]}\\
+					&\equiv \overline{p} \lor \overline{q} \lor r &\textcolor{orange}{[\text{Commutativity of }\lor ]} \\
+					&\equiv \overline{p \land q} \lor r &\textcolor{orange}{[\text{De Morgan }]}\\
+					&\equiv (p \land q) \implies r &\textcolor{orange}{[\text{Definition of }\implies ]}
+				\end{align*}
+			\subsection*{(b) }	
+				\begin{align*}
+					\overline{p \implies q} &\equiv \underbrace{\overline{\overline{p} \lor q}}_{\mathclap{\textcolor{orange}{[\text{Definition of }\implies ]}}} \equiv\overbrace{ p \land \overline{q}}^{\mathclap{\textcolor{orange}{[\text{De Morgan }]}}}
+				\end{align*}
+			\subsection*{(c) }		
+				\begin{align*}
+					(\overline{p \lor \overline{q}}) \lor (\overline{p} \land \overline{q}) &\equiv (\overline{p} \land q) \lor (\overline{p} \land \overline{q}) \qquad\qquad&\textcolor{orange}{[\text{De Morgan}]} \\
+					&\equiv \overline{p} \land (q \lor \overline{q})  &\textcolor{orange}{[\text{Distributive law}]} \\
+					&\equiv \overline{p} \land 1 &\textcolor{orange}{[\text{Complement rule}]} \\
+					&\equiv \overline{p} &\textcolor{orange}{[\text{Identity rule}]}
+				\end{align*}
+		\section*{Question 6}
+			\subsection*{(a) }	
+			
+			\begin{center}
+			\begin{tikzpicture}
+			\node[nand port] (NAND1) {};
+			\draw (NAND1.in 1) -- ++(-0.5,0) node[left ] {$p$};
+			\draw (NAND1.in 2) -- ++(-0.5,0) node[left ] {$p$};
+			\draw[->] (NAND1.out)  -- ++( 0.5,0) node[right] {$\overline{p \land p} \equiv \overline{p}$};
+			\end{tikzpicture}
+			\end{center}
+		
+			\subsection*{(b) }
+			\begin{center}
+			\begin{tikzpicture}
+			\node[nand port] (NAND1) {};
+			\node[nand port] at ($(NAND1) + (2,0)$) (NAND2) {};
+			
+			
+			\draw (NAND1.in 1) -- ++(-0.5,0) node[left ] {$p$};
+			\draw (NAND1.in 2) -- ++(-0.5,0) node[left ] {$q$};
+			\draw (NAND2.in 1)  node[above,yshift=0mm,xshift=-3.5mm] {$\overline{p \land q}$};
+			\draw (NAND2.in 2)  node[below,yshift=-1mm,xshift=-3.5mm] {$\overline{p \land q}$};
+
+			
+			\draw (NAND1.out)  -| (NAND2.in 1) -| (NAND2.in 2);
+			\draw[->] (NAND2.out)  -- ++( 0.5,0) node[right] {$\overline{\overline{p \land q} \land \overline{p \land q}} \equiv \overline{\overline{p \land q}} \equiv p \land q$};
+			\end{tikzpicture}
+			\end{center}	
+			\subsection*{(c) }
+			\begin{center}
+				\begin{tikzpicture}
+				\node[nand port] (NAND1) {};
+				\node[nand port] at ($(NAND1) + (0,-1.5)$) (NAND2) {};
+				\node[nand port] at ($(NAND1) + (2,-0.75)$) (NAND3) {};
+	
+				
+				\draw (NAND1.in 1) -- ++(-0.5,0) node[left ] {$p$};
+				\draw (NAND1.in 2) -- ++(-0.5,0) node[left ] {$p$};
+				\draw (NAND2.in 1) -- ++(-0.5,0) node[left ] {$q$};
+				\draw (NAND2.in 2) -- ++(-0.5,0) node[left ] {$q$};
+				\draw (NAND1.out)  node[above] {$\overline{p}$};
+				\draw (NAND2.out)  node[below] {$\overline{q}$};
+				
+				\draw (NAND1.out)  -| (NAND3.in 1);
+				\draw (NAND2.out)  -| (NAND3.in 2);
+				\draw[->] (NAND3.out)  -- ++( 0.5,0) node[right] {$\overline{\overline{p} \land \overline{q}} \equiv \overline{\overline{p}} \lor \overline{\overline{q}} \equiv p \lor q$};
+				\end{tikzpicture}
+			\end{center}	
+		
+\end{document}

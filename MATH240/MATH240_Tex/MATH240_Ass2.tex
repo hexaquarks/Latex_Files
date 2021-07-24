@@ -1,0 +1,192 @@
+\documentclass[12pt]{article}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+%%%%--- PACKAGES ---%%%%%
+% COLORS
+\usepackage{xcolor}
+\usepackage[many]{tcolorbox}
+
+% MATH AND PHYSICS
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath , siunitx, xfrac, physics,breqn, undertilde,nccmath,cancel,nccmath,enumitem,venndiagram,thmtools} 
+
+% FONTS
+\usepackage{mathrsfs,bbm,bbold}
+
+% TIKZ, FIGURES, TABLES AND CAPTIONS
+\usepackage{tikz,float,wrapfig, caption,graphicx, graphics, fancyhdr, fancybox, tabularx, array,booktabs,mdframed, longtable,circuitikz}
+\usepackage[labelfont=bf]{caption}
+\usepackage[math]{cellspace}
+
+% DIVERSE
+\usepackage{xparse,lipsum,titling,titlesec,changepage,fullpage,listings}
+
+%%%%--- COMMANDS ---%%%%
+\newcommand{\la}{\langle} \newcommand{\ra}{\rangle}
+\newcommand{\Rn}{\mathbb{R}^{n}} \newcommand{\R}{\mathbb{R}} \newcommand{\Rm}{\mathbb{R}^{m}}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\ep}{\epsilon} \newcommand{\de}{\delta}
+\newcommand{\bs}{\backslash}
+\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+
+%% Spaces in tables for aesthetic arrangement
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{3pt}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\allowdisplaybreaks
+
+%%%--- MTPRO2 FONT ---%%%
+\pdfmapfile{=mtpro2.map}
+\usepackage[lite,]{mtpro2}
+
+% Theorem environements
+\newtheorem{theorem}{Theorem}[section] \theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem] \theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma} \theoremstyle{definition}
+\newtheorem{definition}{Definition}[section] \theoremstyle{definition}
+\newtheorem{Proposition}{Proposition}[section] \theoremstyle{definition}
+\newtheorem*{example}{Example} \theoremstyle{example}
+\newtheorem*{note}{Note} \theoremstyle{note}
+\newtheorem*{remark}{Remark} \theoremstyle{remark}
+
+%% Equation breaking
+\relpenalty=9999
+\binoppenalty=9999
+
+%%%--- Command renewals ---%%%
+\let\oldimplies\implies
+\let\oldiff\iff
+
+\renewcommand*{\implies}{
+	\hspace{-0.05cm}\resizebox{.95\width}{\height}{$\oldimplies$}\hspace{-0.05cm}
+}
+\renewcommand*{\iff}{
+	\hspace{-0.1cm}\oldiff\hspace{-0.1cm}
+}
+\renewcommand{\sectionmark}[1]{%
+	\markboth{\thesection\quad #1}{}}
+
+\renewcommand{\binom}{\mbinom}
+\renewcommand{\bar}{\overline}
+
+%%% --- DOCUMENT HEADER ---%%%
+\title{MATH 240 Assignment 2}
+\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+\author{Mihail Anghelici 260928404 }
+\date{\today}
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 2} 
+	\fancyhead[R]{\small Mihail Anghelici $260928404$} 
+	\fancyfoot[C]{-- \thepage\ --}
+	\renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{plain}
+\setlength{\headsep}{1cm}
+\captionsetup{margin =1cm}
+\AtBeginDocument{%
+	\edef\Relbar{\mathord{\mathchar\the\numexpr\Relbar-"3000}}%
+	
+}
+\begin{document}
+	\maketitle
+	\section*{Question 1}
+		\subsection*{(a)} 
+			\begin{align*}
+				n^{5}-n &= n(n^{2}-1) (n^{2}+1)\\
+				&=n(n^{2} -1)(n^{2} -4 + 5) \\
+				&=n(n^{2} -1 ) ((n-2)(n+2) + 5)\\
+				&= n(n^{2} -1)(n-2)(n+2)+5n(n^{2}-1)\\
+				&=(n-2)(n-1)n(n+1)(n+2) + 5(n-1)n(n+1) 
+			\end{align*}
+			The expression $(n-2)(n-1)n(n+1)(n+2)$ represents $5$ successive numbers, so one of them has to be divisible by $5$ which automatically makes all the factor divisible by $5$. The factor $5(n-1)n(n+1)$ is evidently also divisible by $5$. Finally, by fact, $a \mid c \land b \mid c \implies (a+b) \mid c$, so $5 \mid n^{5} -n$. 
+		\subsection*{(b)}
+			We show the contrapositive $(\bar{q} \implies \bar{p})$, that is $\sqrt[3]{x}$ is rational then $x$ is rational.
+			$$ \sqrt[3]{x} = x^{\sfrac{1}{3}} = \frac{a}{b} \qquad, a,b \in \mathbb{Z} \: \text{reduced}, \ \implies x = \frac{a^{3}}{b^{3}}.$$
+			Since $a,b \in \mathbb{Z}$, then $a^{k}, b^{k} \in \mathbb{Z}$ for  $k \in \mathbb{Z}_{+}$. Indeed, the cube of any rational number remains rational, and the fraction remains reduced, so we conclude $x = (a/b)^{3}$ is rational. Thus, since $(\bar{q} \implies \bar{p}) \iff (p \implies q)$ ,then $\sqrt[3]{x}$ is irrational if $x$ is irrational indeed.
+	\section*{Question 2}
+		\subsection*{(a)}
+			We show $\nexists \ x,y \mid  8x + 2y =3$ by contradiction.
+			$$ 8x + 2y = 3 \iff 4x + y = \sfrac{3}{2},$$
+			If $x \in \mathbb{Z} \implies 4x \in \mathbb{Z}$. The sum of two integer numbers remains an integer number so $4x + y \in \mathbb{Z}$, but $3/2 \in \mathbb{Q}$ and $\mathbb{Z} \subsetneq \mathbb{Q}$. This is a contradiction. So indeed, there are no integers $x,y$ such that $8x +2y =3$. 
+		\subsection*{(b)}
+			Let us assume $\sqrt{p}$ is rational ,for $p \in \mathbb{P}$. Then,
+			\begin{align}
+				 \sqrt{p} = \sfrac{a}{b} \quad, a ,b \in \mathbb{Z} \ \text{reduced} \: , &\implies b^{2}p = a^{2} \\
+				 &\implies p \mid a^{2} \implies p \mid a \:, \text{by lemma, since } (\mathbb{N} \subset \mathbb{Z}). \nonumber
+			\end{align}
+			And so,
+			\begin{align*}
+				p \mid a \implies \exists \  c \ \text{s.t} \  a = pc &\implies a^{2} = p^{2}c^{2}, 
+				\intertext{Substituting $(1)$ we get } 
+				&\implies b^{2} p = p^{2} c^{2} \implies b^{2} = pc^{2}\\
+				&\implies p\mid b^{2} \implies p\mid b \:, \text{by lemma, since } (\mathbb{N} \subset \mathbb{Z}).
+			\end{align*}
+			That is actually a contradiction since by definition a rational number is expressed as a reduced fraction, whence $p \nmid a$ and $p \nmid b$ at the same time. $\therefore \sqrt{p} \not\in \mathbb{Q} \implies \sqrt{p} \in \mathbb{R} \bs \mathbb{Q}$.
+	\section*{Question 3}
+		\subsection*{(a)}
+			\textbf{\underline{Base case : }} For $n=1$ , $4 \mid 7-3 \implies 4 \mid 4 \ \checkmark.$ 
+			\newline 
+			
+			\noindent  \textbf{\underline{Inductive step : }} Let us assume $4 \mid 7^{n} -3^{n}$, we show $4 \mid 7^{n+1} - 3^{n+1}$. 
+			\begin{align*}
+				4\mid 7^{n+1} - 3^{n+1} = 4 \mid (7^{n}7 - 3^{n}3) = 4 \mid ((4 + 3 )7^{n} -3^{n}3) = 4 \mid (4(7^{n}) +3(7^{n} -3^{n})).
+			\end{align*}
+			We first use the fact $a|b \land a|c \implies a|(b+c)$ so it suffices to show that $4 \mid 4(7^{n})$ and $4 \mid 3(7^{n} -3^{n})$.The first factor is trivial, $4 \mid 4 (7^{n})$ indeed. Then, use the divisors property $a \mid kb$ for $k \in \mathbb{Z}$, which follows immediately from the definition of divisors. So $4 \mid 3(7^{n} -3^{n})$ holds by the property outlined above and by induction hypothesis. We conclude that
+			$$ 4 \mid (4(7^{n}) + 3 (7^{n} -3^{n})) \implies 4 \mid 7^{n+1} - 3^{n+1} \qquad \therefore p(n) \: \text{holds} \ \forall n \in \mathbb{N}.$$
+		\subsection*{(b)}
+			\textbf{\underline{Base case : }} For $n=1$ , the union operator vanishes and we are left off with $A_1 \bs B = A_1 \bs B \ \checkmark.$\\ \\
+			\textbf{\underline{Inductive step : }} Let us assume 
+			$$ \bigcup\limits_{i=1}^{n} (A_{i} \bs B) = \left( \bigcup\limits_{i=1}^{n} A_i\right) \bs B, \quad \text{we show, } \: \bigcup\limits_{i=1}^{n+1} (A_{i} \bs B) = \left( \bigcup\limits_{i=1}^{n+1} A_i\right) \bs B.$$
+			We have 
+			\begin{align*}
+				\bigcup\limits_{i=1}^{n+1} (A_{i} \bs B) &= \bigcup\limits_{i=1}^{n} (A_{i} \bs B) \cup (A_{n+1} \bs B) \\
+				&= \left(\bigcup\limits_{i=1}^{n} A_{i}\right) \bs B \cup \left(A_{n+1} \bs B\right) 
+				\intertext{We use the alternative form of the set difference operation ;} 
+				&= \left(\bigcup\limits_{i=1}^{n} A_{i} \cap \bar{B} \right) \cup \left(A_{n+1} \cap \bar{B}\right)
+				\intertext{Here we use the distributivity law generalized to $n$ elements and the idempotent law, obtaining}
+				&=\left(\bigcup\limits_{i=1}^{n} A_{i} \cup A_{n+1}\right) \cap \bar{B} \\
+				&= \bigcup\limits_{i=1}^{n+1} A_{i} \cap \bar{B} = \left(\bigcup\limits_{i=1}^{n+1} A_{i} \right) \bs B \qquad \therefore p(n) \ \text{holds} \ \forall n \in \mathbb{N}.
+			\end{align*}
+	\section*{Question 4}
+		\subsection*{(a)}
+			$$ 729 = (3)243 = (3^{2})81 = (3^{3})27 = (3^{4})9 = (3^{5})3 = 3^{6}.$$
+		\subsection*{(b)}
+			$727$ is already a prime number. The prime factor is itself. 
+		\subsection*{(c)}
+			$$ 111 = (11)(1)(2)(3)(2^{2})(5)(3)(2)(7)(2^{3})(3^{2})(2)(5) = (2^{8})(3^{4})(5^{2})(7)(11),$$
+			which are indeed all prime numbers.
+	\section*{Question 5}
+		\subsection*{(a)}
+			\begin{align*}
+				\gcd(2100,240) &= \gcd(240,180) \quad &2100=8(240)+180 \\
+				&= \gcd(180,60) \quad&240 = 1(180) + 60\\
+				&=3 \quad &180 = 3(60) + \textcolor{green}{0}.
+			\end{align*}
+		\subsection*{(b)}
+			The prime factors of $240$ are $240 = 2(120) = 2^{3}(30) = (2^{4})(\textcolor{orange}{3})(5).$ The prime factors of $2100$ are $2100 = 2^{2}(525) = 2^{2}(5^{2})(21) = (2^{2})(5^{2})(\textcolor{orange}{3})(7)$. 
+			%TODO
+		\subsection*{(c)}
+			\begin{align*}
+				2100 & = 8(240) + 180 \qquad &60&=240 - 1(180) \\
+				240 &= 1(180) + 60  \qquad  &60 &= 240 - 1(2100 - 8(240)) \\
+				180 &= 3(60) + 0 \qquad  &60 &= 9(240) - 1(2100)
+			\end{align*}
+			We conclude that $s = 9$ and $t = -1$.
+	\section*{Question 6}
+		\subsection*{(a)}
+			Let $d_{1} = \gcd(a,b)$, then $d_{1} \mid a$ and $d_{1} \mid b$ by definition of $\gcd$ . Then by fact, $d_{1} \mid (a+b)$ as well. Similarly, let $d_{2} = \gcd(a+b,a-b)$, then $d_{2} \mid a+b$ and $d_{2} \mid a-b$ by definition of $\gcd$ . Then by fact, $d_{2} \mid a$ and $d_{2} \mid b$ as well. $d_{1}$ and $d_{2}$ have the exact same set of divisors, so they must be the same, as it is the greatest common divisor. $$ \therefore \gcd(a,b) = \gcd(a+b, a-b) \qquad \square.$$
+		\subsection*{(b)}
+		\begin{align*} 
+		a \mid bc \implies \exists \ x \in \mathbb{Z} \ \text{s.t} \ bc = ax,
+		\end{align*}
+		 Dividing both sides by $d$, which is non-zero since $\gcd \neq 0$, we get 
+		\begin{align*} 
+		\frac{b}{d}c = \frac{a}{d}x \tag{2}. 
+		\end{align*}
+		Then, since $\gcd(a,b) = d$ this implies, by definition of $\gcd$, that $d \mid a$ and $d \mid b$. So in other words, $\exists \ s,t \in \mathbb{Z} $ s.t $a = ds$ and $b =dt$. Substituting the latter in $(2)$, 
+		$$ \frac{b}{d}c = \frac{a}{d}x \implies \frac{dt}{d}c = \frac{a}{d}x \implies tc = \frac{a}{d}x.$$
+		Here $t,x \in \mathbb{Z}$ but $x/t$,a quotient of integers, is not necessarily in $\mathbb{Z}$. In our case, assume $x/t \not\in \mathbb{Z}$. Define $x/t := x^{\prime} \not\in \mathbb{Z}$, then $c = (a/d)x'$ ; regardless of what $a/d$ is, the RHS is not in $\mathbb{Z}$ ,while the LHS, $c \in \mathbb{Z}$ because $a \mid bc \implies c \in \mathbb{Z}$. This is a contradiction, so $x'$ must be in $\mathbb{Z}$.  Then we conclude, 
+		$$ ct = \frac{a}{d}x \implies c = \frac{a}{d} x^{\prime} \implies \frac{a}{d} \mid c \ \text{  ,since } x' \ \text{is arbitrary} \qquad \square.$$
+		
+			
+\end{document}

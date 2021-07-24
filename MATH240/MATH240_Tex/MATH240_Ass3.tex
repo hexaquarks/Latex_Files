@@ -1,0 +1,243 @@
+\documentclass[12pt]{article}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+%%%%--- PACKAGES ---%%%%%
+% COLORS
+\usepackage{xcolor}
+\usepackage[many]{tcolorbox}
+
+% MATH AND PHYSICS
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath , siunitx, xfrac, physics,breqn, undertilde,nccmath,cancel,nccmath,enumitem,venndiagram,thmtools} 
+
+% FONTS
+\usepackage{mathrsfs,bbm,bbold}
+
+% TIKZ, FIGURES, TABLES AND CAPTIONS
+\usepackage{tikz,float,wrapfig, caption,graphicx, graphics, fancyhdr, fancybox, tabularx, array,booktabs,mdframed, longtable,circuitikz}
+\usepackage[labelfont=bf]{caption}
+\usepackage[math]{cellspace}
+
+% DIVERSE
+\usepackage{xparse,lipsum,titling,titlesec,changepage,fullpage,listings}
+
+%%%%--- COMMANDS ---%%%%
+\newcommand{\la}{\langle} \newcommand{\ra}{\rangle}
+\newcommand{\Rn}{\mathbb{R}^{n}} \newcommand{\R}{\mathbb{R}} \newcommand{\Rm}{\mathbb{R}^{m}}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\ep}{\epsilon} \newcommand{\de}{\delta}
+\newcommand{\bs}{\backslash}
+\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+
+%% Spaces in tables for aesthetic arrangement
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{3pt}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\allowdisplaybreaks
+
+%%%--- MTPRO2 FONT ---%%%
+\pdfmapfile{=mtpro2.map}
+\usepackage[lite,]{mtpro2}
+
+% Theorem environements
+\newtheorem{theorem}{Theorem}[section] \theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem] \theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma} \theoremstyle{definition}
+\newtheorem{definition}{Definition}[section] \theoremstyle{definition}
+\newtheorem{Proposition}{Proposition}[section] \theoremstyle{definition}
+\newtheorem*{example}{Example} \theoremstyle{example}
+\newtheorem*{note}{Note} \theoremstyle{note}
+\newtheorem*{remark}{Remark} \theoremstyle{remark}
+
+%% Equation breaking
+\relpenalty=9999
+\binoppenalty=9999
+
+%%%--- Command renewals ---%%%
+\let\oldimplies\implies
+\let\oldiff\iff
+
+\renewcommand*{\implies}{
+	\hspace{-0.05cm}\resizebox{.95\width}{\height}{$\oldimplies$}\hspace{-0.05cm}
+}
+\renewcommand*{\iff}{
+	\hspace{-0.1cm}\oldiff\hspace{-0.1cm}
+}
+\renewcommand{\sectionmark}[1]{%
+	\markboth{\thesection\quad #1}{}}
+
+\renewcommand{\binom}{\mbinom}
+\renewcommand{\bar}{\overline}
+
+%%% --- DOCUMENT HEADER ---%%%
+\title{MATH 240 Assignment 3}
+\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+\author{Mihail Anghelici 260928404 }
+\date{\today}
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 3} 
+	\fancyhead[R]{\small Mihail Anghelici $260928404$} 
+	\fancyfoot[C]{-- \thepage\ --}
+	\renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{plain}
+\setlength{\headsep}{1cm}
+\captionsetup{margin =1cm}
+\AtBeginDocument{%
+	\edef\Relbar{\mathord{\mathchar\the\numexpr\Relbar-"3000}}%
+	
+}
+\begin{document}
+	\maketitle
+	\section*{Question 1}
+		\subsection*{(a)} 
+			\begin{align*}
+				28 &= \{1,2,4,7,14\} \xrightarrow{}\sum = 28 \ \checkmark\\
+				496 &= \{ 1,2,4,8,16,31,62,124,248\} \xrightarrow{} \sum = 496 \ \checkmark  
+			\end{align*}
+		\subsection*{(b)}
+			The set of divisors of $2^{n-1} (2^{n}-1)$ are 
+			\begin{gather*}
+				1,2,\dots,2^{n-1} , 2^{n}-1, 2(2^{n}-1) , \dots 2^{n-1}(2^{n} -1) \\
+				\implies S_{n} =(1+(2^{n}-1))(1+2+\dots + 2^{n-1}) 
+			\end{gather*}
+			Now since the second term is a closed-form geometric series we may use the geometric series formula 
+			$$ \sum_{k=1}^{n-1} ar^{k} = a \left(\frac{1-r^{n}}{1-r}\right) = \left(\frac{1-2^{n}}{1-2}\right) = 2^{n} -1.$$
+			Thus, we have 
+			$$ S_{n} = 2^{n}(2^{n} -1),$$
+			which is indeed equal to the initial expression divided by $2$, i.e., the sum of its divisors other than itself. We conclude that the initial expression is perfect.
+	\section*{Question 2}
+		\subsection*{(a)}
+			\begin{align*}
+				x_{1} &= 15 x_{0} +30 &\mod 225 \\
+				&= (15)(10) + 30 &\mod 225\\ 
+				&= 180 &\mod 225\\ 
+				&= 180 &\\
+				x_{2} &= 15 x_{1} +30 &\mod 225 \\
+				&= 15(180) +30 &\mod 225 \\
+				&= 30 &\\
+				x_{3} &= 15 x_{2} +30 &\mod 225 \\
+				&= (15)(30) + 30 &\mod 225 \\
+				&= 30 &\\
+				\vdots 
+			\end{align*}
+			Here we have a recursion, so we conclude the first $10$ numbers are $$\{180,30,30,30,30,30,30,30,30,30\}.$$
+		\subsection*{(b)}
+			\begin{align*}
+				x_{1} &= 13x_{0} +19 &\mod 100 &\qquad & x_{6} &= 13 x_{5} + 19 &\mod 100 \\
+				&= 13(11) + 19 &\mod 100 &\qquad & &= 13(2) + 19 &\mod 100 \\ 
+				&= 162 &\mod 100 &\qquad & &= 45 &\mod 100 \\
+				&= 62 & &\qquad & &= 45 & \\
+				x_{2} &= 13x_{1} + 19 &\mod 100 &\qquad & x_{7} &= 13 x_{6} + 19 &\mod 100 \\
+				&=13(62) + 19 &\mod 100 & \qquad & &= 13(45) + 19 &\mod 100 \\
+				&= 825 &\mod 100 & \qquad & &= 604 &\mod 100 \\ 
+				&=25 & &\qquad & &=4 & \\
+				x_{3} &= 13x_{2} + 19 &\mod 100 & \qquad & x_{8} &= 13x_{7} +19 &\mod 100 \\
+				&= 13(25) +19 &\mod 100 &\qquad & &=13(4) + 19 &\mod 100 \\
+				&=344 &\mod 100 &\qquad & &= 71 &\mod 100 \\
+				&= 44 & &\qquad & &= 71 & \\ 
+				x_{4} &= 13x_{3} +19 &\mod 100 & \qquad & x_{9} &= 13x_{8} +19 &\mod 100 \\
+				&= 13(44) +19 &\mod 100 &\qquad& &= 13(71) +19 &\mod 100 \\
+				&= 591 &\mod 100 &\qquad & &= 942 &\mod 100 \\
+				&= 91 & &\qquad & &=42 & \\
+				x_{5} &= 13x_{4} +19 &\mod 100 &\qquad & x_{10} &= 13x_{9} +19 &\mod 100 \\
+				&= 13(91) +19 &\mod 100 &\qquad & &=13(42) +19 &\mod 100 \\
+				&= 1202 &\mod 100 & \qquad & &= 565 &\mod 100 \\
+				&= 2 & &\qquad & &= 65 & 
+			\end{align*}
+			We conclude that the first $10$ numbers are 
+			$$ \{62,25,44, 91, 2, 45, 4, 71,42, 65\}.$$
+	\section*{Question 3}
+		We need to first find the modular inverse for the congruence relationship $146s \equiv 1 \mod 421$. We use Euclid's algorithm then proceed by reversing.
+		\[ \begin{align*}
+			421 &= 2(146) + 129 \\
+			146 &= 1(129) + 17 \\
+			129 &= 7(17) + 10 \\
+			17 &= 1(10) + 7 \\
+			7 &= 2(3) + 1 \\
+			3 &= 2(1) + 1 \\
+			1 &= 1(1) + 0 
+		\end{align*} \quad \qquad \qquad \qquad \ \vrule \ \qquad \qquad 
+		\begin{align*}
+			 1 &= 7 - (10 -7) \\ 
+			  &= 3(7) - 2(10) \\
+			  &= 3(17-10) -2(10) \\
+			  &= 3(17) - 5(129 - 7(7)) \\
+			  &=38(146 -129) - 5(129)  \\
+			  &= 38(146) - 43(421 - 146(2)) \\
+			  &= 124(146) - 43(421)
+		\end{align*}\]
+		so we conclude that $146^{-1} = 124$, such that $146(146^{-1}) \equiv 1 \mod 421$. Finally, 
+		\begin{gather*}
+			146(146^{-1}) x \equiv 12 (124^{-1}) \implies x = 225.
+		\end{gather*}
+	\section*{Question 4}
+		\subsection*{(a)}
+			First we note that $2407 = 126(19) + 13$ and $p-1 = 18$, so 
+			\begin{align*}
+				2407^{1335} \mod 19 &\equiv 13^{1335} &\mod 19 \\
+									&\equiv 13^{18(74) +3} &\mod 19 \\
+									&\equiv \underbrace{(13^{18})}_{\equiv 1 \ \text{FLT}} \! ^{74} 13^{3} &\mod 19\\
+									&\equiv 13^{3} &\mod 19\\
+									&\equiv 2197 &\mod 19
+									\intertext{Since $2197 = 115(19) +12$ then} 
+									&\equiv 12 &
+			\end{align*}
+		\subsection*{(b)}
+			We use $p-1 = 348$, so 
+			\begin{align*}
+				7^{42806} \mod 349 &\equiv 7^{348(123) + 2} &\mod 349\\ 
+								   &\equiv \underbrace{(7^{348})}_{\equiv 1 \ \text{FLT}} \! ^{123}7^{2} &\mod 349\\
+								   &\equiv 7^{2} &\mod 349 \\
+								   &\equiv 49 &\mod 349 \\
+								   &\equiv 49
+			\end{align*}
+	\section*{Question 5}
+		\subsection*{(a)}
+			\begin{align*}
+				11^{1329} \mod 1330 &\equiv (11^{3})^{443} \mod 1330
+				\intertext{We note that $11^{3} = 1331 = 1(1330) +1$ so $1331 \equiv 1 \mod 1330$ ;}
+									&\equiv 1^{443} \mod 1330 \\
+									&\equiv 1 \mod 1330 \ \checkmark 
+			\end{align*}
+			The test is passed.
+		\subsection*{(b)}	
+			No it is a false positive, indeed, by theorem, $n$ prime $\iff \ \forall 0 < a < n-1 \ , a^{n-1} \equiv 1 \mod n$. Here, $n$ is not prime since it is divisible by $2$ , so $a^{n-1} \equiv 1 \mod n$ from part $(a)$ must be false as well.  
+	\section*{Question 6}
+		\subsection*{(a)}
+			\begin{align*}
+				\hat{M} &= M^{p} &\mod n \\
+						&= 9^{7} &\mod 209 \\
+						&=(9^{3})^{2} 9 &\mod 209 \\
+						&= 102^{2} 9 &\mod 209 \\
+						&= (10404) 9 &\mod 209
+				\intertext{Since $10404 = 209(49) +163 = 163 \mod 209$,} 
+						&= (163)9 &\mod 209\\
+						&= 1467 &\mod 209 \\
+						&= 4
+			\end{align*}
+			We conclude that $\hat{M} = 9^{7} \mod 209 = 4$.
+		\subsection*{(b)}
+			We look for $p^{-1}$ in $7 p^{-1} \equiv 1 \mod 180$, where $180 = (q_{1} -1)(q_{2}-1)$. We use Euclid's algorithm and reverse; 
+			\[
+			\begin{align*}
+				180 &= 25(7) + 5 \\
+				7 &= 1(5) +2 \\
+				5 &= 2(2) +1 \\
+				2 &= 1(2) + 0
+			\end{align*} 
+			\qquad \qquad \qquad \vrule \qquad \qquad \qquad 
+			\begin{align*}
+			 1&= 5 - 2(7 - 5) \\
+			 &= 3(5) - 2(7) \\
+			 &= 3(180 - 25(7)) -2(7) \\
+			 &= 3(180) -77(7)
+			\end{align*}\]
+			So we have that $p^{-1} = -77$. We can add $180$ to this number and the congruence relationship is kept so we conclude $p^{-1} = x = 103 $.
+		\subsection*{(c)}
+			$$ M = \hat{M}^{x} \mod n = 4^{103} \mod 209 = 9.$$
+			\begin{remark}
+				I was not able to simplify the latter expression, indeed $\nexists \ s \le 20 \in \mathbb{N} \ | \ 4^{s} \mod 209 = 1 \lor 2$, the answer was computed numerically.
+			\end{remark}
+			
+\end{document}
