@@ -1,0 +1,408 @@
+\documentclass[12pt]{article}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+%%%%--- PACKAGES ---%%%%%
+% COLORS
+\usepackage{xcolor}
+\usepackage[many]{tcolorbox}
+
+% MATH AND PHYSICS
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath , siunitx, xfrac, physics,breqn, undertilde,nccmath,cancel,nccmath,enumitem,venndiagram,thmtools,nicematrix,nicefrac} 
+
+% FONTS
+\usepackage{mathrsfs,bbm,bbold}
+
+% TIKZ, FIGURES, TABLES AND CAPTIONS
+\usepackage{tikz,float,wrapfig, caption,graphicx, graphics, fancyhdr, fancybox, tabularx, array,booktabs,mdframed, longtable,circuitikz,tabu}
+\usepackage[labelfont=bf]{caption}
+\usepackage[math]{cellspace}
+
+% DIVERSE
+\usepackage{xparse,lipsum,titling,titlesec,changepage,fullpage,listings}
+
+%%%%--- COMMANDS ---%%%%
+\newcommand{\la}{\langle} \newcommand{\ra}{\rangle}
+\newcommand{\Rn}{\mathbb{R}^{n}} \newcommand{\R}{\mathbb{R}} \newcommand{\Rm}{\mathbb{R}^{m}}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\ep}{\epsilon} \newcommand{\de}{\delta}
+\newcommand{\bs}{\backslash}
+\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+
+%% Spaces in tables for aesthetic arrangement
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{3pt}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\allowdisplaybreaks
+
+%%%--- MTPRO2 FONT ---%%%
+\pdfmapfile{=mtpro2.map}
+\usepackage[lite,]{mtpro2}
+
+
+% Theorem environements
+\newtheorem{theorem}{Theorem}[section] \theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem] \theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma} \theoremstyle{definition}
+\newtheorem{definition}{Definition}[section] \theoremstyle{definition}
+\newtheorem{Proposition}{Proposition}[section] \theoremstyle{definition}
+\newtheorem*{example}{Example} \theoremstyle{example}
+\newtheorem*{note}{Note} \theoremstyle{note}
+\newtheorem*{remark}{Remark} \theoremstyle{remark}
+
+%% Equation breaking
+\relpenalty=9999
+\binoppenalty=9999
+
+%%%--- Command renewals ---%%%
+\let\oldimplies\implies
+\let\oldiff\iff
+
+\renewcommand*{\implies}{
+	\hspace{-0.05cm}\resizebox{.95\width}{\height}{$\oldimplies$}\hspace{-0.05cm}
+}
+\renewcommand*{\iff}{
+	\hspace{-0.1cm}\oldiff\hspace{-0.1cm}
+}
+\renewcommand{\sectionmark}[1]{%
+	\markboth{\thesection\quad #1}{}}
+
+\renewcommand{\binom}{\mbinom}
+\renewcommand{\bar}{\overline}
+
+%%% --- DOCUMENT HEADER ---%%%
+\title{MATH 327 Assignment 4}
+\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+\author{Mihail Anghelici 260928404 }
+\date{\today}
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 4} 
+	\fancyhead[R]{\small Mihail Anghelici $260928404$} 
+	\fancyfoot[C]{-- \thepage\ --}
+	\renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{plain}
+\setlength{\headsep}{1cm}
+\captionsetup{margin =1cm}
+\AtBeginDocument{%
+	\edef\Relbar{\mathord{\mathchar\the\numexpr\Relbar-"3000}}%
+	
+}
+\lstset{ %
+	language=Matlab,
+	backgroundcolor=\color{white},   % choose the background color
+	breaklines=true,                 % automatic line breaking only at whitespace
+	keywordstyle=\color{blue},
+	escapeinside={(*}{*)},        % keyword style
+	%identifierstyle=\color{blue},
+	%stringstyle=\color{mymauve},     % string literal style
+}
+\begin{document}
+	\maketitle
+	\section*{Question 1}
+		\subsection*{(a)}
+		We find the upper triangular matrix $U$ and the three matrices $L_{i}^{-1}$.
+			\begin{align*}
+				&\begin{pmatrix}
+					1 & 0 & 0 & 0 \\
+					0 & 1 & 0 & 0 \\
+					0 & 0 & 1 & 0 \\
+					0 & 0 & 0 & 1 
+				\end{pmatrix}
+				\begin{pmatrix}
+				4 & 2 & 1 & 0 \\ 
+				2 & 3 & 1 & 1 \\
+				1 & -1 & 2 & 1 \\
+				0 & 3/5 & 0 & 1 
+				\end{pmatrix} \\
+				\sim &\begin{pmatrix}
+				1 & 0 & 0 & 0 \\
+				1/2 & 1 & 0 & 0 \\
+				1/4 & 0 & 1 & 0 \\
+				0 & 0 & 0 & 1 
+				\end{pmatrix}
+				\begin{pmatrix}
+				4 & 2 & 1 & 0 \\ 
+				0 & 2 & 1/2 & 1 \\
+				0 & -3/2 & 7/4 & 1 \\
+				0 & 3/5 & 0 & 1 
+				\end{pmatrix} \\
+				\sim&\begin{pmatrix}
+				1 & 0 & 0 & 0 \\
+				1/2 & 1 & 0 & 0 \\
+				1/4 & 0 & 1 & 0 \\
+				0 & 0 & 0 & 1 
+				\end{pmatrix}
+				\begin{pmatrix}
+				1 & 0 & 0 & 0 \\
+				0 & 1 & 0 & 0 \\
+				0 & -3/4 & 1 & 0 \\
+				0 & 3/10 & 0 & 1 
+				\end{pmatrix}
+				\begin{pmatrix}
+				4 & 2 & 1 & 0 \\ 
+				0 & 2 & 1/2 & 1 \\
+				0 & 0 & 17/8 & 7/4 \\
+				0 & 0 & -3/20 & 7/10 
+				\end{pmatrix} \\
+				\sim&\underbrace{\begin{pmatrix}
+				1 & 0 & 0 & 0 \\
+				1/2 & 1 & 0 & 0 \\
+				1/4 & 0 & 1 & 0 \\
+				0 & 0 & 0 & 1 
+				\end{pmatrix}}_{L_{1}^{-1}}
+				\underbrace{\begin{pmatrix}
+				1 & 0 & 0 & 0 \\
+				0 & 1 & 0 & 0 \\
+				0 & -3/4 & 1 & 0 \\
+				0 & 3/10 & 0 & 1 
+				\end{pmatrix}}_{L_{2}^{-1}}
+				\underbrace{\begin{pmatrix}
+				1 & 0 & 0 & 0 \\
+				0 & 1 & 0 & 0 \\
+				0 & 0 & 1 & 0 \\
+				0 & 0 & -6/85 & 1 
+				\end{pmatrix}}_{L_{3}^{-1}}
+				\underbrace{\begin{pmatrix}
+				4 & 2 & 1 & 0 \\ 
+				0 & 2 & 1/2 & 1 \\
+				0 & 0 & 17/8 & 7/4 \\
+				0 & 0 & 0 & 14/17
+				\end{pmatrix}}_{U}
+			\end{align*}
+			It follows that $L_{i} = (L_{i}^{-1})^{-1}$
+			\begin{gather*} 
+			L_{1} = \begin{pmatrix}
+			1 & 0 & 0 & 0 \\
+			1/2 & 1 & 0 & 0 \\
+			1/4 & 0 & 1 & 0 \\
+			0 & 0 & 0 & 1 
+			\end{pmatrix}^{-1} = \begin{pmatrix}
+			1 & 0 & 0 & 0 \\
+			-1/2 & 1 & 0 & 0 \\
+			-1/4 & 0 & 1 & 0 \\
+			0 & 0 & 0 & 1 
+			\end{pmatrix}, \quad L_{2} = \begin{pmatrix}
+			1 & 0 & 0 & 0 \\
+			0 & 1 & 0 & 0 \\
+			0 & -3/4 & 1 & 0 \\
+			0 & 3/10 & 0 & 1 
+			\end{pmatrix}^{-1} = \begin{pmatrix}
+			1 & 0 & 0 & 0 \\
+			0 & 1 & 0 & 0 \\
+			0 & 3/4 & 1 & 0 \\
+			0 & -3/10 & 0 & 1 
+			\end{pmatrix} \\ L_{3} = \begin{pmatrix}
+			1 & 0 & 0 & 0 \\
+			0 & 1 & 0 & 0 \\
+			0 & 0 & 1 & 0 \\
+			0 & 0 & -6/85 & 1 
+			\end{pmatrix}^{-1} = \begin{pmatrix}
+			1 & 0 & 0 & 0 \\
+			0 & 1 & 0 & 0 \\
+			0 & 0 & 1 & 0 \\
+			0 & 0 & 6/85 & 1 
+			\end{pmatrix}
+			\end{gather*}
+			As a double-check, 
+			\begin{align*} 
+			L_{1}^{-1}L_{2}^{-1}L_{3}^{-1}U &= \begin{pmatrix}
+			1 & 0 & 0 & 0 \\
+			1/2 & 1 & 0 & 0 \\
+			1/4 & 0 & 1 & 0 \\
+			0 & 0 & 0 & 1 
+			\end{pmatrix}
+	\begin{pmatrix}
+		1 & 0 & 0 & 0 \\
+		0 & 1 & 0 & 0 \\
+		0 & -3/4 & 1 & 0 \\
+		0 & 3/10 & 0 & 1 
+		\end{pmatrix}
+	\begin{pmatrix}
+	1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
+	0 & 0 & -6/85 & 1 
+	\end{pmatrix}
+\begin{pmatrix}
+4 & 2 & 1 & 0 \\ 
+0 & 2 & 1/2 & 1 \\
+0 & 0 & 17/8 & 7/4 \\
+0 & 0 & 0 & 14/17
+\end{pmatrix}  \\ &= \begin{pmatrix}
+4 & 2 & 1 & 0 \\ 
+2 & 3 & 1 & 1 \\
+1 & -1 & 2 & 1 \\
+0 & 3/5 & 0 & 1 
+\end{pmatrix} = A \checkmark
+\end{align*}
+		\subsection*{(b)}
+			$$L = L_{1}^{-1} L_{2}^{-1} L_{3}^{-1} = \begin{pmatrix}
+				1 & 0 & 0 & 0 \\
+				-1/2 & 1 & 0 & 0 \\
+				-1/4 & -3/4 & 1 & 0 \\
+				0 & -3/10 & -6/85 & 1
+			\end{pmatrix}\to \begin{align*}
+				y_{1} &= b_{1} /a_{11} = 16/1 =1 \\
+				y_{2} &= (b_{2} - a_{21}y_{1})/a_{22} = (16 +8)/1 =24\\
+				y_{3} &= 30 \\
+				y_{4} &= 1132/85
+			\end{align*}$$
+			So $y = (1 \ 24 \ 30 \  1132/85)^{T}.$
+		\subsection*{(c)}
+			$$U = L_{3}L_{2} L_{1}A 
+			  = \begin{pmatrix}
+			4 & 2 & 1 & 0 \\ 
+			0 & 2 & 1/2 & 1 \\
+			0 & 0 & 17/8 & 7/4 \\
+			0 & 0 & 0 & 14/17
+			\end{pmatrix} \to \begin{align*}
+				z_{4} &= y_{4}/a_{44} = (1132/85)(17/14) = 566/35 \\
+				z_{3} &= (y_{3} - a_{34}z_{4})/a_{33} =4/5 \\
+				z_{2} &= 26/7 \\
+				z_{1} &= -243/340
+			\end{align*}$$
+		\subsection*{(d)}
+			The solution $x$ to $Ax =b$ is the vector $z$ of $Uz= y $ ,
+			$$ x = ( \nicefrac{566}{35} \ \nicefrac{4}{5} \ \nicefrac{26}{7} \ \nicefrac{-243}{340})^{T}.$$
+	\section*{Question 2}
+		\subsection*{(a)}
+				\begin{lstlisting}[language=Matlab, xleftmargin=-20em, showstringspaces=true]
+					A = [25 4 0 1 ; 4 -15 -2 0 ; 0 -2 6 -1 ; 1 0 -1 3];
+					
+					%%%% a %%%%
+					
+					q0 = [1 1 1 1]';
+					norm(q0, 'inf')
+					q_list = [];
+					sigma_list = [];
+					
+					for i=1:10 
+						if (norm(q0,'inf') ~= 1)
+							q0 = q0/norm(q0, 'inf');
+						end
+					
+						q_list{i} = (A*q0)/norm(A*q0,'inf');
+						sigma_list{i} = norm(A*q0,'inf');
+						q0 =q_list{i};
+					end
+			\end{lstlisting}
+			\midrule 
+			
+			
+			After $10$ iterations over $q_{0}= (1 \ 1 \ 1 \ 1)^{T}$, we find 
+			$$ q_{10} = (1 \ 0.106 \ -0.012 \ 0.0452)^{T} , \qquad \quad \sigma_{1} = 25.399 $$
+		\subsection*{(b)}
+			\begin{lstlisting}[language=Matlab, xleftmargin=-10em, showstringspaces=true]
+			%%%% b %%%%
+			
+			[V,D] = eig(A)
+			v = V(:,4)
+			lambda = D(4,4)
+			
+			qy_list = [];
+			qx_list =[];
+			sigmay_list = [];
+			sigmax_list = [];
+			sigma_list = cell2mat(sigma_list);
+			
+			sigma_list(5)
+			for i=1:10
+				qy_list(i) = log(norm((q_list{i}-v),2));
+				sigmay_list(i) = log(abs((sigma_list(i)-lambda)));
+				if i==1
+					q0 = [1 1 1 1]';
+					qx_list(i) = log(norm((q0-v),2));
+					sigmax_list(i) = log(abs(norm(A*q0, 'inf') - lambda));
+				else 
+					qx_list(i) = log(norm((q_list{i-1}-v),2));
+					sigmax_list(i) = log(abs(sigma_list(i-1) - lambda));
+				end
+			end
+			\end{lstlisting}
+			Plotting the above arrays yields (code omitted for aesthetic purposes)
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width = 0.8\linewidth]{MATH327_Ass5_Figure.png}
+				\captionsetup{margin=1cm}
+			\end{figure}
+			From the slope of $(ii)$, which is $\sim 4.8$, we deduce that the order of convergence is $5$.
+		\subsection*{(c)}
+			As defined , the eigenvalues of $A - \rho I $ are  $\lambda_{i} - \rho$. Moreover, 
+			$$ q_{1} = \frac{Aq_{0}}{\norm{A q_{0}}_{\infty}} = q_{\text{list}}\{1\} \approx 30, $$
+			so given $\lambda_{\text{max}} \approx \rho \implies \lambda_{1} - \rho = 30 - 23.99 \approx 6.$
+			
+	\section*{Question 3}
+		\subsection*{(a)}
+		Let $\alpha =5$ in $(A - \alpha I)^{-1}$, we use the $LU$ decomposition along with backward and forward substitution to get the matrix. We then apply the power method on $(A - \alpha I)^{-1}$ until we get the dominant eigenpair since 
+		$$ (A - \alpha I )^{-1} v = \frac{1}{\lambda - \alpha } v ,$$
+		then the dominant eigenvalue found $\mu$, is equivalent to 
+		$$ \mu = \frac{1}{\lambda - \alpha} = \frac{1}{\lambda -5},$$
+		since $(A- \alpha I)^{-1}$ and $A$ share the same eigenvector for that shift. \\
+		
+		\noindent The algorithm converges when $\abs{\lambda_{k-1} -5} >> \abs{\lambda_{k} - 5}$
+		and with ratio 
+		$$ \frac{\abs{\lambda - 5}}{\abs{\lambda_k - 5}},$$
+		where $\lambda_k -5$ is the second smallest eigenvalue of $A - 5I$ in absolute value.
+		
+		\subsection*{(b)}
+			By definition, 
+			$$ r(x) = \frac{x^{T}Ax}{x^{T}x} \in \mathbb{R}.$$
+			By theorem, a LLSP with normal equations is $A^{T}Az = A^{T}b$. Here we have, 
+			$$ r = \frac{x^{T}Ax}{x^{T}x} \implies  rx^{T} x = x^{T}Ax,$$
+			the symmetry between $r \xleftrightarrow[]{} z$ , $x \xleftrightarrow[]{} A$ and $Ax \xleftrightarrow[]{} b$, suggests that $rx^{T}x = x^{T}Ax$ is a set of normal equations. Thence, $r$ solves its corresponding LLSP
+			$$ rx^{T}x = x^{T}Ax \implies \min\limits_r \norm{Ax - xr} \quad \forall x.$$
+		\subsection*{(c)}
+			The difference is in that at each iteration we override the value of $\rho_j$ by $q^{T}_{j} A q_{j} / (q_{j}^{T} q{j})$ (in the Rayleigh case) , while in the inverse power method iteration, the value $\rho$ remains unchanged and is defined once at the beginning of the iterations. 
+		
+	\section*{Question 4}
+		\subsection*{(a)}
+			\begin{align*}
+			 A &= \begin{pmatrix}
+				3& -2 \\ 1 & 0 
+			\end{pmatrix}
+			\xrightarrow{\det(A - I\lambda)} \lambda^{2} -3 \lambda +2 = 0 &\implies \lambda_1 = 1 , \quad \lambda_2 = 2. \\
+			B &= \begin{pmatrix}
+				3 & \sqrt{3} \\ \sqrt{3} & 1
+			\end{pmatrix}
+			\xrightarrow{\det(A - I \lambda)} \lambda^{2} - 4\lambda =0 &\implies \lambda_1 = 4 , \quad \lambda_2 =0.
+			\end{align*}
+		\subsection*{(b)}
+			The sub-routine \textit{rayleigh_quotient_iteration.m} returns $\sim 2$ for the $11^{\text{th}}$ iteration on the array \textit{rhos}, when replacing the sample-matrix by $A$ as defined in this problem. So one eigenvalue is $\lambda =2$. \\
+			
+			\noindent  The sub-routine \textit{rayleigh_quotient_iteration.m} returns $\sim 4$ for the $11^{\text{th}}$ iteration on the array \textit{rhos}, when replacing the sample-matrix by $B$ as defined in this problem. So one eigenvalue is $\lambda =4$. 
+ 			
+		\subsection*{(c)}
+			The matrix $A$ converges to $2$ after about $4$ iterations with incremental precision increasing by about $\sim 1$ order of magnitude. Meanwhile, the matrix $B$ seems to bypass the convergence value of $4$ after the second iteration and just approaches $0$. This is due to the eigenvalue of $0$ for the second matrix $B$ ; the convergence ratio $4/0$ is about the machine precision and so the algorithm is very imprecise and fails. 
+	\section*{Question 5}
+		\subsection*{(a)}
+			We use the definition of convergence of a sequence and show it is equal to $\lambda_2 / \lambda_1$. We also use the 
+			\begin{align*}
+				\lim_{j \to \infty} \frac{\norm{\frac{A^{j+1}q}{\lambda_{1}^{j+1}} - c_1 v_1}}{\norm{\frac{A^{j}q}{\lambda_{1}^{j}} - c_1 v_1}} &= \lim_{j\to \infty} \frac{\norm{\frac{\lambda_{1}^{j+1} \left(c_1 v_1 + c_2 \left(\frac{\lambda_2}{\lambda_1}\right)^{j+1} v_2 + \dots + c_{n} \left(\frac{\lambda_n}{\lambda_1}\right)^{j+1} v_{n}\right)}{\lambda_{1}^{j+1}}-c_{1}v_{1} }}{{\norm{\frac{\lambda_{1}^{j} \left(c_1 v_1 + c_2 \left(\frac{\lambda_2}{\lambda_1}\right)^{j} v_2 + \dots + c_{n} \left(\frac{\lambda_n}{\lambda_1}\right)^{j} v_{n}\right)}{\lambda_{1}^{j}}-c_{1}v_{1} }}} \\
+				&= \lim_{j \to \infty} \frac{\norm{c_2 \left(\frac{\lambda_2}{\lambda_1}\right)^{j+1} v_2 + \dots + c_{n} \left(\frac{\lambda_n}{\lambda_1}\right)^{j+1} v_{n}}}{\norm{c_2 \left(\frac{\lambda_2}{\lambda_1}\right)^{j} v_2 + \dots + c_{n} \left(\frac{\lambda_n}{\lambda_1}\right)^{j} v_{n}}} \\
+				&= \lim_{j \to \infty} \frac{\norm{\sum_{i=2}^{n} c_{i}\left(\frac{\lambda_2}{\lambda_1}\right)^{j+1} v_{i}}}{\norm{\sum_{i=2}^{n} c_{i} \left(\frac{\lambda_2}{\lambda_1}\right)^{j} v_{i}}} \\
+				&= \lim_{j \to \infty} \norm{\sum_{i=2}^{n} \frac{\lambda_{2}}{\lambda_{1}}} \\
+				&= \frac{\lambda_{2}}{\lambda_1},
+			\end{align*}
+				since $\abs{\lambda_1} > \abs{\lambda_2}$ then the convergence coefficient is bounded by $0$ and $1$ and so indeed the given sequence converges to $c_1 v_1$ with convergence ratio $\lambda_2 / \lambda_1$.
+			\subsection*{(b)}
+			\begin{align*}
+			q_{j+1} = \frac{Aq_{j}}{\sigma_{j+1}} \implies \sigma_{j} &= \frac{Aq_{j-1}}{q_{j}} \\
+			\implies \lim_{j \to \infty} \sigma_{j} &=  \frac{\lim_{j \to \infty}}{\lim_{j \to \infty}} {\frac{Aq_{j-1}}{q_{j}}}  \\
+			&=\frac{\lim_{j \to \infty} Aq_{j-1}}{\alpha v_{1}}
+			\end{align*}
+			Now since 
+			$$ q_{j} = \frac{A^{j}q}{\lambda_{1}^{j}} \implies q_{j-1} = \frac{A^{j-1}q}{\lambda_{1}^{j-1}}$$ 
+			so then 
+			\begin{align*} 
+			\lim_{j \to \infty} \sigma_{j} &= \frac{1}{\alpha v_1}\lim_{j \to \infty} Aq_{j-1} \\
+			&=\frac{1}{\alpha v_1}\lim_{j \to \infty} \frac{A A^{j-1}q}{\lambda_{1}^{j-1}} \\
+			&=\frac{1}{\alpha v_1}\lim_{j \to \infty} \frac{A^{j}q}{\lambda_{1}^{j-1}} \\
+			&= \frac{1}{\alpha v_1}\lim_{j \to \infty} \frac{\left(\alpha\lambda^{j}v_{1} + \dots + c_{n} \lambda^{j} v_{n} \right)}{\lambda_{1}^{j-1}} \\
+			&= \frac{1}{\alpha v_1}\lim_{j \to \infty} \frac{\lambda_{1}^{j}\left(\alpha v_{1} +c_{2} \left(\frac{\lambda_{2}}{\lambda_{1}}\right)^{j}v_{2} \dots + c_{n} \left( \frac{\lambda_{n}}{\lambda_1}\right)^{j} v_{n} \right)}{\lambda_{1}^{j-1}} 
+			\intertext{Since $\abs{\lambda_1} > \abs{\lambda_i} \ \forall \ i > 1$, then all terms vanish as $j \to \infty$ ,except $\alpha v_1$}
+			&= \frac{1}{\alpha v_1} \lim_{j \to \infty} \frac{\lambda_{1}^{j}}{\lambda_{1}^{j-1}} (\alpha v_{1}) \\
+			&= \lambda
+			\end{align*}
+			
+\end{document}

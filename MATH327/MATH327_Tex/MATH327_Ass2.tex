@@ -1,0 +1,507 @@
+\documentclass[12pt]{article}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[many]{tcolorbox}
+\usepackage{changepage}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{mdframed, longtable}
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+\usepackage{array, tabularx, booktabs}
+\usepackage{graphicx,wrapfig, float, caption}
+\usepackage{tikz,physics,cancel, siunitx, xfrac}
+\usepackage{graphics, fancyhdr, fancyBox, nccmath}
+\usepackage{lipsum}
+\usepackage{xparse}
+\usepackage{thmtools}
+\usepackage{mathrsfs}
+\usepackage{undertilde}
+\usepackage{breqn}
+\usepackage{tikz}
+\usepackage{fullpage,enumitem}
+\usepackage{listings}
+\usepackage[labelfont=bf]{caption}
+\newcommand{\td}{\text{dim}}
+\newcommand{\tvw}{T : V\xrightarrow{} W }
+\newcommand{\ttt}{\widetilde{T}}
+\newcommand{\ex}{\textbf{Example}}
+\newcommand{\aR}{\alpha \in \mathbb{R}}
+\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+\newcommand{\un}{u_1 , u_2 , \dots , n}
+\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+\newcommand{\sS}{\text{Span}(\mathcal{S})}
+\newcommand{\sSt}{($\mathcal{S}$)}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\Rn}{\mathbb{R}^{n}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rm}{\mathbb{R}^{m}}
+\usepackage{fullpage, fancyhdr}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\ep}{\epsilon}
+\newcommand{\de}{\delta}
+\usepackage[math]{cellspace}
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{3pt}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+%\usepackage{newtxtext, newtxmath}
+\usepackage{bbm}
+
+
+\usepackage{mathtools}
+\\\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+\newcommand{\vect}{\mathbf}
+\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\A}{\hat{A}}
+\newcommand{\B}{\hat{B}}
+\newcommand{\C}{\hat{C}}
+\newcommand{\dr}{\mathrm{d}}
+\allowdisplaybreaks
+\pdfmapfile{=mtpro2.map}
+\usepackage[lite,]{mtpro2}
+\usepackage{titling}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem]
+\theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{definition}
+\newtheorem{Proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem*{example}{Example}
+\theoremstyle{example}
+\newtheorem*{note}{Note}
+\theoremstyle{note}
+\newtheorem*{remark}{Remark}
+\theoremstyle{remark}
+\newtheorem*{example2}{External Example}
+\theoremstyle{example}
+\usepackage{bbold}
+\title{MATH 327 Assignment 2}
+\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+\author{Mihail Anghelici 260928404 }
+\date{\today}
+
+\relpenalty=9999
+\binoppenalty=9999
+
+\renewcommand{\sectionmark}[1]{%
+	\markboth{\thesection\quad #1}{}}
+
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 2} 
+	\fancyhead[R]{\small Mihail Anghelici $260928404$} 
+	\fancyfoot[C]{-- \thepage\ --}
+	\renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{plain}
+\setlength{\headsep}{1cm}
+\captionsetup{margin =1cm}
+\AtBeginDocument{%
+	\edef\Relbar{\mathord{\mathchar\the\numexpr\Relbar-"3000}}%
+}
+\begin{document}
+	\maketitle
+	\section*{Question 1}
+		The given matrices are in fact Hermitian. We will use Sylvester's criterion to verify positive definiteness. 
+		\subsection*{a) }
+			$$ A := \begin{pmatrix}
+				4 & 2 & 6 \\ 2 & 2 & 5 \\ 6 & 5 & 29
+			\end{pmatrix} \qquad 
+			\begin{align*}
+				&\det(A_{11}) = 4 > 0\\
+				&\det(A_{22}) = 4 > 0\\
+				&\det(A_{33}) = 64 >0
+			\end{align*}$$
+			$A$ as defined is positive definite. Then we can apply the algorithm given 
+			\begin{align*} A = 
+			\begin{pmatrix}
+				r_{11} & 0 & 0 \\
+				r_{12}	& r_{22} & 0 \\
+				r_{13} & r_{23} & r_{33} 
+			\end{pmatrix}
+			\begin{pmatrix}
+				r_{11} & r_{12} & r_{13} \\
+				0 &r_{22} & r_{23} \\
+				0 & 0 & r_{33}
+			\end{pmatrix} \longrightarrow &
+			\begin{cases}
+				\begin{aligned}
+				4 & = {r_{11}}^{2} &&\hspace{-1.3em}\implies r_{11} = 2\\
+				2 &= r_{11} r_{12} &&\hspace{-1.3em}\implies r_{12}=1 \\
+				6 &= r_{12}r_{13} &&\hspace{-1.3em}\implies r_{13} =3 \\
+				 2 &= r_{{12}}^{2} + {r_{22}}^{2} &&\hspace{-1.3em}\implies r_{22} =1 \\
+				5 &= r_{12} r_{13} + r_{22} r_{23} &&\hspace{-1.3em}\implies r_{23} =2 \\
+				29 &= {r_{13}}^{2} + {r_{23}}^{2} + {r_{33}}^{2} &&\hspace{-1.3em}\implies r_{33} =4
+			\end{aligned}
+			\end{cases}
+			\end{align*}
+			$$ \therefore R = \begin{pmatrix}
+			 2 & 1 & 3 \\ 0 & 1  & 2 \\ 0 & 0 &4
+			\end{pmatrix}, $$
+			$R$ is upper triangular the algorithm is successful. 
+		\subsection*{b) }
+				$$ A := \begin{pmatrix}
+					1 & 1 & 1 \\ 1 & 2 & 2 \\ 1 & 2 & 1
+			\end{pmatrix} \qquad 
+			\begin{align*}
+			&\det(A_{11}) = 1 > 0\\
+			&\det(A_{22}) = 1 > 0\\
+			&\det(A_{33}) = -1 < 0
+			\end{align*}$$
+			$A$ as defined is not positive definite. We expect the algorithm to fail. 
+			$$ A = 
+			\begin{pmatrix}
+			r_{11} & 0 & 0 \\
+			r_{12}	& r_{22} & 0 \\
+			r_{13} & r_{23} & r_{33} 
+			\end{pmatrix}
+			\begin{pmatrix}
+			r_{11} & r_{12} & r_{13} \\
+			0 &r_{22} & r_{23} \\
+			0 & 0 & r_{33}
+			\end{pmatrix} \longrightarrow 
+			\begin{cases}
+			\begin{aligned}
+			1 & = {r_{11}}^{2} &&\hspace{-1.3em}\implies r_{11} = 1\\
+			1 &= r_{11} r_{12} &&\hspace{-1.3em}\implies r_{12}=1 \\
+			1 &= r_{12}r_{13} &&\hspace{-1.3em}\implies r_{13} =1 \\
+			2 &= r_{{12}}^{2} + {r_{22}}^{2} &&\hspace{-1.3em}\implies r_{22} =1 \\
+			2 &= r_{12} r_{13} + r_{22} r_{23} &&\hspace{-1.3em}\implies r_{23} =1 \\
+			1 &= {r_{13}}^{2} + {r_{23}}^{2} + {r_{33}}^{2} &&\hspace{-1.3em}\implies r_{33} = \sqrt{-1} \\ & &&\hspace{-1.3em}\hphantom{\implies r_{33} =} \not> 0
+			\end{aligned}
+			\end{cases},$$
+			the algorithm fails, a contradiction arises in the last step.
+	\section*{Question 2}
+		\subsection*{a) }
+			We show that $A^{-1} = I + \alpha uv^{T}$ is the inverse of $A$ if their product is the identity. That is, 
+			\begin{align*}
+				AA^{-1} =I &\implies (I + uv^{T})(I +\alpha uv^{T}) =I \\
+				&\implies I^{2} + \alpha uv^{T} + uv^{T} + uv^{T}\alpha uv^{T} = I \\
+				&\implies \alpha uv^{T} + uv^{T}  + uv^{T} \alpha uv^{T} = 0 
+				\intertext{We use the fact that by matrix associativity, $uv^{T} \alpha uv^{T} = \alpha(uv^{T} uv^{T}) = \alpha u (v^{T} u ) v^{T}$. Then following from matrix commutative proerty , since $v^{T}u$ is a scalar, this reduces to $\alpha(v^{T}u) u v^{T}$. So we write, }
+				&\implies (\alpha +1 + \alpha v^{T}u)uv^{T} = 0
+			\end{align*}
+			If $uv^{T} = \utilde{O}$ then $A=I$ which doesn't hold. So it must be that $(\alpha +1 + \alpha v^{T}u)=0$ such that
+			\begin{gather*}
+			\alpha(1 + v^{T}u)  +1 =0 \implies - \frac{1}{1+v^{T}u} = \alpha,
+			\end{gather*}
+			which $\exists $ for $v^{T}u \neq -1$.
+		\subsection*{b) }
+			If $A$ is singular $det(A) =0$. So let us verify, 
+			\begin{align*}
+				\det(A) &= \det(I + uv^{T})
+				\intertext{we use the property $\det(A+B) = \det(A) + \det(B) + \det(A) \tr(A^{-1} B)$, giving}
+				&= \det(I) + \det(uv^{T}) + \det(I)\tr(I^{-1} uv^{T}) \\
+				&= 1 + \det(uv^{T}) +\tr(uv^{T}) 
+				\intertext{The inner product is the trace of the outer product \textcolor{orange}{[source : Optimal Control and Estimation , \textit{p.26}]}.}
+				&= 1+ \det(uv^{T}) + v^{T} u 
+				\intertext{For $\det(uv^{T})$ , every row of $b$ is scalar multiple of $a$ , such that the determinant of $uv^{T}$ is automatically $0$. Finally, }
+				&=1 + v^{T}u =0 \implies v^{T}u = -1,
+			\end{align*}
+			$A$ is singular whenever $v^{T}u = -1$. We now look for the $\text{Null}$ space. That is $Ay = 0$ for $y \neq 0$. 
+			\begin{align*}
+				Ay = (I + uv^{T})y = y + uv^{T}y = 0 \implies -y &= uv^{T} y
+				\intertext{Since $A$ is singular for $v^{T}u = -1$, let $y=ku$ for $k \in \mathbb{R}$, then}
+				-ku &= uv^{T} ku \\
+				-ku &= k uv^{T}u \\
+				-ku &= -ku 
+			\end{align*}
+			So the choice $y = ku$ is correct. $k$ is arbitrary so we conclude that $\text{Null}(A) = \text{Span}(A)$.
+	\section*{Question 3}
+		\subsection*{a) }
+			The system $Ax = b$ that determines the LSP is 
+			\begin{gather*}
+				\begin{pmatrix}
+					f_{1} (y_{1})  &f_{2} (y_{1})  \\
+					f_{1} (y_{2})  &f_{2} (y_{2})  \\
+					\vdots & \vdots \\
+					f_{1} (y_{5})  &f_{2} (y_{5})  
+				\end{pmatrix}
+				\begin{pmatrix}
+					x_{1} \\ x_{2} 
+				\end{pmatrix}
+				=\begin{pmatrix}
+					z_{1} \\ z_{2}\\ \vdots\\ z_{5}
+				\end{pmatrix}
+				\longrightarrow
+				\underbrace{\begin{pmatrix}
+				1 &y_{1}  \\
+				1  &y_{2}  \\
+				\vdots & \vdots \\
+				1  &y_{5} 
+				\end{pmatrix}}_{A}
+				\underbrace{
+					\vphantom{\begin{pmatrix}
+						1 &y_{1}  \\
+						1  &y_{2}  \\
+						\vdots & \vdots \\
+						1  &y_{5} 
+						\end{pmatrix}}\begin{pmatrix}
+				x_{1} \\ x_{2} 
+				\end{pmatrix}}_{x}
+				=\underbrace{\vphantom{\begin{pmatrix}
+						1 &y_{1}  \\
+						1  &y_{2}  \\
+						\vdots & \vdots \\
+						1  &y_{5} 
+						\end{pmatrix}}\begin{pmatrix}
+				z_{1} \\ z_{2} \\\vdots\\ z_{5}
+				\end{pmatrix}}_{b}
+			\end{gather*}
+			\subsection*{b) }	
+				The system $Ax = b$ that determines the LSP is
+				$$\begin{pmatrix}
+				f_{1} (y_{1})  &f_{2} (y_{1})  & f_{3} (y_{1}) \\
+				f_{1} (y_{2})  &f_{2} (y_{2}) & f_{3} (y_{2}) \\
+				\vdots & \vdots \\
+				f_{1} (y_{5})  &f_{2} (y_{5})  & f_{3} (y_{5})
+				\end{pmatrix}
+				\begin{pmatrix}
+				x_{1} \\ x_{2} \\x_{3}
+				\end{pmatrix}
+				=\begin{pmatrix}
+				z_{1} \\ z_{2}\\ \vdots\\ z_{5}
+				\end{pmatrix}
+				\longrightarrow
+				\underbrace{\begin{pmatrix}
+						1 & y_{1} & {y_{1}}^{2} \\
+						1 & y_{2} & {y_{2}}^{2} \\
+						\vdots & \vdots  & \vdots \\
+						1 & y_{5} & {y_{5}}^{2}
+					\end{pmatrix}}_{A}
+				\underbrace{\vphantom{\begin{pmatrix}
+						1 & y_{1} & {y_{1}}^{2} \\
+						1 & y_{2} & {y_{2}}^{2} \\
+						\vdots & \vdots  & \vdots \\
+						1 & y_{5} & {y_{5}}^{2}
+						\end{pmatrix}}\begin{pmatrix}
+						x_{1} \\ x_{2} \\ x_{3} 
+				\end{pmatrix}}_{x} =
+			\underbrace{\vphantom{\begin{pmatrix}
+					1 & y_{1} & {y_{1}}^{2} \\
+					1 & y_{2} & {y_{2}}^{2} \\
+					\vdots & \vdots  & \vdots \\
+					1 & y_{5} & {y_{5}}^{2}
+					\end{pmatrix}} \begin{pmatrix}
+					z_{1} \\ z_{2} \\ \vdots \\ z_{5}
+			\end{pmatrix}}_{b}$$
+		\section*{Question 4}
+			\subsection*{a) }
+				Let us consider the following system, and deduce the algorithmic formula 
+				$$ \begin{pmatrix}
+					r_{11} & 0 & \dots & 0 \\
+					r_{21} & r_{22} & \dots & 0 \\
+					\vdots & \cdots & \ddots & \vdots \\
+					a_{n1} & a_{n2} & \dots & a_{nn} 
+				\end{pmatrix}
+				\begin{pmatrix}
+					x_{1} \\ x_{2} \\ \vdots \\x_{n} 
+				\end{pmatrix}
+				= 
+				\begin{pmatrix}
+				b_{1} \\ b_{2} \\ \vdots \\ b_{n}
+				\end{pmatrix}.$$
+				Given the system above, the corresponding equations are  
+				\begin{equation*}
+					\begin{aligned}
+						 x_{1} &= \frac{b_{1}}{r_{11}} \\
+						 x_{2} &= \frac{(b_{2} - r_{21} x_{1})}{r_{22}} \\
+						 x_{3} &= \frac{(b_{3} - r_{31} x_{1} -r_{32} x_{2})}{r_{33}}\\
+						 & \qquad \vdots \\
+						 x_{n} &= \frac{(b_{n} -r_{n1}x_{1} - r_{n2} x_{2} - \dots - r_{n,n-1} x_{n-1})}{r_{nn}}
+					\end{aligned}
+					 \! \implies \
+					 \boxed{x_{i} = \frac{1}{r_{ii}}\left(b_{i} - \sum_{j=1}^{i-1} r_{ij}x_{j}\right),\! \text{for } \ \ i = 1 , \dots , n}
+				\end{equation*}
+					To calculate the total number of steps, we consider the algorithm for the upper triangular case. Given the range $i = n , n-1 , \dots, 2, 1$, we have for each value an fixed number of operations ; 
+				\begin{alignat*}{3}
+					&i = n : \qquad &&\frac{1}{r_{nn}} (b_{n}) \  &&; \ \ 1 \text{ operation} \\ 
+					&i = n-1 : \qquad &&\frac{1}{r_{n-1,n-1}} (b_{n-1} - r_{11}x_{1} ) \ &&; \ \   3 \text{ operations } \\
+					&i = n-2 : \qquad && \frac{1}{r_{n-2,n-2}} (b_{n-2} -(r_{11}x_{1} + r_{22}x_{2})) \ &&; \ \ 5 \text{ operations} \\
+					 & \quad \vdots&& \vdots&& \\
+					&i = n-(n-1) =1 : \qquad && \frac{1}{r_{11}}(b_{1} - (r_{11}x_{1} + \dots + r_{n-1,n-1}x_{n-1})) \ &&; \ \  2n-1 \text{ operations} 
+				\end{alignat*}
+				Thus, 
+				$$1+3+5+\dots + (2n-1)  = n^{2},$$
+				is the number of operations. 
+			\subsection*{b) }
+				The algorithm was stated in class ;
+				\begin{gather*}
+					r_{ii} = \sqrt{a_{ii} - \sum_{j=1}^{i-1} {r_{ji}}^{2}} \ \ \text{for } \ i=1 , \dots ,n \quad \text{ where} \ \ r_{ij} = \frac{1}{r_{ii}} \left(a_{ij} - \sum_{k=1}^{i-1} r_{ki} r_{kj}\right) \\ \qquad\qquad\qquad\qquad\qquad  \text{for} \ j=i+1 , \dots , n.
+				\end{gather*}
+				We look for the number of operations. \\
+				\textbf{(Outer $k$ loop:)} 
+				$$ \sum_{i=1}^{n} \sum_{k=1}^{i-1} 2 = 2\sum_{i=1}^{n} (i-1) = n(n-1) = n^{2} -n.$$
+				\textbf{(Inner $k$ loop)}
+				\begin{align*}
+					\sum_{i=1}^{n} \sum_{j=i+1}^{n} \sum_{k=1}^{i-1} 2 &= 2 \sum_{i=1}^{n} \sum_{j=i+1}^{n} (i-1) \\
+					&= 2 \sum_{i=1}^{n} (n-i)(i-1) \\
+					&= 2n \sum_{i=1}^{n} (i-1) -2 \sum_{i=1}^{n} i^{2} + 2 \sum_{i=1}^{n} i \\
+					&= n^{2}(n-1) - \frac{n(n+1)(2n+1)}{3} + n(n+1) = \frac{n^{3} -3n^{2} +2n}{3}.
+				\end{align*}
+				\textbf{(Divisions:)}
+				$$ \sum_{i=1}^{n} \sum_{j=i+1}^{n}1 = \sum_{i=1}^{n} (n-i) = \frac{n(n-1)}{2}.$$
+				\textbf{(Square root:)}
+				$$\sum_{i=1}^{n} 1 = n.$$
+				Thus, the total amounts to 
+				$$ n^{2} -n + \frac{n^{3} -3n^{2} +2n}{3} + \frac{n^{2} -n }{2} + n = \frac{n}{6}(2n^{2} + 3n +1).$$
+			\subsection*{c) }
+				By Property, given that $A$ is non-singular then $A^{T}A$ is positive definite. Then, following the Cholesky decomposition theorem ,there exists a unique decomposition $A^{T}A = R^{T}R$ where $R$ is upper triangular. We use the Cholesky decomposition algorithm to find $R$ and thereby $R^{T}$. Then we solve $R^{T} y =A^{T}b$ with backwards substitution. And then, we finally solve $Rx = y$ for $x$ ,through forward substitution. The operations required for each steep are 
+				$$ \begin{rcases}
+					&1. \ \ \frac{n}{6}(2n^{2} + 3n +1) \\
+					&2. \ \ n^{2} \\
+					&3. \ \ n^{2} 
+				\end{rcases} \longrightarrow \text{ most expensive : } 1. \ \ \frac{n}{6}(2n^{2} + 3n +1),$$
+				ordered respectively.
+			\subsection*{d) }
+				As before, we consider 
+				$$ \begin{pmatrix}
+					16 & 4 & 8 & 4 \\
+					4 & 10 & 8 & 4 \\
+					8 & 8 & 12 & 10 \\
+					4 & 4 & 10 & 12
+				\end{pmatrix}
+				= 
+				\begin{pmatrix}
+				r_{11} & 0 & 0 & 0 \\
+				r_{12}	& r_{22} & 0 & 0 \\
+				r_{13} & r_{23} & r_{33} & 0\\
+				r_{14} & r_{24} & r_{34} & r_{44}
+				\end{pmatrix}
+				\begin{pmatrix}
+				r_{11} & r_{12} & r_{13} & r_{14} \\
+				0 &r_{22} & r_{23} & r_{24} \\
+				0 & 0 & r_{33} & r_{34 } \\
+				0 & 0 & 0 & r_{44}
+				\end{pmatrix}
+				,$$
+				which gives the equations 
+				$$ \begin{aligned}
+					16 &= {r_{11}}^{2} &\implies r_{11} =4 \\
+					4 &= r_{11}r_{12} &\implies r_{12} = 1 \\
+					8 &= r_{11}r_{13} &\implies r_{13} = 2 \\
+					4 &= r_{11}r_{14} &\implies r_{14} = 1 \\
+					10 &= {r_{12}}^{2} + {r_{22}}^{2} &\implies r_{22} =3 
+				\end{aligned} 
+				\qquad  
+				\begin{aligned}
+					, \, 8 &= r_{12} r_{13} +r_{22}r_{23} &\implies r_{23} =2 \\
+					, \, 4 &= r_{12} r_{14} + r_{22}r_{24} &\implies r_{24} =1 \\
+					, \, 12 &= {r_{13}}^{2} + {r_{23}}^{2} + {r_{33}}^{2} &\implies  r_{33} = 2\\
+					, \, 10 &= r_{13}r_{14} + r_{23} r_{24} + r_{33}r_{34} &\implies r_{34} = 3 \\
+					, \, 12 &= {r_{14}}^{2} + {r_{24}}^{2} + {r_{34}}^{2} + {r_{44}}^{2} &\implies r_{44}=1
+				\end{aligned},$$
+				which results in 
+				$$ R^{T} = \begin{pmatrix}
+					4 & 0 & 0 & 0 \\
+					1 & 3 & 0 & 0\\ 
+					2 & 2 & 2 & 0 \\
+					1 & 1 & 3 & 1
+				\end{pmatrix}.$$
+				Here we solve $R^{T} y = A^{T}b$ through the method outlined in Question $4$. 
+				$$ \begin{rcases}
+					y_{1} &= \frac{1}{4}(32) =8 \\
+					y_{2} &= \frac{1}{3} (26 - (1)y_{1}) = 6 \\
+					y_{3} &= \frac12 (38 - (2)y_{1} - (2)y_{2}) =17 \\
+					y_{4} &= \frac11 (30 -(1)y_{1} - (1)y_{2} - (3)y_{3}) = -35
+				\end{rcases} \qquad y = \begin{pmatrix}
+					8 \\ 6 \\ 17 \\-35
+				\end{pmatrix}$$
+				Now through forward substitution we solve $Rx = y$; 
+				$$ \begin{rcases}
+					x_{4} &= -\frac{35}{1}= -35 \\
+					x_{3} &= \frac{1}{2} (17 - 3(x_{4})) = 61\\
+					x_{2} &= \frac{1}{3} (6 - 2(x_{3}) - 1(x_{4})) = -27\\
+					x_{1} &= \frac{1}{4} (8 - 1(x_{2}) - 2(x_{3}) -1(x_{4}))  = -13 
+				\end{rcases}
+				\qquad x = 
+				\begin{pmatrix}
+					-35 \\ 61 \\-27 \\-13
+				\end{pmatrix}$$
+		\section*{Question 5}
+			\subsection*{a) }
+				\begin{align*}
+					{\norm{x_{1} + x_{2}}_{2}}^{2} &= \sum_{i=1}^{m} \abs{(x_{1} + x_{2})_{i}}^{2} \\ 
+					&= \sum_{i=1}^{m} {(x_{1} + x_{2})_{i}}^{2} \\
+					&= \sum_{i=1}^{m} {x_{1,i}}^{2} + {x_{2,i}}^{2} - 2 \sum_{i=1}^{m} x_{1,i} x_{2,i} \\
+					&= \sum_{i=1}^{m} {x_{1,i}}^{2} + {x_{2,i}}^{2} - 2{x_{1}}^{T} x_{2}
+					\intertext{Given that all vectors are orthogonal we have that ${x_{i}}^{T}x_{j}=0$, so}
+					&= \sum_{i=1}^{m} {x_{1,i}}^{2} + {x_{2,i}}^{2} \\
+					&= \sum_{i=1}^{m} {\abs{x_{1,i}}}^{2} + {\abs{x_{2,i}}}^{2} = {\norm{x_{1}}_{2}}^{2}+{\norm{x_{2}}_{2}}^{2}
+				\end{align*}
+			\subsection*{b) }
+				$\underline{n=1 : }$\\ 
+				This case is trivial since in both equalities the sum over $n=1$ vanishes to $1$, therefore the equality is automatically satisfied. \\
+				$\underline{(n-1) \implies (n) : }$
+					Define $y := x_{1} + \dots + x_{n-1} \in \mathbb{R}^{m}$, which is also orthogonal to $x_{n}$ by property of orthogonality. Then, 
+					\begin{align*}
+						{\norm{\sum_{i=1}^{n} x_{i}}_{2}}^{2} &= \norm{x_{1} + \dots +x_{n-1} + x_{n}} \\
+						&={\norm{y + x_{n}}_{2}}^{2} 
+						\intertext{The theorem holds for two vector addition as it was shown in part a), thence}
+						&={\norm{y}_{2}}^{2} +{\norm{x_{n}}_{2}}^{2} \\
+						&={\norm{x_{1} + \dots +x_{n-1}}_{2}}^{2} +{\norm{x_{n}}_{2}}^{2}
+						\intertext{Let $y = x_{1} + \dots + x_{n-2}$, we repeat the exact same process. After $n-1$ such processes we are left off with }
+						&={\norm{x_{1}}_{2}}^{2} + \dots + {\norm{x_{n}}_{2}}^{2}\\
+						&=\sum_{i=1}^{n} {\norm{x_i}_{2}}^{2}
+					\end{align*}
+		\section*{Question 6}
+			\subsection*{a) }
+				Let $R_{1} = (a)_{ij}$ and $R_{2} = (b)_{ij}$ along with $C = R_{1}R_{2} = (c)_{ij} = (a)_{ik}(b)_{kj} $. Then, by definition of upper triangular, $(a)_{ij} =0 $ for $i >j$ which implies that $a_{ik} =0$ for $i>k$. Similarly, $(b)_{ij} = 0$ for $k > j$ which then implies $(b)_{kj} =0 $ for $k > j$. 
+				
+				So then, $(c)_{ij} =0$ if $i >k$ or $k>j$ which in return imply that $i > k > j \implies i>j$. So $(c)_{ij} = R_{1}R_{2}$ is upper triangular as well.
+			\subsection*{b) }
+				Let the operations associated with the $0$s be ignored , then 
+				\begin{gather*} \underbrace{\begin{pmatrix}
+					1 & 2 & 3 & \dots & n \\
+					0 & 1 & 2 & \dots & n-1 \\
+					\vdots &\vdots & \vdots & \ddots & \vdots \\
+					0 & 0 & 0 & \dots & 1
+				\end{pmatrix}}_{\text{Multiplications}} \qquad 
+					\underbrace{\begin{pmatrix}
+						0 & 1 & 2 & \dots & n-1 \\
+						0 & 0 & 1 & \dots & n-2 \\
+						\vdots & \vdots & \vdots & \ddots & \vdots \\
+						0 & 0 & 0 & \dots & 0
+					\end{pmatrix}}_{\text{Additions}}
+				\end{gather*}
+				So we have the sequence
+				\begin{align*}
+					\left(\sum_{k=1}^{n} k + \sum_{k=1}^{n-1} k + \dots + \sum_{k=1}^{1} k\right) + \left(\sum_{k=1}^{n-1} k + \dots + \sum_{k=1}^{1} k\right) &= \sum_{j=1}^{n}\sum_{k=1}^{j} k + \sum_{j=1}^{n-1}\sum_{k=1}^{j} k  	 \\
+					&= \frac{n(n+1)(n+2)}{6} + \frac{n(n-1)(n+1)}{6} \\
+					&= \frac{n(n+1)(2n+1)}{6}
+				\end{align*}	
+			\subsection*{c) }
+				\begin{gather*} R_{2}x = \begin{pmatrix}
+					\cdot & \cdot & \dots  & \cdot \\
+					0 & \cdot &  & & \\
+					\vdots &  & \ddots & \\
+					0 & & &    \cdot
+				\end{pmatrix} \begin{pmatrix}
+					\cdot \\ \vdots \\ \cdot
+				\end{pmatrix} \longrightarrow \underbrace{\begin{cases}
+					\begin{aligned}
+					&n \quad &(n-1) \\
+					&(n-1) \quad &(n-2) \\
+					&(n-2) \quad &(n-3) \\
+					& \ \vdots  \quad &\vdots  \\
+					&1 \quad &0 
+					\end{aligned}
+				\end{cases}}_{\text{Multiplications, } \ \text{additions}} \\
+			\implies \sum_{i=1}^{n} i + \sum_{i=1}^{n-1} i = \frac{n(n+1)}{2} + \frac{n(n-1)}{2} = n^{2}.
+			\end{gather*}
+			\subsection*{d) }
+				Here we consider two possibilities ; $(R_{1}R_{2})x$ or $R_{1}(R_{2}x)$, both of which hold under matrix associativity but have different operations cost. 
+				\begin{align*}
+					(R_{1}R_{2})x  \ : \quad \frac{n(n+1)(2n+1)}{6} + n^2 ,\qquad R_{1}(R_{2}x)  \ : \quad n^{2} + n^{2}.
+				\end{align*}
+				The second option is much more efficient. 
+				
+\end{document} 

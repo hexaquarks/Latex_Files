@@ -1,0 +1,369 @@
+\documentclass[12pt]{article}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[many]{tcolorbox}
+\usepackage{changepage}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{mdframed, longtable}
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath} 
+\usepackage{array, tabularx, booktabs}
+\usepackage{graphicx,wrapfig, float, caption}
+\usepackage{tikz,physics,cancel, siunitx, xfrac}
+\usepackage{graphics, fancyhdr}
+\usepackage{lipsum}
+\usepackage{xparse}
+\usepackage{thmtools}
+\usepackage{mathrsfs}
+\usepackage{undertilde}
+\usepackage{tikz}
+\usepackage{fullpage,enumitem}
+\usepackage[labelfont=bf]{caption}
+\newcommand{\td}{\text{dim}}
+\newcommand{\tvw}{T : V\xrightarrow{} W }
+\newcommand{\ttt}{\widetilde{T}}
+\newcommand{\ex}{\textbf{Example}}
+\newcommand{\aR}{\alpha \in \mathbb{R}}
+\newcommand{\abR}{\alpha \beta \in \mathbb{R}}
+\newcommand{\un}{u_1 , u_2 , \dots , n}
+\newcommand{\an}{\alpha_1, \alpha_2, \dots, \alpha_2 }
+\newcommand{\sS}{\text{Span}(\mathcal{S})}
+\newcommand{\sSt}{($\mathcal{S}$)}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\Rn}{\mathbb{R}^{n}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rm}{\mathbb{R}^{m}}
+\usepackage{fullpage, fancyhdr}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\ep}{\epsilon}
+\newcommand{\de}{\delta}
+\usepackage[math]{cellspace}
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{3pt}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\usepackage{newtxtext, newtxmath}
+\usepackage{bbm}
+
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+\newcommand{\vect}{\mathbf}
+\newcommand{\uuuu}{\sum_{i=1}^{n}\frac{<u,u_i}{<u_i,u_i>} u_i}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\A}{\hat{A}}
+\newcommand{\B}{\hat{B}}
+\newcommand{\C}{\hat{C}}
+\newcommand{\dr}{\mathrm{d}}
+\allowdisplaybreaks
+\usepackage{titling}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem]
+\theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{definition}
+\newtheorem{Proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem*{example}{Example}
+\theoremstyle{example}
+\newtheorem*{note}{Note}
+\theoremstyle{note}
+\newtheorem*{remark}{Remark}
+\theoremstyle{remark}
+\newtheorem*{example2}{External Example}
+\theoremstyle{example}
+\usepackage{bbold}
+\title{MATH 327 Assignment 1}
+\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+\author{Mihail Anghelici 260928404 }
+\date{\today}
+
+\relpenalty=9999
+\binoppenalty=9999
+
+\renewcommand{\sectionmark}[1]{%
+	\markboth{\thesection\quad #1}{}}
+
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 1} 
+	\fancyhead[R]{\small Mihail Anghelici $260928404$} 
+	\fancyfoot[C]{-- \thepage\ --}
+	\renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{plain}
+\setlength{\headsep}{1cm}
+\captionsetup{margin =1cm}
+\begin{document}
+	\maketitle
+	\section*{Question 1}
+	\subsection*{a) }
+		A possible connectivity path exists and is $1,2,3,6,5,4,1$.
+	\subsection*{b) }	
+		\begin{equation*}
+			\begin{aligned}[c]
+				r_{1} &= \frac{r_{2}}{2} + \frac{r_{5}}{4} + \frac{r_{4}}{3}\\
+				r_{3} &= \frac{r_{2}}{2} \\
+				r_{5} &= \frac{r_{4}}{3} + \frac{r_{6}}{2} 
+			\end{aligned}
+			\qquad \qquad\qquad\qquad\qquad
+			\begin{aligned}[c]
+			r_{2} &= \frac{r_{4}}{3} + \frac{r_{5}}{4} + \frac{r_{6}}{2} + \frac{r_{1}}{1}\\
+			r_{4} &= \frac{r_{5}}{4} \\
+			r_{6} &= \frac{r_{3}}{1} + \frac{r_{5}}{4} 
+			\end{aligned}
+		\end{equation*}
+		Then, given the linear system $Ar = (r_{1} \ r_{2} \ r_{3} \ r_{4} \ r_{5} \ r_{6} )^{T}$, 
+		\begin{equation}
+			A = \begin{pmatrix}
+				0 & \frac12 &0 &\frac13 &\frac14 &0 \\ 
+				1& 0& 0& \frac13& \frac14 &\frac12 \\
+				0 &\frac12& 0 &0 & 0& 0  \\
+				0 &0 &0 &0& \frac14& 0 \\
+				0 &0 &0 &\frac13 &0 &\frac12 \\
+				0 &0& 1& 0& \frac14 &0
+			\end{pmatrix}.
+		\end{equation}
+		Each column indeed sum up to one and each row contains a non-zero entry suggesting that indeed this is a connectivity matrix representing a directional graph.
+		\subsection*{c) }
+			Let $\varepsilon = 0.001$. Then considering the $\infty$ norm, the number of iterations are $13$ and 
+			$r_{f} = (0.1963 \ 0.3251 \ 0.1621 \ 0.0256 \ 0.1025 \ 0.01084)^{T}$, and the page rank is $2,1,6,3,5,4$.The page rank is not surprising since $2$ is the node which has the most outwards links and $4$ is one which has the least. 
+		\subsection*{d) }
+			\begin{equation}
+				\widetilde{P} = \begin{pmatrix}
+				0 & \frac12 &0 &\frac13 &\frac14 &0 &\frac16\\ 
+				\frac12& 0& 0& \frac14& \frac15 &\frac1&\frac16 \\
+				0 &\frac13& 0 &0 & 0& 0 &\frac16 \\
+				0 &0 &0 &0& \frac15& 0&\frac16 \\
+				0 &0 &0 &\frac14 &0 &\frac13 &\frac16\\
+				0 &0& \frac12& 0& \frac15 &0 &\frac16 \\
+				\frac12 & \frac13 & \frac12 & \frac14 & \frac15 & \frac13 & 0
+				\end{pmatrix}.
+			\end{equation}
+			Let $\varepsilon =0.001$. Then considering the $\infty$ norm ,$r_{f} = (0.0340 \ 0..0453 \ 0.0255 \ 0.01149 \ 0.0233 \ 0.0278 \ 0.0597)^{T}$ and the page rank is $7,2,1,6,3,5,4$. Thence, yes, the order changes entirely. 
+			%TODO Explain further ? 
+		\section*{Question2  } 
+			\subsection*{a) } 
+				\begin{equation}
+					\begin{aligned}[c]
+						r_{1} &= \frac{r_{3}}{1} \\
+						r_{2} &= \frac{r_{1}}{1} \\
+						r_{3} &= \frac{r_{2}}{1} + \frac{r_{4}}{2} 
+					\end{aligned}
+					\qquad\qquad
+					\begin{aligned}[c]
+						r_{4} &= \frac{r_{5}}{1} \\
+						r_{5} &= \frac{r_{4}}{2} \\
+						& 
+					\end{aligned}
+					\qquad  \longrightarrow
+					P = \begin{pmatrix}
+						0 & 0 & 1 & 0 & 0 \\
+							1 & 0 & 0 & 0 & 0 \\
+								0 & 1 & 0 & \frac12 & 0 \\
+									0 & 0 & 0 & 0 & 1 \\
+										0 & 0 & 0 & \frac12 & 0 
+					\end{pmatrix}.
+				\end{equation}
+				The Page Rank method does not converge. After multiple matrix power iterations, we notice that the $r$ vector's $3$ first entries oscillate while the other two converge to $0$. This does make sense since the system is not connected but has a sub-path around the nodes $1-2-3$.
+			\subsection*{b) }
+				\begin{equation}
+					\hat{P} = \begin{pmatrix}
+					0 & 0 & 1 & 0 & 0 \\
+					1 & 0 & 0 & 0 & 0 \\
+					0 & 0 & 0 & \frac12 & 0 \\
+					0 & 0 & 0 & 0 & 1 \\
+					0 & 0 & 0 & \frac12 & 0 
+					\end{pmatrix}.
+				\end{equation}
+				The Page Rank is inconsistent with this system, the $r$ vector converges to $0$ as $\varepsilon \to 0$. This system is different to the previous one in that the $2$ node has no outward links and is hence isolated ; because of that, there does not exist a connectivity path in the matrix any more. 
+			
+			\subsection*{c) }
+				Adding a sixth node ,
+				\begin{equation}
+					\widetilde{P} = \begin{pmatrix}
+					0 & 0 & \frac12 & 0 & 0 & \frac15 \\
+					\frac12 & 0 & 0 & 0 & 0 & \frac15\\
+					0 & \frac12 & 0 & \frac13 & 0 & \frac15\\
+					0 & 0 & 0 & 0 & \frac12& \frac15 \\
+					0 & 0 & 0 & \frac13 & 0 & \frac15\\
+					\frac12 & \frac12 & \frac12 & \frac13 & \frac12 & 0
+					\end{pmatrix}. 
+				\end{equation}
+				The Page Rank for this connectivity matrix is $6,3,1,2,4,5$ with \\ $r_{f} = (0.1501 \ 0.1392 \ 0.1721 \ 0.1154 \ 0.1025 \ 0.3207)^{T}.$
+		\section*{Question 3} 
+			\subsection*{a) }
+				Let $v_{1} := (0 \ 0 \ 0 \ \dots \ 1)^{T} \in \mathbb{R}^{n}$, the sparsity vector. This vector satisfies the given equivalence. 
+			\subsection*{b) }
+				Let $v_{2} := (c \ c \ c \ \dots \ c)^{T} \in \mathbb{R}^{n}$ , $c \in \mathbb{R}$. Then indeed, 
+				\begin{align*}
+					&n \norm{v_{2}}_{\infty} = n \max\limits_{i= 1,\dots,n} \abs{x_{i}} = nc  \quad \checkmark \\
+					&\sqrt{n} \norm{v_{2}}_{2} = \sqrt{n} \sqrt{n c^{2}} = \sqrt{n} \sqrt{n} c = nc \quad \checkmark \\
+					&\norm{v_{2}}_{1} = \sum_{i}^{n} \abs{x_{i}} = nc \quad \checkmark
+				\end{align*}
+			\subsection*{c) }
+				\textbf{(i)} We show $\norm{v}_{\infty} \le \norm{v_{2}}_{2}$. 
+				\begin{align*}
+					 \norm{v_{2}}_{2}^{2} = \sum_{i} x_{i}^{2} &= \sum_{i} \abs{x_{i}}^{2} \\
+					 &\ge \max\limits_{i = 1,\dots,n} \abs{x_{i}}^{2} \\
+					 &= \norm{v}_{\infty}^{2} \\
+					 \therefore \norm{v}_{\infty}^{2} \le \norm{v}_{2}^{2} &\implies \norm{v}_{\infty} \le \norm{v}_{2} \ \checkmark.
+				\end{align*}
+			\textbf{(ii)} We show $\norm{v}_{2} \le \norm{v}_{1}$. 
+				\begin{align*}
+					 \norm{v}_{1}^{2} &= \left( \sum_{i}^{n} \abs{x_{i}}\right)^{2} \\&= \sum_{i}^{n} \abs{x_{i}}^{2} + 2 \sum_{i < j} \abs{x_{i}} \abs{x_{j}} \\
+					 & \ge \sum_{i} \abs{x_{i}}^{2} \\
+					 &= \sum_{i} x_{i}^{2} \\
+					 &= \norm{v}_{2}^{2}\\
+					 \therefore \norm{v}_{2}^{2} \le \norm{v}_{1}^{2} & \implies \norm{v}_{2} \le \norm{v}_{1} \ \checkmark.
+				\end{align*}
+			\textbf{(iii)} We show $\norm{v}_{1} \le n \norm{v}_{\infty }$.
+				\begin{align*}
+					\abs{x_{i}} \le \max\limits_{i = 1 , \dots n} \abs{x_{i}} \implies \norm{v}_{1} &= \sum_{i}^{n} \abs{x_{i}} \\&\le \sum_{i}^{n} \max\limits_{i = 1,\dots ,n} \abs{x_{i}} \\
+					&= \sum_{i}^{n} \norm{v}_{\infty} \\
+					&= n \norm{v}_{\infty}\\
+					\therefore \norm{v}_{1} &\le n \norm{v}_{\infty} \ \checkmark.
+				\end{align*}
+			\textbf{(iv)} We show $\sqrt{n} \norm{v}_{2} \le n \norm{v}_{\infty}$.
+			We first note that $\abs{x_{i}} \le \max\limits_{i = 1 , \dots . n } \abs{x_{i}}$. 
+			\begin{align*}
+				\norm{v}_{2} &= \left(\sum_{i}^{n} \abs{x_{i}}^{2}\right)^{\sfrac{1}{2} }\\
+				&\le \left(\sum_{i}^{n} \max\limits_{i = 1 , \dots , n} \abs{x_{i}}^{2}\right)^{\sfrac{1}{2}} \\
+				&= \left(\sum_{i}^{n} \norm{v}_{\infty}^{2}\right)^{\sfrac{1}{2}} \\
+				&= \left(n \norm{v}_{\infty}^{2}\right)^{\sfrac{1}{2}}\\
+				&= \sqrt{n} \norm{v}_{\infty} \\
+				\therefore \norm{v}_{2} & \le \sqrt{n} \norm{v}_{\infty} \ \checkmark.
+			\end{align*}
+		\section*{Question 4}
+			\subsection*{a) }
+				\begin{enumerate}[label = (\roman*)]
+					\item  $\norm{A}_{M}$ is a maximum of absolute value so always positive. If $A$ is the $0$ matrix then $a_{ij} =0 \ \forall i,j \ |  \max\limits_{i,j} a_{ij} = 0 \implies \norm{A}_{M} =0$. We conclude that positivity holds. 
+					\item \begin{equation*}
+					\norm{\alpha A}_{M}  = \max\limits_{i,j} \abs{\alpha a_{ij}} = \abs{\alpha} \max\limits_{i,j} \abs{a_{ij}} = \abs{\alpha} \norm{A}_{M}.
+					\end{equation*}
+					\item \begin{align*}
+					\norm{A+B}_{M} &= \max\limits_{i,j} \abs{a_{ij} + b_{ij}} \\
+					&\le \max\limits_{i,j} \left(\abs{a_{ij}} + \abs{b_{ij}}\right) \\
+					&\le \max\limits_{i,j} \abs{a_{ij}} + \max\limits_{i,j} \abs{b_{ij}} \\
+					&= \norm{A}_{M} + \norm{B}_{M} 
+					\end{align*}
+				\end{enumerate}
+			\subsection*{b) }
+				Let $r=m$ and define 
+				\begin{equation*}
+					 A = \begin{pmatrix}
+					 	1 & 1 & 1 & \dots & 1 \\
+					 	1 & 1 &  &  & \\
+					 	1 & & 1 & & \\
+					 	\vdots  & & &\ddots & \\
+					 	1 & & & & 1
+					 \end{pmatrix} \longrightarrow \norm{A}_{M} = 1, \qquad \qquad  
+					 B = \begin{pmatrix}
+					 1 & 1 & 1 & \dots & 1 \\
+					 1 & 1 &  &  & \\
+					 1 & & 1 & & \\
+					 \vdots  & & &\ddots & \\
+					 1 & & & & 1
+					 \end{pmatrix} \longrightarrow \norm{B}_{M} = 1 .
+				\end{equation*}
+				Then it is evident that 
+				\begin{equation*}
+					AB = \begin{pmatrix}
+					n & n & n & \dots & n \\
+					n & n &  &  & \\
+					n & & n & & \\
+					\vdots  & & &\ddots & \\
+					n & & & & n
+					\end{pmatrix} \longrightarrow \norm{B}_{M} = n. 
+				\end{equation*}
+				Since this is a square matrix, the case $n=m=1$ for which the claim fails, is rejected since a matrix needs to be multidimensional by definition. Thence, it follows that $\norm{AB}_{M} =n > \norm{A}_{M}\norm{B}_{M}.$
+			\section*{Question 5}
+				\subsection*{a) }
+					\begin{enumerate}[label=(\roman*)]
+						\item If $A \neq 0$ then $\exists \ \hat{x} \in \mathbb{R}^{n} $ (non-zero) for which $A \hat{x}\neq 0$. The vector norm satisfies positivity so $\norm{\hat{x}}>0 \implies \norm{A\hat{x}} >0$. 
+						\item \begin{align*}
+							\norm{\alpha A}_{\infty} &= \max\limits_{\norm{x}_{\infty} =1} \\&= \abs{\alpha} \max\limits_{\norm{x}_{\infty} =1} \norm{Ax}_{\infty} \\
+							&= \abs{\alpha} \norm{A}_{\infty} 
+						\end{align*} 
+						\item \begin{align*}
+							\norm{A + B}_{\infty} &= \max\limits_{\norm{x}_{\infty} =1 }\norm{(A+B)x}_{\infty} \\
+							&= \max\limits_{\norm{x}_{\infty} =1 } \norm{Ax + Bx}_{\infty} \\
+							&\le \max\limits_{\norm{x}_{\infty} =1 }( \norm{Ax}_{\infty} + \norm{Bx}_{\infty}) \\
+							&\le \max\limits_{\norm{x}_{\infty} =1 }\norm{Ax}_{\infty} + \max\limits_{\norm{x}_{\infty} =1 }\norm{Bx}_{\infty} \\
+							&= \norm{A}_{\infty} + \norm{B}_{\infty}
+						\end{align*}
+					\end{enumerate}
+				\subsection*{b) }
+					\begin{align*}
+						\norm{A}_{\infty} &= \max\limits_{\norm{x}_{\infty} =1 }\norm{Ax}_{\infty} \\
+						&= \max\limits_{\norm{x}_{\infty} =1 } \max\limits_{1 \le i \le n} \sum_{j=1}^{n} \abs{a_{ij}x_{j}} \\
+						&= \max\limits_{1 \le i \le n} \max\limits_{\norm{x}_{\infty} =1 } \sum_{j=1}^{n} \abs{a_{ij}x_{j}} \\
+						&=\max\limits_{1 \le i \le n} \sum_{j=1}^{n} \abs{a_{ij}}
+					\end{align*}
+					For the second equality, let $r_{i}$ be the i-th row, a vector. Then 
+					\begin{gather*}
+						\norm{r_{i}}_{1} = \sum_{j=1}^{n} \abs{r_{ij}} = \sum_{j=1}^{n} \abs{a_{ij}} \\
+						\implies \max\limits_{i= 1,\dots,n} \sum_{j=1}^{n} \abs{a_{ij}} = \max_{i = 1, \dots,n} \sum_{j=1}^{n} \abs{r_{ij}} = \max\limits_{i=1,\dots,n} \norm{r_{i}}_{1}
+					\end{gather*}
+				\subsection*{c)} 
+					\begin{enumerate}[label=(\roman*)]
+						\item $\frac{1}{\sqrt{n}} \norm{A}_{\infty} \le \norm{A}_{2}$: Using the results proved in Problem $3$, 
+						\begin{align*}
+							\norm{A}_{\infty} = \max\limits_{x \neq 0 } \frac{\norm{Ax}_{\infty}}{\norm{x}_{\infty}} \le \max\limits_{x \neq 0} \frac{\norm{Ax}_{2}}{\norm{x}_{2}} \implies \frac{\norm{A}_{\infty}}{\sqrt{n }} \le \norm{A}_{2}. 
+						\end{align*}
+						\item $\norm{A}_{2} \le \sqrt{n} \norm{A}_{\infty}$: 
+						\begin{gather*}
+							\text{Since , } \frac{1}{\sqrt{n}} \norm{v}_{2} \le \norm{v}_{\infty} \implies \norm{v}_{2} \le \sqrt{n} \norm{v}_{\infty} \\
+							\implies \norm{A}_{2}  = \max\limits_{x \neq 0} \frac{\norm{Ax}_{2}}{\norm{x}_{2}} \le \sqrt{n} \max\limits_{x \neq 0} \frac{\norm{Ax}_{\infty}}{\norm{x}_{\infty}} = \sqrt{n} \norm{A}_{\infty} \\
+							\therefore \norm{A}_{2} \le \sqrt{n} \norm{A}_{\infty}
+						\end{gather*}
+					\end{enumerate}
+			\section*{Question 6}
+				\begin{align*}
+					\norm{A} &= \max\limits_{\norm{x} =1 } \norm{Ax} \\
+					\intertext{For $x$ an eigenvector such that $Ax = \lambda x$, where $\abs{\lambda }=1$ and $\norm{x}=1$, }
+					&\ge \max\limits_{\norm{x} =1 }\norm{Ax} \\
+					&= \max\limits_{\norm{x} =1 } \norm{\lambda x} \\
+					&= \rho(A) \max\limits_{\norm{x} =1 } \norm{x} \\
+					&= \rho(A) \\
+					\therefore \norm{A} &\ge \rho(A)
+				\end{align*}
+			\section*{Question 7}
+				\subsection*{a) }
+					
+				\begin{enumerate}[label=(\roman*)]
+					\item $$ \norm{I}_{1} = \max\limits_{1 \le i \le n} \sum_{i=1}^{n}\abs{a_{ij}} = \max \{1,1,\dots ,1\} =1.$$
+					\item $$ \norm{I}_{\infty} = \max\limits_{1 \le i \le n}\sum_{j=1}^{n} \abs{a_{ij}} =\max\{1,1,\dots,1\} =1. $$
+					\item We use the property that the $2$-norm is orthogonally invariant.
+					$$ \norm{I}_{2} = \max\limits_{\norm{x}_{2} =1 } \norm{Ix}_{2} = \max\limits_{\norm{x}_{2}=1} \norm{x}_{2}=1.$$
+					\item $$ \norm{I}_{F} = \left(\sum_{i=1}^{n} \sum_{j=1}^{n} {a_{ij}}^{2}\right)^{\sfrac{1}{2}} = \left(\sum_{i=1}^{n} \sum_{j=1}^{n} {\delta_{ij}}^{2}\right)^{\sfrac{1}{2}} = \sqrt{n},$$
+					where $\delta_{ij}$ is the usual Kronecker delta function.
+				\end{enumerate}
+				\subsection*{b) } 
+					\begin{enumerate}[label=(\roman*)]
+						\item $$ \norm{A}_{1} = \max\limits_{1 \le i \le n} \sum_{i=1}^{n}\abs{a_{ij}} = \max \{1,102\} = 102.$$
+						\item By theorem, $\norm{A}_{2} = \max\limits_{1\le i \le n} \sigma_{i}(A)$, so we proceed 
+						\begin{gather*}
+							A^{T}A = \begin{pmatrix}
+							1 & 0 \\ 100 & 2 
+							\end{pmatrix}\begin{pmatrix}
+							1 & 100 \\ 0 & 2
+							\end{pmatrix}
+							= \begin{pmatrix}
+							1 & 100 \\ 100 & 10004
+							\end{pmatrix} \\
+							\det(A^{T}A) = (1-\lambda)(10004-\lambda) -10000 =0 \implies \lambda_{\pm} = \frac{10005 \pm \sqrt{10005^{2} -4^{2}}}{2} \\
+							\therefore \norm{A}_{2} = \sqrt{\lambda_{\text{max}}} = \sqrt{\frac{10005 \pm \sqrt{10005^{2} -4^{2}}}{2}} \approx 100.25
+						\end{gather*}
+						\item $$ \norm{A}_{\infty} = \max\limits_{1 \le i \le n} \sum_{j=1}^{n} \abs{a_{ij}} = \max\{101,2\} = 101.$$
+						\item $$ \norm{A}_{F} = \left(\sum_{i=1}^{n} \sum_{j=1}^{n} {a_{ij}}^{2}\right)^{\sfrac{1}{2}} = \sqrt{1^{2} + 100^{2} +2^{2}} = \sqrt{10005} \approx 100.25$$
+						\item $$ \rho(A) = \max\limits_{1 \le i \le n} \abs{\lambda_{i}} = \max\{1,2\} = 2.$$
+					\end{enumerate}
+			
+\end{document}

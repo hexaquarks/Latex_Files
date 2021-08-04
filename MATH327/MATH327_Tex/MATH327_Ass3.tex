@@ -1,0 +1,468 @@
+\documentclass[12pt]{article}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+%%%%--- PACKAGES ---%%%%%
+% COLORS
+\usepackage{xcolor}
+\usepackage[many]{tcolorbox}
+
+% MATH AND PHYSICS
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm,amsmath , siunitx, xfrac, physics,breqn, undertilde,nccmath,cancel,nccmath,enumitem,venndiagram,thmtools,nicematrix} 
+
+% FONTS
+\usepackage{mathrsfs,bbm,bbold}
+
+% TIKZ, FIGURES, TABLES AND CAPTIONS
+\usepackage{tikz,float,wrapfig, caption,graphicx, graphics, fancyhdr, fancybox, tabularx, array,booktabs,mdframed, longtable,circuitikz,tabu}
+\usepackage[labelfont=bf]{caption}
+\usepackage[math]{cellspace}
+
+% DIVERSE
+\usepackage{xparse,lipsum,titling,titlesec,changepage,fullpage,listings}
+
+%%%%--- COMMANDS ---%%%%
+\newcommand{\la}{\langle} \newcommand{\ra}{\rangle}
+\newcommand{\Rn}{\mathbb{R}^{n}} \newcommand{\R}{\mathbb{R}} \newcommand{\Rm}{\mathbb{R}^{m}}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\ep}{\epsilon} \newcommand{\de}{\delta}
+\newcommand{\bs}{\backslash}
+\newcommand{\vectorproj}[2][]{\textit{proj}_{\vect{#1}}\vect{#2}}
+
+%% Spaces in tables for aesthetic arrangement
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{3pt}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\allowdisplaybreaks
+
+%%%--- MTPRO2 FONT ---%%%
+\pdfmapfile{=mtpro2.map}
+\usepackage[lite,]{mtpro2}
+
+
+% Theorem environements
+\newtheorem{theorem}{Theorem}[section] \theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem] \theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma} \theoremstyle{definition}
+\newtheorem{definition}{Definition}[section] \theoremstyle{definition}
+\newtheorem{Proposition}{Proposition}[section] \theoremstyle{definition}
+\newtheorem*{example}{Example} \theoremstyle{example}
+\newtheorem*{note}{Note} \theoremstyle{note}
+\newtheorem*{remark}{Remark} \theoremstyle{remark}
+
+%% Equation breaking
+\relpenalty=9999
+\binoppenalty=9999
+
+%%%--- Command renewals ---%%%
+\let\oldimplies\implies
+\let\oldiff\iff
+
+\renewcommand*{\implies}{
+	\hspace{-0.05cm}\resizebox{.95\width}{\height}{$\oldimplies$}\hspace{-0.05cm}
+}
+\renewcommand*{\iff}{
+	\hspace{-0.1cm}\oldiff\hspace{-0.1cm}
+}
+\renewcommand{\sectionmark}[1]{%
+	\markboth{\thesection\quad #1}{}}
+
+\renewcommand{\binom}{\mbinom}
+\renewcommand{\bar}{\overline}
+
+%%% --- DOCUMENT HEADER ---%%%
+\title{MATH 327 Assignment 3}
+\titleformat*{\section}{\LARGE\normalfont\fontsize{14}{14}\bfseries}
+\titleformat*{\subsection}{\Large\normalfont\fontsize{12}{15}\bfseries}
+\author{Mihail Anghelici 260928404 }
+\date{\today}
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[L]{\rule[0pt]{0pt}{0pt} Assignment 3} 
+	\fancyhead[R]{\small Mihail Anghelici $260928404$} 
+	\fancyfoot[C]{-- \thepage\ --}
+	\renewcommand{\headrulewidth}{0.4pt}}
+\pagestyle{plain}
+\setlength{\headsep}{1cm}
+\captionsetup{margin =1cm}
+\AtBeginDocument{%
+	\edef\Relbar{\mathord{\mathchar\the\numexpr\Relbar-"3000}}%
+	
+}
+\lstset{ %
+	language=Matlab,
+	backgroundcolor=\color{white},   % choose the background color
+	breaklines=true,                 % automatic line breaking only at whitespace
+	keywordstyle=\color{blue},
+	escapeinside={(*}{*)},        % keyword style
+	%identifierstyle=\color{blue},
+	%stringstyle=\color{mymauve},     % string literal style
+}
+\begin{document}
+	\maketitle
+	\section*{Question 1}
+		\subsection*{(a)}
+			\begin{align*}
+				\la Qx , Qy \ra &= (Qx)^{T}Qy \qquad\qquad& \norm{Qx}_{2} &=\sqrt{\sum_{i=1}^{n} (Qx)_{i}^{2}} \\ 
+				&= x^{T}Q^{T}Qy \qquad\qquad& &=\la Qx, Qx \ra \\
+				&= x^{T}Iy \qquad\qquad& &= \la x , x \ra \\
+				&= x^{T}y \qquad\qquad& &= \norm{x}_{2}\\
+				&= \la x , y \ra \qquad\qquad& &\implies \norm{Qx}_{2} = \norm{x}_{2}
+			\end{align*}
+		\subsection*{(b)}
+			%TODO v vector
+			We note that $(1 \ 0  \ 0\  0)^{T}$ is already in the desired form so we focus on $\hat{A} = (4 \  2  \ 4)^{T}$. We want
+			\begin{gather*}
+				\tilde{Q} \begin{pmatrix}
+					4 \\ 2 \\4 
+				\end{pmatrix} = \begin{pmatrix}
+				-6 \\ 0 \\ 0
+				\end{pmatrix}
+				\qquad , \text{then }\ u = \begin{pmatrix}
+					1 \\ 1/5 \\ 2 /5
+				\end{pmatrix}
+				 \implies \norm{u}_{2}^{2} = \frac{2 \tau}{\tau + x_1} = \frac65 \implies \gamma = \frac53.
+			\end{gather*}
+			Then we solve 
+			\begin{align*}
+				\tilde{Q} &= I - \gamma u u^{T} =\begin{pmatrix}
+					1 & 0 & 0 \\
+					0 & 1 & 0 \\
+					0 & 0 & 1 
+				\end{pmatrix} - \frac53 \begin{pmatrix}
+					5 \\ 1 \\ 1
+				\end{pmatrix}
+				\begin{pmatrix}
+				 5&1&1
+				\end{pmatrix} = 
+				\begin{pmatrix}
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				0 & 0 & 1 
+				\end{pmatrix} - \frac53 \begin{pmatrix}
+				25 & 5 & 5 \\
+				5 & 1 & 1 \\
+				5 & 1 & 1
+				\end{pmatrix}
+				 \\ &= \begin{pmatrix}
+				\frac{122}{3} & \frac{25}{3} & \frac{25}{3}\\
+				\frac{25}{3} & \frac23 & \frac53 \\
+				\frac{25}{3} & \frac53 & \frac23 
+				\end{pmatrix} = \tilde{Q}^{T}
+			\end{align*}
+			Then we know that 
+			$$ \hat{Q}_{2 \cross 4} = \begin{pmatrix}
+			 1& 0 & 0 & 0 \\ 0 & x_{2} & x_{3} & x_{4} 
+			\end{pmatrix} \qquad \text{and }\ \ R = \left( \begin{array}{cc}
+					\mbox{\large$\hat{R}$ \hspace{-0.75cm}}}\\
+					0& 0 \\
+					0 & 0
+			\end{array}\right) = \begin{pmatrix}
+				1 & 2 \\ 0 & -6 \\ 0 & 0  \\ 0 & 0
+			\end{pmatrix}.$$
+			Here the vector $(x_{2}, x_{3} , x_{4})$ is the first row of $\tilde{Q}^{T}$ since their product gives $-\tau $, so then we conclude that
+			$$ \hat{Q} = \begin{pmatrix}
+				1 & 0 \\ 0 & \frac{122}{3} \\ 0 & \frac{25}{3} \\ 0 & \frac{25}{3}
+			\end{pmatrix}, \qquad \hat{R} = \begin{pmatrix} 1 & 2 \\ 0 & -6 \end{pmatrix} ,\qquad u= \begin{pmatrix}
+			1 \\ 1/5 \\ 2 /5
+			\end{pmatrix} $$
+		\subsection*{(c)}
+				In the rank deficient case we have $\hat{c} = \hat{Q}^{T} b$ so by theorem there exists a decomposition $A=QR$. We apply $Q^{T}$ to the overdetermined system obtaining $Ax =b \implies Rx = Q^{T}b =c$, here $R$ is upper triangular so we can use $b$
+				$$ \begin{pmatrix}
+					R_{11} & R_{22} \\ 0 & 0
+				\end{pmatrix}\begin{pmatrix}
+					x_{1} \\ x_{2}
+				\end{pmatrix} = \begin{pmatrix}
+					c \\ d 
+				\end{pmatrix} \implies \norm{s}_{2}= \sqrt{\norm{c - R_{11}x_{1} - R_{12}x_{2}}_{2}^{2} + \norm{d}_{2}^{2}}.$$
+				With backward substitution we find $x_{1}$ then since $c - R_{11}x_{1}- R_{12}x_{2} =0$ we get $y= (x_{1} x_{2})^{T}$ which is the solution that minimizes $\norm{b - Ax}$ in $Ax = b$.
+		\subsection*{(d)}
+			First, we know $Rx = Q^{T} b = c = (1 \ -2/3  \ 5/3 \  -5/3)^{T} =c$. So 
+			$$ \begin{pmatrix}
+				1 & 2 \\ 0 & -6 \\ 0 & 0 \\ 0 & 0 
+			\end{pmatrix} \begin{pmatrix}
+			x_1 \\ x_2
+			\end{pmatrix} = \begin{pmatrix}
+			1 \\ -2/3 \\ 5/3 \\ -5/3
+			\end{pmatrix} \implies 
+			\begin{cases}
+				x_{1} + 2x_{2} &=1 \\
+				-6x_{2} &= -2/3 
+			\end{cases} \implies x = \begin{pmatrix}
+				7/9 \\ 1/9
+			\end{pmatrix}.$$
+			Then, we use $c - R_{11}x_{1}- R_{12}x_{2} =0$ ; 
+			\begin{gather*}
+				\begin{pmatrix}
+					1 \\ -2/3 
+				\end{pmatrix} - (1) \begin{pmatrix}
+				7/9 \\ 1/9
+				\end{pmatrix}
+				- (2) x_2 = 0 \implies x_{2} = \left(\begin{pmatrix}
+				-1 \\ 2/3
+				\end{pmatrix} + \begin{pmatrix}
+				7/9 \\ 1/9
+				\end{pmatrix}\right)\left(-\frac12\right) = \begin{pmatrix}
+					1/9 \\ -7/18
+				\end{pmatrix}.
+			\end{gather*}   
+			We conclude that 
+			$$ y = \begin{pmatrix}
+				x_1 \\ x_2
+			\end{pmatrix} = \begin{pmatrix}
+				7/9 \\ 1/9 \\ 1/9 \\ -7/18
+			\end{pmatrix}.$$
+	\section*{Question 2}
+		\subsection*{(a)}
+			The forward routine is 
+			\begin{lstlisting}[language=Matlab, xleftmargin=-15em, showstringspaces=true]
+			% Forward substitution
+			function [ y ] = fsub( R,b )
+				y=nan(size(b));
+				[m,n]=size(R);
+				[mv,nv]=size(b);
+			
+				if m(*$\sim$*)=n 
+					disp('matrix not square')
+					return
+				elseif mv(*$\sim$*)=m || nv (*$\sim$*)= 1
+					disp('vector size not compatible with matrix')
+					return
+				end
+			
+				y(1)=b(1)/R(1,1);
+			
+				for i=2:n
+					y(i)=b(i);
+					for j=1:i-1
+						y(i) = y(i)-R(i,j)*y(j);
+					end
+				y(i)=y(i)/R(i,i);
+				end
+			end
+			\end{lstlisting}
+		\subsection*{(b)}
+		The coefficients found on Mathematica are 
+		$$ x_{1} = \begin{pmatrix}
+			1.6580 \\ 3.3360
+		\end{pmatrix} , \qquad \qquad x_{2} = \begin{pmatrix}
+			3.5523 \\ 0.6617 \\ 0.8914
+		\end{pmatrix}.$$
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width = 1.0\linewidth]{MATH327_Ass3_Fig.jpg}
+				\captionsetup{margin=1cm}
+				\caption{}
+			\end{figure}
+	\section*{Question 3}
+		\subsection*{(a)}
+			Let $x \in \mathbb{R}^{m}$. Then 
+			$$\norm{b- Ax}_{2} = \min\limits_{\hat{x} \in \mathbb{R}^{m}} \norm{b - A\hat{x}}_{2}  \iff b - Ax \in \mathcal{R}(A)^{\perp}.$$
+			Since $\mathcal{R}(A)^{\perp} = \mathcal{N}(A^{T})$ by fact, then $x$ solves the LLSP if and only if $b - Ax \in \mathcal{N}(A^{T})$. By definition of the kernel, we write the equivalency
+			$$ A^{T}(b - Ax) = 0 \implies A^{t}b = A^{T}Ax \implies A^{T}Ax = A^{T}b.$$
+		\subsection*{(b)}
+			\textcolor{orange}{If $A$ has full rank $(n \ge m)$} then $A^{T}A$ is positive definite. So $\exists (A^{T}A)^{-1} \implies \exists ! \ x \in \mathbb{R}^{m}$ that solves the LLSP. Indeed 
+			$$ x^{T}(A^{T}A)x = 0 \implies (Ax)^{T} A^{x} = \la Ax, Ax \ra =0 \implies \mathcal{N}(A)=0,$$
+			$\therefore A^{T}A$ is positive definite. In the rank deficient case, $(A^{T}A)^{-1}$ does not exist so the $x \in \mathbb{R}^{m}$ is not unique.
+		\subsection*{(c)}
+			\begin{gather*}
+				A^{T}A = \begin{pmatrix}
+					2 & 2& 1 \\ 4 & 1 & -1
+				\end{pmatrix} \begin{pmatrix}
+					2 &4 \\ 2 & 1 \\ 1 & -1
+				\end{pmatrix} = \begin{pmatrix}
+					9 & 9  \\ 9 & 18
+				\end{pmatrix}, \qquad A^{T}b = \begin{pmatrix}
+					2 & 2 &1 \\ 4 & 1 & -1
+				\end{pmatrix} \begin{pmatrix}
+					1 \\ 1 \\ 5
+				\end{pmatrix} = \begin{pmatrix}
+					9 \\ 0
+				\end{pmatrix}.
+			\end{gather*}
+			We use Cholesky decomposition on $A^{T}A$ which is positive definite.
+			\[ \begin{align}
+				r_{11}^{2} &=9 &\implies  r_{11} &= 3\\
+				r_{12}r_{11} &= 9 &\implies r_{12} &= 3\\
+				r_{12}^{2} + r_{22}^{2} &= 18 &\implies r_{22} &= 3
+			\end{align} \xrightarrow{} R = \begin{pmatrix}
+				3 & 3 \\ 0 & 3
+			\end{pmatrix}
+			\]
+			We apply forward substitution then backward substitution 
+			\begin{align*}
+				&R^{T}y = b \xrightarrow{} \begin{pmatrix}
+					3 & 0 \\ 3  & 3
+				\end{pmatrix}y = \begin{pmatrix}
+					9 \\ 0 
+				\end{pmatrix} 
+				\ \implies \begin{cases}
+					y_{1} & = 9/3 = 3 \\ 
+					y_{2} &= (0-3(3))/3 = -3
+				\end{cases}
+				\qquad &\therefore y = \begin{pmatrix}
+					3 \\ -3 
+				\end{pmatrix} \\
+				&Rx = y \xrightarrow{} \begin{pmatrix}
+				3 & 3 \\ 0  & 3
+				\end{pmatrix}x = \begin{pmatrix}
+				3 \\ -3
+				\end{pmatrix} 
+				\ \implies \begin{cases}
+					x_{2} &= -3/3 =-1 \\ 
+					x_{1} &= (3-(3)(-3))/3 =2
+				\end{cases}
+				\qquad &\therefore x = \begin{pmatrix}
+					2 \\ -1
+				\end{pmatrix}
+			\end{align*}
+	\section*{Question 4}
+		\subsection*{(a)}
+		
+		\begin{center}
+			\tabulinesep=1.6mm
+		\begin{tabu}{ccccc}
+			\toprule
+			\toprule
+			\multicolumn{5}{c}{Comparing Algorithms}\\
+			\multicolumn{1}{c}{$m$}&\multicolumn{1}{c}{\textit{cgs.m}}&\multicolumn{1}{c}{\textit{mgs.m}}&\multicolumn{1}{c}{ \textit{Householder}}&\multicolumn{1}{c}{\textit{QR}}\\
+			\cmidrule(lr){2-5}
+			$2$ & $1.6345$e$-16$   & $1.6345$e$-16$ & $7.2312$e$-16$ & $4.7108$e$-16$\\
+			$4$ & $3.9218$e$-14$  & $5.7278$e$-15$ & $2.8507$e$-16$& $3.8886$e$-16$\\
+			$8$ & $1.2777$e$-04$  & $8.0473$e$-12$ & $6.2207$e$-16$& $7.1078$e$-16$\\
+			$16$ &$8.2721$e$+00$  & $1.2911$e$-04$ & $1.3689$e$-15$& $1.1569$e$-15$\\
+			$32$ &$2.6692$e$+01$  & $1.0000$e$+00$ &$1.1423$e$-15$& $1.4161$e$-15$\\
+			\bottomrule
+			\bottomrule
+		\end{tabu}
+		\end{center}
+		
+		\subsection*{(b)}
+			As $m$ grows the values become less accurate across all cases. This inaccuracy grows particularly fast for the \text{cgs} case around $m=8_{+}$. The \textit{mgs} case's inaccuracy increases slower but increases nevertheless, while the \textit{Householder triangularization} method seems to be very accurate and run on par with the MatLab built in \textit{QR} method. For this reason it is evident that MatLab uses the Householder triangularization method with some slight adjustments. 
+		\subsection*{(c)}
+			\begin{center}
+				\tabulinesep=1.6mm
+				\begin{tabu}{ccc}
+					\toprule
+					\toprule
+					\multicolumn{3}{c}{Comparing Successive Algorithms}\\
+					\multicolumn{1}{c}{Application}&\multicolumn{1}{c}{\textit{cgs.m}}&\multicolumn{1}{c}{\textit{mgs.m}}\\
+					\cmidrule(lr){2-3}
+					$1$ & $2.6692$e$+01$   & $1.0000$e$+00$\\
+					$2$ & $2.1939$e$+01$  & $4.4033$e$-11$\\
+					\bottomrule
+					\bottomrule
+				\end{tabu}
+			\end{center}
+		Indeed the accuracy increases and it increases substantially faster for the \textit{mgs.m} case, as it was expected.
+		\subsection*{(d)}
+			Computationally, the safest method would be the \textit{QR} built in method since it is an improved version of the \texit{Householder triangularization} and it is the most accurate across all matrix sizes. While, by hand, the \textit{CGS} method is sufficiently intuitive, easy, and accurate for low matrix size, so it is more appropriate. 
+	\section*{Question 5}
+		\subsection*{(a)}
+			We first note that the rank of the matrix is $1$ since each column is linearly dependent on $u$. By the outer product formulation theorem, we have 
+			$$ A = \sum_{j=1}^{r} \sigma_j u_j v_{j}^{T} = \sigma_1 u_1 v1j^{T} = \hat{U}\hat{\Sigma}\hat{V}^{T}.$$
+			So then by the condensed SVD theorem we get 
+			$$ A = \begin{pmatrix} u_1 \\ \vdots \\ u_m\end{pmatrix} \begin{pmatrix} \sigma_1 \end{pmatrix} \begin{pmatrix} v_1 \dots v_n\end{pmatrix}.$$
+			Where $\sigma_1 =1$. But here $\hat{U}$ and $\hat{V}$ are not isometries as the theorem requires. So we normalize the vectors and conclude that 
+			$$ A = \underbrace{\frac{u}{\norm{u}}}_{\hat{U}} \underbrace{(\norm{u}\norm{v})}_{\hat{\Sigma}} \underbrace{\frac{v}{\norm{v}}}_{\hat{V}^{T}}.$$
+		\subsection*{(b)}
+			We first find $V$ through $A^{T}A$
+			$$ A^{T}A = \begin{pmatrix}
+				14& 28 \\ 
+				28 & 56
+			\end{pmatrix} \xrightarrow{} \begin{align}
+				\text{For } &\lambda =70 : & \begin{pmatrix}
+					-56 & 28 \\ 28 & -14
+				\end{pmatrix} \begin{pmatrix}
+					x \\ y
+				\end{pmatrix} = \begin{pmatrix}
+					0 \\ 0
+				\end{pmatrix} \impliex  &\begin{pmatrix}
+					x \\ y
+				\end{pmatrix} = \begin{pmatrix}
+					1 \\ 2
+				\end{pmatrix} := v_{1} \\
+				\text{For } &\lambda =0 : & \begin{pmatrix}
+				14 & 28 \\ 28 & 56
+				\end{pmatrix} \begin{pmatrix}
+				x \\ y
+				\end{pmatrix} = \begin{pmatrix}
+				0 \\ 0
+				\end{pmatrix} \implies  &\begin{pmatrix}
+				x \\ y
+				\end{pmatrix} = \begin{pmatrix}
+				-2 \\ 1
+				\end{pmatrix} := v_{2}
+			\end{align}$$			
+			The vectors need to be normalized so we have 
+			$$ V^{T} = \begin{pmatrix}
+				\frac{1}{\sqrt{5}} & \frac{2}{\sqrt{5}} \\
+				-\frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}}
+ 			\end{pmatrix} \implies \hat{V}^{T} = \begin{pmatrix}
+ 				\frac{1}{\sqrt{5}} &\frac{2}{\sqrt{5}}
+ 			\end{pmatrix}.$$
+ 			Similarly, we find $U$ through $AA^{T}$.
+ 			$$ AA^{T} = \begin{pmatrix}
+ 				5 & 10 & 15 \\ 
+ 				10& 20 & 30 \\
+ 				15 & 30 & 45
+ 			\end{pmatrix} \xrightarrow{} \begin{align*}
+ 				\text{For } &\lambda = 70 : &\begin{pmatrix}
+	 				-65 & 10 & 15 \\
+	 				10 & -50 & 30 \\
+	 				15 & 30 & -25
+ 				\end{pmatrix}\begin{pmatrix}
+ 					x \\ y \\z
+ 				\end{pmatrix} = \begin{pmatrix}
+ 					0 \\ 0 \\0
+ 				\end{pmatrix} \implies \begin{pmatrix}
+ 					x \\ y \\ z
+ 				\end{pmatrix} = \begin{pmatrix}
+ 					1 \\ 2 \\3
+ 				\end{pmatrix} :=  u_1\\ 
+ 				\text{For } &\lambda = 0 : &\begin{pmatrix}
+ 				5 & 10 & 15 \\ 
+ 				10& 20 & 30 \\
+ 				15 & 30 & 45
+ 				\end{pmatrix}\begin{pmatrix}
+ 					x \\ y \\ z
+ 				\end{pmatrix} = \begin{pmatrix}
+ 					0 \\ 0 \\ 0
+ 				\end{pmatrix} \implies \begin{pmatrix}
+ 					x \\ y \\ z
+ 				\end{pmatrix} = \begin{pmatrix}
+ 					2 \\ -1 \\ 0 
+ 				\end{pmatrix}+ \begin{pmatrix}
+ 					3 \\ 0 \\ -1
+ 				\end{pmatrix} \\
+ 				& &  :=u_2 + u_3
+ 			\end{align*}$$
+ 			The vectors need to be normalized so we have
+ 			$$ U = \begin{pmatrix}
+ 				\frac{1}{\sqrt{14}} & \frac{2}{\sqrt{5 }} & \frac{3}{\sqrt{10}} \\
+ 				\frac{2}{\sqrt{14}} & -\frac{1}{\sqrt{15}} & 0 \\
+ 				\frac{3}{\sqrt{14}} & 0 & -\frac{1}{\sqrt{10}}
+ 			\end{pmatrix} \implies \hat{U} = \begin{pmatrix}
+ 				\frac{1}{\sqrt{14}} \\ \frac{2}{\sqrt{14}} \\ \frac{3}{\sqrt{14}}
+ 			\end{pmatrix}.$$
+ 			Also, from the eigenvalues of $A^{T}A$ we get $\Sigma$
+ 			$$ \Sigma = \begin{pmatrix}
+ 				\sqrt{70} & 0 \\0 & \sqrt{0} \\ 0 & 0
+ 			\end{pmatrix} \implies \hat{\Sigma} = \begin{pmatrix}
+ 				\sqrt{70} 
+ 			\end{pmatrix}.$$
+ 			Finally we conclude the condensed SVD decomposition is 
+ 			$$ \hat{U} = \begin{pmatrix}
+ 			\frac{1}{\sqrt{14}} \\ \frac{2}{\sqrt{14}} \\ \frac{3}{\sqrt{14}}
+ 			\end{pmatrix}, \qquad \hat{\Sigma} = \begin{pmatrix}
+ 				\sqrt{70} 
+ 			\end{pmatrix}, \qquad \hat{V}^{T} = \begin{pmatrix}
+ 				\frac{1}{\sqrt{5}} & \frac{2}{\sqrt{5}} 
+ 			\end{pmatrix}.$$
+ 			
+ 			\begin{align*} 
+ 			&a,b,\textcolor{red}{c}, d, e, f, \textcolor{red}{g},h ,i \\
+ 			&\underbrace{a, b}_{\text{deck1}}, \ \  \underbrace{\textcolor{red}{c}, d, e, f, \textcolor{red}{g}}_{\text{this deck}}, \ \  \underbrace{h, i}_{\text{deck3}}\\ 
+ 			\to & \underbrace{a, b}_{\text{deck1}}, \ \ \underbrace{h, i,\textcolor{red}{c}, d, e, f, \textcolor{red}{g}}_{\text{new deck}} \\
+ 			\to& \underbrace{ h, i,\textcolor{red}{c}, d, e, f, \textcolor{red}{g},a,b }_{\text{final deck}} 
+ 			\end{align*}
+\end{document}
