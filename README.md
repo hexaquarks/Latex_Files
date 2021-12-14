@@ -8,7 +8,7 @@ Latex assignments, projects and class notes done throughout my undergraduate deg
 
 My most notable project is *Advanced Calculus (MATH 314)* in [~/FullClassNotes/MATH314_Notes.pdf](https://github.com/hexaquarks/Latex_Files/blob/main/FullClassNotes/MATH314_Notes.pdf), a document that was featured to the class by my teacher. 
 
-#### Sample
+### Sample
 
 <div align="center">
   <img src="https://i.ibb.co/ygxmcfS/latex-f.png" width="600">
